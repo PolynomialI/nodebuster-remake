@@ -1,7 +1,6 @@
 # Nodebuster Remake — Plan
 
-Status: **planning only**. No gameplay, art or values have been built yet; those wait on the
-reference material and numbers listed in [§7](#7-what-i-need-from-you).
+Status: **building** (phases 1-7). Values come from [research/](research/README.md).
 
 ## 1. Goal and definition of done
 
@@ -124,30 +123,39 @@ sequence.
 **Numbers:** late-game values may pass 2^53. The number type (plain `number` vs. a
 big-number library) will be decided once the real maximums are known.
 
-## 6. What's known about the original (from public sources)
+## 6. What's known about the original
 
-Confidence: **✔** several sources agree · **~** one source or my memory · **?** unknown.
+**Source of truth: [research/](research/README.md)**, taken from the game's own files
+(`Nodebuster.pck` recovered with GDRE Tools; scripts ship as plain GDScript). Where this
+section, the Steam guide or the spreadsheet disagree with research/, research/ wins.
+Behaviour follows the original's code; displayed text stays as the game shows it, even
+where the two differ (see "Text vs code" below).
 
-| Area | Known | |
+| Area | Known (from the game files) | Where |
 |---|---|---|
-| Engine | Godot (per one listing) | ~ |
-| Core loop | Move a reticle; it attacks nodes under it automatically at a fixed interval | ✔ |
-| Health | HP drains constantly; a "virus" drains it faster the longer the run lasts; attacked nodes hit back | ✔ |
-| Scaling | Enemy HP and damage grow during a run | ✔ |
-| Enemies | Red squares → **bits**; blue → **nodes**; yellow → **processors** (speed up the Crypto Mine); enhanced variants give more | ✔ |
-| Drops | Must be collected by hovering; uncollected drops vanish at run end; an upgrade adds an auto-collect chance | ✔ |
-| Currencies | Bits, Nodes, SP, Cores, Netcoin (+ processors) | ✔ |
-| Upgrades | Damage, HP, Armor, Regen, Attack Speed (e.g. +20%), Attack Size, Spawn Rate, Blue Spawn Rate, % of HP as armor/regen/damage, scaling with enemies in area, Lightning Rod (5% chain lightning), drones, bullets | ✔/~ |
-| Tree rules | Some nodes need 1 level in a prerequisite, some need it maxed; every node is purchasable | ✔ |
-| Boss | Large purple boss ends the session and drops a **core**; beating it unlocks the next prestige | ✔ |
-| Prestige | Higher prestige = tougher enemies and more rewards; capped at **25**; at P25 the boss resets the run | ✔ |
-| Features | Milestones tab; Crypto Mine (left side of the tree, after the Attack Size upgrades; bits → netcoin); the Lab (needs 9 tree branches); godvirus costs 1000 netcoin (ending) | ✔ |
-| Achievements | 13: Awakened, Routine (50 sessions), Milestones, Crypto Mine, The Lab, Bit Guy/Getter/Collector/Lord (10k/100k/1M/10M bits), Node Hunter (1k nodes), Node Buster (10k nodes), SP Seeker (25 SP), Genesis (deploy godvirus) | ✔ |
-| Settings | CRT effect on/off; flashing effects off; alternate colour palette (tree); darker screen transition; (plus presumably volume/fullscreen) | ✔/? |
-| Length | ~4 hours to finish | ✔ |
-| Exact numbers | Costs, HP, damage, intervals, spawn rates, drain curve, boss stats | **?** — need §7 |
-| SP / Cores details | How SP is earned, what cores buy | **?** |
-| Visual specifics | Native resolution, palette hex values, font, CRT/VHS parameters, particle and screen-shake behaviour | **?** |
+| Engine | Godot 4.2.2, ~90 GDScript files, 480x270 native, integer-scaled, nearest filtering | research/README.md |
+| Core loop | Reticle (34 px box) follows the mouse and pulses every 2 s (0.5/s base); everything inside the box is hit | gameplay.md §2 |
+| Health | **Fixed drain per prestige** (0.2 HP/s at P0 up to 60,000/s at P12+); it does not grow during a run. Regen and heals on top. | gameplay.md §3 |
+| Enemy damage | **Enemies only damage you when you hit them**: each enemy hit by a pulse deals `max(damage − armor, 0)`. No contact damage; bolts, drones, lightning and explosions never hurt you | gameplay.md §2 |
+| Scaling | Enemy base HP and damage grow **linearly** with seconds in the session; each enemy keeps the values it spawned with | gameplay.md §4 |
+| Enemies | 8 types: Square, SmallSquare, BigSquare, Pill (wavy), Pentagon (splits into 6), PentagonSmall, Spiky (×3 damage), Exploder. Colour = currency: red Bits, blue Nodes, yellow Processors; purple boss | data/enemies.json |
+| Spawning | 0.33/s × spawn_rate_mod (starts at 1.0); first frame spawns 2; no on-screen cap; weights per prestige | gameplay.md §4 |
+| Drops | Collected by hovering (16 px radius). **Drops never expire**; uncollected ones are lost only when the session ends. Resources count at pickup, so terminating keeps them | gameplay.md §5 |
+| Currencies | Bits, Nodes, Cores (1 per boss, 25 max per save), SP (1 per level up), Netcoin (float, from the Crypto Mine), Processors (yellow enemies) | meta.md |
+| Skill tree | 97 nodes, 98 connections; each node has an explicit cost table (no formula); visible/buyable when its rule over neighbours holds (≥1 level or maxed) | skill-tree.md, data/upgrades.json |
+| Boss | Purple 128 px square, spawns when the **45 s** progress bar fills, only at your highest prestige. Killing it: +1 Core, next prestige unlocked, session ends | gameplay.md §7 |
+| Prestige | 0-25. Enemy stats stop growing at P12; rewards keep growing to P25. **P25 resets nothing**: the boss stays beatable and says "there is nowhere left to go" | data/prestige.json |
+| Milestones | 25 lifetime kill goals (reds/blues/yellows) with Bits/Nodes/Processor rewards, claimed by hand | meta.md |
+| Crypto Mine | Deposit Bits (1k-1m buttons); 1 Bit → 0.00001 Netcoin at 5 → 1,280,000 Bits/s over 36 upgrades (1 Processor each); runs in every scene while the game is open | data/cryptomine.json |
+| Lab | Needs the nine `Infinity` nodes (**9 Cores**) then "the lab" (1 Bit). Research goal **1000 Netcoin**; a deposit takes all Netcoin and anything over 1000 is lost. Deploy → ~47.5 s ending, then back to the menu; the save stays playable | meta.md |
+| Achievements | 13 Steam ids; names from Steam: Awakened, Routine (50 sessions), Milestones, Crypto Mine, The Lab, Bit Guy/Getter/Collector/Lord (10k/100k/1M/10M lifetime Bits), Node Hunter/Node Buster (1k/10k lifetime Nodes), SP Seeker (level 25), Genesis (deploy godvirus) | data/achievements.json |
+| Settings | window_size, v-sync, screen_shake (90), crt_effect, transition_color (white/dark), flashing_fx, color_palette (default/alternate), master/bgm/sfx volume (50/60/100) | settings.md |
+| Look | 480x270 → integer scale; WorldEnvironment glow (1.8, 0.9 with CRT off); full-window CRT shader (barrel 0.25, 240 scanlines, chromatic 2, RGB grille, vignette); glitch shader only in the ending; font retro-pixel-cute-prop 11 px | visuals-audio.md |
+| Audio | 9 HoliznaCC0 lo-fi tracks shuffled, BGM low-pass per scene; 21 named SFX with random pitch | visuals-audio.md |
+| Text vs code | Swarming shows +200%, gives +250%; b.i.g. shows +100% attack size, adds 1 px to the 34 px base; pulse bolts gives 3 bolts; Infinity2-9 do nothing; milestone BLUE RIVAL says 1,500 but needs 1,600 | skill-tree.md §Notes |
+| Original bugs | Boss damage bonus leaks to other enemies hit in the same pulse; a second `prestige == 19` branch is dead code | gameplay.md §2, data/prestige.json |
+| Numbers | Largest fixed value: boss HP 145,000,000. Max HP and damage-from-max-HP grow with kills; plain `number` is expected to be enough, checked in phase 2 | research/README.md |
+| Length | ~4 hours to finish (public reviews) | |
 
 ## 7. What I need from you
 
