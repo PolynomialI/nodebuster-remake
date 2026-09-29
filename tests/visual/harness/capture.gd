@@ -26,6 +26,8 @@ func run() -> void:
 	var f := FileAccess.open(list_path, FileAccess.READ)
 	var scenarios: Array = JSON.parse_string(f.get_as_text())
 	await frames(20)
+	# Park the mouse where no scenario has UI, so nothing is hovered by accident.
+	Input.warp_mouse(Vector2(1437, 600))
 	for s in scenarios:
 		if s.has("only") and not s.only.has("godot"):
 			continue
@@ -78,6 +80,9 @@ func hide_particles(node: Node) -> void:
 
 func run_scenario(s: Dictionary) -> void:
 	apply_profile(s.get("profile", {}))
+	var opts: Dictionary = s.get("options", {})
+	for k in ["color_palette", "flashing_fx", "transition_color"]:
+		OptionData.apply_option(k, opts.get(k, 0))
 	var scene: String = s.scene
 	if scene == "battle":
 		await build_battle(s)
@@ -146,14 +151,15 @@ func build_shop(s: Dictionary) -> void:
 	var sh = await enter(load("res://GameScenes/ShopScene.tscn"))
 	await frames(2)
 	var sp: Dictionary = s.get("shop", {})
+	var tree = sh.get_node("%UpgradeTree")
 	if sp.has("treePos"):
-		sh.upgrades_page.upgrade_tree.set_tree_pos(Vector2(sp.treePos[0], sp.treePos[1]))
+		tree.set_tree_pos(Vector2(sp.treePos[0], sp.treePos[1]))
 	if sp.has("page"):
 		sh.set_page(int(sp.page))
 	if not s.get("bgParticles", false):
 		hide_particles(sh)
 	if sp.has("hover"):
-		for c in sh.upgrades_page.upgrade_tree.get_children():
+		for c in tree.get_children():
 			if c is UpgradeNode and c.upgrade.id == sp.hover:
 				Refs.upgrade_description.show_upgrade_node(c)
 	await frames(int(sp.get("waitFrames", 60)))

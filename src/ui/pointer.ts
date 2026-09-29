@@ -16,6 +16,11 @@ export class Pointer {
     return t;
   }
 
+  /** Register below everything registered so far (lowest hover priority). */
+  registerFirst(...ts: Interactive[]): void {
+    this.targets.unshift(...ts);
+  }
+
   unregister(t: Interactive): void {
     this.targets = this.targets.filter((x) => x !== t);
     if (this.hovered === t) this.hovered = null;

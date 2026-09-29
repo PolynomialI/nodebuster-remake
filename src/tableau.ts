@@ -2,6 +2,8 @@
 // harness captures from the original) so screenshots can be compared 1:1.
 import type { Game } from './game';
 import { BattleScene } from './scenes/battleScene';
+import { ShopScene } from './scenes/shopScene';
+import { setCurrency } from './sim/profile';
 import type { Currency } from './data/content';
 import { newProfile, type Profile } from './sim/profile';
 
@@ -19,14 +21,30 @@ export interface BattleInitScenario {
     drops?: { currency: Currency; x: number; y: number }[];
     end?: { status: 0 | 1 | 2; collected: Partial<Record<Currency, number>> };
   };
-  shop?: Record<string, unknown>;
+  shop?: { treePos?: [number, number]; page?: number; hover?: string; waitFrames?: number };
+  options?: Record<string, number>;
 }
 
 export function applyTableau(game: Game, s: BattleInitScenario): void {
   const p = { ...newProfile(), ...(s.profile ?? {}) } as Profile;
   p.upgrades = { ...(s.profile?.upgrades ?? {}) };
   p.nums = { ...newProfile().nums, ...(s.profile?.nums ?? {}) };
+  // Currency setters derive the *_unlocked flags, as State.set() does in the harness.
+  for (const c of ['bits', 'nodes', 'cores', 'sp', 'netcoin', 'processors'] as const) {
+    const v = p[c];
+    p[c] = 0;
+    setCurrency(p, c, v);
+  }
   game.profile = p;
+  for (const o of ['color_palette', 'flashing_fx', 'transition_color']) game.options[o] = s.options?.[o] ?? 0;
+  if (s.scene === 'shop') {
+    const shop = new ShopScene(game);
+    game.setScene(shop);
+    if (s.shop?.treePos) shop.tree.setPos(s.shop.treePos[0], s.shop.treePos[1]);
+    if (s.shop?.page !== undefined) shop.setPage((['upgrades', 'milestones', 'cryptomine', 'lab', 'stats'] as const)[s.shop.page]);
+    if (s.shop?.hover) shop.tree.get(s.shop.hover)?.onEnter();
+    return;
+  }
   if (s.scene !== 'battle' || !s.battle) return;
   const b = s.battle;
   const scene = new BattleScene(game, 1);

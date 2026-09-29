@@ -11,6 +11,7 @@ import { Screen } from './render/screen';
 import { loadTextures, type TextureMap } from './render/textures';
 import { BattleScene } from './scenes/battleScene';
 import { BootScene } from './scenes/boot';
+import { ShopScene } from './scenes/shopScene';
 import type { Scene } from './scenes/scene';
 import { newProfile, profileFromJson, profileToJson, type Profile } from './sim/profile';
 import { features } from './sim/stats';
@@ -159,8 +160,15 @@ export class Game {
     this.audio?.bgm(content.audio.bgmProfiles.battle as never);
   }
 
-  /** Until the shop exists (phase 4), "go to home" starts another session. */
+  /** "go to home": save and enter the shop (the transition comes in the look phase). */
   goHome(): void {
+    this.save();
+    this.setScene(new ShopScene(this));
+    this.audio?.bgm(content.audio.bgmProfiles.shop as never);
+  }
+
+  /** Breach: the prestige picker comes with the meta phase; until then start a session. */
+  breach(): void {
     this.startBattle();
   }
 
@@ -180,7 +188,7 @@ export class Game {
       } catch {
         this.audio = null;
       }
-      this.startBattle();
+      this.goHome();
     };
     this.loop.start();
   }
@@ -195,6 +203,11 @@ export class Game {
       size: () => ({ w: this.screen.width, h: this.screen.height, scale: this.screen.scale }),
       tableau: (s: BattleInitScenario) => applyTableau(this, s),
       profile: () => JSON.parse(profileToJson(this.profile)),
+      shop: () => {
+        const s = this.scene as Partial<ShopScene>;
+        if (!s.tree) return null;
+        return { treePos: { ...s.tree.pos }, scale: s.tree.scale, visible: s.tree.nodes.filter((n) => n.visible).map((n) => n.node.id), page: s.page };
+      },
       battle: () => {
         const s = this.scene as Partial<BattleScene>;
         if (!s.sim) return null;

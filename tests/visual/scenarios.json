@@ -2,28 +2,123 @@
   {
     "name": "battle_field",
     "scene": "battle",
-    "time": 1.0,
-    "profile": { "curr_prestige": 3, "max_prestige": 3, "level": 4, "upgrades": { "Health1": 3, "Damage1": 4 } },
+    "time": 1,
+    "profile": {
+      "curr_prestige": 3,
+      "max_prestige": 3,
+      "level": 4,
+      "upgrades": {
+        "Health1": 3,
+        "Damage1": 4
+      }
+    },
     "battle": {
-      "cursor": [252, 139],
+      "cursor": [
+        252,
+        139
+      ],
       "hp": 17.5,
       "xp": 1234,
       "progress": 17.25,
       "enemies": [
-        { "type": "Square", "currency": "bits", "x": 70, "y": 80, "rot": 0, "scale": 0.16, "hp": 1.0 },
-        { "type": "Square", "currency": "bits", "x": 110, "y": 90, "rot": 30, "scale": 0.18, "hp": 0.5 },
-        { "type": "SmallSquare", "currency": "nodes", "x": 150, "y": 70, "rot": 12, "scale": 0.09, "hp": 0.75 },
-        { "type": "BigSquare", "currency": "bits", "x": 380, "y": 90, "rot": 45, "scale": 0.47, "hp": 0.3 },
-        { "type": "Pill", "currency": "bits", "x": 90, "y": 190, "rot": -20, "scale": 0.2, "hp": 0.6 },
-        { "type": "Pentagon", "currency": "nodes", "x": 180, "y": 200, "rot": 10, "scale": 0.42, "hp": 0.9 },
-        { "type": "Spiky", "currency": "bits", "x": 300, "y": 205, "rot": 0, "scale": 0.32, "hp": 0.5 },
-        { "type": "Exploder", "currency": "processors", "x": 400, "y": 200, "rot": 0, "scale": 0.16, "hp": 0.4 },
-        { "type": "Boss", "currency": "cores", "x": 330, "y": 130, "rot": 8, "scale": 1.0, "hp": 0.8 }
+        {
+          "type": "Square",
+          "currency": "bits",
+          "x": 70,
+          "y": 80,
+          "rot": 0,
+          "scale": 0.16,
+          "hp": 1
+        },
+        {
+          "type": "Square",
+          "currency": "bits",
+          "x": 110,
+          "y": 90,
+          "rot": 30,
+          "scale": 0.18,
+          "hp": 0.5
+        },
+        {
+          "type": "SmallSquare",
+          "currency": "nodes",
+          "x": 150,
+          "y": 70,
+          "rot": 12,
+          "scale": 0.09,
+          "hp": 0.75
+        },
+        {
+          "type": "BigSquare",
+          "currency": "bits",
+          "x": 380,
+          "y": 90,
+          "rot": 45,
+          "scale": 0.47,
+          "hp": 0.3
+        },
+        {
+          "type": "Pill",
+          "currency": "bits",
+          "x": 90,
+          "y": 190,
+          "rot": -20,
+          "scale": 0.2,
+          "hp": 0.6
+        },
+        {
+          "type": "Pentagon",
+          "currency": "nodes",
+          "x": 180,
+          "y": 200,
+          "rot": 10,
+          "scale": 0.42,
+          "hp": 0.9
+        },
+        {
+          "type": "Spiky",
+          "currency": "bits",
+          "x": 300,
+          "y": 205,
+          "rot": 0,
+          "scale": 0.32,
+          "hp": 0.5
+        },
+        {
+          "type": "Exploder",
+          "currency": "processors",
+          "x": 400,
+          "y": 200,
+          "rot": 0,
+          "scale": 0.16,
+          "hp": 0.4
+        },
+        {
+          "type": "Boss",
+          "currency": "cores",
+          "x": 330,
+          "y": 130,
+          "rot": 8,
+          "scale": 1,
+          "hp": 0.8
+        }
       ],
       "drops": [
-        { "currency": "bits", "x": 200, "y": 120 },
-        { "currency": "nodes", "x": 212, "y": 126 },
-        { "currency": "processors", "x": 224, "y": 118 }
+        {
+          "currency": "bits",
+          "x": 200,
+          "y": 120
+        },
+        {
+          "currency": "nodes",
+          "x": 212,
+          "y": 126
+        },
+        {
+          "currency": "processors",
+          "x": 224,
+          "y": 118
+        }
       ]
     }
   },
@@ -31,24 +126,336 @@
     "name": "battle_end_boss",
     "scene": "battle",
     "time": 2.5,
-    "profile": { "curr_prestige": 0, "max_prestige": 0 },
+    "profile": {
+      "curr_prestige": 0,
+      "max_prestige": 0
+    },
     "battle": {
-      "cursor": [240, 135],
+      "cursor": [
+        240,
+        135
+      ],
       "hp": 3.2,
       "enemies": [],
-      "end": { "status": 1, "collected": { "bits": 132, "sp": 2, "cores": 1 }, "waitFrames": 90 }
+      "end": {
+        "status": 1,
+        "collected": {
+          "bits": 132,
+          "sp": 2,
+          "cores": 1
+        },
+        "waitFrames": 90
+      }
     }
   },
   {
     "name": "battle_end_health",
     "scene": "battle",
     "time": 0.5,
-    "profile": { "curr_prestige": 1, "max_prestige": 2 },
+    "profile": {
+      "curr_prestige": 1,
+      "max_prestige": 2
+    },
     "battle": {
-      "cursor": [240, 135],
+      "cursor": [
+        240,
+        135
+      ],
       "hp": 0,
-      "enemies": [{ "type": "Square", "currency": "bits", "x": 100, "y": 60, "rot": 20, "scale": 0.16, "hp": 1.0 }],
-      "end": { "status": 0, "collected": {}, "waitFrames": 90 }
+      "enemies": [
+        {
+          "type": "Square",
+          "currency": "bits",
+          "x": 100,
+          "y": 60,
+          "rot": 20,
+          "scale": 0.16,
+          "hp": 1
+        }
+      ],
+      "end": {
+        "status": 0,
+        "collected": {},
+        "waitFrames": 90
+      }
+    }
+  },
+  {
+    "name": "shop_fresh",
+    "scene": "shop",
+    "time": 1,
+    "profile": {},
+    "shop": {
+      "waitFrames": 40
+    }
+  },
+  {
+    "name": "shop_mid",
+    "scene": "shop",
+    "time": 1,
+    "profile": {
+      "bits": 5234,
+      "nodes": 87,
+      "cores": 1,
+      "sp": 2,
+      "curr_prestige": 3,
+      "max_prestige": 3,
+      "level": 5,
+      "upgrades": {
+        "Damage1": 15,
+        "Health1": 10,
+        "SpawnRate1": 15,
+        "Armor1": 10,
+        "BitBoost1": 1,
+        "Size1": 10,
+        "BossArmor1": 5,
+        "HealthRegen1": 5,
+        "NodeFinder1": 3,
+        "Salvaging1": 5,
+        "DamagePerEnemy1": 5,
+        "BossDamage1": 4,
+        "AttackSpeed1": 1,
+        "BonusDropChance1": 2,
+        "ExplodersChance": 1,
+        "Health2": 8,
+        "Armor2": 5,
+        "Lifesteal1": 3,
+        "Damage2": 6,
+        "PickupRadius1": 2,
+        "HealthRegen2": 1,
+        "Milestones": 1,
+        "Salvaging2": 1,
+        "AttackSpeed2": 1,
+        "SpawnRate2": 1,
+        "NodeBoost1": 1,
+        "ArmorPerEnemy1": 2,
+        "Armor3": 3,
+        "Health3": 4,
+        "PulseBolts": 1,
+        "PulseBoltDamage1": 2
+      }
+    },
+    "shop": {
+      "waitFrames": 40
+    }
+  },
+  {
+    "name": "shop_hover",
+    "scene": "shop",
+    "time": 1,
+    "profile": {
+      "bits": 5234,
+      "nodes": 87,
+      "cores": 1,
+      "sp": 2,
+      "curr_prestige": 3,
+      "max_prestige": 3,
+      "level": 5,
+      "upgrades": {
+        "Damage1": 15,
+        "Health1": 10,
+        "SpawnRate1": 15,
+        "Armor1": 10,
+        "BitBoost1": 1,
+        "Size1": 10,
+        "BossArmor1": 5,
+        "HealthRegen1": 5,
+        "NodeFinder1": 3,
+        "Salvaging1": 5,
+        "DamagePerEnemy1": 5,
+        "BossDamage1": 4,
+        "AttackSpeed1": 1,
+        "BonusDropChance1": 2,
+        "ExplodersChance": 1,
+        "Health2": 8,
+        "Armor2": 5,
+        "Lifesteal1": 3,
+        "Damage2": 6,
+        "PickupRadius1": 2,
+        "HealthRegen2": 1,
+        "Milestones": 1,
+        "Salvaging2": 1,
+        "AttackSpeed2": 1,
+        "SpawnRate2": 1,
+        "NodeBoost1": 1,
+        "ArmorPerEnemy1": 2,
+        "Armor3": 3,
+        "Health3": 4,
+        "PulseBolts": 1,
+        "PulseBoltDamage1": 2
+      }
+    },
+    "shop": {
+      "hover": "Damage2",
+      "waitFrames": 90
+    }
+  },
+  {
+    "name": "shop_late_top",
+    "scene": "shop",
+    "time": 1,
+    "profile": {
+      "bits": 1234567,
+      "nodes": 5210,
+      "cores": 12,
+      "sp": 9,
+      "netcoin": 3.52817,
+      "processors": 4,
+      "curr_prestige": 12,
+      "max_prestige": 12,
+      "level": 21,
+      "upgrades": {
+        "Damage1": 12,
+        "Health1": 8,
+        "SpawnRate1": 12,
+        "Armor1": 8,
+        "BitBoost1": 1,
+        "Size1": 8,
+        "BossArmor1": 8,
+        "HealthRegen1": 4,
+        "NodeFinder1": 4,
+        "Salvaging1": 4,
+        "DamagePerEnemy1": 4,
+        "BossDamage1": 8,
+        "AttackSpeed1": 1,
+        "BonusDropChance1": 4,
+        "ExplodersChance": 1,
+        "Health2": 6,
+        "Armor2": 4,
+        "Lifesteal1": 4,
+        "Damage2": 8,
+        "PickupRadius1": 4,
+        "HealthRegen2": 1,
+        "Milestones": 1,
+        "Salvaging2": 1,
+        "AttackSpeed2": 1,
+        "SpawnRate2": 1,
+        "NodeBoost1": 1,
+        "ArmorPerEnemy1": 8,
+        "Armor3": 8,
+        "DropHeal1": 1,
+        "Health3": 8,
+        "PulseBolts": 1,
+        "PulseBoltDamage1": 8,
+        "PulseBoltCount1": 4,
+        "ExplodersSize": 4,
+        "MaxHealthHeal1": 8,
+        "Armor4": 8,
+        "BossArmor2": 6,
+        "Damage3": 8,
+        "Undamaged1": 4,
+        "Execute1": 4,
+        "CritChance1": 8,
+        "SpawnRate3": 4,
+        "Armor5": 16,
+        "Damage4": 2,
+        "Size2": 1,
+        "CryptoMine": 1,
+        "Health4": 8,
+        "YellowSpawn1": 1,
+        "Armor6": 24,
+        "BossDamage2": 8,
+        "Lifesteal2": 2,
+        "MovingPulser1": 4,
+        "Size3": 2,
+        "MovingPulserSize1": 4,
+        "MovingPulserAttackSpeed1": 4,
+        "Health5": 2,
+        "Lifesteal3": 1,
+        "MaxHealthToArmor1": 4,
+        "CritDamage1": 8,
+        "Damage5": 4,
+        "Armor7": 4,
+        "FocusArmor1": 4,
+        "StealMaxHealth1": 1,
+        "PulseBoltExplode": 1,
+        "MovingPulserSize2": 1,
+        "PulseBoltCount2": 1,
+        "PulseBoltDamage2": 2,
+        "MovingPulserSpeed1": 4,
+        "Undamaged2": 3,
+        "Execute2": 3,
+        "MaxHealthHeal2": 4,
+        "RampingDamage1": 2,
+        "EnemyDeathPulseBolts": 4,
+        "SpawnRate4": 4,
+        "StealMaxHealth2": 1,
+        "MaxHealthToArmor2": 1,
+        "RampingArmor1": 4,
+        "Health6": 4,
+        "StealMaxHealth3": 1,
+        "LightningChance1": 4,
+        "LightningChainCount1": 6,
+        "MaxHealthToDamage1": 1,
+        "Infinity1": 1,
+        "Infinity2": 1,
+        "Infinity3": 1,
+        "AutoCollect": 6
+      }
+    },
+    "shop": {
+      "treePos": [
+        0,
+        260
+      ],
+      "waitFrames": 40
+    }
+  },
+  {
+    "name": "shop_alt_palette",
+    "scene": "shop",
+    "time": 1,
+    "options": {
+      "color_palette": 1
+    },
+    "profile": {
+      "bits": 5234,
+      "nodes": 87,
+      "cores": 1,
+      "sp": 2,
+      "curr_prestige": 3,
+      "max_prestige": 3,
+      "level": 5,
+      "upgrades": {
+        "Damage1": 15,
+        "Health1": 10,
+        "SpawnRate1": 15,
+        "Armor1": 10,
+        "BitBoost1": 1,
+        "Size1": 10,
+        "BossArmor1": 5,
+        "HealthRegen1": 5,
+        "NodeFinder1": 3,
+        "Salvaging1": 5,
+        "DamagePerEnemy1": 5,
+        "BossDamage1": 4,
+        "AttackSpeed1": 1,
+        "BonusDropChance1": 2,
+        "ExplodersChance": 1,
+        "Health2": 8,
+        "Armor2": 5,
+        "Lifesteal1": 3,
+        "Damage2": 6,
+        "PickupRadius1": 2,
+        "HealthRegen2": 1,
+        "Milestones": 1,
+        "Salvaging2": 1,
+        "AttackSpeed2": 1,
+        "SpawnRate2": 1,
+        "NodeBoost1": 1,
+        "ArmorPerEnemy1": 2,
+        "Armor3": 3,
+        "Health3": 4,
+        "PulseBolts": 1,
+        "PulseBoltDamage1": 2
+      }
+    },
+    "shop": {
+      "treePos": [
+        -60,
+        0
+      ],
+      "waitFrames": 40
     }
   }
 ]
