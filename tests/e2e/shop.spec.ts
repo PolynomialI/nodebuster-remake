@@ -9,6 +9,9 @@ test('buying, panning and zooming the skill tree', async ({ page }) => {
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('/');
   await page.waitForFunction(() => (window as unknown as { __nb?: NB }).__nb?.scene() === 'boot');
+  // Start the game first (the click-to-start gesture opens the shop).
+  await page.mouse.click(10, 10);
+  await page.waitForFunction(() => (window as unknown as { __nb: NB }).__nb.scene() === 'shop');
   await page.evaluate(() => (window as unknown as { __nb: NB }).__nb.tableau({ name: 'e2e', scene: 'shop', profile: { bits: 10 } }));
   await page.waitForTimeout(300);
   let shop = await page.evaluate(() => (window as unknown as { __nb: NB }).__nb.shop());

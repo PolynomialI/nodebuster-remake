@@ -20,8 +20,13 @@ export class FixedLoop {
 
   start(): void {
     const frame = (now: number) => {
-      this.frame(now);
+      // Keep the loop alive even if one frame throws (the error is still reported).
       this.raf = requestAnimationFrame(frame);
+      try {
+        this.frame(now);
+      } catch (e) {
+        console.error(e);
+      }
     };
     this.raf = requestAnimationFrame(frame);
   }

@@ -39,7 +39,7 @@ export function applyTableau(game: Game, s: BattleInitScenario): void {
   for (const o of ['color_palette', 'flashing_fx', 'transition_color']) game.options[o] = s.options?.[o] ?? 0;
   if (s.scene === 'shop') {
     const shop = new ShopScene(game);
-    game.setScene(shop);
+    game.swapScene(shop);
     if (s.shop?.treePos) shop.tree.setPos(s.shop.treePos[0], s.shop.treePos[1]);
     if (s.shop?.page !== undefined) shop.setPage((['upgrades', 'milestones', 'cryptomine', 'lab', 'stats'] as const)[s.shop.page]);
     if (s.shop?.hover) shop.tree.get(s.shop.hover)?.onEnter();
@@ -65,7 +65,7 @@ export function applyTableau(game: Game, s: BattleInitScenario): void {
     en.hp = 100 * e.hp;
   }
   for (const d of b.drops ?? []) sim.drops.push({ id: 100000 + sim.drops.length, currency: d.currency, x: d.x, y: d.y, phase: 'idle', t: 0, fromX: 0, fromY: 0, toX: 0, toY: 0 });
-  game.setScene(scene);
+  game.swapScene(scene);
   if (b.end) {
     for (const [c, n] of Object.entries(b.end.collected)) sim.collected.set(c as Currency, n as number);
     sim.forceEnd(b.end.status);

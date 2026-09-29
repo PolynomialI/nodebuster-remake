@@ -25,6 +25,7 @@ export class Game {
   readonly input = new Input();
   readonly loop: FixedLoop;
   scene!: Scene;
+  private pendingScene: Scene | null = null;
   audio: GameAudio | null = null;
   profile: Profile = newProfile();
   hasSave = false;
@@ -46,6 +47,7 @@ export class Game {
         this.scene.update(dt);
         this.audio?.step();
         this.input.endStep();
+        this.applyPendingScene();
       },
       () => {
         this.scene.draw?.();
@@ -143,7 +145,22 @@ export class Game {
 
   // ---- scenes -----------------------------------------------------------------------
 
+  /** Switch scenes at the end of the current step (a scene may request it mid-update). */
   setScene(scene: Scene): void {
+    if (!this.scene) this.swapScene(scene);
+    else this.pendingScene = scene;
+  }
+
+  private applyPendingScene(): void {
+    const s = this.pendingScene;
+    if (!s) return;
+    this.pendingScene = null;
+    this.swapScene(s);
+  }
+
+  /** Immediate switch (tests and startup). */
+  swapScene(scene: Scene): void {
+    this.pendingScene = null;
     const old = this.scene;
     this.scene = scene;
     this.screen.gameRoot.removeChildren();
