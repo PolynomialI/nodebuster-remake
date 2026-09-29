@@ -1,0 +1,37 @@
+{
+  "name": "nodebuster-remake",
+  "version": "1.0.0",
+  "scripts": {
+    "assets": "node scripts/build-assets.mjs",
+    "content": "node scripts/build-content.mjs",
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run assets && vite build && node scripts/package-artifact.mjs",
+    "test": "vitest run",
+    "e2e": "playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PolynomialI/nodebuster-remake.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PolynomialI/nodebuster-remake/issues"
+  },
+  "homepage": "https://github.com/PolynomialI/nodebuster-remake#readme",
+  "dependencies": {
+    "pixi.js": "^8.21.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.3",
+    "@types/pngjs": "^6.0.5",
+    "pixelmatch": "^7.2.0",
+    "pngjs": "^7.0.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.1",
+    "vite-plugin-singlefile": "^2.3.3",
+    "vitest": "^5.0.2"
+  },
+  "private": true,
+  "type": "module"
+}
