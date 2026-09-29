@@ -1,0 +1,1410 @@
+{
+  "sources": {
+    "guide": "https://steamcommunity.com/sharedfiles/filedetails/?id=3414691532 (Nodebuster Full Skill Tree, by Orange Creamsicle, updated Jul 8 2025; snapshot research/sources/steam-guide-3414691532.txt)",
+    "sheet": "https://docs.google.com/spreadsheets/d/1vrLln6hSPshVy47k3fFz4R0q7zNZpgm-72vdAAGI98E (linked from https://steamcommunity.com/sharedfiles/filedetails/?id=3533964915, \"Google Sheet with all Upgrades and their prices\", by calamity; snapshot research/sources/sheet-upgrades-and-prices.csv)"
+  },
+  "guide": {
+    "rows": 97,
+    "nodesNotListed": [],
+    "entries": [
+      {
+        "section": "Damage",
+        "name": "power",
+        "id": "Damage1",
+        "description": "+1 damage",
+        "levels": 15,
+        "issues": []
+      },
+      {
+        "section": "Damage",
+        "name": "proficiency",
+        "id": "Damage2",
+        "description": "+3 damage",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Damage",
+        "name": "potency",
+        "id": "Damage3",
+        "description": "+6 damage",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Damage",
+        "name": "nodeblade",
+        "id": "Damage4",
+        "description": "+25 damage",
+        "levels": 3,
+        "issues": []
+      },
+      {
+        "section": "Damage",
+        "name": "netblade",
+        "id": "Damage5",
+        "description": "+100 damage",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Damage",
+        "name": "learning",
+        "id": "RampingDamage1",
+        "description": "Gain +1% damage every second during session",
+        "levels": 3,
+        "issues": []
+      },
+      {
+        "section": "Damage",
+        "name": "bloodblade",
+        "id": "MaxHealthToDamage1",
+        "description": "get damage equal to +0.1% of max health",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Conditional Damage Nodes",
+        "name": "connection buster",
+        "id": "DamagePerEnemy1",
+        "description": "attack deals 5% damage per enemy in area",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Conditional Damage Nodes",
+        "name": "first Strike",
+        "id": "Undamaged1",
+        "description": "+25% damage to undamaged enemies",
+        "levels": 6,
+        "issues": []
+      },
+      {
+        "section": "Conditional Damage Nodes",
+        "name": "ambush",
+        "id": "Undamaged2",
+        "description": "+100% damage to undamaged enemies",
+        "levels": 4,
+        "issues": []
+      },
+      {
+        "section": "Conditional Damage Nodes",
+        "name": "last Strike",
+        "id": "Execute1",
+        "description": "+25% damage to enemies below 50% hp",
+        "levels": 6,
+        "issues": []
+      },
+      {
+        "section": "Conditional Damage Nodes",
+        "name": "finishing Blow",
+        "id": "Execute2",
+        "description": "+100% damage to enemies below 50% hp",
+        "levels": 4,
+        "issues": []
+      },
+      {
+        "section": "Critical Hits",
+        "name": "crit chance",
+        "id": "CritChance1",
+        "description": "+10% critical hit chance",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Critical Hits",
+        "name": "crit damage",
+        "id": "CritDamage1",
+        "description": "+50% crit damage",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Critical Hits",
+        "name": "big crit",
+        "id": "CritDamage2",
+        "description": "+200% crit damage",
+        "levels": 8,
+        "issues": []
+      },
+      {
+        "section": "Boss Damage",
+        "name": "giant Slayer",
+        "id": "BossDamage1",
+        "description": "+50 damage against bosses",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Boss Damage",
+        "name": "colossus Slayer",
+        "id": "BossDamage2",
+        "description": "+100% damage against bosses",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Attack Speed",
+        "name": "repeating",
+        "id": "AttackSpeed1",
+        "description": "+20% attack speed",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Attack Speed",
+        "name": "repeat-repeating",
+        "id": "AttackSpeed2",
+        "description": "+20% attack speed",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Attack Size",
+        "name": "influence",
+        "id": "Size1",
+        "description": "+10% attack size",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Attack Size",
+        "name": "domain Expansion",
+        "id": "Size2",
+        "description": "+50% attack size",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Attack Size",
+        "name": "b.i.g.",
+        "id": "Size3",
+        "description": "+100 attack size",
+        "levels": 3,
+        "issues": []
+      },
+      {
+        "section": "Pulse Bolts",
+        "name": "pulse bolts",
+        "id": "PulseBolts",
+        "description": "shoot projectiles outwards an each attack",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Pulse Bolts",
+        "name": "bolt damage",
+        "id": "PulseBoltDamage1",
+        "description": "+25% damage to pulse bolts",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Pulse Bolts",
+        "name": "bolt burst",
+        "id": "PulseBoltExplode",
+        "description": "pulse bolts explode when they expire",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Pulse Bolts",
+        "name": "bolt count",
+        "id": "PulseBoltCount1",
+        "description": "+1 pulse bolts per attack",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Pulse Bolts",
+        "name": "bolt barrage",
+        "id": "PulseBoltCount2",
+        "description": "+2 pulse bolts per attack",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Pulse Bolts",
+        "name": "bolt lethality",
+        "id": "PulseBoltDamage2",
+        "description": "+100% damage to pulse bolts",
+        "levels": 3,
+        "issues": []
+      },
+      {
+        "section": "Pulse Bolts",
+        "name": "bit explosion",
+        "id": "EnemyDeathPulseBolts",
+        "description": "all destroued enemies have +1% chance to explode into pulse bolts",
+        "levels": 6,
+        "issues": []
+      },
+      {
+        "section": "Auto-Pulsers",
+        "name": "auto pulser",
+        "id": "MovingPulser1",
+        "description": "get a drone that occasionally attacks nearby enemies",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Auto-Pulsers",
+        "name": "pulser pursuit",
+        "id": "MovingPulserSpeed1",
+        "description": "+20% auto-pulser movement speed",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Auto-Pulsers",
+        "name": "pulse thumper",
+        "id": "MovingPulserSize1",
+        "description": "+25% auto-pulser attack size",
+        "levels": 6,
+        "issues": []
+      },
+      {
+        "section": "Auto-Pulsers",
+        "name": "fast pulsing",
+        "id": "MovingPulserAttackSpeed1",
+        "description": "+20% auto-pulser attack speed",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Auto-Pulsers",
+        "name": "it's pulsing time",
+        "id": "MovingPulserSize2",
+        "description": "+50% auto-pulser attack speed",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Lighting",
+        "name": "lighting rod",
+        "id": "LightningChance1",
+        "description": "+5% chance to create chaining lightning when hitting an enemy",
+        "levels": 5,
+        "issues": ["name spelled \"lighting rod\" (game: \"lightning rod\")"]
+      },
+      {
+        "section": "Lighting",
+        "name": "thundering",
+        "id": "LightningDamage1",
+        "description": "+50% lightning damage",
+        "levels": 8,
+        "issues": []
+      },
+      {
+        "section": "Lighting",
+        "name": "chaining",
+        "id": "LightningChainCount1",
+        "description": "lightning chains +1 times",
+        "levels": 8,
+        "issues": []
+      },
+      {
+        "section": "Maximum Health Pool",
+        "name": "endurance",
+        "id": "Health1",
+        "description": "+4 max health",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Maximum Health Pool",
+        "name": "better endurance",
+        "id": "Health2",
+        "description": "+8 max health",
+        "levels": 8,
+        "issues": ["description numbers differ: guide \"+8 max health\", game \"+12 max health\""]
+      },
+      {
+        "section": "Maximum Health Pool",
+        "name": "big heart",
+        "id": "Health3",
+        "description": "+80 max health",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Maximum Health Pool",
+        "name": "transplant",
+        "id": "Health4",
+        "description": "+300 max health",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Maximum Health Pool",
+        "name": "blood injection",
+        "id": "Health5",
+        "description": "+4000 max health",
+        "levels": 3,
+        "issues": []
+      },
+      {
+        "section": "Maximum Health Pool",
+        "name": "indomitable",
+        "id": "Health6",
+        "description": "+50000 max health",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Maximum Health Pool",
+        "name": "beyond",
+        "id": "Health7",
+        "description": "+100000 max health",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Maximum Health Pool",
+        "name": "unending parasite",
+        "id": "StealMaxHealth1",
+        "description": "gain +1 max health permanently when defeating an enemy",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Maximum Health Pool",
+        "name": "parasite evolution",
+        "id": "StealMaxHealth2",
+        "description": "increase max health permanently gained to +3 per enemy killed",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Maximum Health Pool",
+        "name": "insatiable",
+        "id": "StealMaxHealth3",
+        "description": "increase max health permanently gained to +8 per enemy killed",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Health Regeneration",
+        "name": "repair tool",
+        "id": "HealthRegen1",
+        "description": "regenerate +0.1 health/sec",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Health Regeneration",
+        "name": "self-repair",
+        "id": "HealthRegen2",
+        "description": "regenerate +4 health/sec",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Health Regeneration",
+        "name": "scaling regeneration",
+        "id": "MaxHealthHeal1",
+        "description": "restore +1% max health/sec",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Health Regeneration",
+        "name": "instant repair",
+        "id": "MaxHealthHeal2",
+        "description": "restore +2% max health/sec",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Conditional Health Regeneration",
+        "name": "salvaging",
+        "id": "Salvaging1",
+        "description": "restore +1 health on enemy kill",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Conditional Health Regeneration",
+        "name": "skilled salvager",
+        "id": "Salvaging2",
+        "description": "restore +8 health on enemy kill",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Conditional Health Regeneration",
+        "name": "sapper",
+        "id": "Lifesteal1",
+        "description": "restore +0.5 health when hitting an enemy",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Conditional Health Regeneration",
+        "name": "drainer",
+        "id": "Lifesteal2",
+        "description": "restore +10 health when hitting an enemy",
+        "levels": 3,
+        "issues": []
+      },
+      {
+        "section": "Conditional Health Regeneration",
+        "name": "extraction",
+        "id": "Lifesteal3",
+        "description": "restore 1% health when hitting an enemy",
+        "levels": 2,
+        "issues": []
+      },
+      {
+        "section": "Conditional Health Regeneration",
+        "name": "patcher",
+        "id": "DropHeal1",
+        "description": "restore 0.5 health when picking up resources",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Armor",
+        "name": "firewall",
+        "id": "Armor1",
+        "description": "+0.2 armor",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Armor",
+        "name": "antivirus",
+        "id": "Armor2",
+        "description": "+0.6 armor",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Armor",
+        "name": "bolster",
+        "id": "Armor3",
+        "description": "+2 armor",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Armor",
+        "name": "super armor",
+        "id": "Armor4",
+        "description": "+5 armor",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Armor",
+        "name": "bit armor",
+        "id": "Armor5",
+        "description": "+2 armor",
+        "levels": 20,
+        "issues": []
+      },
+      {
+        "section": "Armor",
+        "name": "byte armor",
+        "id": "Armor6",
+        "description": "+5 armor",
+        "levels": 30,
+        "issues": []
+      },
+      {
+        "section": "Armor",
+        "name": "net armor",
+        "id": "Armor7",
+        "description": "+200 armor",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Armor",
+        "name": "blood armor",
+        "id": "MaxHealthToArmor1",
+        "description": "get armor equal to 1% max health",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Armor",
+        "name": "blood visage",
+        "id": "MaxHealthToArmor2",
+        "description": "get armor equal to 5% max health",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Armor",
+        "name": "growing",
+        "id": "RampingArmor1",
+        "description": "gain +1% armor every second during session",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Armor",
+        "name": "swarm defense system",
+        "id": "ArmorPerEnemy1",
+        "description": "+2% armor per enemy in area",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Armor",
+        "name": "focus armor",
+        "id": "FocusArmor1",
+        "description": "+50% armor when attacking 8 enemies or less",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Armor",
+        "name": "boss guard",
+        "id": "BossArmor1",
+        "description": "+1 armor against bosses",
+        "levels": 10,
+        "issues": []
+      },
+      {
+        "section": "Armor",
+        "name": "anti-purple",
+        "id": "BossArmor2",
+        "description": "+25% armor against bosses",
+        "levels": 8,
+        "issues": []
+      },
+      {
+        "section": "Enemy Spawns",
+        "name": "crowding",
+        "id": "SpawnRate1",
+        "description": "+50% spawn rate",
+        "levels": 15,
+        "issues": []
+      },
+      {
+        "section": "Enemy Spawns",
+        "name": "swaming",
+        "id": "SpawnRate2",
+        "description": "+200% spawn rate",
+        "levels": 1,
+        "issues": ["name spelled \"swaming\" (game: \"swarming\")"]
+      },
+      {
+        "section": "Enemy Spawns",
+        "name": "infesting",
+        "id": "SpawnRate3",
+        "description": "+100% spawn rate",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Enemy Spawns",
+        "name": "overloading",
+        "id": "SpawnRate4",
+        "description": "+400% spawn rate",
+        "levels": 5,
+        "issues": ["name spelled \"overloading\" (game: \"overloaded\")"]
+      },
+      {
+        "section": "Enemy Spawns",
+        "name": "spawn exploders",
+        "id": "ExplodersChance",
+        "description": "+5% chance to spawn enemies that explode on death",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Enemy Spawns",
+        "name": "exploder area",
+        "id": "ExplodersSize",
+        "description": "+15% exploder explosion size",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Loot & Enemy Colours",
+        "name": "bit boost",
+        "id": "BitBoost1",
+        "description": "red enemies drop +1 Bits",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Loot & Enemy Colours",
+        "name": "node finder",
+        "id": "NodeFinder1",
+        "description": "+1% chance for blue enemies to spawn",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Loot & Enemy Colours",
+        "name": "node boost",
+        "id": "NodeBoost1",
+        "description": "blue enemies drop +1 Nodes",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Loot & Enemy Colours",
+        "name": "processor acquisition",
+        "id": "YellowSpawn1",
+        "description": "chance for yellow enemies to spawn",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Loot & Enemy Colours",
+        "name": "endless",
+        "id": "YellowSpawn2",
+        "description": "increased yellow enemy spawn rate",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Loot & Enemy Colours",
+        "name": "plundering",
+        "id": "BonusDropChance1",
+        "description": "+10% chance for double resource drops",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Loot & Enemy Colours",
+        "name": "magnet",
+        "id": "PickupRadius1",
+        "description": "+50% pickup range",
+        "levels": 5,
+        "issues": []
+      },
+      {
+        "section": "Loot & Enemy Colours",
+        "name": "auto-collect",
+        "id": "AutoCollect",
+        "description": "+10% chance to automatically collect enemy drops when dropped",
+        "levels": 8,
+        "issues": []
+      },
+      {
+        "section": "Tabs",
+        "name": "milestones",
+        "id": "Milestones",
+        "description": "unlock the milestones tab",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Tabs",
+        "name": "crypto mine",
+        "id": "CryptoMine",
+        "description": "Unlock the Crypto Mine tab",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Tabs",
+        "name": "the lab",
+        "id": "Laboratory",
+        "description": "unlock the laboratory tab",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Story(?) Progression",
+        "name": "to infinity",
+        "id": "Infinity1",
+        "description": "???",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Story(?) Progression",
+        "name": "going nowhere",
+        "id": "Infinity2",
+        "description": "???",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Story(?) Progression",
+        "name": "void",
+        "id": "Infinity3",
+        "description": "???",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Story(?) Progression",
+        "name": "no return",
+        "id": "Infinity4",
+        "description": "???",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Story(?) Progression",
+        "name": "where",
+        "id": "Infinity5",
+        "description": "???",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Story(?) Progression",
+        "name": "in the distance",
+        "id": "Infinity6",
+        "description": "???",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Story(?) Progression",
+        "name": "something happens",
+        "id": "Infinity7",
+        "description": "???",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Story(?) Progression",
+        "name": "event horizon",
+        "id": "Infinity8",
+        "description": "???",
+        "levels": 1,
+        "issues": []
+      },
+      {
+        "section": "Story(?) Progression",
+        "name": "singularity",
+        "id": "Infinity9",
+        "description": "???",
+        "levels": 1,
+        "issues": []
+      }
+    ]
+  },
+  "sheet": {
+    "rows": 88,
+    "nodesNotListed": ["Infinity1", "Infinity2", "Infinity3", "Infinity4", "Infinity5", "Infinity6", "Infinity7", "Infinity8", "Infinity9"],
+    "entries": [
+      {
+        "row": 2,
+        "name": "Power",
+        "id": "Damage1",
+        "effect": "+1 damage",
+        "issues": []
+      },
+      {
+        "row": 3,
+        "name": "Crowding",
+        "id": "SpawnRate1",
+        "effect": "+50% Spawn",
+        "issues": []
+      },
+      {
+        "row": 4,
+        "name": "Endurance",
+        "id": "Health1",
+        "effect": "+4 HP",
+        "issues": []
+      },
+      {
+        "row": 5,
+        "name": "Connection Buster",
+        "id": "DamagePerEnemy1",
+        "effect": "+5% DMG per enemy in area",
+        "issues": []
+      },
+      {
+        "row": 6,
+        "name": "Swarming",
+        "id": "SpawnRate2",
+        "effect": "+200% Spawn",
+        "issues": []
+      },
+      {
+        "row": 7,
+        "name": "Influence",
+        "id": "Size1",
+        "effect": "+10% Attack Size",
+        "issues": []
+      },
+      {
+        "row": 8,
+        "name": "Bit Boost",
+        "id": "BitBoost1",
+        "effect": "+1 Red Bit Drop",
+        "issues": []
+      },
+      {
+        "row": 9,
+        "name": "Node Finder",
+        "id": "NodeFinder1",
+        "effect": "+1% Blue Spawn Chance",
+        "issues": []
+      },
+      {
+        "row": 10,
+        "name": "Plundering",
+        "id": "BonusDropChance1",
+        "effect": "+10% Double Drop Chance",
+        "issues": []
+      },
+      {
+        "row": 11,
+        "name": "Firewall",
+        "id": "Armor1",
+        "effect": "+0.2 Armour",
+        "issues": []
+      },
+      {
+        "row": 12,
+        "name": "Repair Tool",
+        "id": "HealthRegen1",
+        "effect": "+0.1/sec Regen",
+        "issues": []
+      },
+      {
+        "row": 13,
+        "name": "Boss Guard",
+        "id": "BossArmor1",
+        "effect": "+1 Armour against Bosses",
+        "issues": []
+      },
+      {
+        "row": 14,
+        "name": "Salvaging",
+        "id": "Salvaging1",
+        "effect": "+1 Health On Kill",
+        "issues": []
+      },
+      {
+        "row": 15,
+        "name": "Infesting",
+        "id": "SpawnRate3",
+        "effect": "+100% Spawn Rate",
+        "issues": []
+      },
+      {
+        "row": 16,
+        "name": "Antivirus",
+        "id": "Armor2",
+        "effect": "+0.6 Armor",
+        "issues": []
+      },
+      {
+        "row": 17,
+        "name": "Magnet",
+        "id": "PickupRadius1",
+        "effect": "+50% Pickup Range",
+        "issues": []
+      },
+      {
+        "row": 18,
+        "name": "Better Endurance",
+        "id": "Health2",
+        "effect": "+12 HP",
+        "issues": []
+      },
+      {
+        "row": 19,
+        "name": "Giant Slayer",
+        "id": "BossDamage1",
+        "effect": "+50% Boss DMG",
+        "issues": []
+      },
+      {
+        "row": 20,
+        "name": "Repeating",
+        "id": "AttackSpeed1",
+        "effect": "+20% Attack Speed",
+        "issues": []
+      },
+      {
+        "row": 21,
+        "name": "Sapper",
+        "id": "Lifesteal1",
+        "effect": "+0.5 Health on Hit",
+        "issues": []
+      },
+      {
+        "row": 22,
+        "name": "Self-Repair",
+        "id": "HealthRegen2",
+        "effect": "+4/sec Regen",
+        "issues": []
+      },
+      {
+        "row": 23,
+        "name": "Big Heart",
+        "id": "Health3",
+        "effect": "+80 HP",
+        "issues": []
+      },
+      {
+        "row": 24,
+        "name": "Scaling Regeneration",
+        "id": "MaxHealthHeal1",
+        "effect": "+1% maxHP/sec Regen",
+        "issues": []
+      },
+      {
+        "row": 25,
+        "name": "Milestones",
+        "id": "Milestones",
+        "effect": "Unlock Milestones Tab",
+        "issues": []
+      },
+      {
+        "row": 26,
+        "name": "Spawn Exploders",
+        "id": "ExplodersChance",
+        "effect": "Spawn Bombs",
+        "issues": ["effect text numbers differ: sheet \"Spawn Bombs\", game \"+5% chance to spawn enemies that explode on death\""]
+      },
+      {
+        "row": 27,
+        "name": "Node Boost",
+        "id": "NodeBoost1",
+        "effect": "+1 Blue Bit Drop",
+        "issues": []
+      },
+      {
+        "row": 28,
+        "name": "Proficiency",
+        "id": "Damage2",
+        "effect": "+3 DMG",
+        "issues": []
+      },
+      {
+        "row": 29,
+        "name": "Repeat-repeating",
+        "id": "AttackSpeed2",
+        "effect": "+20% Attack Speed",
+        "issues": []
+      },
+      {
+        "row": 30,
+        "name": "Exploder Area",
+        "id": "ExplodersSize",
+        "effect": "+15% Explosion Size",
+        "issues": []
+      },
+      {
+        "row": 31,
+        "name": "Patcher",
+        "id": "DropHeal1",
+        "effect": "+0.5HP on pickup",
+        "issues": []
+      },
+      {
+        "row": 32,
+        "name": "Domain Expansion",
+        "id": "Size2",
+        "effect": "+50% Attack Size",
+        "issues": []
+      },
+      {
+        "row": 33,
+        "name": "Skilled Salvager",
+        "id": "Salvaging2",
+        "effect": "+8 HP on Kill",
+        "issues": []
+      },
+      {
+        "row": 34,
+        "name": "Potency",
+        "id": "Damage3",
+        "effect": "+6 Damage",
+        "issues": []
+      },
+      {
+        "row": 35,
+        "name": "Crit Chance",
+        "id": "CritChance1",
+        "effect": "+10% Crit Chance",
+        "issues": []
+      },
+      {
+        "row": 36,
+        "name": "Crit Damage",
+        "id": "CritDamage1",
+        "effect": "+50% Crit Damage",
+        "issues": []
+      },
+      {
+        "row": 37,
+        "name": "Pulse Bolts",
+        "id": "PulseBolts",
+        "effect": "Fire Pulse Bolts",
+        "issues": ["currency: sheet SP (sp), game nodes (res://Scripts/Autoloads/Stores/UpgradeStore.gd:219)", "costs: sheet [1], game [12] (res://Scripts/Autoloads/Stores/UpgradeStore.gd:219)", "total: sheet 1, game 12"]
+      },
+      {
+        "row": 38,
+        "name": "Bolt Damage",
+        "id": "PulseBoltDamage1",
+        "effect": "+25% Bolt Damage",
+        "issues": []
+      },
+      {
+        "row": 39,
+        "name": "Bolt Count",
+        "id": "PulseBoltCount1",
+        "effect": "+1 Bolt per attack",
+        "issues": []
+      },
+      {
+        "row": 40,
+        "name": "First Strike",
+        "id": "Undamaged1",
+        "effect": "+25% Damage to Undamaged",
+        "issues": []
+      },
+      {
+        "row": 41,
+        "name": "Last Strike",
+        "id": "Execute1",
+        "effect": "+25% DMG to under half",
+        "issues": ["effect text numbers differ: sheet \"+25% DMG to under half\", game \"+25% damage to enemies below 50% hp\""]
+      },
+      {
+        "row": 42,
+        "name": "Swarm Defense System",
+        "id": "ArmorPerEnemy1",
+        "effect": "+2% Armor/Enemy in Area",
+        "issues": []
+      },
+      {
+        "row": 43,
+        "name": "Bolster",
+        "id": "Armor3",
+        "effect": "+2 Armor",
+        "issues": []
+      },
+      {
+        "row": 44,
+        "name": "B.I.G.",
+        "id": "Size3",
+        "effect": "+100% Attack Size",
+        "issues": []
+      },
+      {
+        "row": 45,
+        "name": "Crypto Mine",
+        "id": "CryptoMine",
+        "effect": "Unlock the Crypto Mine Tab",
+        "issues": []
+      },
+      {
+        "row": 46,
+        "name": "Overloaded",
+        "id": "SpawnRate4",
+        "effect": "+400% Spawn Rate",
+        "issues": []
+      },
+      {
+        "row": 47,
+        "name": "Processor Acquisition",
+        "id": "YellowSpawn1",
+        "effect": "Unlock Yellow Enemies",
+        "issues": []
+      },
+      {
+        "row": 48,
+        "name": "Transplant",
+        "id": "Health4",
+        "effect": "+300 HP",
+        "issues": []
+      },
+      {
+        "row": 49,
+        "name": "Bolt Barrage",
+        "id": "PulseBoltCount2",
+        "effect": "+2 Pulse Bolts",
+        "issues": []
+      },
+      {
+        "row": 50,
+        "name": "Nodeblade",
+        "id": "Damage4",
+        "effect": "+25 Damage",
+        "issues": []
+      },
+      {
+        "row": 51,
+        "name": "Netblade",
+        "id": "Damage5",
+        "effect": "+100 Damage",
+        "issues": []
+      },
+      {
+        "row": 52,
+        "name": "Super Armor",
+        "id": "Armor4",
+        "effect": "+5 Armor",
+        "issues": []
+      },
+      {
+        "row": 53,
+        "name": "Anti-Purple",
+        "id": "BossArmor2",
+        "effect": "+25% Armor against Bosses",
+        "issues": []
+      },
+      {
+        "row": 54,
+        "name": "Auto-Collect",
+        "id": "AutoCollect",
+        "effect": "+10% Chance to auto-collect",
+        "issues": []
+      },
+      {
+        "row": 55,
+        "name": "Bit Armor",
+        "id": "Armor5",
+        "effect": "+2 Armor",
+        "issues": []
+      },
+      {
+        "row": 56,
+        "name": "Bolt Lethality",
+        "id": "PulseBoltDamage2",
+        "effect": "+100% Damage to Pulse Bolts",
+        "issues": []
+      },
+      {
+        "row": 57,
+        "name": "Colossus Slayer",
+        "id": "BossDamage2",
+        "effect": "+100% Damage to Bosses",
+        "issues": []
+      },
+      {
+        "row": 58,
+        "name": "Byte Armor",
+        "id": "Armor6",
+        "effect": "+5 Armor",
+        "issues": []
+      },
+      {
+        "row": 59,
+        "name": "Ambush",
+        "id": "Undamaged2",
+        "effect": "+100% DMG to Undamaged",
+        "issues": []
+      },
+      {
+        "row": 60,
+        "name": "Auto Pulser",
+        "id": "MovingPulser1",
+        "effect": "Get a Drone",
+        "issues": []
+      },
+      {
+        "row": 61,
+        "name": "Blood Injection",
+        "id": "Health5",
+        "effect": "+4000 HP",
+        "issues": []
+      },
+      {
+        "row": 62,
+        "name": "Drainer",
+        "id": "Lifesteal2",
+        "effect": "+10 Health on Hit",
+        "issues": []
+      },
+      {
+        "row": 63,
+        "name": "Finishing Blow",
+        "id": "Execute2",
+        "effect": "+100% DMG to under half",
+        "issues": ["effect text numbers differ: sheet \"+100% DMG to under half\", game \"+100% damage to enemies below 50% hp\""]
+      },
+      {
+        "row": 64,
+        "name": "Pulse Thumper",
+        "id": "MovingPulserSize1",
+        "effect": "+25% Drone Attack Size",
+        "issues": []
+      },
+      {
+        "row": 65,
+        "name": "Pulser Pursuit",
+        "id": "MovingPulserSpeed1",
+        "effect": "+20% Drone Move Speed",
+        "issues": []
+      },
+      {
+        "row": 66,
+        "name": "Fast Pulsing",
+        "id": "MovingPulserAttackSpeed1",
+        "effect": "+20% Drone Attack Speed",
+        "issues": []
+      },
+      {
+        "row": 67,
+        "name": "It's Pulsing Time",
+        "id": "MovingPulserSize2",
+        "effect": "+50% Drone Attack Size",
+        "issues": []
+      },
+      {
+        "row": 68,
+        "name": "Bit Explosion",
+        "id": "EnemyDeathPulseBolts",
+        "effect": "+1% dead enemy pulse bolt chance",
+        "issues": []
+      },
+      {
+        "row": 69,
+        "name": "Bolt Burst",
+        "id": "PulseBoltExplode",
+        "effect": "Pulse Bolt Explosions",
+        "issues": []
+      },
+      {
+        "row": 70,
+        "name": "Focus Armor",
+        "id": "FocusArmor1",
+        "effect": "+50% Armor, Attack 8 or fewer",
+        "issues": []
+      },
+      {
+        "row": 71,
+        "name": "Netarmor",
+        "id": "Armor7",
+        "effect": "+200 Armor",
+        "issues": []
+      },
+      {
+        "row": 72,
+        "name": "Blood Armor",
+        "id": "MaxHealthToArmor1",
+        "effect": "+1% Max HP as armor",
+        "issues": []
+      },
+      {
+        "row": 73,
+        "name": "Extraction",
+        "id": "Lifesteal3",
+        "effect": "+1% MaxHP on hit",
+        "issues": []
+      },
+      {
+        "row": 74,
+        "name": "Blood Visage",
+        "id": "MaxHealthToArmor2",
+        "effect": "+5% MaxHP as armor",
+        "issues": []
+      },
+      {
+        "row": 75,
+        "name": "Instant Repair",
+        "id": "MaxHealthHeal2",
+        "effect": "+2% MaxHP/sec regen",
+        "issues": []
+      },
+      {
+        "row": 76,
+        "name": "Learning",
+        "id": "RampingDamage1",
+        "effect": "+1% Damage per second in session",
+        "issues": []
+      },
+      {
+        "row": 77,
+        "name": "Bloodblade",
+        "id": "MaxHealthToDamage1",
+        "effect": "+0.1% of MaxHP as Damage",
+        "issues": []
+      },
+      {
+        "row": 78,
+        "name": "Lightning Rod",
+        "id": "LightningChance1",
+        "effect": "+5% Chance for Lightning on Hit",
+        "issues": []
+      },
+      {
+        "row": 79,
+        "name": "Unending Parasite",
+        "id": "StealMaxHealth1",
+        "effect": "+1 MaxHP on Kill",
+        "issues": []
+      },
+      {
+        "row": 80,
+        "name": "Parasite Evolution",
+        "id": "StealMaxHealth2",
+        "effect": "+3 MaxHP on Kill",
+        "issues": []
+      },
+      {
+        "row": 81,
+        "name": "Indomitable",
+        "id": "Health6",
+        "effect": "+50000 HP",
+        "issues": []
+      },
+      {
+        "row": 82,
+        "name": "Insatiable",
+        "id": "StealMaxHealth3",
+        "effect": "+8 MaxHP on KIll",
+        "issues": []
+      },
+      {
+        "row": 83,
+        "name": "Growing",
+        "id": "RampingArmor1",
+        "effect": "+1% Armor per second in session",
+        "issues": []
+      },
+      {
+        "row": 84,
+        "name": "Beyond",
+        "id": "Health7",
+        "effect": "+100000HP",
+        "issues": []
+      },
+      {
+        "row": 85,
+        "name": "Thundering",
+        "id": "LightningDamage1",
+        "effect": "+50% Lightning Damage",
+        "issues": []
+      },
+      {
+        "row": 86,
+        "name": "Chaining",
+        "id": "LightningChainCount1",
+        "effect": "+1 Lightning Chain",
+        "issues": []
+      },
+      {
+        "row": 87,
+        "name": "Big Crit",
+        "id": "CritDamage2",
+        "effect": "+200% Lightning Damage",
+        "issues": []
+      },
+      {
+        "row": 88,
+        "name": "Endless",
+        "id": "YellowSpawn2",
+        "effect": "Increased Yellow Spawn Rate",
+        "issues": []
+      },
+      {
+        "row": 89,
+        "name": "The Lab",
+        "id": "Laboratory",
+        "effect": "Unlock the Lab",
+        "issues": []
+      }
+    ]
+  }
+}

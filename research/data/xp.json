@@ -1,0 +1,134 @@
+{
+  "notes": ["XP per kill = prestige enemy_xp * enemy xp_mult (res://Scripts/Battle/EnemySpawner.gd:254). XP and level persist across sessions (State.level, State.curr_xp).", "Each level up gives +1 SP (res://Scripts/Battle/XPBar.gd:45-47). Steam achievement SP_25 at level >= 25 (res://Scripts/Battle/XPBar.gd:50-51).", "Level 25 and above: 83000 + 5000 * (level - 24) (res://Scripts/Battle/XPBar.gd:39)."],
+  "formulaAbove24": {
+    "expr": "83000 + 5000*(level-24)",
+    "src": "res://Scripts/Battle/XPBar.gd:39"
+  },
+  "table": [
+    {
+      "level": 0,
+      "xp_to_next": 50,
+      "src": "res://Scripts/Battle/XPBar.gd:14"
+    },
+    {
+      "level": 1,
+      "xp_to_next": 300,
+      "src": "res://Scripts/Battle/XPBar.gd:15"
+    },
+    {
+      "level": 2,
+      "xp_to_next": 800,
+      "src": "res://Scripts/Battle/XPBar.gd:16"
+    },
+    {
+      "level": 3,
+      "xp_to_next": 2000,
+      "src": "res://Scripts/Battle/XPBar.gd:17"
+    },
+    {
+      "level": 4,
+      "xp_to_next": 3400,
+      "src": "res://Scripts/Battle/XPBar.gd:18"
+    },
+    {
+      "level": 5,
+      "xp_to_next": 5200,
+      "src": "res://Scripts/Battle/XPBar.gd:19"
+    },
+    {
+      "level": 6,
+      "xp_to_next": 7000,
+      "src": "res://Scripts/Battle/XPBar.gd:20"
+    },
+    {
+      "level": 7,
+      "xp_to_next": 9000,
+      "src": "res://Scripts/Battle/XPBar.gd:21"
+    },
+    {
+      "level": 8,
+      "xp_to_next": 11000,
+      "src": "res://Scripts/Battle/XPBar.gd:22"
+    },
+    {
+      "level": 9,
+      "xp_to_next": 14000,
+      "src": "res://Scripts/Battle/XPBar.gd:23"
+    },
+    {
+      "level": 10,
+      "xp_to_next": 18000,
+      "src": "res://Scripts/Battle/XPBar.gd:24"
+    },
+    {
+      "level": 11,
+      "xp_to_next": 22000,
+      "src": "res://Scripts/Battle/XPBar.gd:25"
+    },
+    {
+      "level": 12,
+      "xp_to_next": 26000,
+      "src": "res://Scripts/Battle/XPBar.gd:26"
+    },
+    {
+      "level": 13,
+      "xp_to_next": 30000,
+      "src": "res://Scripts/Battle/XPBar.gd:27"
+    },
+    {
+      "level": 14,
+      "xp_to_next": 34000,
+      "src": "res://Scripts/Battle/XPBar.gd:28"
+    },
+    {
+      "level": 15,
+      "xp_to_next": 38000,
+      "src": "res://Scripts/Battle/XPBar.gd:29"
+    },
+    {
+      "level": 16,
+      "xp_to_next": 43000,
+      "src": "res://Scripts/Battle/XPBar.gd:30"
+    },
+    {
+      "level": 17,
+      "xp_to_next": 48000,
+      "src": "res://Scripts/Battle/XPBar.gd:31"
+    },
+    {
+      "level": 18,
+      "xp_to_next": 53000,
+      "src": "res://Scripts/Battle/XPBar.gd:32"
+    },
+    {
+      "level": 19,
+      "xp_to_next": 58000,
+      "src": "res://Scripts/Battle/XPBar.gd:33"
+    },
+    {
+      "level": 20,
+      "xp_to_next": 63000,
+      "src": "res://Scripts/Battle/XPBar.gd:34"
+    },
+    {
+      "level": 21,
+      "xp_to_next": 68000,
+      "src": "res://Scripts/Battle/XPBar.gd:35"
+    },
+    {
+      "level": 22,
+      "xp_to_next": 73000,
+      "src": "res://Scripts/Battle/XPBar.gd:36"
+    },
+    {
+      "level": 23,
+      "xp_to_next": 78000,
+      "src": "res://Scripts/Battle/XPBar.gd:37"
+    },
+    {
+      "level": 24,
+      "xp_to_next": 83000,
+      "src": "res://Scripts/Battle/XPBar.gd:38"
+    }
+  ]
+}

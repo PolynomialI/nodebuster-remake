@@ -1,0 +1,18 @@
+{
+  "note": "Steam achievement ids set by the game code. Display names live on Steam, not in the game files. Unlocking uses MySteam.set_achievement (res://Scripts/Autoloads/MySteam.gd:15).",
+  "achievements": [
+    { "id": "FIRST_SESSION", "condition": "start a session", "src": "res://Scripts/MainScene.gd:122" },
+    { "id": "TOTAL_SESSIONS_50", "condition": "State.sessions >= 50 when a session starts", "src": "res://Scripts/MainScene.gd:123" },
+    { "id": "MILESTONES", "condition": "buy the milestones node", "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:54" },
+    { "id": "CRYPTO_MINE", "condition": "buy the crypto mine node", "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:105" },
+    { "id": "THE_LAB", "condition": "buy the lab node", "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:191" },
+    { "id": "BITS_10K", "condition": "State.total_bits >= 10000, checked when the session end screen opens", "src": "res://Scripts/UI/BattleEndScreen.gd:63" },
+    { "id": "BITS_100K", "condition": "State.total_bits >= 100000, end screen", "src": "res://Scripts/UI/BattleEndScreen.gd:64" },
+    { "id": "BITS_1M", "condition": "State.total_bits >= 1000000, end screen", "src": "res://Scripts/UI/BattleEndScreen.gd:65" },
+    { "id": "BITS_10M", "condition": "State.total_bits >= 10000000, end screen", "src": "res://Scripts/UI/BattleEndScreen.gd:66" },
+    { "id": "NODES_1K", "condition": "State.total_nodes >= 1000, end screen", "src": "res://Scripts/UI/BattleEndScreen.gd:68" },
+    { "id": "NODES_10K", "condition": "State.total_nodes >= 10000, end screen", "src": "res://Scripts/UI/BattleEndScreen.gd:69" },
+    { "id": "SP_25", "condition": "reach level 25 (25 SP earned)", "src": "res://Scripts/Battle/XPBar.gd:50" },
+    { "id": "DEPLOY_GODVIRUS", "condition": "deploy the godvirus (ending)", "src": "res://Scripts/Ending.gd:37" }
+  ]
+}

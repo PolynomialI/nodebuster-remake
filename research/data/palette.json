@@ -1,0 +1,102 @@
+{
+  "colors": {
+    "WHITE": {
+      "hex": "#dcdcdc",
+      "src": "res://Scripts/MyColors.gd:3"
+    },
+    "RED": {
+      "hex": "#f03a3f",
+      "src": "res://Scripts/MyColors.gd:5"
+    },
+    "YELLOW": {
+      "hex": "#eed345",
+      "src": "res://Scripts/MyColors.gd:7"
+    },
+    "GREEN": {
+      "hex": "#4ff264",
+      "src": "res://Scripts/MyColors.gd:8"
+    },
+    "BLUE": {
+      "hex": "#3fb9eb",
+      "src": "res://Scripts/MyColors.gd:9"
+    },
+    "DARK_BLUE": {
+      "hex": "#457af6",
+      "src": "res://Scripts/MyColors.gd:10"
+    },
+    "PURPLE": {
+      "hex": "#c359fb",
+      "src": "res://Scripts/MyColors.gd:11"
+    },
+    "BG": {
+      "hex": "#1f1f1f",
+      "src": "res://Scripts/MyColors.gd:13"
+    },
+    "VIOLET": {
+      "hex": "#e048f7",
+      "src": "res://Scripts/MyColors.gd:21"
+    },
+    "DARK_RED": {
+      "hex": "#a71818",
+      "src": "res://Scripts/MyColors.gd:22"
+    }
+  },
+  "resource_colors": {
+    "bits": "RED",
+    "nodes": "DARK_BLUE",
+    "cores": "PURPLE",
+    "sp": "BLUE",
+    "netcoin": "GREEN",
+    "processors": "YELLOW",
+    "src": "res://Scripts/Enums/ResourceType.gd:33"
+  },
+  "skill_node_outline": {
+    "default": {
+      "maxed": "YELLOW",
+      "can_buy": "GREEN",
+      "cannot_buy": "RED"
+    },
+    "alternate": {
+      "maxed": "VIOLET",
+      "can_buy": "GREEN",
+      "cannot_buy": "DARK_RED"
+    },
+    "unbought_node_modulate": "lerp(white, BG, 0.5) while level 0 (res://Scripts/Shop/UpgradeTree.gd:68-71)",
+    "src": "res://Scripts/UI/UpgradeIcon.gd:13"
+  },
+  "other": {
+    "clear_color": {
+      "hex": "#000000",
+      "src": "res://Scripts/MainScene.gd:16"
+    },
+    "scene_background": {
+      "hex": "#1f1f1f",
+      "note": "ColorRect Color(0.121569,...) in every game scene",
+      "src": "res://GameScenes/BattleScene.tscn:28"
+    },
+    "bg_particles": {
+      "modulate": "0.17 grey",
+      "src": "res://Scenes/Effects/BgParticles.tscn:24"
+    },
+    "button_disabled": {
+      "hex": "#6c6c6c",
+      "src": "res://Scripts/UI/Buttons/MyButton.gd:8"
+    },
+    "transition_dark": {
+      "hex": "#8f8f8f",
+      "src": "res://Scripts/Autoloads/OptionData.gd:97"
+    },
+    "xp_bar": {
+      "rgb": [0.839216, 0.631373, 0.160784],
+      "src": "res://GameScenes/BattleScene.tscn:102"
+    },
+    "progress_bar": {
+      "rgb": [0.862745, 0.862745, 0.862745],
+      "src": "res://GameScenes/BattleScene.tscn:142"
+    },
+    "health_bar": {
+      "rgb": [0.941176, 0.227451, 0.247059],
+      "src": "res://Scenes/UI/TextureProgressBar.tscn:22"
+    }
+  }
+}

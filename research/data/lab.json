@@ -1,0 +1,24 @@
+{
+  "research_goal_netcoin": { "value": 1000, "src": "res://Scripts/Shop/LabPage.gd:28" },
+  "deposit": {
+    "rule": "progress = clamp(progress + netcoin, 0, 1000); netcoin = 0 (excess over 1000 is lost)",
+    "bar_tween_sec": 0.4,
+    "tick_sound": "res://Audio/SFX/Tick3.ogg, pitch offset = tween elapsed time, 2-frame cooldown",
+    "src": "res://Scripts/Shop/LabPage.gd:67-75"
+  },
+  "ready_when": { "expr": "progress >= 1000", "src": "res://Scripts/Shop/LabPage.gd:63" },
+  "godvirus_sprite": { "path": "res://Sprites/UI/Godvirus.png", "frames": 5, "frame_size": [32, 32], "fps": 10, "src": "res://Scripts/Shop/LabPage.gd:49-51" },
+  "deploy": { "effect": "State.virus_deployed = true; save; play ending", "src": "res://Scripts/Shop/LabPage.gd:77-82" },
+  "unlock": { "node": "Laboratory", "cost": "1 Bits", "requires": "Infinity9 >= 1", "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:392-393" },
+  "ending_timeline": [
+    { "t": 0, "event": "lock mouse; show 'deploying virus...' with loading circle rotating -180 deg/s; play Deploying.ogg", "src": "res://Scripts/Ending.gd:27-31" },
+    { "t": 4, "event": "show 'virus deployed!' + Smile.png + 'ok' button; play Deployed.ogg; achievement DEPLOY_GODVIRUS", "src": "res://Scripts/Ending.gd:33-38" },
+    { "t": 6, "event": "show glitch overlay (shake_power 0); BGM volume -> 0 and low-pass -> 500 Hz over 10 s", "src": "res://Scripts/Ending.gd:41-44" },
+    { "t": 8, "event": "Static.ogg volume 0 -> 1 and glitch shake_power 0 -> 0.8, both over 10 s (linear)", "src": "res://Scripts/Ending.gd:47-52" },
+    { "t": 18, "event": "stop static; play VoiceLoop.ogg and VCR.ogg; freeze the screen on a screenshot; hide glitch", "src": "res://Scripts/Ending.gd:54-62" },
+    { "t": 23, "event": "stop voice; show black credits screen", "src": "res://Scripts/Ending.gd:64-67" },
+    { "t": 25, "event": "play BackgroundNoise.ogg", "src": "res://Scripts/Ending.gd:69-71" },
+    { "t": 26, "event": "credits animation, 16.5 s: 'nodebuster' 0-3.5, 'a game by Goblobin' 4-7.5, 'with music by Holizna' 8-11.5, 'thanks for playing <3' 13-16.5 (font size 22)", "src": "res://Scenes/Ending.tscn (Animation 'Credits')" },
+    { "t": 47.5, "event": "return to main menu (no transition); unlock mouse", "src": "res://Scripts/Ending.gd:75-77" }
+  ]
+}

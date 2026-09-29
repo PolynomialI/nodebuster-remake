@@ -1,0 +1,1664 @@
+{
+  "notes": ["Values reset at the start of every session from State.curr_prestige (res://Scripts/Battle/BattleScene.gd:55-358).", "Prestige 12 and above use the else branch; prestige 13-25 then override enemy_xp, node_boost and bit_value.", "The second \"== 19\" branch (res://Scripts/Battle/BattleScene.gd:327) is unreachable because the first \"== 19\" matches first, so its values (xp 58, bit_value 50) are never used. Listed under overridesUnreachable.", "enemy HP/damage grow linearly: base + growth_per_sec * t, where t is seconds since the session started (res://Scripts/Battle/EnemySpawner.gd:70-71). Enemies keep the HP/damage they spawned with.", "health_loss_per_sec is the constant \"virus\" drain on the player (res://Scripts/Battle/BattleScene.gd:362-365). It does not grow during a session.", "Exploder (if bought) takes its weight from Square: Square -= exploder_spawn_chance, Exploder = exploder_spawn_chance (res://Scripts/Battle/BattleScene.gd:356-358).", "Max prestige is 25; beating the P25 boss gives no new prestige (res://Scripts/Battle/BattleScene.gd:416-419)."],
+  "overridesUnreachable": {
+    "src": "res://Scripts/Battle/BattleScene.gd:327",
+    "enemy_xp": {
+      "value": 58,
+      "src": "res://Scripts/Battle/BattleScene.gd:328"
+    },
+    "node_boost": {
+      "value": 18,
+      "src": "res://Scripts/Battle/BattleScene.gd:329"
+    },
+    "bit_value": {
+      "value": 50,
+      "src": "res://Scripts/Battle/BattleScene.gd:330"
+    }
+  },
+  "levels": [
+    {
+      "prestige": 0,
+      "branch": "res://Scripts/Battle/BattleScene.gd:57",
+      "enemy_base_health": {
+        "value": 3,
+        "src": "res://Scripts/Battle/BattleScene.gd:61"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 0.15,
+        "src": "res://Scripts/Battle/BattleScene.gd:62"
+      },
+      "enemy_base_damage": {
+        "value": 0.4,
+        "src": "res://Scripts/Battle/BattleScene.gd:63"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 0.015,
+        "src": "res://Scripts/Battle/BattleScene.gd:64"
+      },
+      "boss_health": {
+        "value": 120,
+        "src": "res://Scripts/Battle/BattleScene.gd:65"
+      },
+      "boss_damage": {
+        "value": 5,
+        "src": "res://Scripts/Battle/BattleScene.gd:66"
+      },
+      "enemy_xp": {
+        "value": 1,
+        "src": "res://Scripts/Battle/BattleScene.gd:67"
+      },
+      "bit_boost": {
+        "value": 0,
+        "src": "res://Scripts/Battle/BattleScene.gd:68"
+      },
+      "node_boost": {
+        "value": 0,
+        "src": "default int 0 (res://Scripts/Battle/EnemySpawner.gd:35)"
+      },
+      "bit_value": {
+        "value": 1,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:38"
+      },
+      "health_loss_per_sec": {
+        "value": 0.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:69"
+      },
+      "enemy_speed_mod": {
+        "value": 1,
+        "src": "res://Scripts/Battle/BattleScene.gd:70"
+      },
+      "spawn_weights": {
+        "Square": 1
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 1,
+      "branch": "res://Scripts/Battle/BattleScene.gd:71",
+      "enemy_base_health": {
+        "value": 10,
+        "src": "res://Scripts/Battle/BattleScene.gd:77"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 0.5,
+        "src": "res://Scripts/Battle/BattleScene.gd:78"
+      },
+      "enemy_base_damage": {
+        "value": 1,
+        "src": "res://Scripts/Battle/BattleScene.gd:79"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 0.04,
+        "src": "res://Scripts/Battle/BattleScene.gd:80"
+      },
+      "boss_health": {
+        "value": 800,
+        "src": "res://Scripts/Battle/BattleScene.gd:81"
+      },
+      "boss_damage": {
+        "value": 10,
+        "src": "res://Scripts/Battle/BattleScene.gd:82"
+      },
+      "enemy_xp": {
+        "value": 2,
+        "src": "res://Scripts/Battle/BattleScene.gd:83"
+      },
+      "bit_boost": {
+        "value": 1,
+        "src": "res://Scripts/Battle/BattleScene.gd:84"
+      },
+      "node_boost": {
+        "value": 0,
+        "src": "default int 0 (res://Scripts/Battle/EnemySpawner.gd:35)"
+      },
+      "bit_value": {
+        "value": 1,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:38"
+      },
+      "health_loss_per_sec": {
+        "value": 0.6,
+        "src": "res://Scripts/Battle/BattleScene.gd:85"
+      },
+      "enemy_speed_mod": {
+        "value": 1,
+        "src": "res://Scripts/Battle/BattleScene.gd:86"
+      },
+      "spawn_weights": {
+        "Square": 0.86,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 2,
+      "branch": "res://Scripts/Battle/BattleScene.gd:87",
+      "enemy_base_health": {
+        "value": 35,
+        "src": "res://Scripts/Battle/BattleScene.gd:93"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 1.5,
+        "src": "res://Scripts/Battle/BattleScene.gd:94"
+      },
+      "enemy_base_damage": {
+        "value": 2.5,
+        "src": "res://Scripts/Battle/BattleScene.gd:95"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 0.1,
+        "src": "res://Scripts/Battle/BattleScene.gd:96"
+      },
+      "boss_health": {
+        "value": 2000,
+        "src": "res://Scripts/Battle/BattleScene.gd:97"
+      },
+      "boss_damage": {
+        "value": 25,
+        "src": "res://Scripts/Battle/BattleScene.gd:98"
+      },
+      "enemy_xp": {
+        "value": 3,
+        "src": "res://Scripts/Battle/BattleScene.gd:99"
+      },
+      "bit_boost": {
+        "value": 3,
+        "src": "res://Scripts/Battle/BattleScene.gd:100"
+      },
+      "node_boost": {
+        "value": 0,
+        "src": "default int 0 (res://Scripts/Battle/EnemySpawner.gd:35)"
+      },
+      "bit_value": {
+        "value": 1,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:38"
+      },
+      "health_loss_per_sec": {
+        "value": 1.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:101"
+      },
+      "enemy_speed_mod": {
+        "value": 1.1,
+        "src": "res://Scripts/Battle/BattleScene.gd:102"
+      },
+      "spawn_weights": {
+        "Square": 0.86,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 3,
+      "branch": "res://Scripts/Battle/BattleScene.gd:103",
+      "enemy_base_health": {
+        "value": 100,
+        "src": "res://Scripts/Battle/BattleScene.gd:109"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 4,
+        "src": "res://Scripts/Battle/BattleScene.gd:110"
+      },
+      "enemy_base_damage": {
+        "value": 8,
+        "src": "res://Scripts/Battle/BattleScene.gd:111"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 0.3,
+        "src": "res://Scripts/Battle/BattleScene.gd:112"
+      },
+      "boss_health": {
+        "value": 8000,
+        "src": "res://Scripts/Battle/BattleScene.gd:113"
+      },
+      "boss_damage": {
+        "value": 75,
+        "src": "res://Scripts/Battle/BattleScene.gd:114"
+      },
+      "enemy_xp": {
+        "value": 5,
+        "src": "res://Scripts/Battle/BattleScene.gd:115"
+      },
+      "bit_boost": {
+        "value": 5,
+        "src": "res://Scripts/Battle/BattleScene.gd:116"
+      },
+      "node_boost": {
+        "value": 0,
+        "src": "default int 0 (res://Scripts/Battle/EnemySpawner.gd:35)"
+      },
+      "bit_value": {
+        "value": 1,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:38"
+      },
+      "health_loss_per_sec": {
+        "value": 3.6,
+        "src": "res://Scripts/Battle/BattleScene.gd:117"
+      },
+      "enemy_speed_mod": {
+        "value": 1.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:118"
+      },
+      "spawn_weights": {
+        "Square": 0.86,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 4,
+      "branch": "res://Scripts/Battle/BattleScene.gd:119",
+      "enemy_base_health": {
+        "value": 300,
+        "src": "res://Scripts/Battle/BattleScene.gd:126"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 12,
+        "src": "res://Scripts/Battle/BattleScene.gd:127"
+      },
+      "enemy_base_damage": {
+        "value": 20,
+        "src": "res://Scripts/Battle/BattleScene.gd:128"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 1,
+        "src": "res://Scripts/Battle/BattleScene.gd:129"
+      },
+      "boss_health": {
+        "value": 24000,
+        "src": "res://Scripts/Battle/BattleScene.gd:130"
+      },
+      "boss_damage": {
+        "value": 240,
+        "src": "res://Scripts/Battle/BattleScene.gd:131"
+      },
+      "enemy_xp": {
+        "value": 7,
+        "src": "res://Scripts/Battle/BattleScene.gd:132"
+      },
+      "bit_boost": {
+        "value": 8,
+        "src": "res://Scripts/Battle/BattleScene.gd:133"
+      },
+      "node_boost": {
+        "value": 0,
+        "src": "default int 0 (res://Scripts/Battle/EnemySpawner.gd:35)"
+      },
+      "bit_value": {
+        "value": 1,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:38"
+      },
+      "health_loss_per_sec": {
+        "value": 10,
+        "src": "res://Scripts/Battle/BattleScene.gd:134"
+      },
+      "enemy_speed_mod": {
+        "value": 1.3,
+        "src": "res://Scripts/Battle/BattleScene.gd:135"
+      },
+      "spawn_weights": {
+        "Square": 0.78,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 5,
+      "branch": "res://Scripts/Battle/BattleScene.gd:136",
+      "enemy_base_health": {
+        "value": 800,
+        "src": "res://Scripts/Battle/BattleScene.gd:144"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 36,
+        "src": "res://Scripts/Battle/BattleScene.gd:145"
+      },
+      "enemy_base_damage": {
+        "value": 65,
+        "src": "res://Scripts/Battle/BattleScene.gd:146"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 3,
+        "src": "res://Scripts/Battle/BattleScene.gd:147"
+      },
+      "boss_health": {
+        "value": 70000,
+        "src": "res://Scripts/Battle/BattleScene.gd:148"
+      },
+      "boss_damage": {
+        "value": 630,
+        "src": "res://Scripts/Battle/BattleScene.gd:149"
+      },
+      "enemy_xp": {
+        "value": 9,
+        "src": "res://Scripts/Battle/BattleScene.gd:150"
+      },
+      "bit_boost": {
+        "value": 13,
+        "src": "res://Scripts/Battle/BattleScene.gd:151"
+      },
+      "node_boost": {
+        "value": 1,
+        "src": "res://Scripts/Battle/BattleScene.gd:152"
+      },
+      "bit_value": {
+        "value": 1,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:38"
+      },
+      "health_loss_per_sec": {
+        "value": 30,
+        "src": "res://Scripts/Battle/BattleScene.gd:153"
+      },
+      "enemy_speed_mod": {
+        "value": 1.5,
+        "src": "res://Scripts/Battle/BattleScene.gd:154"
+      },
+      "spawn_weights": {
+        "Square": 0.73,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 6,
+      "branch": "res://Scripts/Battle/BattleScene.gd:155",
+      "enemy_base_health": {
+        "value": 2400,
+        "src": "res://Scripts/Battle/BattleScene.gd:163"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 108,
+        "src": "res://Scripts/Battle/BattleScene.gd:164"
+      },
+      "enemy_base_damage": {
+        "value": 200,
+        "src": "res://Scripts/Battle/BattleScene.gd:165"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 9,
+        "src": "res://Scripts/Battle/BattleScene.gd:166"
+      },
+      "boss_health": {
+        "value": 210000,
+        "src": "res://Scripts/Battle/BattleScene.gd:167"
+      },
+      "boss_damage": {
+        "value": 1500,
+        "src": "res://Scripts/Battle/BattleScene.gd:168"
+      },
+      "enemy_xp": {
+        "value": 11,
+        "src": "res://Scripts/Battle/BattleScene.gd:169"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:170"
+      },
+      "node_boost": {
+        "value": 2,
+        "src": "res://Scripts/Battle/BattleScene.gd:171"
+      },
+      "bit_value": {
+        "value": 1,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:38"
+      },
+      "health_loss_per_sec": {
+        "value": 90,
+        "src": "res://Scripts/Battle/BattleScene.gd:172"
+      },
+      "enemy_speed_mod": {
+        "value": 1.65,
+        "src": "res://Scripts/Battle/BattleScene.gd:173"
+      },
+      "spawn_weights": {
+        "Square": 0.73,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 7,
+      "branch": "res://Scripts/Battle/BattleScene.gd:174",
+      "enemy_base_health": {
+        "value": 7200,
+        "src": "res://Scripts/Battle/BattleScene.gd:182"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 300,
+        "src": "res://Scripts/Battle/BattleScene.gd:183"
+      },
+      "enemy_base_damage": {
+        "value": 600,
+        "src": "res://Scripts/Battle/BattleScene.gd:184"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 26,
+        "src": "res://Scripts/Battle/BattleScene.gd:185"
+      },
+      "boss_health": {
+        "value": 600000,
+        "src": "res://Scripts/Battle/BattleScene.gd:186"
+      },
+      "boss_damage": {
+        "value": 4500,
+        "src": "res://Scripts/Battle/BattleScene.gd:187"
+      },
+      "enemy_xp": {
+        "value": 13,
+        "src": "res://Scripts/Battle/BattleScene.gd:188"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:189"
+      },
+      "node_boost": {
+        "value": 3,
+        "src": "res://Scripts/Battle/BattleScene.gd:190"
+      },
+      "bit_value": {
+        "value": 1.4,
+        "src": "res://Scripts/Battle/BattleScene.gd:191"
+      },
+      "health_loss_per_sec": {
+        "value": 270,
+        "src": "res://Scripts/Battle/BattleScene.gd:192"
+      },
+      "enemy_speed_mod": {
+        "value": 1.8,
+        "src": "res://Scripts/Battle/BattleScene.gd:193"
+      },
+      "spawn_weights": {
+        "Square": 0.73,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 8,
+      "branch": "res://Scripts/Battle/BattleScene.gd:194",
+      "enemy_base_health": {
+        "value": 21000,
+        "src": "res://Scripts/Battle/BattleScene.gd:202"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 900,
+        "src": "res://Scripts/Battle/BattleScene.gd:203"
+      },
+      "enemy_base_damage": {
+        "value": 1800,
+        "src": "res://Scripts/Battle/BattleScene.gd:204"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 78,
+        "src": "res://Scripts/Battle/BattleScene.gd:205"
+      },
+      "boss_health": {
+        "value": 1800000,
+        "src": "res://Scripts/Battle/BattleScene.gd:206"
+      },
+      "boss_damage": {
+        "value": 13500,
+        "src": "res://Scripts/Battle/BattleScene.gd:207"
+      },
+      "enemy_xp": {
+        "value": 15,
+        "src": "res://Scripts/Battle/BattleScene.gd:208"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:209"
+      },
+      "node_boost": {
+        "value": 4,
+        "src": "res://Scripts/Battle/BattleScene.gd:210"
+      },
+      "bit_value": {
+        "value": 2,
+        "src": "res://Scripts/Battle/BattleScene.gd:211"
+      },
+      "health_loss_per_sec": {
+        "value": 810,
+        "src": "res://Scripts/Battle/BattleScene.gd:212"
+      },
+      "enemy_speed_mod": {
+        "value": 2,
+        "src": "res://Scripts/Battle/BattleScene.gd:213"
+      },
+      "spawn_weights": {
+        "Square": 0.73,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 9,
+      "branch": "res://Scripts/Battle/BattleScene.gd:214",
+      "enemy_base_health": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:223"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 2700,
+        "src": "res://Scripts/Battle/BattleScene.gd:224"
+      },
+      "enemy_base_damage": {
+        "value": 5300,
+        "src": "res://Scripts/Battle/BattleScene.gd:225"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 230,
+        "src": "res://Scripts/Battle/BattleScene.gd:226"
+      },
+      "boss_health": {
+        "value": 5400000,
+        "src": "res://Scripts/Battle/BattleScene.gd:227"
+      },
+      "boss_damage": {
+        "value": 40000,
+        "src": "res://Scripts/Battle/BattleScene.gd:228"
+      },
+      "enemy_xp": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:229"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:230"
+      },
+      "node_boost": {
+        "value": 5,
+        "src": "res://Scripts/Battle/BattleScene.gd:231"
+      },
+      "bit_value": {
+        "value": 3,
+        "src": "res://Scripts/Battle/BattleScene.gd:232"
+      },
+      "health_loss_per_sec": {
+        "value": 2400,
+        "src": "res://Scripts/Battle/BattleScene.gd:233"
+      },
+      "enemy_speed_mod": {
+        "value": 2,
+        "src": "res://Scripts/Battle/BattleScene.gd:234"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 10,
+      "branch": "res://Scripts/Battle/BattleScene.gd:235",
+      "enemy_base_health": {
+        "value": 180000,
+        "src": "res://Scripts/Battle/BattleScene.gd:244"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 8100,
+        "src": "res://Scripts/Battle/BattleScene.gd:245"
+      },
+      "enemy_base_damage": {
+        "value": 15600,
+        "src": "res://Scripts/Battle/BattleScene.gd:246"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 690,
+        "src": "res://Scripts/Battle/BattleScene.gd:247"
+      },
+      "boss_health": {
+        "value": 16200000,
+        "src": "res://Scripts/Battle/BattleScene.gd:248"
+      },
+      "boss_damage": {
+        "value": 120000,
+        "src": "res://Scripts/Battle/BattleScene.gd:249"
+      },
+      "enemy_xp": {
+        "value": 21,
+        "src": "res://Scripts/Battle/BattleScene.gd:250"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:251"
+      },
+      "node_boost": {
+        "value": 7,
+        "src": "res://Scripts/Battle/BattleScene.gd:252"
+      },
+      "bit_value": {
+        "value": 4,
+        "src": "res://Scripts/Battle/BattleScene.gd:253"
+      },
+      "health_loss_per_sec": {
+        "value": 7200,
+        "src": "res://Scripts/Battle/BattleScene.gd:254"
+      },
+      "enemy_speed_mod": {
+        "value": 2.1,
+        "src": "res://Scripts/Battle/BattleScene.gd:255"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 11,
+      "branch": "res://Scripts/Battle/BattleScene.gd:256",
+      "enemy_base_health": {
+        "value": 540000,
+        "src": "res://Scripts/Battle/BattleScene.gd:265"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 24000,
+        "src": "res://Scripts/Battle/BattleScene.gd:266"
+      },
+      "enemy_base_damage": {
+        "value": 45000,
+        "src": "res://Scripts/Battle/BattleScene.gd:267"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 2100,
+        "src": "res://Scripts/Battle/BattleScene.gd:268"
+      },
+      "boss_health": {
+        "value": 48600000,
+        "src": "res://Scripts/Battle/BattleScene.gd:269"
+      },
+      "boss_damage": {
+        "value": 360000,
+        "src": "res://Scripts/Battle/BattleScene.gd:270"
+      },
+      "enemy_xp": {
+        "value": 24,
+        "src": "res://Scripts/Battle/BattleScene.gd:271"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:272"
+      },
+      "node_boost": {
+        "value": 7,
+        "src": "res://Scripts/Battle/BattleScene.gd:273"
+      },
+      "bit_value": {
+        "value": 6,
+        "src": "res://Scripts/Battle/BattleScene.gd:274"
+      },
+      "health_loss_per_sec": {
+        "value": 21600,
+        "src": "res://Scripts/Battle/BattleScene.gd:275"
+      },
+      "enemy_speed_mod": {
+        "value": 2.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:276"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 12,
+      "branch": "res://Scripts/Battle/BattleScene.gd:277",
+      "enemy_base_health": {
+        "value": 1500000,
+        "src": "res://Scripts/Battle/BattleScene.gd:286"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:287"
+      },
+      "enemy_base_damage": {
+        "value": 150000,
+        "src": "res://Scripts/Battle/BattleScene.gd:288"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 6000,
+        "src": "res://Scripts/Battle/BattleScene.gd:289"
+      },
+      "boss_health": {
+        "value": 145000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:290"
+      },
+      "boss_damage": {
+        "value": 1000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:291"
+      },
+      "enemy_xp": {
+        "value": 27,
+        "src": "res://Scripts/Battle/BattleScene.gd:292"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:293"
+      },
+      "node_boost": {
+        "value": 9,
+        "src": "res://Scripts/Battle/BattleScene.gd:294"
+      },
+      "bit_value": {
+        "value": 8,
+        "src": "res://Scripts/Battle/BattleScene.gd:295"
+      },
+      "health_loss_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:296"
+      },
+      "enemy_speed_mod": {
+        "value": 2.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:297"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 13,
+      "branch": "res://Scripts/Battle/BattleScene.gd:277",
+      "enemy_base_health": {
+        "value": 1500000,
+        "src": "res://Scripts/Battle/BattleScene.gd:286"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:287"
+      },
+      "enemy_base_damage": {
+        "value": 150000,
+        "src": "res://Scripts/Battle/BattleScene.gd:288"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 6000,
+        "src": "res://Scripts/Battle/BattleScene.gd:289"
+      },
+      "boss_health": {
+        "value": 145000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:290"
+      },
+      "boss_damage": {
+        "value": 1000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:291"
+      },
+      "enemy_xp": {
+        "value": 30,
+        "src": "res://Scripts/Battle/BattleScene.gd:300"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:293"
+      },
+      "node_boost": {
+        "value": 11,
+        "src": "res://Scripts/Battle/BattleScene.gd:301"
+      },
+      "bit_value": {
+        "value": 10,
+        "src": "res://Scripts/Battle/BattleScene.gd:302"
+      },
+      "health_loss_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:296"
+      },
+      "enemy_speed_mod": {
+        "value": 2.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:297"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 14,
+      "branch": "res://Scripts/Battle/BattleScene.gd:277",
+      "enemy_base_health": {
+        "value": 1500000,
+        "src": "res://Scripts/Battle/BattleScene.gd:286"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:287"
+      },
+      "enemy_base_damage": {
+        "value": 150000,
+        "src": "res://Scripts/Battle/BattleScene.gd:288"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 6000,
+        "src": "res://Scripts/Battle/BattleScene.gd:289"
+      },
+      "boss_health": {
+        "value": 145000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:290"
+      },
+      "boss_damage": {
+        "value": 1000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:291"
+      },
+      "enemy_xp": {
+        "value": 34,
+        "src": "res://Scripts/Battle/BattleScene.gd:304"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:293"
+      },
+      "node_boost": {
+        "value": 13,
+        "src": "res://Scripts/Battle/BattleScene.gd:305"
+      },
+      "bit_value": {
+        "value": 12,
+        "src": "res://Scripts/Battle/BattleScene.gd:306"
+      },
+      "health_loss_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:296"
+      },
+      "enemy_speed_mod": {
+        "value": 2.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:297"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 15,
+      "branch": "res://Scripts/Battle/BattleScene.gd:277",
+      "enemy_base_health": {
+        "value": 1500000,
+        "src": "res://Scripts/Battle/BattleScene.gd:286"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:287"
+      },
+      "enemy_base_damage": {
+        "value": 150000,
+        "src": "res://Scripts/Battle/BattleScene.gd:288"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 6000,
+        "src": "res://Scripts/Battle/BattleScene.gd:289"
+      },
+      "boss_health": {
+        "value": 145000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:290"
+      },
+      "boss_damage": {
+        "value": 1000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:291"
+      },
+      "enemy_xp": {
+        "value": 38,
+        "src": "res://Scripts/Battle/BattleScene.gd:308"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:293"
+      },
+      "node_boost": {
+        "value": 15,
+        "src": "res://Scripts/Battle/BattleScene.gd:309"
+      },
+      "bit_value": {
+        "value": 15,
+        "src": "res://Scripts/Battle/BattleScene.gd:310"
+      },
+      "health_loss_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:296"
+      },
+      "enemy_speed_mod": {
+        "value": 2.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:297"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 16,
+      "branch": "res://Scripts/Battle/BattleScene.gd:277",
+      "enemy_base_health": {
+        "value": 1500000,
+        "src": "res://Scripts/Battle/BattleScene.gd:286"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:287"
+      },
+      "enemy_base_damage": {
+        "value": 150000,
+        "src": "res://Scripts/Battle/BattleScene.gd:288"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 6000,
+        "src": "res://Scripts/Battle/BattleScene.gd:289"
+      },
+      "boss_health": {
+        "value": 145000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:290"
+      },
+      "boss_damage": {
+        "value": 1000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:291"
+      },
+      "enemy_xp": {
+        "value": 42,
+        "src": "res://Scripts/Battle/BattleScene.gd:312"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:293"
+      },
+      "node_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:313"
+      },
+      "bit_value": {
+        "value": 19,
+        "src": "res://Scripts/Battle/BattleScene.gd:314"
+      },
+      "health_loss_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:296"
+      },
+      "enemy_speed_mod": {
+        "value": 2.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:297"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 17,
+      "branch": "res://Scripts/Battle/BattleScene.gd:277",
+      "enemy_base_health": {
+        "value": 1500000,
+        "src": "res://Scripts/Battle/BattleScene.gd:286"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:287"
+      },
+      "enemy_base_damage": {
+        "value": 150000,
+        "src": "res://Scripts/Battle/BattleScene.gd:288"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 6000,
+        "src": "res://Scripts/Battle/BattleScene.gd:289"
+      },
+      "boss_health": {
+        "value": 145000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:290"
+      },
+      "boss_damage": {
+        "value": 1000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:291"
+      },
+      "enemy_xp": {
+        "value": 46,
+        "src": "res://Scripts/Battle/BattleScene.gd:316"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:293"
+      },
+      "node_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:317"
+      },
+      "bit_value": {
+        "value": 25,
+        "src": "res://Scripts/Battle/BattleScene.gd:318"
+      },
+      "health_loss_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:296"
+      },
+      "enemy_speed_mod": {
+        "value": 2.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:297"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": false,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 18,
+      "branch": "res://Scripts/Battle/BattleScene.gd:277",
+      "enemy_base_health": {
+        "value": 1500000,
+        "src": "res://Scripts/Battle/BattleScene.gd:286"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:287"
+      },
+      "enemy_base_damage": {
+        "value": 150000,
+        "src": "res://Scripts/Battle/BattleScene.gd:288"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 6000,
+        "src": "res://Scripts/Battle/BattleScene.gd:289"
+      },
+      "boss_health": {
+        "value": 145000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:290"
+      },
+      "boss_damage": {
+        "value": 1000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:291"
+      },
+      "enemy_xp": {
+        "value": 50,
+        "src": "res://Scripts/Battle/BattleScene.gd:320"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:293"
+      },
+      "node_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:321"
+      },
+      "bit_value": {
+        "value": 32,
+        "src": "res://Scripts/Battle/BattleScene.gd:322"
+      },
+      "health_loss_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:296"
+      },
+      "enemy_speed_mod": {
+        "value": 2.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:297"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": true,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 19,
+      "branch": "res://Scripts/Battle/BattleScene.gd:277",
+      "enemy_base_health": {
+        "value": 1500000,
+        "src": "res://Scripts/Battle/BattleScene.gd:286"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:287"
+      },
+      "enemy_base_damage": {
+        "value": 150000,
+        "src": "res://Scripts/Battle/BattleScene.gd:288"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 6000,
+        "src": "res://Scripts/Battle/BattleScene.gd:289"
+      },
+      "boss_health": {
+        "value": 145000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:290"
+      },
+      "boss_damage": {
+        "value": 1000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:291"
+      },
+      "enemy_xp": {
+        "value": 54,
+        "src": "res://Scripts/Battle/BattleScene.gd:324"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:293"
+      },
+      "node_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:325"
+      },
+      "bit_value": {
+        "value": 40,
+        "src": "res://Scripts/Battle/BattleScene.gd:326"
+      },
+      "health_loss_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:296"
+      },
+      "enemy_speed_mod": {
+        "value": 2.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:297"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": true,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 20,
+      "branch": "res://Scripts/Battle/BattleScene.gd:277",
+      "enemy_base_health": {
+        "value": 1500000,
+        "src": "res://Scripts/Battle/BattleScene.gd:286"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:287"
+      },
+      "enemy_base_damage": {
+        "value": 150000,
+        "src": "res://Scripts/Battle/BattleScene.gd:288"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 6000,
+        "src": "res://Scripts/Battle/BattleScene.gd:289"
+      },
+      "boss_health": {
+        "value": 145000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:290"
+      },
+      "boss_damage": {
+        "value": 1000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:291"
+      },
+      "enemy_xp": {
+        "value": 62,
+        "src": "res://Scripts/Battle/BattleScene.gd:332"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:293"
+      },
+      "node_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:333"
+      },
+      "bit_value": {
+        "value": 70,
+        "src": "res://Scripts/Battle/BattleScene.gd:334"
+      },
+      "health_loss_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:296"
+      },
+      "enemy_speed_mod": {
+        "value": 2.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:297"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": true,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 21,
+      "branch": "res://Scripts/Battle/BattleScene.gd:277",
+      "enemy_base_health": {
+        "value": 1500000,
+        "src": "res://Scripts/Battle/BattleScene.gd:286"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:287"
+      },
+      "enemy_base_damage": {
+        "value": 150000,
+        "src": "res://Scripts/Battle/BattleScene.gd:288"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 6000,
+        "src": "res://Scripts/Battle/BattleScene.gd:289"
+      },
+      "boss_health": {
+        "value": 145000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:290"
+      },
+      "boss_damage": {
+        "value": 1000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:291"
+      },
+      "enemy_xp": {
+        "value": 66,
+        "src": "res://Scripts/Battle/BattleScene.gd:336"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:293"
+      },
+      "node_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:337"
+      },
+      "bit_value": {
+        "value": 110,
+        "src": "res://Scripts/Battle/BattleScene.gd:338"
+      },
+      "health_loss_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:296"
+      },
+      "enemy_speed_mod": {
+        "value": 2.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:297"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": true,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 22,
+      "branch": "res://Scripts/Battle/BattleScene.gd:277",
+      "enemy_base_health": {
+        "value": 1500000,
+        "src": "res://Scripts/Battle/BattleScene.gd:286"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:287"
+      },
+      "enemy_base_damage": {
+        "value": 150000,
+        "src": "res://Scripts/Battle/BattleScene.gd:288"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 6000,
+        "src": "res://Scripts/Battle/BattleScene.gd:289"
+      },
+      "boss_health": {
+        "value": 145000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:290"
+      },
+      "boss_damage": {
+        "value": 1000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:291"
+      },
+      "enemy_xp": {
+        "value": 70,
+        "src": "res://Scripts/Battle/BattleScene.gd:340"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:293"
+      },
+      "node_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:341"
+      },
+      "bit_value": {
+        "value": 200,
+        "src": "res://Scripts/Battle/BattleScene.gd:342"
+      },
+      "health_loss_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:296"
+      },
+      "enemy_speed_mod": {
+        "value": 2.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:297"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": true,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 23,
+      "branch": "res://Scripts/Battle/BattleScene.gd:277",
+      "enemy_base_health": {
+        "value": 1500000,
+        "src": "res://Scripts/Battle/BattleScene.gd:286"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:287"
+      },
+      "enemy_base_damage": {
+        "value": 150000,
+        "src": "res://Scripts/Battle/BattleScene.gd:288"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 6000,
+        "src": "res://Scripts/Battle/BattleScene.gd:289"
+      },
+      "boss_health": {
+        "value": 145000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:290"
+      },
+      "boss_damage": {
+        "value": 1000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:291"
+      },
+      "enemy_xp": {
+        "value": 74,
+        "src": "res://Scripts/Battle/BattleScene.gd:344"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:293"
+      },
+      "node_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:345"
+      },
+      "bit_value": {
+        "value": 360,
+        "src": "res://Scripts/Battle/BattleScene.gd:346"
+      },
+      "health_loss_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:296"
+      },
+      "enemy_speed_mod": {
+        "value": 2.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:297"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": true,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 24,
+      "branch": "res://Scripts/Battle/BattleScene.gd:277",
+      "enemy_base_health": {
+        "value": 1500000,
+        "src": "res://Scripts/Battle/BattleScene.gd:286"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:287"
+      },
+      "enemy_base_damage": {
+        "value": 150000,
+        "src": "res://Scripts/Battle/BattleScene.gd:288"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 6000,
+        "src": "res://Scripts/Battle/BattleScene.gd:289"
+      },
+      "boss_health": {
+        "value": 145000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:290"
+      },
+      "boss_damage": {
+        "value": 1000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:291"
+      },
+      "enemy_xp": {
+        "value": 78,
+        "src": "res://Scripts/Battle/BattleScene.gd:348"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:293"
+      },
+      "node_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:349"
+      },
+      "bit_value": {
+        "value": 520,
+        "src": "res://Scripts/Battle/BattleScene.gd:350"
+      },
+      "health_loss_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:296"
+      },
+      "enemy_speed_mod": {
+        "value": 2.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:297"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": true,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    },
+    {
+      "prestige": 25,
+      "branch": "res://Scripts/Battle/BattleScene.gd:277",
+      "enemy_base_health": {
+        "value": 1500000,
+        "src": "res://Scripts/Battle/BattleScene.gd:286"
+      },
+      "enemy_health_growth_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:287"
+      },
+      "enemy_base_damage": {
+        "value": 150000,
+        "src": "res://Scripts/Battle/BattleScene.gd:288"
+      },
+      "enemy_damage_growth_per_sec": {
+        "value": 6000,
+        "src": "res://Scripts/Battle/BattleScene.gd:289"
+      },
+      "boss_health": {
+        "value": 145000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:290"
+      },
+      "boss_damage": {
+        "value": 1000000,
+        "src": "res://Scripts/Battle/BattleScene.gd:291"
+      },
+      "enemy_xp": {
+        "value": 82,
+        "src": "res://Scripts/Battle/BattleScene.gd:352"
+      },
+      "bit_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:293"
+      },
+      "node_boost": {
+        "value": 18,
+        "src": "res://Scripts/Battle/BattleScene.gd:353"
+      },
+      "bit_value": {
+        "value": 720,
+        "src": "res://Scripts/Battle/BattleScene.gd:354"
+      },
+      "health_loss_per_sec": {
+        "value": 60000,
+        "src": "res://Scripts/Battle/BattleScene.gd:296"
+      },
+      "enemy_speed_mod": {
+        "value": 2.2,
+        "src": "res://Scripts/Battle/BattleScene.gd:297"
+      },
+      "spawn_weights": {
+        "Square": 0.71,
+        "SmallSquare": 0.1,
+        "BigSquare": 0.04,
+        "Pill": 0.08,
+        "Pentagon": 0.05,
+        "Spiky": 0.02
+      },
+      "boss_rainbow": {
+        "value": true,
+        "src": "res://Scripts/Battle/EnemySpawner.gd:158"
+      }
+    }
+  ]
+}

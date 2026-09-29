@@ -1,0 +1,4038 @@
+{
+  "source": "Nodebuster.pck recovered with GDRE Tools v2.6.4 (engine 4.2.2)",
+  "semantics": {
+    "cost": "costs[i] is the price of going from level i to i+1 (res://Scripts/Upgrades/Upgrade.gd:31-33). maxLevel = costs.length.",
+    "effects": "Applied once per level bought (res://Scripts/Shop/UpgradeTree.gd:97-98; on load, per saved level: res://Scripts/Autoloads/Stores/UpgradeStore.gd:716-717). op add = stat += perLevel; op set = stat = value.",
+    "requires": "Node is visible and buyable only when the rule holds, evaluated over scene neighbours. level 1 = neighbour has >= 1 level; level \"max\" = neighbour is maxed. mode any = OR, all = AND. requires null = always visible (root). (res://Scripts/Upgrades/UpgradeProcessor.gd:197-399, res://Scripts/Shop/UpgradeTree.gd:66-67)",
+    "position": "rect = [x, y, w, h] in tree-local pixels (Control offsets, res://GameScenes/ShopScene.tscn). grid = centre relative to Damage1 in 32 px steps (x right, y down).",
+    "neighbors": "Undirected edges drawn as 1 px lines in MyColors.WHITE (res://Scripts/Shop/UpgradeTree.gd:34-51)."
+  },
+  "nodeCount": 97,
+  "edges": [
+    ["Armor1", "Armor2"],
+    ["Armor1", "BossArmor1"],
+    ["Armor1", "Health1"],
+    ["Armor2", "Armor3"],
+    ["Armor2", "ArmorPerEnemy1"],
+    ["Armor3", "Armor4"],
+    ["Armor4", "Armor5"],
+    ["Armor4", "BossArmor2"],
+    ["Armor5", "Armor6"],
+    ["Armor6", "Armor7"],
+    ["Armor6", "FocusArmor1"],
+    ["Armor6", "MaxHealthToArmor1"],
+    ["AttackSpeed1", "AttackSpeed2"],
+    ["AttackSpeed1", "Damage2"],
+    ["AttackSpeed1", "DamagePerEnemy1"],
+    ["AttackSpeed2", "PulseBolts"],
+    ["AutoCollect", "Size3"],
+    ["BitBoost1", "BonusDropChance1"],
+    ["BitBoost1", "NodeFinder1"],
+    ["BitBoost1", "SpawnRate1"],
+    ["BossArmor1", "Health2"],
+    ["BossDamage1", "BossDamage2"],
+    ["BossDamage1", "DamagePerEnemy1"],
+    ["CritChance1", "CritDamage1"],
+    ["CritChance1", "Damage3"],
+    ["CritDamage1", "CritDamage2"],
+    ["CryptoMine", "Size2"],
+    ["CryptoMine", "YellowSpawn1"],
+    ["Damage1", "DamagePerEnemy1"],
+    ["Damage1", "Health1"],
+    ["Damage1", "SpawnRate1"],
+    ["Damage2", "Damage3"],
+    ["Damage3", "Damage4"],
+    ["Damage3", "Undamaged1"],
+    ["Damage4", "Damage5"],
+    ["Damage4", "MovingPulser1"],
+    ["Damage5", "RampingDamage1"],
+    ["DropHeal1", "Lifesteal1"],
+    ["EnemyDeathPulseBolts", "PulseBoltDamage2"],
+    ["Execute1", "Execute2"],
+    ["Execute1", "Undamaged1"],
+    ["ExplodersChance", "ExplodersSize"],
+    ["ExplodersChance", "NodeFinder1"],
+    ["Health1", "HealthRegen1"],
+    ["Health2", "Health3"],
+    ["Health2", "HealthRegen2"],
+    ["Health2", "Salvaging1"],
+    ["Health3", "Health4"],
+    ["Health4", "Health5"],
+    ["Health5", "MaxHealthHeal2"],
+    ["Health5", "StealMaxHealth1"],
+    ["Health6", "Health7"],
+    ["Health6", "StealMaxHealth2"],
+    ["Health7", "Infinity1"],
+    ["HealthRegen1", "Salvaging1"],
+    ["HealthRegen2", "MaxHealthHeal1"],
+    ["Infinity1", "Infinity2"],
+    ["Infinity2", "Infinity3"],
+    ["Infinity3", "Infinity4"],
+    ["Infinity4", "Infinity5"],
+    ["Infinity5", "Infinity6"],
+    ["Infinity6", "Infinity7"],
+    ["Infinity7", "Infinity8"],
+    ["Infinity8", "Infinity9"],
+    ["Infinity9", "Laboratory"],
+    ["Infinity9", "YellowSpawn2"],
+    ["Lifesteal1", "Salvaging1"],
+    ["Lifesteal2", "Lifesteal3"],
+    ["Lifesteal2", "MaxHealthHeal1"],
+    ["LightningChainCount1", "LightningChance1"],
+    ["LightningChance1", "LightningDamage1"],
+    ["LightningChance1", "RampingDamage1"],
+    ["MaxHealthToArmor1", "MaxHealthToArmor2"],
+    ["MaxHealthToArmor2", "RampingArmor1"],
+    ["MaxHealthToDamage1", "RampingDamage1"],
+    ["Milestones", "NodeFinder1"],
+    ["MovingPulser1", "MovingPulserSize1"],
+    ["MovingPulser1", "MovingPulserSpeed1"],
+    ["MovingPulserAttackSpeed1", "MovingPulserSize1"],
+    ["MovingPulserSize1", "MovingPulserSize2"],
+    ["NodeBoost1", "NodeFinder1"],
+    ["PickupRadius1", "Size1"],
+    ["PulseBoltCount1", "PulseBoltCount2"],
+    ["PulseBoltCount1", "PulseBolts"],
+    ["PulseBoltCount2", "PulseBoltDamage2"],
+    ["PulseBoltDamage1", "PulseBoltExplode"],
+    ["PulseBoltDamage1", "PulseBolts"],
+    ["PulseBoltDamage2", "PulseBoltExplode"],
+    ["Salvaging1", "Salvaging2"],
+    ["Size1", "SpawnRate1"],
+    ["Size2", "Size3"],
+    ["Size2", "SpawnRate3"],
+    ["SpawnRate1", "SpawnRate2"],
+    ["SpawnRate2", "SpawnRate3"],
+    ["SpawnRate3", "SpawnRate4"],
+    ["StealMaxHealth1", "StealMaxHealth2"],
+    ["StealMaxHealth2", "StealMaxHealth3"],
+    ["Undamaged1", "Undamaged2"]
+  ],
+  "nodes": [
+    {
+      "id": "Damage1",
+      "name": "power",
+      "description": "+1 damage",
+      "currency": "bits",
+      "costs": [1, 2, 3, 3, 4, 5, 7, 9, 11, 13, 15, 20, 25, 30, 35],
+      "maxLevel": 15,
+      "totalCost": 183,
+      "effects": [
+        {
+          "stat": "damage",
+          "op": "add",
+          "perLevel": 1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:9"
+        }
+      ],
+      "sideEffects": [],
+      "requires": null,
+      "position": {
+        "rect": [215, 133, 16, 16],
+        "center": [223, 141],
+        "grid": [0, 0],
+        "sceneNode": "1",
+        "src": "res://GameScenes/ShopScene.tscn:76"
+      },
+      "neighbors": ["DamagePerEnemy1", "Health1", "SpawnRate1"],
+      "icon": "res://Sprites/UpgradeIcons/Damage1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:5",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:9"
+    },
+    {
+      "id": "Health1",
+      "name": "endurance",
+      "description": "+4 max health",
+      "currency": "bits",
+      "costs": [2, 3, 4, 5, 6, 7, 8, 10, 11, 12],
+      "maxLevel": 10,
+      "totalCost": 68,
+      "effects": [
+        {
+          "stat": "max_health",
+          "op": "add",
+          "perLevel": 4,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:13"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Damage1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Damage1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:207"
+      },
+      "position": {
+        "rect": [215, 101, 16, 16],
+        "center": [223, 109],
+        "grid": [0, -1],
+        "sceneNode": "3",
+        "src": "res://GameScenes/ShopScene.tscn:337"
+      },
+      "neighbors": ["Armor1", "Damage1", "HealthRegen1"],
+      "icon": "res://Sprites/UpgradeIcons/Health1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:12",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:16"
+    },
+    {
+      "id": "SpawnRate1",
+      "name": "crowding",
+      "description": "+50% spawn rate",
+      "currency": "bits",
+      "costs": [2, 4, 6, 8, 10, 14, 20, 30, 50, 70, 100, 130, 160, 200, 250],
+      "maxLevel": 15,
+      "totalCost": 1054,
+      "effects": [
+        {
+          "stat": "spawn_rate_mod",
+          "op": "add",
+          "perLevel": 0.5,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:15"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Damage1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Damage1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:209"
+      },
+      "position": {
+        "rect": [183, 133, 16, 16],
+        "center": [191, 141],
+        "grid": [-1, 0],
+        "sceneNode": "4",
+        "src": "res://GameScenes/ShopScene.tscn:685"
+      },
+      "neighbors": ["BitBoost1", "Damage1", "Size1", "SpawnRate2"],
+      "icon": "res://Sprites/UpgradeIcons/SpawnRate1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:19",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:23"
+    },
+    {
+      "id": "Armor1",
+      "name": "firewall",
+      "description": "+0.2 armor",
+      "currency": "bits",
+      "costs": [8, 10, 14, 18, 22, 26, 30, 30, 30, 30],
+      "maxLevel": 10,
+      "totalCost": 218,
+      "effects": [
+        {
+          "stat": "armor",
+          "op": "add",
+          "perLevel": 0.2,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:17"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Health1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Health1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:211"
+      },
+      "position": {
+        "rect": [183, 69, 16, 16],
+        "center": [191, 77],
+        "grid": [-1, -2],
+        "sceneNode": "5",
+        "src": "res://GameScenes/ShopScene.tscn:345"
+      },
+      "neighbors": ["Armor2", "BossArmor1", "Health1"],
+      "icon": "res://Sprites/UpgradeIcons/Armor1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:26",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:30"
+    },
+    {
+      "id": "BitBoost1",
+      "name": "bit boost",
+      "description": "red enemies drop +1 Bits",
+      "currency": "sp",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [
+        {
+          "stat": "bit_boost",
+          "op": "add",
+          "perLevel": 1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:19"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "SpawnRate1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"SpawnRate1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:213"
+      },
+      "position": {
+        "rect": [151, 165, 16, 16],
+        "center": [159, 173],
+        "grid": [-2, 1],
+        "sceneNode": "6",
+        "src": "res://GameScenes/ShopScene.tscn:754"
+      },
+      "neighbors": ["BonusDropChance1", "NodeFinder1", "SpawnRate1"],
+      "icon": "res://Sprites/UpgradeIcons/BitBoost1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:33",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:37"
+    },
+    {
+      "id": "Size1",
+      "name": "influence",
+      "description": "+10% attack size",
+      "currency": "bits",
+      "costs": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+      "maxLevel": 10,
+      "totalCost": 550,
+      "effects": [
+        {
+          "stat": "player_size_mod",
+          "op": "add",
+          "perLevel": 0.1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:11"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "SpawnRate1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"SpawnRate1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:215"
+      },
+      "position": {
+        "rect": [151, 133, 16, 16],
+        "center": [159, 141],
+        "grid": [-2, 0],
+        "sceneNode": "7",
+        "src": "res://GameScenes/ShopScene.tscn:769"
+      },
+      "neighbors": ["PickupRadius1", "SpawnRate1"],
+      "icon": "res://Sprites/UpgradeIcons/Size1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:40",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:44"
+    },
+    {
+      "id": "BossArmor1",
+      "name": "boss guard",
+      "description": "+1 armor against bosses",
+      "currency": "bits",
+      "costs": [15, 18, 21, 26, 32, 38, 44, 50, 56, 62],
+      "maxLevel": 10,
+      "totalCost": 362,
+      "effects": [
+        {
+          "stat": "boss_armor",
+          "op": "add",
+          "perLevel": 1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:21"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Armor1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Armor1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:217"
+      },
+      "position": {
+        "rect": [183, 37, 16, 16],
+        "center": [191, 45],
+        "grid": [-1, -3],
+        "sceneNode": "8",
+        "src": "res://GameScenes/ShopScene.tscn:482"
+      },
+      "neighbors": ["Armor1", "Health2"],
+      "icon": "res://Sprites/UpgradeIcons/BossArmor1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:47",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:51"
+    },
+    {
+      "id": "HealthRegen1",
+      "name": "repair tool",
+      "description": "regenerate +0.1 health/sec",
+      "currency": "bits",
+      "costs": [25, 25, 25, 30, 30],
+      "maxLevel": 5,
+      "totalCost": 135,
+      "effects": [
+        {
+          "stat": "health_regen",
+          "op": "add",
+          "perLevel": 0.1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:23"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Health1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Health1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:219"
+      },
+      "position": {
+        "rect": [247, 69, 16, 16],
+        "center": [255, 77],
+        "grid": [1, -2],
+        "sceneNode": "9",
+        "src": "res://GameScenes/ShopScene.tscn:444"
+      },
+      "neighbors": ["Health1", "Salvaging1"],
+      "icon": "res://Sprites/UpgradeIcons/HealthRegen1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:54",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:58"
+    },
+    {
+      "id": "NodeFinder1",
+      "name": "node finder",
+      "description": "+1% chance for blue enemies to spawn",
+      "currency": "bits",
+      "costs": [400, 1500, 3000, 5000, 10000],
+      "maxLevel": 5,
+      "totalCost": 19900,
+      "effects": [
+        {
+          "stat": "blue_enemy_chance",
+          "op": "add",
+          "perLevel": 0.01,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:25"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "BitBoost1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"BitBoost1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:221"
+      },
+      "position": {
+        "rect": [119, 165, 16, 16],
+        "center": [127, 173],
+        "grid": [-3, 1],
+        "sceneNode": "10",
+        "src": "res://GameScenes/ShopScene.tscn:784"
+      },
+      "neighbors": ["BitBoost1", "ExplodersChance", "Milestones", "NodeBoost1"],
+      "icon": "res://Sprites/UpgradeIcons/NodeFinder1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:61",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:65"
+    },
+    {
+      "id": "Salvaging1",
+      "name": "salvaging",
+      "description": "restore +1 health on enemy kill",
+      "currency": "bits",
+      "costs": [100, 125, 150, 175, 200],
+      "maxLevel": 5,
+      "totalCost": 750,
+      "effects": [
+        {
+          "stat": "health_on_kill",
+          "op": "add",
+          "perLevel": 1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:27"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "HealthRegen1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"HealthRegen1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:223"
+      },
+      "position": {
+        "rect": [247, 37, 16, 16],
+        "center": [255, 45],
+        "grid": [1, -3],
+        "sceneNode": "11",
+        "src": "res://GameScenes/ShopScene.tscn:452"
+      },
+      "neighbors": ["Health2", "HealthRegen1", "Lifesteal1", "Salvaging2"],
+      "icon": "res://Sprites/UpgradeIcons/Salvaging1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:68",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:72"
+    },
+    {
+      "id": "DamagePerEnemy1",
+      "name": "connection buster",
+      "description": "attack deals +5% damage per enemy in area",
+      "currency": "bits",
+      "costs": [50, 100, 200, 500, 1000],
+      "maxLevel": 5,
+      "totalCost": 1850,
+      "effects": [
+        {
+          "stat": "damage_mod_per_enemy",
+          "op": "add",
+          "perLevel": 0.05,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:29"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Damage1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Damage1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:225"
+      },
+      "position": {
+        "rect": [247, 133, 16, 16],
+        "center": [255, 141],
+        "grid": [1, 0],
+        "sceneNode": "2",
+        "src": "res://GameScenes/ShopScene.tscn:84"
+      },
+      "neighbors": ["AttackSpeed1", "BossDamage1", "Damage1"],
+      "icon": "res://Sprites/UpgradeIcons/DamagePerEnemy1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:75",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:79"
+    },
+    {
+      "id": "BossDamage1",
+      "name": "giant slayer",
+      "description": "+50% damage against bosses",
+      "currency": "bits",
+      "costs": [60, 80, 100, 160, 300, 500, 700, 1000, 1300, 1600],
+      "maxLevel": 10,
+      "totalCost": 5800,
+      "effects": [
+        {
+          "stat": "boss_damage_mod",
+          "op": "add",
+          "perLevel": 0.5,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:31"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "DamagePerEnemy1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"DamagePerEnemy1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:227"
+      },
+      "position": {
+        "rect": [279, 165, 16, 16],
+        "center": [287, 173],
+        "grid": [2, 1],
+        "sceneNode": "12",
+        "src": "res://GameScenes/ShopScene.tscn:322"
+      },
+      "neighbors": ["BossDamage2", "DamagePerEnemy1"],
+      "icon": "res://Sprites/UpgradeIcons/BossDamage1.png",
+      "notes": "Boss multiplier is applied to the shared damage variable inside the per-enemy loop, so once a boss is hit, later enemies in the same pulse also take the boosted damage (res://Scripts/Player/PlayerCursor.gd:53-54, res://Scripts/Autoloads/Globals.gd:51-52).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:82",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:86"
+    },
+    {
+      "id": "AttackSpeed1",
+      "name": "repeating",
+      "description": "+20% attack speed",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [
+        {
+          "stat": "attack_speed_mod",
+          "op": "add",
+          "perLevel": 0.2,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:33"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "DamagePerEnemy1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"DamagePerEnemy1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:229"
+      },
+      "position": {
+        "rect": [279, 133, 16, 16],
+        "center": [287, 141],
+        "grid": [2, 0],
+        "sceneNode": "13",
+        "src": "res://GameScenes/ShopScene.tscn:92"
+      },
+      "neighbors": ["AttackSpeed2", "Damage2", "DamagePerEnemy1"],
+      "icon": "res://Sprites/UpgradeIcons/AttackSpeed1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:89",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:93"
+    },
+    {
+      "id": "BonusDropChance1",
+      "name": "plundering",
+      "description": "+10% chance for double resource drops",
+      "currency": "bits",
+      "costs": [150, 400, 1000, 4000, 10000],
+      "maxLevel": 5,
+      "totalCost": 15550,
+      "effects": [
+        {
+          "stat": "bonus_drop_chance",
+          "op": "add",
+          "perLevel": 0.1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:35"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "BitBoost1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"BitBoost1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:231"
+      },
+      "position": {
+        "rect": [119, 197, 16, 16],
+        "center": [127, 205],
+        "grid": [-3, 2],
+        "sceneNode": "14",
+        "src": "res://GameScenes/ShopScene.tscn:762"
+      },
+      "neighbors": ["BitBoost1"],
+      "icon": "res://Sprites/UpgradeIcons/BonusDropChance1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:96",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:100"
+    },
+    {
+      "id": "ExplodersChance",
+      "name": "spawn exploders",
+      "description": "+5% chance to spawn enemies that explode on death",
+      "currency": "nodes",
+      "costs": [3],
+      "maxLevel": 1,
+      "totalCost": 3,
+      "effects": [
+        {
+          "stat": "exploder_spawn_chance",
+          "op": "add",
+          "perLevel": 0.05,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:37"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "NodeFinder1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"NodeFinder1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:233"
+      },
+      "position": {
+        "rect": [87, 165, 16, 16],
+        "center": [95, 173],
+        "grid": [-4, 1],
+        "sceneNode": "15",
+        "src": "res://GameScenes/ShopScene.tscn:806"
+      },
+      "neighbors": ["ExplodersSize", "NodeFinder1"],
+      "icon": "res://Sprites/UpgradeIcons/ExplodersChance.png",
+      "notes": "Exploder weight is taken from the Square weight each session (res://Scripts/Battle/BattleScene.gd:356-358).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:103",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:107"
+    },
+    {
+      "id": "Health2",
+      "name": "better endurance",
+      "description": "+12 max health",
+      "currency": "bits",
+      "costs": [60, 65, 70, 75, 80, 85, 90, 95],
+      "maxLevel": 8,
+      "totalCost": 620,
+      "effects": [
+        {
+          "stat": "max_health",
+          "op": "add",
+          "perLevel": 12,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:39"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "any",
+        "nodes": [
+          {
+            "id": "BossArmor1",
+            "level": 1
+          },
+          {
+            "id": "Salvaging1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"BossArmor1\"] > 0 or connected[\"Salvaging1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:235"
+      },
+      "position": {
+        "rect": [215, 5, 16, 16],
+        "center": [223, 13],
+        "grid": [0, -4],
+        "sceneNode": "16",
+        "src": "res://GameScenes/ShopScene.tscn:490"
+      },
+      "neighbors": ["BossArmor1", "Health3", "HealthRegen2", "Salvaging1"],
+      "icon": "res://Sprites/UpgradeIcons/Health2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:110",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:114"
+    },
+    {
+      "id": "Armor2",
+      "name": "antivirus",
+      "description": "+0.6 armor",
+      "currency": "bits",
+      "costs": [150, 170, 190, 200, 210],
+      "maxLevel": 5,
+      "totalCost": 920,
+      "effects": [
+        {
+          "stat": "armor",
+          "op": "add",
+          "perLevel": 0.6,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:41"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Armor1",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Armor1\"] >= max[\"Armor1\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:237"
+      },
+      "position": {
+        "rect": [151, 37, 16, 16],
+        "center": [159, 45],
+        "grid": [-2, -3],
+        "sceneNode": "17",
+        "src": "res://GameScenes/ShopScene.tscn:353"
+      },
+      "neighbors": ["Armor1", "Armor3", "ArmorPerEnemy1"],
+      "icon": "res://Sprites/UpgradeIcons/Armor2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:117",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:121"
+    },
+    {
+      "id": "Lifesteal1",
+      "name": "sapper",
+      "description": "restore +0.5 health when hitting an enemy",
+      "currency": "nodes",
+      "costs": [2, 3, 4, 5, 6],
+      "maxLevel": 5,
+      "totalCost": 20,
+      "effects": [
+        {
+          "stat": "health_on_hit",
+          "op": "add",
+          "perLevel": 0.5,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:43"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Salvaging1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Salvaging1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:239"
+      },
+      "position": {
+        "rect": [279, 5, 16, 16],
+        "center": [287, 13],
+        "grid": [2, -4],
+        "sceneNode": "18",
+        "src": "res://GameScenes/ShopScene.tscn:467"
+      },
+      "neighbors": ["DropHeal1", "Salvaging1"],
+      "icon": "res://Sprites/UpgradeIcons/Lifesteal1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:124",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:128"
+    },
+    {
+      "id": "Damage2",
+      "name": "proficiency",
+      "description": "+3 damage",
+      "currency": "bits",
+      "costs": [200, 210, 220, 230, 240, 260, 280, 300, 320, 340],
+      "maxLevel": 10,
+      "totalCost": 2600,
+      "effects": [
+        {
+          "stat": "damage",
+          "op": "add",
+          "perLevel": 3,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:45"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "AttackSpeed1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"AttackSpeed1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:241"
+      },
+      "position": {
+        "rect": [311, 133, 16, 16],
+        "center": [319, 141],
+        "grid": [3, 0],
+        "sceneNode": "19",
+        "src": "res://GameScenes/ShopScene.tscn:163"
+      },
+      "neighbors": ["AttackSpeed1", "Damage3"],
+      "icon": "res://Sprites/UpgradeIcons/Damage2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:131",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:135"
+    },
+    {
+      "id": "PickupRadius1",
+      "name": "magnet",
+      "description": "+50% pickup range",
+      "currency": "bits",
+      "costs": [300, 1400, 4000, 15000, 70000],
+      "maxLevel": 5,
+      "totalCost": 90700,
+      "effects": [
+        {
+          "stat": "drop_pickup_radius",
+          "op": "add",
+          "perLevel": 8,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:47"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Size1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Size1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:243"
+      },
+      "position": {
+        "rect": [119, 101, 16, 16],
+        "center": [127, 109],
+        "grid": [-3, -1],
+        "sceneNode": "20",
+        "src": "res://GameScenes/ShopScene.tscn:777"
+      },
+      "neighbors": ["Size1"],
+      "icon": "res://Sprites/UpgradeIcons/PickupRadius1.png",
+      "notes": "+8 px pickup radius per level (base 16 px), i.e. +50% of base, additive.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:138",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:142"
+    },
+    {
+      "id": "HealthRegen2",
+      "name": "self-repair",
+      "description": "regenerate +4 health/sec",
+      "currency": "sp",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [
+        {
+          "stat": "health_regen",
+          "op": "add",
+          "perLevel": 4,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:49"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Health2",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Health2\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:245"
+      },
+      "position": {
+        "rect": [247, -27, 16, 16],
+        "center": [255, -19],
+        "grid": [1, -5],
+        "sceneNode": "21",
+        "src": "res://GameScenes/ShopScene.tscn:654"
+      },
+      "neighbors": ["Health2", "MaxHealthHeal1"],
+      "icon": "res://Sprites/UpgradeIcons/HealthRegen2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:145",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:149"
+    },
+    {
+      "id": "Milestones",
+      "name": "milestones",
+      "description": "unlock the milestones tab",
+      "currency": "nodes",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [
+        {
+          "stat": "milestones_unlocked",
+          "op": "set",
+          "perLevel": true,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:51"
+        }
+      ],
+      "sideEffects": ["shows the milestones tab button (res://Scripts/Upgrades/UpgradeProcessor.gd:53)", "steam achievement MILESTONES (res://Scripts/Upgrades/UpgradeProcessor.gd:54)"],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "NodeFinder1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"NodeFinder1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:247"
+      },
+      "position": {
+        "rect": [87, 133, 16, 16],
+        "center": [95, 141],
+        "grid": [-4, 0],
+        "sceneNode": "22",
+        "src": "res://GameScenes/ShopScene.tscn:799"
+      },
+      "neighbors": ["NodeFinder1"],
+      "icon": "res://Sprites/UpgradeIcons/Milestones.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:152",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:156"
+    },
+    {
+      "id": "Salvaging2",
+      "name": "skilled salvager",
+      "description": "restore +8 health on enemy kill",
+      "currency": "nodes",
+      "costs": [12],
+      "maxLevel": 1,
+      "totalCost": 12,
+      "effects": [
+        {
+          "stat": "health_on_kill",
+          "op": "add",
+          "perLevel": 8,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:56"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Salvaging1",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Salvaging1\"] >= max[\"Salvaging1\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:249"
+      },
+      "position": {
+        "rect": [279, 37, 16, 16],
+        "center": [287, 45],
+        "grid": [2, -3],
+        "sceneNode": "23",
+        "src": "res://GameScenes/ShopScene.tscn:460"
+      },
+      "neighbors": ["Salvaging1"],
+      "icon": "res://Sprites/UpgradeIcons/Salvaging2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:159",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:163"
+    },
+    {
+      "id": "AttackSpeed2",
+      "name": "repeat-repeating",
+      "description": "+20% attack speed",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [
+        {
+          "stat": "attack_speed_mod",
+          "op": "add",
+          "perLevel": 0.2,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:58"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "AttackSpeed1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"AttackSpeed1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:251"
+      },
+      "position": {
+        "rect": [311, 101, 16, 16],
+        "center": [319, 109],
+        "grid": [3, -1],
+        "sceneNode": "24",
+        "src": "res://GameScenes/ShopScene.tscn:100"
+      },
+      "neighbors": ["AttackSpeed1", "PulseBolts"],
+      "icon": "res://Sprites/UpgradeIcons/AttackSpeed2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:166",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:170"
+    },
+    {
+      "id": "SpawnRate2",
+      "name": "swarming",
+      "description": "+200% spawn rate",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [
+        {
+          "stat": "spawn_rate_mod",
+          "op": "add",
+          "perLevel": 2.5,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:60"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "SpawnRate1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"SpawnRate1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:253"
+      },
+      "position": {
+        "rect": [151, 101, 16, 16],
+        "center": [159, 109],
+        "grid": [-2, -1],
+        "sceneNode": "25",
+        "src": "res://GameScenes/ShopScene.tscn:693"
+      },
+      "neighbors": ["SpawnRate1", "SpawnRate3"],
+      "icon": "res://Sprites/UpgradeIcons/SpawnRate2.png",
+      "notes": "Description says +200% spawn rate; code adds 2.5 to spawn_rate_mod (+250%).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:173",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:177"
+    },
+    {
+      "id": "NodeBoost1",
+      "name": "node boost",
+      "description": "blue enemies drop +1 Nodes",
+      "currency": "sp",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [
+        {
+          "stat": "node_boost",
+          "op": "add",
+          "perLevel": 1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:62"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "NodeFinder1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"NodeFinder1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:255"
+      },
+      "position": {
+        "rect": [87, 197, 16, 16],
+        "center": [95, 205],
+        "grid": [-4, 2],
+        "sceneNode": "26",
+        "src": "res://GameScenes/ShopScene.tscn:792"
+      },
+      "neighbors": ["NodeFinder1"],
+      "icon": "res://Sprites/UpgradeIcons/NodeBoost1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:180",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:184"
+    },
+    {
+      "id": "ArmorPerEnemy1",
+      "name": "swarm defense system",
+      "description": "+2% armor per enemy in area",
+      "currency": "bits",
+      "costs": [300, 350, 400, 450, 500, 650, 800, 1000, 1200, 1600],
+      "maxLevel": 10,
+      "totalCost": 7250,
+      "effects": [
+        {
+          "stat": "armor_mod_per_enemy",
+          "op": "add",
+          "perLevel": 0.02,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:64"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Armor2",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Armor2\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:257"
+      },
+      "position": {
+        "rect": [151, 5, 16, 16],
+        "center": [159, 13],
+        "grid": [-2, -4],
+        "sceneNode": "27",
+        "src": "res://GameScenes/ShopScene.tscn:437"
+      },
+      "neighbors": ["Armor2"],
+      "icon": "res://Sprites/UpgradeIcons/ArmorPerEnemy1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:187",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:191"
+    },
+    {
+      "id": "Armor3",
+      "name": "bolster",
+      "description": "+2 armor",
+      "currency": "bits",
+      "costs": [450, 460, 480, 500, 500, 510, 520, 530, 540, 550],
+      "maxLevel": 10,
+      "totalCost": 5040,
+      "effects": [
+        {
+          "stat": "armor",
+          "op": "add",
+          "perLevel": 2,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:66"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Armor2",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Armor2\"] >= max[\"Armor2\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:259"
+      },
+      "position": {
+        "rect": [119, 5, 16, 16],
+        "center": [127, 13],
+        "grid": [-3, -4],
+        "sceneNode": "28",
+        "src": "res://GameScenes/ShopScene.tscn:361"
+      },
+      "neighbors": ["Armor2", "Armor4"],
+      "icon": "res://Sprites/UpgradeIcons/Armor3.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:194",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:198"
+    },
+    {
+      "id": "DropHeal1",
+      "name": "patcher",
+      "description": "restore +0.5 health when picking up resources",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [
+        {
+          "stat": "health_on_pickup_drop",
+          "op": "add",
+          "perLevel": 0.5,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:68"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Lifesteal1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Lifesteal1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:261"
+      },
+      "position": {
+        "rect": [311, -27, 16, 16],
+        "center": [319, -19],
+        "grid": [3, -5],
+        "sceneNode": "32",
+        "src": "res://GameScenes/ShopScene.tscn:475"
+      },
+      "neighbors": ["Lifesteal1"],
+      "icon": "res://Sprites/UpgradeIcons/DropHeal1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:201",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:205"
+    },
+    {
+      "id": "Health3",
+      "name": "big heart",
+      "description": "+80 max health",
+      "currency": "bits",
+      "costs": [500, 500, 525, 525, 550, 550, 600, 600, 600, 600],
+      "maxLevel": 10,
+      "totalCost": 5550,
+      "effects": [
+        {
+          "stat": "max_health",
+          "op": "add",
+          "perLevel": 80,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:70"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Health2",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Health2\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:263"
+      },
+      "position": {
+        "rect": [215, -27, 16, 16],
+        "center": [223, -19],
+        "grid": [0, -5],
+        "sceneNode": "29",
+        "src": "res://GameScenes/ShopScene.tscn:498"
+      },
+      "neighbors": ["Health2", "Health4"],
+      "icon": "res://Sprites/UpgradeIcons/Health3.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:208",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:212"
+    },
+    {
+      "id": "PulseBolts",
+      "name": "pulse bolts",
+      "description": "shoot projectiles outwards on each attack",
+      "currency": "nodes",
+      "costs": [12],
+      "maxLevel": 1,
+      "totalCost": 12,
+      "effects": [
+        {
+          "stat": "pulse_bolt_count",
+          "op": "add",
+          "perLevel": 3,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:72"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "AttackSpeed2",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"AttackSpeed2\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:265"
+      },
+      "position": {
+        "rect": [343, 101, 16, 16],
+        "center": [351, 109],
+        "grid": [4, -1],
+        "sceneNode": "30",
+        "src": "res://GameScenes/ShopScene.tscn:108"
+      },
+      "neighbors": ["AttackSpeed2", "PulseBoltCount1", "PulseBoltDamage1"],
+      "icon": "res://Sprites/UpgradeIcons/PulseBolts.png",
+      "notes": "Grants 3 pulse bolts per attack (pulse_bolt_count += 3).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:215",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:219"
+    },
+    {
+      "id": "PulseBoltDamage1",
+      "name": "bolt damage",
+      "description": "+25% damage to pulse bolts",
+      "currency": "bits",
+      "costs": [400, 500, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000],
+      "maxLevel": 10,
+      "totalCost": 11300,
+      "effects": [
+        {
+          "stat": "pulse_bolt_damage_mod",
+          "op": "add",
+          "perLevel": 0.25,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:74"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "PulseBolts",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"PulseBolts\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:267"
+      },
+      "position": {
+        "rect": [343, 69, 16, 16],
+        "center": [351, 77],
+        "grid": [4, -2],
+        "sceneNode": "31",
+        "src": "res://GameScenes/ShopScene.tscn:132"
+      },
+      "neighbors": ["PulseBoltExplode", "PulseBolts"],
+      "icon": "res://Sprites/UpgradeIcons/PulseBoltDamage1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:222",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:226"
+    },
+    {
+      "id": "PulseBoltCount1",
+      "name": "bolt count",
+      "description": "+1 pulse bolts per attack",
+      "currency": "sp",
+      "costs": [1, 1, 1, 1, 1],
+      "maxLevel": 5,
+      "totalCost": 5,
+      "effects": [
+        {
+          "stat": "pulse_bolt_count",
+          "op": "add",
+          "perLevel": 1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:76"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "PulseBolts",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"PulseBolts\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:269"
+      },
+      "position": {
+        "rect": [375, 69, 16, 16],
+        "center": [383, 77],
+        "grid": [5, -2],
+        "sceneNode": "33",
+        "src": "res://GameScenes/ShopScene.tscn:116"
+      },
+      "neighbors": ["PulseBoltCount2", "PulseBolts"],
+      "icon": "res://Sprites/UpgradeIcons/PulseBoltCount1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:229",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:233"
+    },
+    {
+      "id": "ExplodersSize",
+      "name": "exploder area",
+      "description": "+15% exploder explosion size",
+      "currency": "sp",
+      "costs": [1, 1, 1, 1, 1],
+      "maxLevel": 5,
+      "totalCost": 5,
+      "effects": [
+        {
+          "stat": "exploder_size",
+          "op": "add",
+          "perLevel": 0.15,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:78"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "ExplodersChance",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"ExplodersChance\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:271"
+      },
+      "position": {
+        "rect": [55, 165, 16, 16],
+        "center": [63, 173],
+        "grid": [-5, 1],
+        "sceneNode": "34",
+        "src": "res://GameScenes/ShopScene.tscn:814"
+      },
+      "neighbors": ["ExplodersChance"],
+      "icon": "res://Sprites/UpgradeIcons/ExplodersSize.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:236",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:240"
+    },
+    {
+      "id": "MaxHealthHeal1",
+      "name": "scaling regeneration",
+      "description": "restore +1% max health/sec",
+      "currency": "nodes",
+      "costs": [8, 10, 12, 14, 18, 22, 26, 30, 36, 45],
+      "maxLevel": 10,
+      "totalCost": 221,
+      "effects": [
+        {
+          "stat": "max_health_regen",
+          "op": "add",
+          "perLevel": 0.01,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:80"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "HealthRegen2",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"HealthRegen2\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:273"
+      },
+      "position": {
+        "rect": [247, -59, 16, 16],
+        "center": [255, -51],
+        "grid": [1, -6],
+        "sceneNode": "35",
+        "src": "res://GameScenes/ShopScene.tscn:662"
+      },
+      "neighbors": ["HealthRegen2", "Lifesteal2"],
+      "icon": "res://Sprites/UpgradeIcons/MaxHealthHeal1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:243",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:247"
+    },
+    {
+      "id": "Armor4",
+      "name": "super armor",
+      "description": "+5 armor",
+      "currency": "bits",
+      "costs": [700, 700, 725, 750, 750, 775, 775, 800, 800, 800],
+      "maxLevel": 10,
+      "totalCost": 7575,
+      "effects": [
+        {
+          "stat": "armor",
+          "op": "add",
+          "perLevel": 5,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:82"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Armor3",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Armor3\"] >= max[\"Armor3\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:275"
+      },
+      "position": {
+        "rect": [119, -27, 16, 16],
+        "center": [127, -19],
+        "grid": [-3, -5],
+        "sceneNode": "36",
+        "src": "res://GameScenes/ShopScene.tscn:369"
+      },
+      "neighbors": ["Armor3", "Armor5", "BossArmor2"],
+      "icon": "res://Sprites/UpgradeIcons/Armor4.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:250",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:254"
+    },
+    {
+      "id": "BossArmor2",
+      "name": "anti-purple",
+      "description": "+25% armor against bosses",
+      "currency": "nodes",
+      "costs": [8, 10, 12, 14, 16, 20, 30, 45],
+      "maxLevel": 8,
+      "totalCost": 155,
+      "effects": [
+        {
+          "stat": "boss_armor_mod",
+          "op": "add",
+          "perLevel": 0.25,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:84"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Armor4",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Armor4\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:277"
+      },
+      "position": {
+        "rect": [151, -59, 16, 16],
+        "center": [159, -51],
+        "grid": [-2, -6],
+        "sceneNode": "37",
+        "src": "res://GameScenes/ShopScene.tscn:430"
+      },
+      "neighbors": ["Armor4"],
+      "icon": "res://Sprites/UpgradeIcons/BossArmor2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:257",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:261"
+    },
+    {
+      "id": "Damage3",
+      "name": "potency",
+      "description": "+6 damage",
+      "currency": "nodes",
+      "costs": [5, 6, 7, 8, 9, 10, 10, 10, 10, 10],
+      "maxLevel": 10,
+      "totalCost": 85,
+      "effects": [
+        {
+          "stat": "damage",
+          "op": "add",
+          "perLevel": 6,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:86"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Damage2",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Damage2\"] >= max[\"Damage2\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:279"
+      },
+      "position": {
+        "rect": [343, 133, 16, 16],
+        "center": [351, 141],
+        "grid": [4, 0],
+        "sceneNode": "38",
+        "src": "res://GameScenes/ShopScene.tscn:171"
+      },
+      "neighbors": ["CritChance1", "Damage2", "Damage4", "Undamaged1"],
+      "icon": "res://Sprites/UpgradeIcons/Damage3.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:264",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:268"
+    },
+    {
+      "id": "Undamaged1",
+      "name": "first strike",
+      "description": "+25% damage to undamaged enemies",
+      "currency": "bits",
+      "costs": [1000, 1200, 1400, 1600, 1800, 2000],
+      "maxLevel": 6,
+      "totalCost": 9000,
+      "effects": [
+        {
+          "stat": "undamaged_mod",
+          "op": "add",
+          "perLevel": 0.25,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:88"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Damage3",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Damage3\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:281"
+      },
+      "position": {
+        "rect": [375, 165, 16, 16],
+        "center": [383, 173],
+        "grid": [5, 1],
+        "sceneNode": "39",
+        "src": "res://GameScenes/ShopScene.tscn:292"
+      },
+      "neighbors": ["Damage3", "Execute1", "Undamaged2"],
+      "icon": "res://Sprites/UpgradeIcons/Undamaged1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:271",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:275"
+    },
+    {
+      "id": "Execute1",
+      "name": "last strike",
+      "description": "+25% damage to enemies below 50% hp",
+      "currency": "bits",
+      "costs": [1000, 1200, 1400, 1600, 1800, 2000],
+      "maxLevel": 6,
+      "totalCost": 9000,
+      "effects": [
+        {
+          "stat": "execute_mod",
+          "op": "add",
+          "perLevel": 0.25,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:90"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Undamaged1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Undamaged1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:283"
+      },
+      "position": {
+        "rect": [407, 197, 16, 16],
+        "center": [415, 205],
+        "grid": [6, 2],
+        "sceneNode": "40",
+        "src": "res://GameScenes/ShopScene.tscn:307"
+      },
+      "neighbors": ["Execute2", "Undamaged1"],
+      "icon": "res://Sprites/UpgradeIcons/Execute1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:278",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:282"
+    },
+    {
+      "id": "CritChance1",
+      "name": "crit chance",
+      "description": "+10% critical hit chance",
+      "currency": "bits",
+      "costs": [1000, 2000, 3000, 4000, 6000, 8000, 12000, 16000, 20000, 24000],
+      "maxLevel": 10,
+      "totalCost": 96000,
+      "effects": [
+        {
+          "stat": "crit_chance",
+          "op": "add",
+          "perLevel": 0.1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:92"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Damage3",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Damage3\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:285"
+      },
+      "position": {
+        "rect": [343, 165, 16, 16],
+        "center": [351, 173],
+        "grid": [4, 1],
+        "sceneNode": "41",
+        "src": "res://GameScenes/ShopScene.tscn:269"
+      },
+      "neighbors": ["CritDamage1", "Damage3"],
+      "icon": "res://Sprites/UpgradeIcons/CritChance1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:285",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:289"
+    },
+    {
+      "id": "SpawnRate3",
+      "name": "infesting",
+      "description": "+100% spawn rate",
+      "currency": "bits",
+      "costs": [2000, 2200, 2400, 3000, 6000],
+      "maxLevel": 5,
+      "totalCost": 15600,
+      "effects": [
+        {
+          "stat": "spawn_rate_mod",
+          "op": "add",
+          "perLevel": 1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:94"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "SpawnRate2",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"SpawnRate2\"] >= max[\"SpawnRate2\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:287"
+      },
+      "position": {
+        "rect": [119, 69, 16, 16],
+        "center": [127, 77],
+        "grid": [-3, -2],
+        "sceneNode": "42",
+        "src": "res://GameScenes/ShopScene.tscn:701"
+      },
+      "neighbors": ["Size2", "SpawnRate2", "SpawnRate4"],
+      "icon": "res://Sprites/UpgradeIcons/SpawnRate3.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:292",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:296"
+    },
+    {
+      "id": "Armor5",
+      "name": "bit armor",
+      "description": "+2 armor",
+      "currency": "bits",
+      "costs": [300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300],
+      "maxLevel": 20,
+      "totalCost": 6000,
+      "effects": [
+        {
+          "stat": "armor",
+          "op": "add",
+          "perLevel": 2,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:96"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Armor4",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Armor4\"] >= max[\"Armor4\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:289"
+      },
+      "position": {
+        "rect": [87, -27, 16, 16],
+        "center": [95, -19],
+        "grid": [-4, -5],
+        "sceneNode": "43",
+        "src": "res://GameScenes/ShopScene.tscn:377"
+      },
+      "neighbors": ["Armor4", "Armor6"],
+      "icon": "res://Sprites/UpgradeIcons/Armor5.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:299",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:303"
+    },
+    {
+      "id": "Damage4",
+      "name": "nodeblade",
+      "description": "+25 damage",
+      "currency": "nodes",
+      "costs": [50, 50, 50],
+      "maxLevel": 3,
+      "totalCost": 150,
+      "effects": [
+        {
+          "stat": "damage",
+          "op": "add",
+          "perLevel": 25,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:98"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Damage3",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Damage3\"] >= max[\"Damage3\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:291"
+      },
+      "position": {
+        "rect": [375, 133, 16, 16],
+        "center": [383, 141],
+        "grid": [5, 0],
+        "sceneNode": "44",
+        "src": "res://GameScenes/ShopScene.tscn:179"
+      },
+      "neighbors": ["Damage3", "Damage5", "MovingPulser1"],
+      "icon": "res://Sprites/UpgradeIcons/Damage4.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:307",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:311"
+    },
+    {
+      "id": "Size2",
+      "name": "domain expansion",
+      "description": "+50% attack size",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [
+        {
+          "stat": "player_size_mod",
+          "op": "add",
+          "perLevel": 0.5,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:100"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "SpawnRate3",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"SpawnRate3\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:293"
+      },
+      "position": {
+        "rect": [87, 101, 16, 16],
+        "center": [95, 109],
+        "grid": [-4, -1],
+        "sceneNode": "45",
+        "src": "res://GameScenes/ShopScene.tscn:716"
+      },
+      "neighbors": ["CryptoMine", "Size3", "SpawnRate3"],
+      "icon": "res://Sprites/UpgradeIcons/Size2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:314",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:318"
+    },
+    {
+      "id": "CryptoMine",
+      "name": "crypto mine",
+      "description": "Unlock the Crypto Mine tab",
+      "currency": "nodes",
+      "costs": [50],
+      "maxLevel": 1,
+      "totalCost": 50,
+      "effects": [
+        {
+          "stat": "crypto_mine_unlocked",
+          "op": "set",
+          "perLevel": true,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:102"
+        }
+      ],
+      "sideEffects": ["shows the crypto_mine tab button (res://Scripts/Upgrades/UpgradeProcessor.gd:104)", "steam achievement CRYPTO_MINE (res://Scripts/Upgrades/UpgradeProcessor.gd:105)"],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Size2",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Size2\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:295"
+      },
+      "position": {
+        "rect": [55, 133, 16, 16],
+        "center": [63, 141],
+        "grid": [-5, 0],
+        "sceneNode": "46",
+        "src": "res://GameScenes/ShopScene.tscn:739"
+      },
+      "neighbors": ["Size2", "YellowSpawn1"],
+      "icon": "res://Sprites/UpgradeIcons/CryptoMine.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:321",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:325"
+    },
+    {
+      "id": "Health4",
+      "name": "transplant",
+      "description": "+300 max health",
+      "currency": "netcoin",
+      "costs": [0.01, 0.01, 0.01, 0.01, 0.01, 0.012, 0.01, 0.01, 0.01, 0.01],
+      "maxLevel": 10,
+      "totalCost": 0.102,
+      "effects": [
+        {
+          "stat": "max_health",
+          "op": "add",
+          "perLevel": 300,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:109"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Health3",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Health3\"] >= max[\"Health3\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:299"
+      },
+      "position": {
+        "rect": [215, -59, 16, 16],
+        "center": [223, -51],
+        "grid": [0, -6],
+        "sceneNode": "47",
+        "src": "res://GameScenes/ShopScene.tscn:506"
+      },
+      "neighbors": ["Health3", "Health5"],
+      "icon": "res://Sprites/UpgradeIcons/Health4.png",
+      "notes": "Level-6 cost is 0.012 while every other level is 0.01 (as shipped).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:328",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:332"
+    },
+    {
+      "id": "YellowSpawn1",
+      "name": "processor acquisition",
+      "description": "chance for yellow enemies to spawn",
+      "currency": "netcoin",
+      "costs": [0.01],
+      "maxLevel": 1,
+      "totalCost": 0.01,
+      "effects": [
+        {
+          "stat": "yellow_enemy_chance",
+          "op": "add",
+          "perLevel": 0.001,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:107"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "CryptoMine",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"CryptoMine\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:297"
+      },
+      "position": {
+        "rect": [23, 165, 16, 16],
+        "center": [31, 173],
+        "grid": [-6, 1],
+        "sceneNode": "48",
+        "src": "res://GameScenes/ShopScene.tscn:747"
+      },
+      "neighbors": ["CryptoMine"],
+      "icon": "res://Sprites/UpgradeIcons/YellowSpawn1.png",
+      "notes": "yellow_enemy_chance += 0.001 (0.1% per spawn).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:335",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:339"
+    },
+    {
+      "id": "Armor6",
+      "name": "byte armor",
+      "description": "+5 armor",
+      "currency": "bits",
+      "costs": [700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700],
+      "maxLevel": 30,
+      "totalCost": 21000,
+      "effects": [
+        {
+          "stat": "armor",
+          "op": "add",
+          "perLevel": 5,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:111"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Armor5",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Armor5\"] >= max[\"Armor5\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:301"
+      },
+      "position": {
+        "rect": [87, -59, 16, 16],
+        "center": [95, -51],
+        "grid": [-4, -6],
+        "sceneNode": "49",
+        "src": "res://GameScenes/ShopScene.tscn:385"
+      },
+      "neighbors": ["Armor5", "Armor7", "FocusArmor1", "MaxHealthToArmor1"],
+      "icon": "res://Sprites/UpgradeIcons/Armor6.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:342",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:346"
+    },
+    {
+      "id": "BossDamage2",
+      "name": "colossus slayer",
+      "description": "+100% damage against bosses",
+      "currency": "bits",
+      "costs": [5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000],
+      "maxLevel": 10,
+      "totalCost": 95000,
+      "effects": [
+        {
+          "stat": "boss_damage_mod",
+          "op": "add",
+          "perLevel": 1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:113"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "BossDamage1",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"BossDamage1\"] >= max[\"BossDamage1\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:303"
+      },
+      "position": {
+        "rect": [311, 197, 16, 16],
+        "center": [319, 205],
+        "grid": [3, 2],
+        "sceneNode": "50",
+        "src": "res://GameScenes/ShopScene.tscn:330"
+      },
+      "neighbors": ["BossDamage1"],
+      "icon": "res://Sprites/UpgradeIcons/BossDamage2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:351",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:355"
+    },
+    {
+      "id": "Lifesteal2",
+      "name": "drainer",
+      "description": "restore 10 health when hitting an enemy",
+      "currency": "netcoin",
+      "costs": [0.02, 0.02, 0.02],
+      "maxLevel": 3,
+      "totalCost": 0.06,
+      "effects": [
+        {
+          "stat": "health_on_hit",
+          "op": "add",
+          "perLevel": 10,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:115"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "MaxHealthHeal1",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"MaxHealthHeal1\"] >= max[\"MaxHealthHeal1\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:305"
+      },
+      "position": {
+        "rect": [279, -59, 16, 16],
+        "center": [287, -51],
+        "grid": [2, -6],
+        "sceneNode": "51",
+        "src": "res://GameScenes/ShopScene.tscn:670"
+      },
+      "neighbors": ["Lifesteal3", "MaxHealthHeal1"],
+      "icon": "res://Sprites/UpgradeIcons/Lifesteal2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:358",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:362"
+    },
+    {
+      "id": "MovingPulser1",
+      "name": "auto pulser",
+      "description": "get a drone that occasionally attacks nearby enemies",
+      "currency": "netcoin",
+      "costs": [0.05, 0.15, 0.4, 0.8, 2],
+      "maxLevel": 5,
+      "totalCost": 3.4,
+      "effects": [
+        {
+          "stat": "auto_pulser_count",
+          "op": "add",
+          "perLevel": 1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:117"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Damage4",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Damage4\"] >= max[\"Damage4\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:307"
+      },
+      "position": {
+        "rect": [407, 101, 16, 16],
+        "center": [415, 109],
+        "grid": [6, -1],
+        "sceneNode": "52",
+        "src": "res://GameScenes/ShopScene.tscn:232"
+      },
+      "neighbors": ["Damage4", "MovingPulserSize1", "MovingPulserSpeed1"],
+      "icon": "res://Sprites/UpgradeIcons/MovingPulser1.png",
+      "notes": "Each level adds one drone (auto_pulser_count += 1).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:365",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:369"
+    },
+    {
+      "id": "Size3",
+      "name": "b.i.g.",
+      "description": "+100% attack size",
+      "currency": "cores",
+      "costs": [1, 1, 1],
+      "maxLevel": 3,
+      "totalCost": 3,
+      "effects": [
+        {
+          "stat": "player_size",
+          "op": "add",
+          "perLevel": 1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:119"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Size2",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Size2\"] >= max[\"Size2\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:309"
+      },
+      "position": {
+        "rect": [55, 101, 16, 16],
+        "center": [63, 109],
+        "grid": [-5, -1],
+        "sceneNode": "53",
+        "src": "res://GameScenes/ShopScene.tscn:724"
+      },
+      "neighbors": ["AutoCollect", "Size2"],
+      "icon": "res://Sprites/UpgradeIcons/Size3.png",
+      "notes": "Description says +100% attack size; code adds 1.0 to player_size (base 34 px), not to player_size_mod. Each level widens the reticle by 1 px x (1 + player_size_mod). Likely a bug in the original; reproduce as coded.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:372",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:376"
+    },
+    {
+      "id": "MovingPulserSize1",
+      "name": "pulse thumper",
+      "description": "+25% auto-pulser attack size",
+      "currency": "nodes",
+      "costs": [50, 100, 150, 200, 300, 400],
+      "maxLevel": 6,
+      "totalCost": 1200,
+      "effects": [
+        {
+          "stat": "auto_pulser_size_mod",
+          "op": "add",
+          "perLevel": 0.25,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:121"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "MovingPulser1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"MovingPulser1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:311"
+      },
+      "position": {
+        "rect": [439, 69, 16, 16],
+        "center": [447, 77],
+        "grid": [7, -2],
+        "sceneNode": "54",
+        "src": "res://GameScenes/ShopScene.tscn:247"
+      },
+      "neighbors": ["MovingPulser1", "MovingPulserAttackSpeed1", "MovingPulserSize2"],
+      "icon": "res://Sprites/UpgradeIcons/MovingPulserSize1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:379",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:383"
+    },
+    {
+      "id": "MovingPulserAttackSpeed1",
+      "name": "fast pulsing",
+      "description": "+20% auto-pulser attack speed",
+      "currency": "sp",
+      "costs": [1, 1, 1, 1, 1],
+      "maxLevel": 5,
+      "totalCost": 5,
+      "effects": [
+        {
+          "stat": "auto_pulser_attack_speed_mod",
+          "op": "add",
+          "perLevel": 0.2,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:123"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "MovingPulserSize1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"MovingPulserSize1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:313"
+      },
+      "position": {
+        "rect": [439, 37, 16, 16],
+        "center": [447, 45],
+        "grid": [7, -3],
+        "sceneNode": "55",
+        "src": "res://GameScenes/ShopScene.tscn:262"
+      },
+      "neighbors": ["MovingPulserSize1"],
+      "icon": "res://Sprites/UpgradeIcons/MovingPulserAttackSpeed1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:386",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:390"
+    },
+    {
+      "id": "Health5",
+      "name": "blood injection",
+      "description": "+4000 max health",
+      "currency": "netcoin",
+      "costs": [0.06, 0.07, 0.08],
+      "maxLevel": 3,
+      "totalCost": 0.21,
+      "effects": [
+        {
+          "stat": "max_health",
+          "op": "add",
+          "perLevel": 4000,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:125"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Health4",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Health4\"] >= max[\"Health4\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:315"
+      },
+      "position": {
+        "rect": [215, -91, 16, 16],
+        "center": [223, -83],
+        "grid": [0, -7],
+        "sceneNode": "56",
+        "src": "res://GameScenes/ShopScene.tscn:514"
+      },
+      "neighbors": ["Health4", "MaxHealthHeal2", "StealMaxHealth1"],
+      "icon": "res://Sprites/UpgradeIcons/Health5.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:393",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:397"
+    },
+    {
+      "id": "Lifesteal3",
+      "name": "extraction",
+      "description": "restore +1% max health when hitting an enemy",
+      "currency": "bits",
+      "costs": [10000, 50000],
+      "maxLevel": 2,
+      "totalCost": 60000,
+      "effects": [
+        {
+          "stat": "max_health_on_hit",
+          "op": "add",
+          "perLevel": 0.01,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:127"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Lifesteal2",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Lifesteal2\"] >= max[\"Lifesteal2\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:317"
+      },
+      "position": {
+        "rect": [311, -91, 16, 16],
+        "center": [319, -83],
+        "grid": [3, -7],
+        "sceneNode": "57",
+        "src": "res://GameScenes/ShopScene.tscn:678"
+      },
+      "neighbors": ["Lifesteal2"],
+      "icon": "res://Sprites/UpgradeIcons/Lifesteal3.png",
+      "notes": "Heals 1% of max health per enemy hit (max_health_on_hit).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:400",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:404"
+    },
+    {
+      "id": "MaxHealthToArmor1",
+      "name": "blood armor",
+      "description": "get armor equal to +1% max health",
+      "currency": "nodes",
+      "costs": [100, 150, 200, 250, 300],
+      "maxLevel": 5,
+      "totalCost": 1000,
+      "effects": [
+        {
+          "stat": "max_health_armor",
+          "op": "add",
+          "perLevel": 0.01,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:129"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Armor6",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Armor6\"] >= max[\"Armor6\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:319"
+      },
+      "position": {
+        "rect": [119, -91, 16, 16],
+        "center": [127, -83],
+        "grid": [-3, -7],
+        "sceneNode": "58",
+        "src": "res://GameScenes/ShopScene.tscn:407"
+      },
+      "neighbors": ["Armor6", "MaxHealthToArmor2"],
+      "icon": "res://Sprites/UpgradeIcons/MaxHealthToArmor1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:407",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:411"
+    },
+    {
+      "id": "CritDamage1",
+      "name": "crit damage",
+      "description": "+50% crit damage",
+      "currency": "bits",
+      "costs": [6000, 8000, 10000, 12000, 14000, 16000, 18000, 20000, 22000, 24000],
+      "maxLevel": 10,
+      "totalCost": 150000,
+      "effects": [
+        {
+          "stat": "crit_damage",
+          "op": "add",
+          "perLevel": 0.5,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:131"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "CritChance1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"CritChance1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:321"
+      },
+      "position": {
+        "rect": [375, 197, 16, 16],
+        "center": [383, 205],
+        "grid": [5, 2],
+        "sceneNode": "59",
+        "src": "res://GameScenes/ShopScene.tscn:277"
+      },
+      "neighbors": ["CritChance1", "CritDamage2"],
+      "icon": "res://Sprites/UpgradeIcons/CritDamage1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:414",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:418"
+    },
+    {
+      "id": "Damage5",
+      "name": "netblade",
+      "description": "+100 damage",
+      "currency": "netcoin",
+      "costs": [0.05, 0.06, 0.07, 0.08, 0.09],
+      "maxLevel": 5,
+      "totalCost": 0.35,
+      "effects": [
+        {
+          "stat": "damage",
+          "op": "add",
+          "perLevel": 100,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:133"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Damage4",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Damage4\"] >= max[\"Damage4\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:323"
+      },
+      "position": {
+        "rect": [407, 133, 16, 16],
+        "center": [415, 141],
+        "grid": [6, 0],
+        "sceneNode": "60",
+        "src": "res://GameScenes/ShopScene.tscn:187"
+      },
+      "neighbors": ["Damage4", "RampingDamage1"],
+      "icon": "res://Sprites/UpgradeIcons/Damage5.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:421",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:425"
+    },
+    {
+      "id": "Armor7",
+      "name": "netarmor",
+      "description": "+200 armor",
+      "currency": "netcoin",
+      "costs": [0.06, 0.06, 0.06, 0.06, 0.06],
+      "maxLevel": 5,
+      "totalCost": 0.3,
+      "effects": [
+        {
+          "stat": "armor",
+          "op": "add",
+          "perLevel": 200,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:135"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Armor6",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Armor6\"] >= max[\"Armor6\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:325"
+      },
+      "position": {
+        "rect": [87, -91, 16, 16],
+        "center": [95, -83],
+        "grid": [-4, -7],
+        "sceneNode": "61",
+        "src": "res://GameScenes/ShopScene.tscn:400"
+      },
+      "neighbors": ["Armor6"],
+      "icon": "res://Sprites/UpgradeIcons/Armor7.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:428",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:432"
+    },
+    {
+      "id": "FocusArmor1",
+      "name": "focus armor",
+      "description": "+50% armor when attacking 8 or less enemies",
+      "currency": "bits",
+      "costs": [8000, 9000, 10000, 11000, 12000],
+      "maxLevel": 5,
+      "totalCost": 50000,
+      "effects": [
+        {
+          "stat": "focus_armor_mod",
+          "op": "add",
+          "perLevel": 0.5,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:137"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Armor6",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Armor6\"] >= max[\"Armor6\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:327"
+      },
+      "position": {
+        "rect": [55, -59, 16, 16],
+        "center": [63, -51],
+        "grid": [-5, -6],
+        "sceneNode": "62",
+        "src": "res://GameScenes/ShopScene.tscn:393"
+      },
+      "neighbors": ["Armor6"],
+      "icon": "res://Sprites/UpgradeIcons/FocusArmor1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:435",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:439"
+    },
+    {
+      "id": "StealMaxHealth1",
+      "name": "unending parasite",
+      "description": "gain +1 max health permanently when defeating an enemy",
+      "currency": "nodes",
+      "costs": [300],
+      "maxLevel": 1,
+      "totalCost": 300,
+      "effects": [
+        {
+          "stat": "perma_max_health_on_kill",
+          "op": "add",
+          "perLevel": 1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:139"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Health5",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Health5\"] >= max[\"Health5\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:329"
+      },
+      "position": {
+        "rect": [247, -123, 16, 16],
+        "center": [255, -115],
+        "grid": [1, -8],
+        "sceneNode": "63",
+        "src": "res://GameScenes/ShopScene.tscn:529"
+      },
+      "neighbors": ["Health5", "StealMaxHealth2"],
+      "icon": "res://Sprites/UpgradeIcons/StealMaxHealth1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:442",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:446"
+    },
+    {
+      "id": "PulseBoltExplode",
+      "name": "bolt burst",
+      "description": "pulse bolts explode when they expire",
+      "currency": "nodes",
+      "costs": [300],
+      "maxLevel": 1,
+      "totalCost": 300,
+      "effects": [
+        {
+          "stat": "pulse_bolt_explode",
+          "op": "set",
+          "perLevel": true,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:141"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "PulseBoltDamage1",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"PulseBoltDamage1\"] >= max[\"PulseBoltDamage1\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:331"
+      },
+      "position": {
+        "rect": [343, 37, 16, 16],
+        "center": [351, 45],
+        "grid": [4, -3],
+        "sceneNode": "64",
+        "src": "res://GameScenes/ShopScene.tscn:140"
+      },
+      "neighbors": ["PulseBoltDamage1", "PulseBoltDamage2"],
+      "icon": "res://Sprites/UpgradeIcons/PulseBoltExplode.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:449",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:453"
+    },
+    {
+      "id": "MovingPulserSize2",
+      "name": "it's pulsing time",
+      "description": "+50% auto-pulser attack size",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [
+        {
+          "stat": "auto_pulser_size_mod",
+          "op": "add",
+          "perLevel": 0.5,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:143"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "MovingPulserSize1",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"MovingPulserSize1\"] >= max[\"MovingPulserSize1\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:333"
+      },
+      "position": {
+        "rect": [471, 37, 16, 16],
+        "center": [479, 45],
+        "grid": [8, -3],
+        "sceneNode": "65",
+        "src": "res://GameScenes/ShopScene.tscn:255"
+      },
+      "neighbors": ["MovingPulserSize1"],
+      "icon": "res://Sprites/UpgradeIcons/MovingPulserSize2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:456",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:460"
+    },
+    {
+      "id": "PulseBoltCount2",
+      "name": "bolt barrage",
+      "description": "+2 pulse bolts per attack",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [
+        {
+          "stat": "pulse_bolt_count",
+          "op": "add",
+          "perLevel": 2,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:145"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "PulseBoltCount1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"PulseBoltCount1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:335"
+      },
+      "position": {
+        "rect": [375, 37, 16, 16],
+        "center": [383, 45],
+        "grid": [5, -3],
+        "sceneNode": "66",
+        "src": "res://GameScenes/ShopScene.tscn:124"
+      },
+      "neighbors": ["PulseBoltCount1", "PulseBoltDamage2"],
+      "icon": "res://Sprites/UpgradeIcons/PulseBoltCount2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:463",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:467"
+    },
+    {
+      "id": "PulseBoltDamage2",
+      "name": "bolt lethality",
+      "description": "+100% damage to pulse bolts",
+      "currency": "netcoin",
+      "costs": [0.2, 0.25, 0.3],
+      "maxLevel": 3,
+      "totalCost": 0.75,
+      "effects": [
+        {
+          "stat": "pulse_bolt_damage_mod",
+          "op": "add",
+          "perLevel": 1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:147"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "any",
+        "nodes": [
+          {
+            "id": "PulseBoltCount2",
+            "level": 1
+          },
+          {
+            "id": "PulseBoltExplode",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"PulseBoltCount2\"] > 0 or connected[\"PulseBoltExplode\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:337"
+      },
+      "position": {
+        "rect": [375, 5, 16, 16],
+        "center": [383, 13],
+        "grid": [5, -4],
+        "sceneNode": "67",
+        "src": "res://GameScenes/ShopScene.tscn:148"
+      },
+      "neighbors": ["EnemyDeathPulseBolts", "PulseBoltCount2", "PulseBoltExplode"],
+      "icon": "res://Sprites/UpgradeIcons/PulseBoltDamage2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:470",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:474"
+    },
+    {
+      "id": "MovingPulserSpeed1",
+      "name": "pulser pursuit",
+      "description": "+20% auto-pulser movement speed",
+      "currency": "nodes",
+      "costs": [100, 125, 150, 175, 200],
+      "maxLevel": 5,
+      "totalCost": 750,
+      "effects": [
+        {
+          "stat": "auto_pulser_speed_mod",
+          "op": "add",
+          "perLevel": 0.2,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:149"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "MovingPulser1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"MovingPulser1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:339"
+      },
+      "position": {
+        "rect": [439, 101, 16, 16],
+        "center": [447, 109],
+        "grid": [7, -1],
+        "sceneNode": "68",
+        "src": "res://GameScenes/ShopScene.tscn:240"
+      },
+      "neighbors": ["MovingPulser1"],
+      "icon": "res://Sprites/UpgradeIcons/MovingPulserSpeed1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:477",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:481"
+    },
+    {
+      "id": "Undamaged2",
+      "name": "ambush",
+      "description": "+100% damage to undamaged enemies",
+      "currency": "bits",
+      "costs": [10000, 12000, 15000, 20000],
+      "maxLevel": 4,
+      "totalCost": 57000,
+      "effects": [
+        {
+          "stat": "undamaged_mod",
+          "op": "add",
+          "perLevel": 1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:151"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Undamaged1",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Undamaged1\"] >= max[\"Undamaged1\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:341"
+      },
+      "position": {
+        "rect": [407, 165, 16, 16],
+        "center": [415, 173],
+        "grid": [6, 1],
+        "sceneNode": "69",
+        "src": "res://GameScenes/ShopScene.tscn:300"
+      },
+      "neighbors": ["Undamaged1"],
+      "icon": "res://Sprites/UpgradeIcons/Undamaged2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:484",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:488"
+    },
+    {
+      "id": "Execute2",
+      "name": "finishing blow",
+      "description": "+100% damage to enemies below 50% hp",
+      "currency": "bits",
+      "costs": [10000, 12000, 15000, 20000],
+      "maxLevel": 4,
+      "totalCost": 57000,
+      "effects": [
+        {
+          "stat": "execute_mod",
+          "op": "add",
+          "perLevel": 1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:153"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Execute1",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Execute1\"] >= max[\"Execute1\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:343"
+      },
+      "position": {
+        "rect": [439, 197, 16, 16],
+        "center": [447, 205],
+        "grid": [7, 2],
+        "sceneNode": "70",
+        "src": "res://GameScenes/ShopScene.tscn:315"
+      },
+      "neighbors": ["Execute1"],
+      "icon": "res://Sprites/UpgradeIcons/Execute2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:491",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:495"
+    },
+    {
+      "id": "MaxHealthHeal2",
+      "name": "instant repair",
+      "description": "restore +2% max health/sec",
+      "currency": "netcoin",
+      "costs": [0.08, 0.08, 0.08, 0.08, 0.08],
+      "maxLevel": 5,
+      "totalCost": 0.4,
+      "effects": [
+        {
+          "stat": "max_health_regen",
+          "op": "add",
+          "perLevel": 0.02,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:155"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Health5",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Health5\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:345"
+      },
+      "position": {
+        "rect": [183, -123, 16, 16],
+        "center": [191, -115],
+        "grid": [-1, -8],
+        "sceneNode": "71",
+        "src": "res://GameScenes/ShopScene.tscn:522"
+      },
+      "neighbors": ["Health5"],
+      "icon": "res://Sprites/UpgradeIcons/MaxHealthHeal2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:498",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:502"
+    },
+    {
+      "id": "RampingDamage1",
+      "name": "learning",
+      "description": "gain +1% damage every second during session",
+      "currency": "bits",
+      "costs": [20000, 100000, 200000],
+      "maxLevel": 3,
+      "totalCost": 320000,
+      "effects": [
+        {
+          "stat": "damage_mod_per_sec",
+          "op": "add",
+          "perLevel": 0.01,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:157"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Damage5",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Damage5\"] >= max[\"Damage5\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:347"
+      },
+      "position": {
+        "rect": [439, 165, 16, 16],
+        "center": [447, 173],
+        "grid": [7, 1],
+        "sceneNode": "72",
+        "src": "res://GameScenes/ShopScene.tscn:195"
+      },
+      "neighbors": ["Damage5", "LightningChance1", "MaxHealthToDamage1"],
+      "icon": "res://Sprites/UpgradeIcons/RampingDamage1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:505",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:509"
+    },
+    {
+      "id": "EnemyDeathPulseBolts",
+      "name": "bit explosion",
+      "description": "all destroyed enemies have +1% chance to explode into pulse bolts",
+      "currency": "bits",
+      "costs": [10000, 11000, 12000, 13000, 14000, 15000],
+      "maxLevel": 6,
+      "totalCost": 75000,
+      "effects": [
+        {
+          "stat": "enemy_death_pulse_bolt_chance",
+          "op": "add",
+          "perLevel": 0.01,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:159"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "PulseBoltDamage2",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"PulseBoltDamage2\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:349"
+      },
+      "position": {
+        "rect": [407, -27, 16, 16],
+        "center": [415, -19],
+        "grid": [6, -5],
+        "sceneNode": "73",
+        "src": "res://GameScenes/ShopScene.tscn:156"
+      },
+      "neighbors": ["PulseBoltDamage2"],
+      "icon": "res://Sprites/UpgradeIcons/EnemyDeathPulseBolts.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:512",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:516"
+    },
+    {
+      "id": "SpawnRate4",
+      "name": "overloaded",
+      "description": "+400% spawn rate",
+      "currency": "netcoin",
+      "costs": [0.1, 0.1, 0.1, 0.12, 0.12],
+      "maxLevel": 5,
+      "totalCost": 0.54,
+      "effects": [
+        {
+          "stat": "spawn_rate_mod",
+          "op": "add",
+          "perLevel": 4,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:161"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "SpawnRate3",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"SpawnRate3\"] >= max[\"SpawnRate3\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:351"
+      },
+      "position": {
+        "rect": [87, 69, 16, 16],
+        "center": [95, 77],
+        "grid": [-4, -2],
+        "sceneNode": "74",
+        "src": "res://GameScenes/ShopScene.tscn:709"
+      },
+      "neighbors": ["SpawnRate3"],
+      "icon": "res://Sprites/UpgradeIcons/SpawnRate4.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:519",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:523"
+    },
+    {
+      "id": "StealMaxHealth2",
+      "name": "parasite evolution",
+      "description": "increase max health permanently gained to +3 per enemy killed",
+      "currency": "nodes",
+      "costs": [600],
+      "maxLevel": 1,
+      "totalCost": 600,
+      "effects": [
+        {
+          "stat": "perma_max_health_on_kill",
+          "op": "add",
+          "perLevel": 2,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:163"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "StealMaxHealth1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"StealMaxHealth1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:353"
+      },
+      "position": {
+        "rect": [279, -155, 16, 16],
+        "center": [287, -147],
+        "grid": [2, -9],
+        "sceneNode": "75",
+        "src": "res://GameScenes/ShopScene.tscn:537"
+      },
+      "neighbors": ["Health6", "StealMaxHealth1", "StealMaxHealth3"],
+      "icon": "res://Sprites/UpgradeIcons/StealMaxHealth2.png",
+      "notes": "Adds +2 (total with unending parasite = 3), matching the description's \"to +3\".",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:526",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:530"
+    },
+    {
+      "id": "MaxHealthToArmor2",
+      "name": "blood visage",
+      "description": "get armor equal to +5% max health",
+      "currency": "netcoin",
+      "costs": [0.5],
+      "maxLevel": 1,
+      "totalCost": 0.5,
+      "effects": [
+        {
+          "stat": "max_health_armor",
+          "op": "add",
+          "perLevel": 0.05,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:165"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "MaxHealthToArmor1",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"MaxHealthToArmor1\"] >= max[\"MaxHealthToArmor1\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:355"
+      },
+      "position": {
+        "rect": [119, -123, 16, 16],
+        "center": [127, -115],
+        "grid": [-3, -8],
+        "sceneNode": "76",
+        "src": "res://GameScenes/ShopScene.tscn:415"
+      },
+      "neighbors": ["MaxHealthToArmor1", "RampingArmor1"],
+      "icon": "res://Sprites/UpgradeIcons/MaxHealthToArmor2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:533",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:537"
+    },
+    {
+      "id": "RampingArmor1",
+      "name": "growing",
+      "description": "gain +1% armor every second during session",
+      "currency": "bits",
+      "costs": [50000, 100000, 120000, 140000, 200000],
+      "maxLevel": 5,
+      "totalCost": 610000,
+      "effects": [
+        {
+          "stat": "armor_mod_per_sec",
+          "op": "add",
+          "perLevel": 0.01,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:167"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "MaxHealthToArmor2",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"MaxHealthToArmor2\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:357"
+      },
+      "position": {
+        "rect": [119, -155, 16, 16],
+        "center": [127, -147],
+        "grid": [-3, -9],
+        "sceneNode": "77",
+        "src": "res://GameScenes/ShopScene.tscn:423"
+      },
+      "neighbors": ["MaxHealthToArmor2"],
+      "icon": "res://Sprites/UpgradeIcons/RampingArmor1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:540",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:544"
+    },
+    {
+      "id": "Health6",
+      "name": "indomitable",
+      "description": "+50000 max health",
+      "currency": "nodes",
+      "costs": [600, 600, 600, 600, 600],
+      "maxLevel": 5,
+      "totalCost": 3000,
+      "effects": [
+        {
+          "stat": "max_health",
+          "op": "add",
+          "perLevel": 50000,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:169"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "StealMaxHealth2",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"StealMaxHealth2\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:359"
+      },
+      "position": {
+        "rect": [279, -187, 16, 16],
+        "center": [287, -179],
+        "grid": [2, -10],
+        "sceneNode": "78",
+        "src": "res://GameScenes/ShopScene.tscn:545"
+      },
+      "neighbors": ["Health7", "StealMaxHealth2"],
+      "icon": "res://Sprites/UpgradeIcons/Health6.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:547",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:551"
+    },
+    {
+      "id": "StealMaxHealth3",
+      "name": "insatiable",
+      "description": "increase max health permanently gained to +8 per enemy killed",
+      "currency": "netcoin",
+      "costs": [0.6],
+      "maxLevel": 1,
+      "totalCost": 0.6,
+      "effects": [
+        {
+          "stat": "perma_max_health_on_kill",
+          "op": "add",
+          "perLevel": 5,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:171"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "StealMaxHealth2",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"StealMaxHealth2\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:361"
+      },
+      "position": {
+        "rect": [311, -187, 16, 16],
+        "center": [319, -179],
+        "grid": [3, -10],
+        "sceneNode": "79",
+        "src": "res://GameScenes/ShopScene.tscn:647"
+      },
+      "neighbors": ["StealMaxHealth2"],
+      "icon": "res://Sprites/UpgradeIcons/StealMaxHealth3.png",
+      "notes": "Adds +5 (total = 8), matching the description's \"to +8\".",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:554",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:558"
+    },
+    {
+      "id": "LightningChance1",
+      "name": "lightning rod",
+      "description": "+5% chance to create chaining lightning when hitting an enemy",
+      "currency": "netcoin",
+      "costs": [0.7, 1, 1.3, 2, 3],
+      "maxLevel": 5,
+      "totalCost": 8,
+      "effects": [
+        {
+          "stat": "lightning_chance",
+          "op": "add",
+          "perLevel": 0.05,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:173"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "RampingDamage1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"RampingDamage1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:363"
+      },
+      "position": {
+        "rect": [471, 133, 16, 16],
+        "center": [479, 141],
+        "grid": [8, 0],
+        "sceneNode": "80",
+        "src": "res://GameScenes/ShopScene.tscn:210"
+      },
+      "neighbors": ["LightningChainCount1", "LightningDamage1", "RampingDamage1"],
+      "icon": "res://Sprites/UpgradeIcons/LightningChance1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:561",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:565"
+    },
+    {
+      "id": "LightningChainCount1",
+      "name": "chaining",
+      "description": "lightning chains +1 times",
+      "currency": "sp",
+      "costs": [1, 1, 1, 1, 1, 1, 1, 1],
+      "maxLevel": 8,
+      "totalCost": 8,
+      "effects": [
+        {
+          "stat": "lightning_chains",
+          "op": "add",
+          "perLevel": 1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:175"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "LightningChance1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"LightningChance1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:365"
+      },
+      "position": {
+        "rect": [503, 101, 16, 16],
+        "center": [511, 109],
+        "grid": [9, -1],
+        "sceneNode": "81",
+        "src": "res://GameScenes/ShopScene.tscn:225"
+      },
+      "neighbors": ["LightningChance1"],
+      "icon": "res://Sprites/UpgradeIcons/LightningChainCount1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:568",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:572"
+    },
+    {
+      "id": "LightningDamage1",
+      "name": "thundering",
+      "description": "+50% lightning damage",
+      "currency": "nodes",
+      "costs": [500, 600, 700, 800, 900, 1000, 1100, 1200],
+      "maxLevel": 8,
+      "totalCost": 6800,
+      "effects": [
+        {
+          "stat": "lightning_damage_mod",
+          "op": "add",
+          "perLevel": 0.5,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:177"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "LightningChance1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"LightningChance1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:367"
+      },
+      "position": {
+        "rect": [503, 133, 16, 16],
+        "center": [511, 141],
+        "grid": [9, 0],
+        "sceneNode": "82",
+        "src": "res://GameScenes/ShopScene.tscn:218"
+      },
+      "neighbors": ["LightningChance1"],
+      "icon": "res://Sprites/UpgradeIcons/LightningDamage1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:575",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:579"
+    },
+    {
+      "id": "CritDamage2",
+      "name": "big crit",
+      "description": "+200% crit damage",
+      "currency": "netcoin",
+      "costs": [0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2],
+      "maxLevel": 8,
+      "totalCost": 11.8,
+      "effects": [
+        {
+          "stat": "crit_damage",
+          "op": "add",
+          "perLevel": 2,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:179"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "CritDamage1",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"CritDamage1\"] >= max[\"CritDamage1\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:369"
+      },
+      "position": {
+        "rect": [407, 229, 16, 16],
+        "center": [415, 237],
+        "grid": [6, 3],
+        "sceneNode": "83",
+        "src": "res://GameScenes/ShopScene.tscn:285"
+      },
+      "neighbors": ["CritDamage1"],
+      "icon": "res://Sprites/UpgradeIcons/CritDamage2.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:582",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:586"
+    },
+    {
+      "id": "MaxHealthToDamage1",
+      "name": "bloodblade",
+      "description": "get damage equal to +0.1% of max health",
+      "currency": "bits",
+      "costs": [100000],
+      "maxLevel": 1,
+      "totalCost": 100000,
+      "effects": [
+        {
+          "stat": "max_health_damage",
+          "op": "add",
+          "perLevel": 0.001,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:181"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "RampingDamage1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"RampingDamage1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:371"
+      },
+      "position": {
+        "rect": [471, 165, 16, 16],
+        "center": [479, 173],
+        "grid": [8, 1],
+        "sceneNode": "84",
+        "src": "res://GameScenes/ShopScene.tscn:203"
+      },
+      "neighbors": ["RampingDamage1"],
+      "icon": "res://Sprites/UpgradeIcons/MaxHealthToDamage1.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:589",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:593"
+    },
+    {
+      "id": "Health7",
+      "name": "beyond",
+      "description": "+100000 max health",
+      "currency": "bits",
+      "costs": [80000, 80000, 80000, 80000, 80000],
+      "maxLevel": 5,
+      "totalCost": 400000,
+      "effects": [
+        {
+          "stat": "max_health",
+          "op": "add",
+          "perLevel": 100000,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:183"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Health6",
+            "level": "max"
+          }
+        ],
+        "expr": "connected[\"Health6\"] >= max[\"Health6\"]",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:373"
+      },
+      "position": {
+        "rect": [279, -219, 16, 16],
+        "center": [287, -211],
+        "grid": [2, -11],
+        "sceneNode": "85",
+        "src": "res://GameScenes/ShopScene.tscn:553"
+      },
+      "neighbors": ["Health6", "Infinity1"],
+      "icon": "res://Sprites/UpgradeIcons/Health7.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:596",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:600"
+    },
+    {
+      "id": "Infinity1",
+      "name": "to infinity",
+      "description": "???",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [
+        {
+          "stat": "spawn_rate_mod",
+          "op": "add",
+          "perLevel": 10,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:185"
+        },
+        {
+          "stat": "perma_max_health_on_kill",
+          "op": "add",
+          "perLevel": 12,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:186"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Health7",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Health7\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:375"
+      },
+      "position": {
+        "rect": [279, -251, 16, 16],
+        "center": [287, -243],
+        "grid": [2, -12],
+        "sceneNode": "86",
+        "src": "res://GameScenes/ShopScene.tscn:561"
+      },
+      "neighbors": ["Health7", "Infinity2"],
+      "icon": "res://Sprites/UpgradeIcons/Infinity1.png",
+      "notes": "Description \"???\". Code: spawn_rate_mod += 10.0 and perma_max_health_on_kill += 12.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:603",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:607"
+    },
+    {
+      "id": "Infinity2",
+      "name": "going nowhere",
+      "description": "???",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Infinity1",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Infinity1\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:377"
+      },
+      "position": {
+        "rect": [279, -283, 16, 16],
+        "center": [287, -275],
+        "grid": [2, -13],
+        "sceneNode": "87",
+        "src": "res://GameScenes/ShopScene.tscn:569"
+      },
+      "neighbors": ["Infinity1", "Infinity3"],
+      "icon": "res://Sprites/UpgradeIcons/Infinity2.png",
+      "notes": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:610",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:614"
+    },
+    {
+      "id": "Infinity3",
+      "name": "void",
+      "description": "???",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Infinity2",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Infinity2\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:379"
+      },
+      "position": {
+        "rect": [279, -315, 16, 16],
+        "center": [287, -307],
+        "grid": [2, -14],
+        "sceneNode": "88",
+        "src": "res://GameScenes/ShopScene.tscn:577"
+      },
+      "neighbors": ["Infinity2", "Infinity4"],
+      "icon": "res://Sprites/UpgradeIcons/Infinity3.png",
+      "notes": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:617",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:621"
+    },
+    {
+      "id": "Infinity4",
+      "name": "no return",
+      "description": "???",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Infinity3",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Infinity3\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:381"
+      },
+      "position": {
+        "rect": [279, -347, 16, 16],
+        "center": [287, -339],
+        "grid": [2, -15],
+        "sceneNode": "89",
+        "src": "res://GameScenes/ShopScene.tscn:585"
+      },
+      "neighbors": ["Infinity3", "Infinity5"],
+      "icon": "res://Sprites/UpgradeIcons/Infinity4.png",
+      "notes": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:624",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:628"
+    },
+    {
+      "id": "Infinity5",
+      "name": "where",
+      "description": "???",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Infinity4",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Infinity4\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:383"
+      },
+      "position": {
+        "rect": [311, -379, 16, 16],
+        "center": [319, -371],
+        "grid": [3, -16],
+        "sceneNode": "90",
+        "src": "res://GameScenes/ShopScene.tscn:593"
+      },
+      "neighbors": ["Infinity4", "Infinity6"],
+      "icon": "res://Sprites/UpgradeIcons/Infinity5.png",
+      "notes": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:631",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:635"
+    },
+    {
+      "id": "Infinity6",
+      "name": "in the distance",
+      "description": "???",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Infinity5",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Infinity5\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:385"
+      },
+      "position": {
+        "rect": [311, -411, 16, 16],
+        "center": [319, -403],
+        "grid": [3, -17],
+        "sceneNode": "91",
+        "src": "res://GameScenes/ShopScene.tscn:601"
+      },
+      "neighbors": ["Infinity5", "Infinity7"],
+      "icon": "res://Sprites/UpgradeIcons/Infinity6.png",
+      "notes": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:638",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:642"
+    },
+    {
+      "id": "Infinity7",
+      "name": "something happens",
+      "description": "???",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Infinity6",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Infinity6\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:387"
+      },
+      "position": {
+        "rect": [311, -443, 16, 16],
+        "center": [319, -435],
+        "grid": [3, -18],
+        "sceneNode": "92",
+        "src": "res://GameScenes/ShopScene.tscn:609"
+      },
+      "neighbors": ["Infinity6", "Infinity8"],
+      "icon": "res://Sprites/UpgradeIcons/Infinity7.png",
+      "notes": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:645",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:649"
+    },
+    {
+      "id": "Infinity8",
+      "name": "event horizon",
+      "description": "???",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Infinity7",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Infinity7\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:389"
+      },
+      "position": {
+        "rect": [311, -475, 16, 16],
+        "center": [319, -467],
+        "grid": [3, -19],
+        "sceneNode": "93",
+        "src": "res://GameScenes/ShopScene.tscn:617"
+      },
+      "neighbors": ["Infinity7", "Infinity9"],
+      "icon": "res://Sprites/UpgradeIcons/Infinity8.png",
+      "notes": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:652",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:656"
+    },
+    {
+      "id": "Infinity9",
+      "name": "singularity",
+      "description": "???",
+      "currency": "cores",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Infinity8",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Infinity8\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:391"
+      },
+      "position": {
+        "rect": [311, -507, 16, 16],
+        "center": [319, -499],
+        "grid": [3, -20],
+        "sceneNode": "94",
+        "src": "res://GameScenes/ShopScene.tscn:625"
+      },
+      "neighbors": ["Infinity8", "Laboratory", "YellowSpawn2"],
+      "icon": "res://Sprites/UpgradeIcons/Infinity9.png",
+      "notes": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:659",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:663"
+    },
+    {
+      "id": "Laboratory",
+      "name": "the lab",
+      "description": "unlock the laboratory tab",
+      "currency": "bits",
+      "costs": [1],
+      "maxLevel": 1,
+      "totalCost": 1,
+      "effects": [
+        {
+          "stat": "lab_unlocked",
+          "op": "set",
+          "perLevel": true,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:188"
+        }
+      ],
+      "sideEffects": ["shows the lab tab button (res://Scripts/Upgrades/UpgradeProcessor.gd:190)", "steam achievement THE_LAB (res://Scripts/Upgrades/UpgradeProcessor.gd:191)"],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Infinity9",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Infinity9\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:393"
+      },
+      "position": {
+        "rect": [303, -579, 32, 32],
+        "center": [319, -563],
+        "grid": [3, -22],
+        "sceneNode": "95",
+        "src": "res://GameScenes/ShopScene.tscn:640"
+      },
+      "neighbors": ["Infinity9"],
+      "icon": "res://Sprites/UpgradeIcons/Laboratory.png",
+      "notes": "Costs 1 Bit. Unlocked by buying Infinity9 (singularity).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:666",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:670"
+    },
+    {
+      "id": "YellowSpawn2",
+      "name": "endless",
+      "description": "increased yellow enemy spawn rate",
+      "currency": "nodes",
+      "costs": [1000],
+      "maxLevel": 1,
+      "totalCost": 1000,
+      "effects": [
+        {
+          "stat": "yellow_enemy_chance",
+          "op": "add",
+          "perLevel": 0.004,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:193"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Infinity9",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Infinity9\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:395"
+      },
+      "position": {
+        "rect": [343, -507, 16, 16],
+        "center": [351, -499],
+        "grid": [4, -20],
+        "sceneNode": "96",
+        "src": "res://GameScenes/ShopScene.tscn:633"
+      },
+      "neighbors": ["Infinity9"],
+      "icon": "res://Sprites/UpgradeIcons/YellowSpawn2.png",
+      "notes": "yellow_enemy_chance += 0.004 (total 0.5% per spawn).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:673",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:677"
+    },
+    {
+      "id": "AutoCollect",
+      "name": "auto-collect",
+      "description": "+10% chance to automatically collect enemy drops when dropped",
+      "currency": "nodes",
+      "costs": [300, 500, 1000, 2000, 4000, 6000, 8000, 10000],
+      "maxLevel": 8,
+      "totalCost": 31800,
+      "effects": [
+        {
+          "stat": "autocollect_chance",
+          "op": "add",
+          "perLevel": 0.1,
+          "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:195"
+        }
+      ],
+      "sideEffects": [],
+      "requires": {
+        "mode": "all",
+        "nodes": [
+          {
+            "id": "Size3",
+            "level": 1
+          }
+        ],
+        "expr": "connected[\"Size3\"] > 0",
+        "src": "res://Scripts/Upgrades/UpgradeProcessor.gd:397"
+      },
+      "position": {
+        "rect": [23, 101, 16, 16],
+        "center": [31, 109],
+        "grid": [-6, -1],
+        "sceneNode": "97",
+        "src": "res://GameScenes/ShopScene.tscn:732"
+      },
+      "neighbors": ["Size3"],
+      "icon": "res://Sprites/UpgradeIcons/AutoCollect.png",
+      "notes": null,
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:680",
+      "costsSrc": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:684"
+    }
+  ]
+}

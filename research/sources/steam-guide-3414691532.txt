@@ -1,0 +1,415 @@
+								Main Attack															
+								Damage															
+								[LINK https://images.steamusercontent.com/ugc/5167280233350073/DB1CA147B168F5B1C7768E43F5D214D2755A7641/] 
+power
++1 damage
+15 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233350082/5F313EFB9641FA6B512EAFFA37EEC2CF01BC9B48/] 
+proficiency
++3 damage
+10 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233350068/FDC1B4D9F9CC70D8BE664C296B52707CBB78ACD3/] 
+potency
++6 damage
+10 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233350047/02B3DF1F7EEB33D2981E07189E6B769F0162876C/] 
+nodeblade
++25 damage
+3 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233350037/20D81F5618BE6BB5FA11DFE31E59789BCEB9B7F5/] 
+netblade
++100 damage
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349995/2F96E306582B66A906F0F6BD7C85259541695D97/] 
+learning
+Gain +1% damage every second during session
+3 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349805/F2C6A665AB73F4428113BEA95792A486B020F7DC/] 
+bloodblade
+get damage equal to +0.1% of max health
+1 level
+								Conditional Damage Nodes															
+								[LINK https://images.steamusercontent.com/ugc/5167280233349842/FEE0FB393CA0E87808E76B5F7011A5DE97FC73C3/] 
+connection buster
+attack deals 5% damage per enemy in area
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349888/51A500267EA22D282FB6F74CA2A9A09C054C0EC8/] 
+first Strike
++25% damage to undamaged enemies
+6 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349747/BB8B9B43457A4EADE274B66718FA2F9D2D942C7B/] 
+ambush
++100% damage to undamaged enemies
+4 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349991/6C1DBF1DC3A05B884C7BF912C272FD09E1256E23/] 
+last Strike
++25% damage to enemies below 50% hp
+6 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349886/FE899FBAB35E40022FAB2C35DB23FB38C3CDD426/] 
+finishing Blow
++100% damage to enemies below 50% hp
+4 levels
+								Critical Hits															
+								[LINK https://images.steamusercontent.com/ugc/5167280233349848/67615F706F2F06C2D544D286D975D6A43E0657DF/] 
+crit chance
++10% critical hit chance
+10 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349849/D915CE4767D170D727CE8E3978A3140E17C18FA0/] 
+crit damage
++50% crit damage
+10 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349769/261D12FB977A13696FA9934CB0FBE25CAF422208/] 
+big crit
++200% crit damage
+8 levels
+								Boss Damage															
+								[LINK https://images.steamusercontent.com/ugc/5167280233349899/B211A752BEA8BA4925A69B8FDAFBF47F937BEDF3/] 
+giant Slayer
++50 damage against bosses
+10 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349838/291BDE65C793362880E721D7EEFE989EE19C0738/] 
+colossus Slayer
++100% damage against bosses
+10 levels
+								Attack Speed															
+								[LINK https://images.steamusercontent.com/ugc/5167280233350104/B4A5140DA0A03F8F083D65C8B85D83EDC46307E7/] 
+repeating
++20% attack speed
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233350106/149441CDFDC206F3FE36AF909503DDE3E9C182C6/] 
+repeat-repeating
++20% attack speed
+1 level
+								Attack Size															
+								[LINK https://images.steamusercontent.com/ugc/5167280233349937/D5C20D5CCA7734B01EA7DB30C281E1CAD8C44B7A/] 
+influence
++10% attack size
+10 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349857/19FBE31AB3150ED984DB11B7CF5CD482E271B4F8/] 
+domain Expansion
++50% attack size
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349761/386474201A3CF3645261DC930911885B6B8213CE/] 
+b.i.g.
++100 attack size
+3 levels
+								Secondary Attacks															
+								Pulse Bolts															
+								[LINK https://images.steamusercontent.com/ugc/5167280233350084/EA1148351BA4B0BDB6A8D76EACF575B15976152B/] 
+pulse bolts
+shoot projectiles outwards an each attack
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349825/FF0BB3CBA5D55686340154B0E34E9444055175A2/] 
+bolt damage
++25% damage to pulse bolts
+10 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349811/07030533CE3D573E305D5E8891846704198DD27C/] 
+bolt burst
+pulse bolts explode when they expire
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349815/8C25F2B07C091FA8B1A2EFA24C885A80E4748406/] 
+bolt count
++1 pulse bolts per attack
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349809/3E860EC803E7DC240F525A0D439B6730CE1B8C5D/] 
+bolt barrage
++2 pulse bolts per attack
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349826/EBF33A722A20EC5FCD83E7125E9029080A5C3ED5/] 
+bolt lethality
++100% damage to pulse bolts
+3 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349784/6AE0C1DA42577590CF105B9A3CCABEFEADD968F4/] 
+bit explosion
+all destroued enemies have +1% chance to explode into pulse bolts
+6 levels
+								Auto-Pulsers															
+								[LINK https://images.steamusercontent.com/ugc/5167280233349752/465FC84939F79B184E2B8E2FCBAE7C5CC6F500F0/] 
+auto pulser
+get a drone that occasionally attacks nearby enemies
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233350097/D94F21696EC1B2E9B24DD289A1DC282B4CE63913/] 
+pulser pursuit
++20% auto-pulser movement speed
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233350093/77F898962AD25660102B20D1F1290E602F71A8D1/] 
+pulse thumper
++25% auto-pulser attack size
+6 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349884/98010F888854AE526B8DEC7C58B927858BB45D44/] 
+fast pulsing
++20% auto-pulser attack speed
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349989/2A7F8B44703618C351FC1F5338FBE1FF3FD72543/] 
+it's pulsing time
++50% auto-pulser attack speed
+1 level
+								Lighting															
+								[LINK https://images.steamusercontent.com/ugc/5167280233350006/1462327847981928AAB0F4B6D0E55166705557BC/] 
+lighting rod
++5% chance to create chaining lightning when hitting an enemy
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349719/344692CC47ECCF008EF2C8131553172CCA996E0A/] 
+thundering
++50% lightning damage
+8 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349837/F85216024CC577A9DEE7DDE112F2F7BB8524359D/] 
+chaining
+lightning chains +1 times
+8 levels
+								Survivability															
+								Maximum Health Pool															
+								[LINK https://images.steamusercontent.com/ugc/5167280233349863/73B081CBFCA345CDCB59E9EE71DEB07AD1700C8E/] 
+endurance
++4 max health
+10 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349762/F61CAA35491F5E8EEEA91C55665C8406D841150A/] 
+better endurance
++8 max health
+8 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349772/6989C0C7EED1511AD8C803FDF4BBB114C7B25987/] 
+big heart
++80 max health
+10 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349732/9F78562D5C53C6DA218BB8D3C4BB53B4FF595A35/] 
+transplant
++300 max health
+10 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349789/EEC914045755B34F344C60BE1564FE54FB44FE54/] 
+blood injection
++4000 max health
+3 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349926/BD511C29EC7EA16058B32B8C91E7A49F124445E6/] 
+indomitable
++50000 max health
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349765/0D27332865BE89A487DB28334A869A96F844009C/] 
+beyond
++100000 max health
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349736/4B9B691D552BF635F028C29E1D74972EBF756DD1/] 
+unending parasite
+gain +1 max health permanently when defeating an enemy
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233350063/080E3D5AB383A7A0859FAFE034BD6E7DCA0226A2/] 
+parasite evolution
+increase max health permanently gained to +3 per enemy killed
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349941/15B90A0DBC976FA6AD4240C6898799891B81DB5E/] 
+insatiable
+increase max health permanently gained to +8 per enemy killed
+1 level
+								Health Regeneration															
+								[LINK https://images.steamusercontent.com/ugc/5167280233350100/778F79C32E554AFCC9C780A551FCF31EE39F6476/] 
+repair tool
+regenerate +0.1 health/sec
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233350112/02D35F58B45D376EBBAE17D37D31FA04268AEEC5/] 
+self-repair
+regenerate +4 health/sec
+1 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233350111/A8E428BCE1BD579AD7D9BD28AB45AFD07B1AEAD4/] 
+scaling regeneration
+restore +1% max health/sec
+10 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349963/6FAB0B261B8C4AEAEB06E7FCD8E9195D4E77A1BE/] 
+instant repair
+restore +2% max health/sec
+5 levels
+								Conditional Health Regeneration															
+								[LINK https://images.steamusercontent.com/ugc/5167280233350107/83877AB27FD10D28A41EBE0D445562A074EFF2F9/] 
+salvaging
+restore +1 health on enemy kill
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349697/378BB240C319CC29601577FDFB3CD8954FC71D5C/] 
+skilled salvager
+restore +8 health on enemy kill
+1 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233350109/E2EE15B23A6D17382AB8D68992D9FDDB543AB66D/] 
+sapper
+restore +0.5 health when hitting an enemy
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349858/91787935B97D96DE1CD2491B68AEDC9B88534FEE/] 
+drainer
+restore +10 health when hitting an enemy
+3 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349883/C1DCAF58CD051E7F94721E828C5F8139A9C0D998/] 
+extraction
+restore 1% health when hitting an enemy
+2 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233350064/0756638B1B20054ECEA94459AC337C264DFA94FE/] 
+patcher
+restore 0.5 health when picking up resources
+1 levels
+								Armor															
+								[LINK https://images.steamusercontent.com/ugc/5167280233349887/EC574AA569B64970C999AB39DD706CFB872838D0/] 
+firewall
++0.2 armor
+10 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349750/10B3C720B472710796722CE3F36DBD93F1A7D667/] 
+antivirus
++0.6 armor
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349806/EC9E03506B040FECA52700EB3D66E21982383E78/] 
+bolster
++2 armor
+10 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349703/8A6BC225743CED3DA5ADC63B4803122CFCB74663/] 
+super armor
++5 armor
+10 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349774/F537853EB1EE562EB7D6B77409E925DCD0DC3B52/] 
+bit armor
++2 armor
+20 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349831/DAF2FAF1FB338B09C60EB8CFBA3D1325A95DB219/] 
+byte armor
++5 armor
+30 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233350031/51816BCA2E47ADDD0284D22582B8C776D7AB2BED/] 
+net armor
++200 armor
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349785/3F8EB9AF1375D5EB831EB049989680AC1E5E8B8C/] 
+blood armor
+get armor equal to 1% max health
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349792/A7E0EB30F7B03BAC406B23861B95415D8B92B152/] 
+blood visage
+get armor equal to 5% max health
+1 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349909/F2D5B6B45E4EA686819C044936F40E2774859530/] 
+growing
+gain +1% armor every second during session
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349706/89BE15D1A01685FE55A214F71D77BBEB7FC4FB30/] 
+swarm defense system
++2% armor per enemy in area
+10 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349892/3F81D26824B4B992300CD34600C1E4E1EA39088F/] 
+focus armor
++50% armor when attacking 8 enemies or less
+5 levels
+[LINK https://images.steamusercontent.com/ugc/11951581364444016577/63FF84FD0DDF91F8C94B625323AFC7509AFAD6A8/] 
+boss guard
++1 armor against bosses
+10 levels
+[LINK https://images.steamusercontent.com/ugc/10637065292987087828/DA5328A6D3DE435B20007990B67BAF7B4FE3CA5A/] 
+anti-purple
++25% armor against bosses
+8 levels
+								Miscellaneous															
+								Enemy Spawns															
+								[LINK https://images.steamusercontent.com/ugc/5167280233349853/F26AB8C4ED05F2422B2D5FA2F2951258E497B885/] 
+crowding
++50% spawn rate
+15 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349714/67000501527C45206DC41C5FA54FF22A43973AC7/] 
+swaming
++200% spawn rate
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349929/61E2CC93BB5BB167063E5848D25A6348B791AF44/] 
+infesting
++100% spawn rate
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233350062/B2AD5BF931B72F2ABBA7C96F810AFD60213DAD39/] 
+overloading
++400% spawn rate
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349702/85BC187708BCA7B65B52C5F9D5672A55ABA0B48C/] 
+spawn exploders
++5% chance to spawn enemies that explode on death
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349870/14B627215423037DC20BC24EE7A887F0BC2FBA5E/] 
+exploder area
++15% exploder explosion size
+5 levels
+								Loot & Enemy Colours															
+								[LINK https://images.steamusercontent.com/ugc/5167280233349776/E7BB301C287D8F2AB999B8F62A84AA7AEDCB6B9F/] 
+bit boost
+red enemies drop +1 Bits
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233350046/8E7BE0C272F57C18A687CA3DD9C565935F53C20E/] 
+node finder
++1% chance for blue enemies to spawn
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233350044/0F7B945D5E45FA5E226421AFCA9B65EEF0ECE51E/] 
+node boost
+blue enemies drop +1 Nodes
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233350075/2863D50E1C14A5329B23E7C99E8516F1AC27260C/] 
+processor acquisition
+chance for yellow enemies to spawn
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349862/9FC9354CF1AFBF4FE7213641F41EF371196407C0/] 
+endless
+increased yellow enemy spawn rate
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233350067/01A34510264164676ADA03EB30275DDB2CA85729/] 
+plundering
++10% chance for double resource drops
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233350011/EFD5D1FCE6E2BFD72C1BFED007EDFB140B1ECFD7/] 
+magnet
++50% pickup range
+5 levels
+[LINK https://images.steamusercontent.com/ugc/5167280233349759/EB9CF88BF47A70EB5E3701973DC101A62B38B928/] 
+auto-collect
++10% chance to automatically collect enemy drops when dropped
+8 levels
+								Tabs															
+								[LINK https://images.steamusercontent.com/ugc/5167280233350027/26D13C1449F19DE99A05D144D9C88BE7D9C96732/] 
+milestones
+unlock the milestones tab
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349856/05BF9B5E55992CEA746547FCA0C846A1E31B74AD/] 
+crypto mine
+Unlock the Crypto Mine tab
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349717/96F811D8389461A24FBBD3675E7527DF543BDCEB/] 
+the lab
+unlock the laboratory tab
+1 level
+								Story(?) Progression															
+								[LINK https://images.steamusercontent.com/ugc/5167280233349722/A7D30308E3D66F5A088F70FF3A41DCED366BC386/] 
+to infinity
+???
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349903/F079D52205284BEE7FF3EDA9C6E756C631096626/] 
+going nowhere
+???
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349738/2129535A653454DB579FE0001F011B2BA3C6AF67/] 
+void
+???
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233350040/13D83E1DFC026B00F0C67014B5B2A144D74EF2CB/] 
+no return
+???
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349742/C115434769FB67373516268DF6C18B884F0AF211/] 
+where
+???
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349911/1A7449CCF4C9F30BC4A396B9CB70CF084E69C72E/] 
+in the distance
+???
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349700/C2FD92733C827F285918BE30EA64DEEC110C00C8/] 
+something happens
+???
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233349868/04B418F81565379F047EA29D21831C3673E0C4E9/] 
+event horizon
+???
+1 level
+[LINK https://images.steamusercontent.com/ugc/5167280233350115/8419A859411ECBA34CF79DF944AD3C0C4BBFF3DF/] 
+singularity
+???
+1 level
+								End note															
+								If you think the nodes should be reorganized here or have their place in the tree labelled let me know. Also if I should maybe make an achievement guide, though it's fairly easy(just horrifically boring and time consuming)
+anyway trans rights, have a good day								
+	$J( function() {
+		InitializeCommentThread( "PublishedFile_Public", "PublishedFile_Public_76561199063199003_3414691532", {"feature":"3414691532","feature2":-1,"owner":"76561199063199003","total_count":4,"start":0,"pagesize":10,"has_upvoted":0,"upvotes":0,"votecountid":null,"voteupid":null,"commentcountid":null,"subscribed":false,"extended_data":"{\"contributors\":[\"76561199063199003\",{}],\"appid\":3107330,\"sharedfile\":{\"m_parentsDetails\":null,\"m_parentBundlesDetails\":null,\"m_bundledChildren\":[],\"m_ownedBundledItems\":[]},\"parent_item_reported\":false}"}, 'https://steamcommunity.com/comment/PublishedFile_Public/', 40 );
+	} );

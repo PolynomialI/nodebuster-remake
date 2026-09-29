@@ -1,0 +1,142 @@
+{
+  "notes": ["Render pipeline: the 480x270 game renders into a SubViewport (res://MainScene.tscn), integer-scaled to the window (stretch mode canvas_items, scale_mode integer; default window 1440x810: res://project.godot).", "The CRT ColorRect sits on CanvasLayer 4 over the whole window and reads the screen texture, so the CRT runs at window resolution, not 480x270. SCREEN_PIXEL_SIZE (chromatic offsets, 3-px RGB grid) is therefore in window pixels.", "WorldEnvironment glow (2D HDR glow, background_mode canvas) applies to canvas layers up to 10. Glow intensity is 1.8 with CRT on and 0.9 with CRT off (res://Scripts/Autoloads/OptionData.gd:86-92).", "Glitch overlay is hidden except during the godvirus ending, where shake_power tweens 0 -> 0.8 over 10 s (res://Scripts/Ending.gd:41-52).", "BloomShader.gdshader and GlitchShader.gdshader (texture version) ship but are not referenced by any scene."],
+  "crt": {
+    "shader": "res://Shaders/CRTShader.gdshader",
+    "node": "MainScene/ScreenCanvas/CRT (CanvasLayer layer 4)",
+    "material": "res://MainScene.tscn:30",
+    "params": {
+      "wobble_speed": {
+        "value": 0.1,
+        "src": "res://MainScene.tscn:32"
+      },
+      "wobble_frequency": {
+        "value": 0.3,
+        "src": "res://MainScene.tscn:33"
+      },
+      "wobble_strength": {
+        "value": 0.5,
+        "src": "res://MainScene.tscn:34"
+      },
+      "fisheye": {
+        "value": 0.25,
+        "src": "res://MainScene.tscn:35"
+      },
+      "brighten": {
+        "value": 0.65,
+        "src": "res://MainScene.tscn:36"
+      },
+      "scanline_count": {
+        "value": 240,
+        "src": "res://MainScene.tscn:37"
+      },
+      "scanline_movespeed": {
+        "value": 0.5,
+        "src": "res://MainScene.tscn:38"
+      },
+      "horizontal_scanline_strength": {
+        "value": 0.4,
+        "src": "res://MainScene.tscn:39"
+      },
+      "vertical_scanline_strength": {
+        "value": 0.02,
+        "src": "res://MainScene.tscn:40"
+      },
+      "chromatic": {
+        "value": 2,
+        "src": "res://MainScene.tscn:41"
+      },
+      "ghosting": {
+        "value": 0.05,
+        "src": "res://MainScene.tscn:42"
+      },
+      "vignette": {
+        "value": 0.05,
+        "src": "res://MainScene.tscn:43"
+      },
+      "edge_color": {
+        "value": "Color(0.03, 0.03, 0.03, 1)",
+        "src": "res://MainScene.tscn:44"
+      },
+      "bloomRadius": {
+        "value": 1,
+        "src": "res://MainScene.tscn:45"
+      },
+      "bloomThreshold": {
+        "value": 1,
+        "src": "res://MainScene.tscn:46"
+      },
+      "bloomIntensity": {
+        "value": 1,
+        "src": "res://MainScene.tscn:47"
+      }
+    }
+  },
+  "glitch": {
+    "shader": "res://Shaders/GlitchScreenShader.gdshader",
+    "node": "MainScene/ScreenCanvas/Glitch (hidden by default)",
+    "material": "res://MainScene.tscn:49",
+    "params": {
+      "shake_power": {
+        "value": 0.03,
+        "src": "res://MainScene.tscn:51"
+      },
+      "shake_rate": {
+        "value": 1,
+        "src": "res://MainScene.tscn:52"
+      },
+      "shake_speed": {
+        "value": 5,
+        "src": "res://MainScene.tscn:53"
+      },
+      "shake_block_size": {
+        "value": 240,
+        "src": "res://MainScene.tscn:54"
+      },
+      "shake_color_rate": {
+        "value": 0.01,
+        "src": "res://MainScene.tscn:55"
+      }
+    }
+  },
+  "environment": {
+    "src": "res://MainScene.tscn:19",
+    "params": {
+      "background_mode": {
+        "value": 3,
+        "src": "res://MainScene.tscn:20"
+      },
+      "background_canvas_max_layer": {
+        "value": 10,
+        "src": "res://MainScene.tscn:21"
+      },
+      "glow_enabled": {
+        "value": true,
+        "src": "res://MainScene.tscn:22"
+      },
+      "glow_normalized": {
+        "value": true,
+        "src": "res://MainScene.tscn:23"
+      },
+      "glow_intensity": {
+        "value": 1.8,
+        "src": "res://MainScene.tscn:24"
+      },
+      "glow_strength": {
+        "value": 0.75,
+        "src": "res://MainScene.tscn:25"
+      },
+      "glow_blend_mode": {
+        "value": 0,
+        "src": "res://MainScene.tscn:26"
+      },
+      "glow_hdr_threshold": {
+        "value": 0.1,
+        "src": "res://MainScene.tscn:27"
+      },
+      "glow_hdr_luminance_cap": {
+        "value": 0.2,
+        "src": "res://MainScene.tscn:28"
+      }
+    }
+  }
+}

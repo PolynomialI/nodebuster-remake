@@ -1,0 +1,1711 @@
+{
+  "notes": ["Paths are res:// paths; the files are in reference/extracted/ (not committed). used_by lists every script/scene line that references the file; an empty list means the file ships but nothing loads it.", "All textures use nearest filtering (project default_texture_filter=0, res://project.godot)."],
+  "images": [
+    {
+      "path": "res://Sprites/1x1.png",
+      "bytes": 81,
+      "used_by": ["res://Scenes/Player/PulseBolt.tscn:4"],
+      "width": 1,
+      "height": 1
+    },
+    {
+      "path": "res://Sprites/Battle/MovingPulser.png",
+      "bytes": 298,
+      "used_by": ["res://Scenes/Battle/MovingPulser.tscn:4"],
+      "width": 32,
+      "height": 32
+    },
+    {
+      "path": "res://Sprites/Battle/MovingPulserMask.png",
+      "bytes": 228,
+      "used_by": ["res://Scenes/Battle/MovingPulser.tscn:5"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/BoxCorners.png",
+      "bytes": 130,
+      "used_by": ["res://Scenes/Effects/CornerBox.tscn:3"],
+      "width": 12,
+      "height": 12
+    },
+    {
+      "path": "res://Sprites/Characters/CharacterTest.png",
+      "bytes": 2984,
+      "used_by": ["res://GameScenes/ShopScene.tscn:20"],
+      "width": 128,
+      "height": 128
+    },
+    {
+      "path": "res://Sprites/Drops/BlueDrop.png",
+      "bytes": 114,
+      "used_by": ["res://Scripts/Battle/EnemyDropsCreator.gd:11", "res://Scripts/Enemy/EnemyDrop.gd:28", "res://Scripts/Enemy/EnemyDrop2.gd:41"],
+      "width": 6,
+      "height": 6
+    },
+    {
+      "path": "res://Sprites/Drops/PurpleDrop.png",
+      "bytes": 115,
+      "used_by": [],
+      "width": 6,
+      "height": 6
+    },
+    {
+      "path": "res://Sprites/Drops/RedDrop.png",
+      "bytes": 117,
+      "used_by": ["res://Scripts/Battle/EnemyDropsCreator.gd:10", "res://Scripts/Enemy/EnemyDrop.gd:26", "res://Scripts/Enemy/EnemyDrop2.gd:39"],
+      "width": 6,
+      "height": 6
+    },
+    {
+      "path": "res://Sprites/Drops/YellowDrop.png",
+      "bytes": 120,
+      "used_by": ["res://Scripts/Battle/EnemyDropsCreator.gd:12", "res://Scripts/Enemy/EnemyDrop.gd:30", "res://Scripts/Enemy/EnemyDrop2.gd:43"],
+      "width": 6,
+      "height": 6
+    },
+    {
+      "path": "res://Sprites/Enemies/CircleEnemy.png",
+      "bytes": 1405,
+      "used_by": ["res://Scenes/Enemies/EnemyCircle.tscn:4"],
+      "width": 128,
+      "height": 128
+    },
+    {
+      "path": "res://Sprites/Enemies/CircleEnemyMask.png",
+      "bytes": 901,
+      "used_by": ["res://Scenes/Enemies/EnemyCircle.tscn:5"],
+      "width": 116,
+      "height": 116
+    },
+    {
+      "path": "res://Sprites/Enemies/HealthBox.png",
+      "bytes": 403,
+      "used_by": [],
+      "width": 128,
+      "height": 128
+    },
+    {
+      "path": "res://Sprites/Enemies/PentagonEnemy.png",
+      "bytes": 1266,
+      "used_by": ["res://Scenes/Enemies/EnemyPentagon.tscn:4"],
+      "width": 128,
+      "height": 128
+    },
+    {
+      "path": "res://Sprites/Enemies/PentagonEnemyMask.png",
+      "bytes": 838,
+      "used_by": ["res://Scenes/Enemies/EnemyPentagon.tscn:5"],
+      "width": 116,
+      "height": 110
+    },
+    {
+      "path": "res://Sprites/Enemies/PillEnemy.png",
+      "bytes": 732,
+      "used_by": ["res://Scenes/Enemies/EnemyPill.tscn:4"],
+      "width": 128,
+      "height": 64
+    },
+    {
+      "path": "res://Sprites/Enemies/PillEnemyMask.png",
+      "bytes": 410,
+      "used_by": ["res://Scenes/Enemies/EnemyPill.tscn:5"],
+      "width": 116,
+      "height": 52
+    },
+    {
+      "path": "res://Sprites/Enemies/SpikyBall.png",
+      "bytes": 1847,
+      "used_by": ["res://Scenes/Enemies/EnemySpikyBall.tscn:4", "res://Scenes/Enemy2.tscn:4"],
+      "width": 128,
+      "height": 128
+    },
+    {
+      "path": "res://Sprites/Enemies/SpikyBallMask.png",
+      "bytes": 1138,
+      "used_by": ["res://Scenes/Enemies/EnemySpikyBall.tscn:5", "res://Scenes/Enemy2.tscn:5"],
+      "width": 94,
+      "height": 94
+    },
+    {
+      "path": "res://Sprites/Enemies/SquareEnemy.png",
+      "bytes": 443,
+      "used_by": ["res://Scenes/Enemies/EnemySquare.tscn:4"],
+      "width": 128,
+      "height": 128
+    },
+    {
+      "path": "res://Sprites/Enemies/SquareEnemyMask.png",
+      "bytes": 362,
+      "used_by": ["res://Scenes/Enemies/EnemySquare.tscn:5"],
+      "width": 116,
+      "height": 116
+    },
+    {
+      "path": "res://Sprites/LoadingCircle.png",
+      "bytes": 195,
+      "used_by": ["res://Scenes/Ending.tscn:4"],
+      "width": 20,
+      "height": 20
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Blues1.2k.png",
+      "bytes": 230,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Blues1.6k.png",
+      "bytes": 229,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Blues10.png",
+      "bytes": 216,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Blues100.png",
+      "bytes": 214,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Blues200.png",
+      "bytes": 213,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Blues2k.png",
+      "bytes": 217,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Blues300.png",
+      "bytes": 213,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Blues4k.png",
+      "bytes": 222,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Blues500.png",
+      "bytes": 219,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Blues800.png",
+      "bytes": 212,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Blues8k.png",
+      "bytes": 220,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Reds100k.png",
+      "bytes": 225,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Reds10k.png",
+      "bytes": 227,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Reds15k.png",
+      "bytes": 224,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Reds20k.png",
+      "bytes": 229,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Reds2k.png",
+      "bytes": 217,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Reds30k.png",
+      "bytes": 235,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Reds4k.png",
+      "bytes": 222,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Reds500.png",
+      "bytes": 219,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Reds50k.png",
+      "bytes": 233,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Reds6k.png",
+      "bytes": 225,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Reds8k.png",
+      "bytes": 220,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Test.png",
+      "bytes": 244,
+      "used_by": ["res://Scenes/Shop/MilestoneEntry.tscn:4", "dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Yellows10.png",
+      "bytes": 216,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Yellows15.png",
+      "bytes": 217,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/MilestoneIcons/Yellows5.png",
+      "bytes": 185,
+      "used_by": ["dynamic: loaded by milestone id (res://Scripts/Milestones/Milestone.gd:16)"],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/Particles/Circle.png",
+      "bytes": 244,
+      "used_by": ["res://Scenes/Effects/BgParticles.tscn:3"],
+      "width": 32,
+      "height": 32
+    },
+    {
+      "path": "res://Sprites/Particles/Line.png",
+      "bytes": 96,
+      "used_by": ["res://Scenes/Particles/HitParticles.tscn:3", "res://Scenes/Particles/PulseParticles.tscn:3"],
+      "width": 8,
+      "height": 22
+    },
+    {
+      "path": "res://Sprites/Particles/Shard.png",
+      "bytes": 143,
+      "used_by": ["res://Scenes/Particles/LevelUpParticles.tscn:3"],
+      "width": 8,
+      "height": 32
+    },
+    {
+      "path": "res://Sprites/SkillNode.png",
+      "bytes": 134,
+      "used_by": ["res://Scenes/UI/UpgradeIcon.tscn:3"],
+      "width": 16,
+      "height": 16
+    },
+    {
+      "path": "res://Sprites/SkillNodeTest.png",
+      "bytes": 287,
+      "used_by": [],
+      "width": 24,
+      "height": 24
+    },
+    {
+      "path": "res://Sprites/Smile.png",
+      "bytes": 219,
+      "used_by": ["res://Scenes/Ending.tscn:5"],
+      "width": 20,
+      "height": 20
+    },
+    {
+      "path": "res://Sprites/Square32.png",
+      "bytes": 117,
+      "used_by": ["res://GameScenes/BattleScene.tscn:9"],
+      "width": 32,
+      "height": 32
+    },
+    {
+      "path": "res://Sprites/Transition.png",
+      "bytes": 45889,
+      "used_by": [],
+      "width": 76,
+      "height": 34
+    },
+    {
+      "path": "res://Sprites/Transition2.png",
+      "bytes": 47798,
+      "used_by": ["res://MainScene.tscn:15"],
+      "width": 64,
+      "height": 34
+    },
+    {
+      "path": "res://Sprites/Transition2Inverse.png",
+      "bytes": 35461,
+      "used_by": ["res://MainScene.tscn:13"],
+      "width": 64,
+      "height": 34
+    },
+    {
+      "path": "res://Sprites/TransitionInverse.png",
+      "bytes": 33770,
+      "used_by": [],
+      "width": 64,
+      "height": 34
+    },
+    {
+      "path": "res://Sprites/UI/Blue.png",
+      "bytes": 123,
+      "used_by": ["res://Scripts/Enums/ResourceType.gd:23"],
+      "width": 8,
+      "height": 8
+    },
+    {
+      "path": "res://Sprites/UI/Godvirus.png",
+      "bytes": 1096,
+      "used_by": ["res://GameScenes/ShopScene.tscn:15"],
+      "width": 192,
+      "height": 32
+    },
+    {
+      "path": "res://Sprites/UI/Netcoin.png",
+      "bytes": 124,
+      "used_by": ["res://Scripts/Enums/ResourceType.gd:26"],
+      "width": 8,
+      "height": 8
+    },
+    {
+      "path": "res://Sprites/UI/NotificationDot.png",
+      "bytes": 162,
+      "used_by": ["res://GameScenes/ShopScene.tscn:17"],
+      "width": 12,
+      "height": 12
+    },
+    {
+      "path": "res://Sprites/UI/Processors.png",
+      "bytes": 126,
+      "used_by": ["res://Scripts/Enums/ResourceType.gd:27"],
+      "width": 8,
+      "height": 8
+    },
+    {
+      "path": "res://Sprites/UI/Purple.png",
+      "bytes": 125,
+      "used_by": ["res://Scripts/Enums/ResourceType.gd:24"],
+      "width": 8,
+      "height": 8
+    },
+    {
+      "path": "res://Sprites/UI/Red.png",
+      "bytes": 116,
+      "used_by": ["res://GameScenes/ShopScene.tscn:903", "res://Scenes/UI/BattleEndScreen.tscn:97", "res://Scenes/UI/ResourcePanel.tscn:4", "res://Scenes/UI/UpgradeDescription.tscn:92", "res://Scripts/Enums/ResourceType.gd:22"],
+      "width": 8,
+      "height": 8
+    },
+    {
+      "path": "res://Sprites/UI/Shapes/2x2.png",
+      "bytes": 91,
+      "used_by": [],
+      "width": 2,
+      "height": 2
+    },
+    {
+      "path": "res://Sprites/UI/Shapes/Bar/BarFill.png",
+      "bytes": 101,
+      "used_by": ["res://Scenes/UI/TextureProgressBar.tscn:5"],
+      "width": 6,
+      "height": 6
+    },
+    {
+      "path": "res://Sprites/UI/Shapes/Bar/BarInner.png",
+      "bytes": 112,
+      "used_by": ["res://Scenes/UI/TextureProgressBar.tscn:4"],
+      "width": 6,
+      "height": 6
+    },
+    {
+      "path": "res://Sprites/UI/Shapes/Bar/BarOutline.png",
+      "bytes": 107,
+      "used_by": ["res://Scenes/UI/TextureProgressBar.tscn:3"],
+      "width": 6,
+      "height": 6
+    },
+    {
+      "path": "res://Sprites/UI/Shapes/Box.png",
+      "bytes": 99,
+      "used_by": ["res://Themes/DefaultTheme.tres:3"],
+      "width": 4,
+      "height": 4
+    },
+    {
+      "path": "res://Sprites/UI/Shapes/FilledPanel.png",
+      "bytes": 104,
+      "used_by": ["res://Themes/DefaultTheme.tres:4"],
+      "width": 4,
+      "height": 4
+    },
+    {
+      "path": "res://Sprites/UI/Shapes/PanelOutline.png",
+      "bytes": 137,
+      "used_by": ["res://Themes/DefaultTheme.tres:6"],
+      "width": 8,
+      "height": 8
+    },
+    {
+      "path": "res://Sprites/UI/Shapes/PanelOutlineAndBG.png",
+      "bytes": 146,
+      "used_by": [],
+      "width": 8,
+      "height": 8
+    },
+    {
+      "path": "res://Sprites/UI/Shapes/Slider/Grabber.png",
+      "bytes": 92,
+      "used_by": ["res://Themes/DefaultTheme.tres:5"],
+      "width": 8,
+      "height": 8
+    },
+    {
+      "path": "res://Sprites/UI/SP.png",
+      "bytes": 134,
+      "used_by": ["res://Scripts/Enums/ResourceType.gd:25"],
+      "width": 8,
+      "height": 8
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Armor1.png",
+      "bytes": 144,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Armor2.png",
+      "bytes": 171,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Armor3.png",
+      "bytes": 172,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Armor4.png",
+      "bytes": 179,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Armor5.png",
+      "bytes": 144,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Armor6.png",
+      "bytes": 166,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Armor7.png",
+      "bytes": 159,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/ArmorPerEnemy1.png",
+      "bytes": 239,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/AttackSpeed1.png",
+      "bytes": 176,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/AttackSpeed2.png",
+      "bytes": 174,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/AutoCollect.png",
+      "bytes": 203,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/BitBoost1.png",
+      "bytes": 164,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/BonusDropChance1.png",
+      "bytes": 172,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/BossArmor1.png",
+      "bytes": 191,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/BossArmor2.png",
+      "bytes": 215,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/BossDamage1.png",
+      "bytes": 187,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/BossDamage2.png",
+      "bytes": 225,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/CritChance1.png",
+      "bytes": 208,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/CritDamage1.png",
+      "bytes": 166,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/CritDamage2.png",
+      "bytes": 193,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/CryptoMine.png",
+      "bytes": 178,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Damage1.png",
+      "bytes": 177,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Damage2.png",
+      "bytes": 179,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Damage3.png",
+      "bytes": 180,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Damage4.png",
+      "bytes": 195,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Damage5.png",
+      "bytes": 185,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/DamagePerEnemy1.png",
+      "bytes": 215,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/DropHeal1.png",
+      "bytes": 199,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/EnemyDeathPulseBolts.png",
+      "bytes": 189,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Execute1.png",
+      "bytes": 179,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Execute2.png",
+      "bytes": 193,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/ExplodersChance.png",
+      "bytes": 164,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/ExplodersSize.png",
+      "bytes": 173,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/FocusArmor1.png",
+      "bytes": 234,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Health1.png",
+      "bytes": 160,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Health2.png",
+      "bytes": 176,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Health3.png",
+      "bytes": 162,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Health4.png",
+      "bytes": 154,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Health5.png",
+      "bytes": 207,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Health6.png",
+      "bytes": 148,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Health7.png",
+      "bytes": 165,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/HealthRegen1.png",
+      "bytes": 163,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/HealthRegen2.png",
+      "bytes": 183,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Infinity1.png",
+      "bytes": 160,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Infinity2.png",
+      "bytes": 160,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Infinity3.png",
+      "bytes": 165,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Infinity4.png",
+      "bytes": 135,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Infinity5.png",
+      "bytes": 111,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Infinity6.png",
+      "bytes": 129,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Infinity7.png",
+      "bytes": 138,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Infinity8.png",
+      "bytes": 167,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Infinity9.png",
+      "bytes": 180,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Laboratory.png",
+      "bytes": 677,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 30,
+      "height": 30
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Lifesteal1.png",
+      "bytes": 178,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Lifesteal2.png",
+      "bytes": 177,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Lifesteal3.png",
+      "bytes": 180,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/LightningChainCount1.png",
+      "bytes": 219,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/LightningChance1.png",
+      "bytes": 168,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/LightningDamage1.png",
+      "bytes": 202,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/MaxHealthHeal1.png",
+      "bytes": 204,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/MaxHealthHeal2.png",
+      "bytes": 207,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/MaxHealthToArmor1.png",
+      "bytes": 181,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/MaxHealthToArmor2.png",
+      "bytes": 223,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/MaxHealthToDamage1.png",
+      "bytes": 185,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Milestones.png",
+      "bytes": 165,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/MovingPulser1.png",
+      "bytes": 183,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/MovingPulserAttackSpeed1.png",
+      "bytes": 208,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/MovingPulserSize1.png",
+      "bytes": 212,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/MovingPulserSize2.png",
+      "bytes": 217,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/MovingPulserSpeed1.png",
+      "bytes": 167,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/NodeBoost1.png",
+      "bytes": 157,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/NodeFinder1.png",
+      "bytes": 175,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/PickupRadius1.png",
+      "bytes": 154,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/PulseBoltCount1.png",
+      "bytes": 165,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/PulseBoltCount2.png",
+      "bytes": 190,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/PulseBoltDamage1.png",
+      "bytes": 168,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/PulseBoltDamage2.png",
+      "bytes": 198,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/PulseBoltExplode.png",
+      "bytes": 154,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/PulseBolts.png",
+      "bytes": 167,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/RampingArmor1.png",
+      "bytes": 201,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/RampingDamage1.png",
+      "bytes": 204,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Salvaging1.png",
+      "bytes": 180,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Salvaging2.png",
+      "bytes": 180,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Size1.png",
+      "bytes": 144,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Size2.png",
+      "bytes": 176,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Size3.png",
+      "bytes": 183,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/SpawnRate1.png",
+      "bytes": 177,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/SpawnRate2.png",
+      "bytes": 179,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/SpawnRate3.png",
+      "bytes": 227,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/SpawnRate4.png",
+      "bytes": 261,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/StealMaxHealth1.png",
+      "bytes": 204,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/StealMaxHealth2.png",
+      "bytes": 197,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/StealMaxHealth3.png",
+      "bytes": 157,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/TestUpgrade.png",
+      "bytes": 160,
+      "used_by": ["res://Scenes/UI/UpgradeIcon.tscn:5", "dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/TestUpgrade2.png",
+      "bytes": 154,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Undamaged1.png",
+      "bytes": 177,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/Undamaged2.png",
+      "bytes": 193,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/YellowSpawn1.png",
+      "bytes": 172,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    },
+    {
+      "path": "res://Sprites/UpgradeIcons/YellowSpawn2.png",
+      "bytes": 121,
+      "used_by": ["dynamic: loaded by upgrade id (res://Scripts/Upgrades/Upgrade.gd:18)"],
+      "width": 14,
+      "height": 14
+    }
+  ],
+  "sounds": [
+    {
+      "path": "res://Audio/BGM/HoliznaCC0 - Lofi And Chill - 03 Something In The Air.ogg",
+      "bytes": 2501146,
+      "used_by": ["res://Scripts/Autoloads/BGM.gd:4"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 131.976
+    },
+    {
+      "path": "res://Audio/BGM/HoliznaCC0 - Lofi And Chill - 04 Small Towns, Smaller Lives.ogg",
+      "bytes": 3197078,
+      "used_by": ["res://Scripts/Autoloads/BGM.gd:5"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 146.064
+    },
+    {
+      "path": "res://Audio/BGM/HoliznaCC0 - Lofi And Chill - 05 Mundane.ogg",
+      "bytes": 2646247,
+      "used_by": ["res://Scripts/Autoloads/BGM.gd:6"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 158.088
+    },
+    {
+      "path": "res://Audio/BGM/HoliznaCC0 - Lofi And Chill - 06 Glad To Be Stuck Inside.ogg",
+      "bytes": 3614433,
+      "used_by": ["res://Scripts/Autoloads/BGM.gd:7"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 160.92
+    },
+    {
+      "path": "res://Audio/BGM/HoliznaCC0 - Lofi And Chill - 07 Vintage.ogg",
+      "bytes": 3193151,
+      "used_by": ["res://Scripts/Autoloads/BGM.gd:8"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 173.976
+    },
+    {
+      "path": "res://Audio/BGM/HoliznaCC0 - Lofi And Chill - 14 Yesterday.ogg",
+      "bytes": 2984716,
+      "used_by": ["res://Scripts/Autoloads/BGM.gd:9"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 150.816
+    },
+    {
+      "path": "res://Audio/BGM/HoliznaCC0 - Lofi And Chill - 16 Cellar Door.ogg",
+      "bytes": 2861307,
+      "used_by": ["res://Scripts/Autoloads/BGM.gd:10"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 132.384
+    },
+    {
+      "path": "res://Audio/BGM/HoliznaCC0 - Lofi And Chill - 17 Laundry Day.ogg",
+      "bytes": 3050930,
+      "used_by": ["res://Scripts/Autoloads/BGM.gd:11"],
+      "channels": 2,
+      "sample_rate": 48000,
+      "duration_sec": "180"
+    },
+    {
+      "path": "res://Audio/BGM/HoliznaCC0 - Lofi And Chill - 24 Static.ogg",
+      "bytes": 3844328,
+      "used_by": ["res://Scripts/Autoloads/BGM.gd:12"],
+      "channels": 2,
+      "sample_rate": 48000,
+      "duration_sec": 149.143
+    },
+    {
+      "path": "res://Audio/SFX/BackgroundNoise.ogg",
+      "bytes": 319756,
+      "used_by": ["res://Scenes/Ending.tscn:10"],
+      "channels": 1,
+      "sample_rate": 44100,
+      "duration_sec": 37.072
+    },
+    {
+      "path": "res://Audio/SFX/ButtonDown.ogg",
+      "bytes": 5404,
+      "used_by": [],
+      "channels": 1,
+      "sample_rate": 48000,
+      "duration_sec": 0.11
+    },
+    {
+      "path": "res://Audio/SFX/ButtonDown2.ogg",
+      "bytes": 6380,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:5"],
+      "channels": 2,
+      "sample_rate": 48000,
+      "duration_sec": 0.104
+    },
+    {
+      "path": "res://Audio/SFX/ButtonHover.ogg",
+      "bytes": 6128,
+      "used_by": [],
+      "channels": 2,
+      "sample_rate": 48000,
+      "duration_sec": 0.111
+    },
+    {
+      "path": "res://Audio/SFX/ButtonHover2.ogg",
+      "bytes": 6615,
+      "used_by": [],
+      "channels": 2,
+      "sample_rate": 48000,
+      "duration_sec": 0.163
+    },
+    {
+      "path": "res://Audio/SFX/ButtonHover3.ogg",
+      "bytes": 6171,
+      "used_by": [],
+      "channels": 2,
+      "sample_rate": 48000,
+      "duration_sec": 0.106
+    },
+    {
+      "path": "res://Audio/SFX/ButtonHover4.ogg",
+      "bytes": 5651,
+      "used_by": [],
+      "channels": 2,
+      "sample_rate": 48000,
+      "duration_sec": 0.067
+    },
+    {
+      "path": "res://Audio/SFX/ButtonHover5.ogg",
+      "bytes": 5779,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:4"],
+      "channels": 1,
+      "sample_rate": 48000,
+      "duration_sec": 0.13
+    },
+    {
+      "path": "res://Audio/SFX/ButtonOneClick.ogg",
+      "bytes": 8751,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:7"],
+      "channels": 2,
+      "sample_rate": 48000,
+      "duration_sec": 0.232
+    },
+    {
+      "path": "res://Audio/SFX/ButtonUp.ogg",
+      "bytes": 5698,
+      "used_by": [],
+      "channels": 1,
+      "sample_rate": 48000,
+      "duration_sec": 0.118
+    },
+    {
+      "path": "res://Audio/SFX/ButtonUp2.ogg",
+      "bytes": 7987,
+      "used_by": [],
+      "channels": 2,
+      "sample_rate": 48000,
+      "duration_sec": 0.23
+    },
+    {
+      "path": "res://Audio/SFX/ButtonUp3.ogg",
+      "bytes": 7917,
+      "used_by": [],
+      "channels": 2,
+      "sample_rate": 48000,
+      "duration_sec": 0.201
+    },
+    {
+      "path": "res://Audio/SFX/ButtonUp4.ogg",
+      "bytes": 7909,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:6"],
+      "channels": 2,
+      "sample_rate": 48000,
+      "duration_sec": 0.201
+    },
+    {
+      "path": "res://Audio/SFX/Deployed.ogg",
+      "bytes": 11134,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:30"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 0.578
+    },
+    {
+      "path": "res://Audio/SFX/Deploying.ogg",
+      "bytes": 10051,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:29"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 0.429
+    },
+    {
+      "path": "res://Audio/SFX/Electricity.ogg",
+      "bytes": 7949,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:28"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 0.093
+    },
+    {
+      "path": "res://Audio/SFX/Hit.ogg",
+      "bytes": 4900,
+      "used_by": [],
+      "channels": 1,
+      "sample_rate": 48000,
+      "duration_sec": 0.074
+    },
+    {
+      "path": "res://Audio/SFX/Hit2.ogg",
+      "bytes": 5234,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:11"],
+      "channels": 1,
+      "sample_rate": 44100,
+      "duration_sec": 0.126
+    },
+    {
+      "path": "res://Audio/SFX/LevelUpJingle.ogg",
+      "bytes": 40832,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:13"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 2.471
+    },
+    {
+      "path": "res://Audio/SFX/Lose.ogg",
+      "bytes": 13790,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:14"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 0.439
+    },
+    {
+      "path": "res://Audio/SFX/MouseDown.ogg",
+      "bytes": 5001,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:16"],
+      "channels": 1,
+      "sample_rate": 44100,
+      "duration_sec": 0.058
+    },
+    {
+      "path": "res://Audio/SFX/MouseUp.ogg",
+      "bytes": 6236,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:17"],
+      "channels": 1,
+      "sample_rate": 44100,
+      "duration_sec": 0.203
+    },
+    {
+      "path": "res://Audio/SFX/Pickup.ogg",
+      "bytes": 9273,
+      "used_by": [],
+      "channels": 2,
+      "sample_rate": 48000,
+      "duration_sec": 0.22
+    },
+    {
+      "path": "res://Audio/SFX/Pickup2.ogg",
+      "bytes": 6920,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:9"],
+      "channels": 2,
+      "sample_rate": 48000,
+      "duration_sec": 0.175
+    },
+    {
+      "path": "res://Audio/SFX/PickupStart.ogg",
+      "bytes": 5559,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:8"],
+      "channels": 2,
+      "sample_rate": 48000,
+      "duration_sec": 0.085
+    },
+    {
+      "path": "res://Audio/SFX/Plink.ogg",
+      "bytes": 5952,
+      "used_by": [],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 2.111
+    },
+    {
+      "path": "res://Audio/SFX/Plink2.ogg",
+      "bytes": 12608,
+      "used_by": [],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 0.577
+    },
+    {
+      "path": "res://Audio/SFX/Plink3.ogg",
+      "bytes": 6463,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:27"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 0.11
+    },
+    {
+      "path": "res://Audio/SFX/Pulse.ogg",
+      "bytes": 5036,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:10"],
+      "channels": 1,
+      "sample_rate": 48000,
+      "duration_sec": 0.078
+    },
+    {
+      "path": "res://Audio/SFX/Static.ogg",
+      "bytes": 66964,
+      "used_by": ["res://Scenes/Ending.tscn:7"],
+      "channels": 1,
+      "sample_rate": 44100,
+      "duration_sec": 5.795
+    },
+    {
+      "path": "res://Audio/SFX/Tick.ogg",
+      "bytes": 4422,
+      "used_by": [],
+      "channels": 1,
+      "sample_rate": 44100,
+      "duration_sec": 0.023
+    },
+    {
+      "path": "res://Audio/SFX/Tick2.ogg",
+      "bytes": 4663,
+      "used_by": [],
+      "channels": 1,
+      "sample_rate": 44100,
+      "duration_sec": 0.047
+    },
+    {
+      "path": "res://Audio/SFX/Tick3.ogg",
+      "bytes": 8595,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:12"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 0.238
+    },
+    {
+      "path": "res://Audio/SFX/TransitionIn.ogg",
+      "bytes": 36454,
+      "used_by": [],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 2.137
+    },
+    {
+      "path": "res://Audio/SFX/TransitionIn2.ogg",
+      "bytes": 94095,
+      "used_by": [],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 6.096
+    },
+    {
+      "path": "res://Audio/SFX/TransitionIn3.ogg",
+      "bytes": 11689,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:25"],
+      "channels": 1,
+      "sample_rate": 44100,
+      "duration_sec": 0.792
+    },
+    {
+      "path": "res://Audio/SFX/TransitionOut.ogg",
+      "bytes": 8226,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:26"],
+      "channels": 1,
+      "sample_rate": 44100,
+      "duration_sec": 0.371
+    },
+    {
+      "path": "res://Audio/SFX/Type.ogg",
+      "bytes": 6836,
+      "used_by": [],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 0.124
+    },
+    {
+      "path": "res://Audio/SFX/Type1.ogg",
+      "bytes": 6374,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:19"],
+      "channels": 1,
+      "sample_rate": 44100,
+      "duration_sec": 0.179
+    },
+    {
+      "path": "res://Audio/SFX/Type2.ogg",
+      "bytes": 6191,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:20"],
+      "channels": 1,
+      "sample_rate": 44100,
+      "duration_sec": 0.168
+    },
+    {
+      "path": "res://Audio/SFX/Type3.ogg",
+      "bytes": 6484,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:21"],
+      "channels": 1,
+      "sample_rate": 44100,
+      "duration_sec": 0.166
+    },
+    {
+      "path": "res://Audio/SFX/Type4.ogg",
+      "bytes": 6297,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:22"],
+      "channels": 1,
+      "sample_rate": 44100,
+      "duration_sec": 0.161
+    },
+    {
+      "path": "res://Audio/SFX/Type5.ogg",
+      "bytes": 5634,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:23"],
+      "channels": 1,
+      "sample_rate": 44100,
+      "duration_sec": 0.118
+    },
+    {
+      "path": "res://Audio/SFX/VCR.ogg",
+      "bytes": 81539,
+      "used_by": ["res://Scenes/Ending.tscn:9"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 5.855
+    },
+    {
+      "path": "res://Audio/SFX/VoiceLoop.ogg",
+      "bytes": 5026,
+      "used_by": ["res://Scenes/Ending.tscn:8"],
+      "channels": 1,
+      "sample_rate": 44100,
+      "duration_sec": 0.1
+    },
+    {
+      "path": "res://Audio/SFX/Win.ogg",
+      "bytes": 8500,
+      "used_by": ["res://Scripts/Autoloads/SFX.gd:15"],
+      "channels": 2,
+      "sample_rate": 44100,
+      "duration_sec": 0.265
+    }
+  ],
+  "fonts": [
+    {
+      "path": "res://Themes/Pixellari.ttf",
+      "bytes": 39908,
+      "used_by": []
+    },
+    {
+      "path": "res://Themes/retro-pixel-cute-prop.ttf",
+      "bytes": 10944,
+      "used_by": ["res://Themes/DefaultTheme.tres:7"]
+    }
+  ],
+  "shaders": [
+    {
+      "path": "res://Shaders/BloomShader.gdshader",
+      "bytes": 837,
+      "used_by": []
+    },
+    {
+      "path": "res://Shaders/CRTShader.gdshader",
+      "bytes": 4806,
+      "used_by": ["res://MainScene.tscn:5"]
+    },
+    {
+      "path": "res://Shaders/GlitchScreenShader.gdshader",
+      "bytes": 1190,
+      "used_by": ["res://MainScene.tscn:6"]
+    },
+    {
+      "path": "res://Shaders/GlitchShader.gdshader",
+      "bytes": 1076,
+      "used_by": []
+    }
+  ],
+  "other": [
+    {
+      "path": "res://Icon.ico",
+      "bytes": 410598,
+      "used_by": ["res://project.godot:19"]
+    },
+    {
+      "path": "res://icon.svg",
+      "bytes": 88399,
+      "used_by": ["res://project.godot:18"]
+    }
+  ]
+}

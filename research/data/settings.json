@@ -1,0 +1,28 @@
+{
+  "storage": { "path": "user://options.dat", "format": "Godot var_to_str of the dict below", "src": "res://Scripts/Autoloads/OptionData.gd:3" },
+  "menu_order_src": "res://Scenes/Popups/Options/OptionsPopup.tscn",
+  "options": [
+    { "id": "window_size", "label": "window_size", "kind": "choice", "choices": ["fullscreen", "480x270", "960x540", "..."], "default": 0,
+      "effect": "0 = exclusive fullscreen; n = window of 480n x 270n, centred. Choices go up to the first multiple >= the screen size.",
+      "src": "res://Scripts/Autoloads/OptionData.gd:10", "effectSrc": "res://Scripts/Autoloads/OptionData.gd:66-78", "choicesSrc": "res://Scripts/Options/OptionsPopup.gd:14-24" },
+    { "id": "vsync", "label": "v-sync", "kind": "choice", "choices": ["on", "off"], "default": 0, "src": "res://Scripts/Autoloads/OptionData.gd:11" },
+    { "id": "screenshake", "label": "screen_shake", "kind": "slider", "range": [0, 100], "default": 90,
+      "effect": "Globals.screenshake_intensity = value / 100; multiplies camera shake magnitude (3 px)", "src": "res://Scripts/Autoloads/OptionData.gd:12" },
+    { "id": "crt_effect", "label": "crt_effect", "kind": "choice", "choices": ["on", "off"], "default": 0,
+      "effect": "on: CRT overlay shown, glow_intensity 1.8; off: CRT hidden, glow_intensity 0.9", "src": "res://Scripts/Autoloads/OptionData.gd:13", "effectSrc": "res://Scripts/Autoloads/OptionData.gd:86-92" },
+    { "id": "transition_color", "label": "transition_color", "kind": "choice", "choices": ["white", "dark"], "default": 0,
+      "effect": "scene transition wipe tinted MyColors.WHITE (#dcdcdc) or #8f8f8f", "src": "res://Scripts/Autoloads/OptionData.gd:14" },
+    { "id": "flashing_fx", "label": "flashing_fx", "kind": "choice", "choices": ["on", "off"], "default": 0,
+      "effect": "Globals.flashing = (value == 0); controls the white flash on enemy hits and kill impacts", "src": "res://Scripts/Autoloads/OptionData.gd:15" },
+    { "id": "color_palette", "label": "color_palette", "kind": "choice", "choices": ["default", "alternate"], "default": 0,
+      "effect": "skill node outlines: default yellow/green/red, alternate violet/green/dark red", "src": "res://Scripts/Autoloads/OptionData.gd:16" },
+    { "id": "master_volume", "label": "master_vol", "kind": "slider", "range": [0, 100], "default": 50, "effect": "Master bus volume = linear_to_db(value/100)", "src": "res://Scripts/Autoloads/OptionData.gd:17" },
+    { "id": "bgm_volume", "label": "bgm_vol", "kind": "slider", "range": [0, 100], "default": 60, "effect": "BGM bus volume = linear_to_db(value/100)", "src": "res://Scripts/Autoloads/OptionData.gd:19" },
+    { "id": "sfx_volume", "label": "sfx_vol", "kind": "slider", "range": [0, 100], "default": 100, "effect": "SFX bus volume = linear_to_db(value/100)", "src": "res://Scripts/Autoloads/OptionData.gd:18" }
+  ],
+  "notes": [
+    "Sliders are Godot HSlider with default range 0-100, step 1; the current value is shown to the right (res://Scenes/Popups/Options/OptionSlider.tscn).",
+    "Changes apply and save immediately (res://Scripts/Options/OptionsPopup.gd:32-34).",
+    "The options popup is reachable from the main menu 'options' button and from the in-shop Escape menu (main menu / options / back) (res://Scripts/Popups/GameMenu.gd)."
+  ]
+}

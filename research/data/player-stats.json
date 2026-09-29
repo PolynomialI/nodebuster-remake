@@ -1,0 +1,270 @@
+{
+  "note": "Base values before upgrades (class Stats, rebuilt from upgrade levels on load; not saved). max_health shown in-battle = max_health + State.bonus_max_health (res://Scripts/Systems/Stats.gd:32-33).",
+  "stats": {
+    "milestones_unlocked": {
+      "value": false,
+      "type": "bool",
+      "src": "res://Scripts/Systems/Stats.gd:5"
+    },
+    "crypto_mine_unlocked": {
+      "value": false,
+      "type": "bool",
+      "src": "res://Scripts/Systems/Stats.gd:6"
+    },
+    "lab_unlocked": {
+      "value": false,
+      "type": "bool",
+      "src": "res://Scripts/Systems/Stats.gd:7"
+    },
+    "damage": {
+      "value": 1,
+      "type": "int",
+      "src": "res://Scripts/Systems/Stats.gd:9"
+    },
+    "undamaged_mod": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:10"
+    },
+    "execute_mod": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:11"
+    },
+    "damage_mod_per_enemy": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:12"
+    },
+    "boss_damage_mod": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:13"
+    },
+    "damage_mod_per_sec": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:14"
+    },
+    "max_health_damage": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:15"
+    },
+    "crit_chance": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:17"
+    },
+    "crit_damage": {
+      "value": 1,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:18"
+    },
+    "attacks_per_sec": {
+      "value": 0.5,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:20"
+    },
+    "attack_speed_mod": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:21"
+    },
+    "max_health": {
+      "value": 10,
+      "type": "int",
+      "src": "res://Scripts/Systems/Stats.gd:23"
+    },
+    "health_regen": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:24"
+    },
+    "max_health_regen": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:25"
+    },
+    "health_on_kill": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:26"
+    },
+    "health_on_hit": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:27"
+    },
+    "max_health_on_hit": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:28"
+    },
+    "health_on_pickup_drop": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:29"
+    },
+    "perma_max_health_on_kill": {
+      "value": 0,
+      "type": "int",
+      "src": "res://Scripts/Systems/Stats.gd:30"
+    },
+    "armor": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:35"
+    },
+    "boss_armor": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:36"
+    },
+    "boss_armor_mod": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:37"
+    },
+    "armor_mod_per_enemy": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:38"
+    },
+    "focus_armor_mod": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:39"
+    },
+    "max_health_armor": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:40"
+    },
+    "armor_mod_per_sec": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:41"
+    },
+    "drop_pickup_radius": {
+      "value": 16,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:43"
+    },
+    "player_size": {
+      "value": 34,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:45"
+    },
+    "player_size_mod": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:46"
+    },
+    "spawn_rate": {
+      "value": 0.33,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:49"
+    },
+    "spawn_rate_mod": {
+      "value": 1,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:50"
+    },
+    "bit_boost": {
+      "value": 0,
+      "type": "int",
+      "src": "res://Scripts/Systems/Stats.gd:52"
+    },
+    "node_boost": {
+      "value": 0,
+      "type": "int",
+      "src": "res://Scripts/Systems/Stats.gd:53"
+    },
+    "bonus_drop_chance": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:54"
+    },
+    "autocollect_chance": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:55"
+    },
+    "exploder_spawn_chance": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:57"
+    },
+    "exploder_size": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:58"
+    },
+    "blue_enemy_chance": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:59"
+    },
+    "yellow_enemy_chance": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:60"
+    },
+    "pulse_bolt_count": {
+      "value": 0,
+      "type": "int",
+      "src": "res://Scripts/Systems/Stats.gd:63"
+    },
+    "pulse_bolt_damage_mod": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:64"
+    },
+    "pulse_bolt_explode": {
+      "value": false,
+      "type": "bool",
+      "src": "res://Scripts/Systems/Stats.gd:65"
+    },
+    "enemy_death_pulse_bolt_chance": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:66"
+    },
+    "auto_pulser_count": {
+      "value": 0,
+      "type": "int",
+      "src": "res://Scripts/Systems/Stats.gd:69"
+    },
+    "auto_pulser_attack_speed_mod": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:70"
+    },
+    "auto_pulser_size_mod": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:71"
+    },
+    "auto_pulser_speed_mod": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:72"
+    },
+    "lightning_chance": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:75"
+    },
+    "lightning_damage_mod": {
+      "value": 0,
+      "type": "float",
+      "src": "res://Scripts/Systems/Stats.gd:76"
+    },
+    "lightning_chains": {
+      "value": 2,
+      "type": "int",
+      "src": "res://Scripts/Systems/Stats.gd:77"
+    }
+  }
+}

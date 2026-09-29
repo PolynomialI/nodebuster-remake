@@ -1,0 +1,208 @@
+{
+  "netcoin_per_bit": {
+    "value": 1E-05,
+    "src": "res://Scripts/Systems/CryptoMine.gd:4"
+  },
+  "deposit_buttons": {
+    "values": [1000, 5000, 10000, 50000, 100000, 1000000],
+    "labels": ["1k", "5k", "10k", "50k", "100k", "1m"],
+    "src": "res://Scripts/Shop/CryptoMinePage.gd:17"
+  },
+  "upgrade_cost": {
+    "value": 1,
+    "currency": "processors",
+    "src": "res://Scripts/Shop/CryptoMinePage.gd:100"
+  },
+  "max_level": {
+    "value": 36,
+    "src": "res://Scripts/Systems/CryptoMine.gd:80"
+  },
+  "notes": ["Deposited Bits convert at curr_speed Bits/sec into Netcoin at 0.00001 Netcoin per Bit (res://Scripts/Systems/CryptoMine.gd:15-22).", "The mine runs in State._process, i.e. all the time the game is running, in every scene including battle and menus (res://Scripts/Autoloads/State.gd:104-106). It does not run while the game is closed.", "Mine level and deposited Bits are saved (res://Scripts/Systems/CryptoMine.gd:82-86).", "Unlocked by the \"crypto mine\" skill node (50 Nodes). Processors come from yellow enemies (1 per kill) and Yellows milestones."],
+  "speed_by_level": [
+    {
+      "level": 0,
+      "bits_per_sec": 5,
+      "src": "res://Scripts/Systems/CryptoMine.gd:40"
+    },
+    {
+      "level": 1,
+      "bits_per_sec": 10,
+      "src": "res://Scripts/Systems/CryptoMine.gd:41"
+    },
+    {
+      "level": 2,
+      "bits_per_sec": 20,
+      "src": "res://Scripts/Systems/CryptoMine.gd:42"
+    },
+    {
+      "level": 3,
+      "bits_per_sec": 40,
+      "src": "res://Scripts/Systems/CryptoMine.gd:43"
+    },
+    {
+      "level": 4,
+      "bits_per_sec": 80,
+      "src": "res://Scripts/Systems/CryptoMine.gd:44"
+    },
+    {
+      "level": 5,
+      "bits_per_sec": 160,
+      "src": "res://Scripts/Systems/CryptoMine.gd:45"
+    },
+    {
+      "level": 6,
+      "bits_per_sec": 320,
+      "src": "res://Scripts/Systems/CryptoMine.gd:46"
+    },
+    {
+      "level": 7,
+      "bits_per_sec": 640,
+      "src": "res://Scripts/Systems/CryptoMine.gd:47"
+    },
+    {
+      "level": 8,
+      "bits_per_sec": 1280,
+      "src": "res://Scripts/Systems/CryptoMine.gd:48"
+    },
+    {
+      "level": 9,
+      "bits_per_sec": 1800,
+      "src": "res://Scripts/Systems/CryptoMine.gd:49"
+    },
+    {
+      "level": 10,
+      "bits_per_sec": 2600,
+      "src": "res://Scripts/Systems/CryptoMine.gd:50"
+    },
+    {
+      "level": 11,
+      "bits_per_sec": 3400,
+      "src": "res://Scripts/Systems/CryptoMine.gd:51"
+    },
+    {
+      "level": 12,
+      "bits_per_sec": 4200,
+      "src": "res://Scripts/Systems/CryptoMine.gd:52"
+    },
+    {
+      "level": 13,
+      "bits_per_sec": 5200,
+      "src": "res://Scripts/Systems/CryptoMine.gd:53"
+    },
+    {
+      "level": 14,
+      "bits_per_sec": 6400,
+      "src": "res://Scripts/Systems/CryptoMine.gd:54"
+    },
+    {
+      "level": 15,
+      "bits_per_sec": 7600,
+      "src": "res://Scripts/Systems/CryptoMine.gd:55"
+    },
+    {
+      "level": 16,
+      "bits_per_sec": 8800,
+      "src": "res://Scripts/Systems/CryptoMine.gd:56"
+    },
+    {
+      "level": 17,
+      "bits_per_sec": 10000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:57"
+    },
+    {
+      "level": 18,
+      "bits_per_sec": 12000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:58"
+    },
+    {
+      "level": 19,
+      "bits_per_sec": 14000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:59"
+    },
+    {
+      "level": 20,
+      "bits_per_sec": 17000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:60"
+    },
+    {
+      "level": 21,
+      "bits_per_sec": 21000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:61"
+    },
+    {
+      "level": 22,
+      "bits_per_sec": 25000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:62"
+    },
+    {
+      "level": 23,
+      "bits_per_sec": 32000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:63"
+    },
+    {
+      "level": 24,
+      "bits_per_sec": 42000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:64"
+    },
+    {
+      "level": 25,
+      "bits_per_sec": 52000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:65"
+    },
+    {
+      "level": 26,
+      "bits_per_sec": 64000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:66"
+    },
+    {
+      "level": 27,
+      "bits_per_sec": 80000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:67"
+    },
+    {
+      "level": 28,
+      "bits_per_sec": 100000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:68"
+    },
+    {
+      "level": 29,
+      "bits_per_sec": 124000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:69"
+    },
+    {
+      "level": 30,
+      "bits_per_sec": 164000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:70"
+    },
+    {
+      "level": 31,
+      "bits_per_sec": 228000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:71"
+    },
+    {
+      "level": 32,
+      "bits_per_sec": 320000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:72"
+    },
+    {
+      "level": 33,
+      "bits_per_sec": 480000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:73"
+    },
+    {
+      "level": 34,
+      "bits_per_sec": 640000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:74"
+    },
+    {
+      "level": 35,
+      "bits_per_sec": 820000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:75"
+    },
+    {
+      "level": 36,
+      "bits_per_sec": 1280000,
+      "src": "res://Scripts/Systems/CryptoMine.gd:76"
+    }
+  ]
+}

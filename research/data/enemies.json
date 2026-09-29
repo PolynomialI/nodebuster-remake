@@ -1,0 +1,194 @@
+{
+  "notes": ["HP = EnemySpawner.enemy_base_health (current, grows with time) * health_mult; contact damage = enemy_base_damage (current) * damage_mult (res://Scripts/Battle/EnemySpawner.gd:140-142). Base values per prestige are in prestige.json.", "Actual move speed = move_speed * prestige enemy_speed_mod (res://Scripts/Battle/EnemySpawner.gd:142).", "Sprites are 128 px art scaled by \"scale\"; on-screen width = 128 * scale (res://Scripts/Enemy/Enemy.gd:59-60). Hitbox = hitbox_unscaled * scale.", "Colour = currency colour: red Bits (f03a3f), blue Nodes (457af6), yellow Processors (eed345), purple boss/Cores (c359fb) (res://Scripts/Enums/ResourceType.gd:33-40).", "Spawn: off-screen on a random side, offset 0.7*width, heading towards a random point within 84 px of the screen centre (res://Scripts/Battle/EnemySpawner.gd:177-205). Despawn when off-screen after 5 s alive (res://Scripts/Enemy/Enemy.gd:118-123).", "Pill: wavy movement, amplitude 34, period 1.0 (sin(t * 1.0)), faces its velocity (res://Scripts/Enemy/Enemy.gd:22-24,105-113).", "Pentagon splits into 6 PentagonSmall within 40 px on death, same currency, same direction (res://Scripts/Battle/EnemySpawner.gd:246-249,265-269).", "Exploder (circle) explodes on death: 110 px * (1 + exploder_size) square box, random angle 0-90 deg, hitting other enemies with the player attack damage (res://Scripts/Battle/EnemySpawner.gd:243-245).", "Yellow (processor) enemies use the same weights minus BigSquare and Pentagon (res://Scripts/Battle/EnemySpawner.gd:44-48)."],
+  "boss": {
+    "scene": "res://Scenes/Enemies/EnemySquare.tscn",
+    "scale": 1,
+    "move_speed_px_per_sec": 15,
+    "rotate_speed_turns_per_sec": 0.1,
+    "random_rotation_direction": true,
+    "currency": "cores",
+    "health": "prestige.json boss_health",
+    "damage": "prestige.json boss_damage",
+    "spawn": "When the session progress bar fills: 45 s of survival (res://GameScenes/BattleScene.tscn:140), only when curr_prestige == max_prestige (res://Scripts/Battle/BattleScene.gd:37-39,368-372).",
+    "on_out_of_bounds": "Re-placed at a new spawn point instead of despawning (res://Scripts/Battle/EnemySpawner.gd:213-214).",
+    "reward": "+1 Core and max_prestige += 1 (cap 25) only when fighting at max prestige; session then ends (res://Scripts/Battle/BattleScene.gd:407-419).",
+    "rainbow": "Hue cycles at 1 turn/s from prestige 18 (res://Scripts/Battle/EnemySpawner.gd:158-159, res://Scripts/Enemy/Enemy.gd:97-99).",
+    "src": "res://Scripts/Battle/EnemySpawner.gd:153"
+  },
+  "types": [
+    {
+      "id": "Square",
+      "src": "res://Scripts/Battle/EnemySpawner.gd:86",
+      "health_mult": 1,
+      "drop_mult": 1,
+      "xp_mult": 1,
+      "damage_mult": 1,
+      "rotate_speed_turns_per_sec": [0.12, 0.25],
+      "wavy": false,
+      "rotate_to_velocity": false,
+      "scene": "res://Scenes/Enemies/EnemySquare.tscn",
+      "random_rotation_direction": true,
+      "scale": [0.14, 0.18],
+      "move_speed_px_per_sec": [18, 22],
+      "hitbox_unscaled": {
+        "shape": "rect",
+        "size": [128, 128],
+        "src": "res://Scenes/Enemies/EnemySquare.tscn:8"
+      },
+      "sprite": "res://Sprites/Enemies/SquareEnemy.png",
+      "health_fill_mask": "res://Sprites/Enemies/SquareEnemyMask.png"
+    },
+    {
+      "id": "SmallSquare",
+      "src": "res://Scripts/Battle/EnemySpawner.gd:91",
+      "health_mult": 0.6,
+      "drop_mult": 1,
+      "xp_mult": 1,
+      "damage_mult": 1,
+      "rotate_speed_turns_per_sec": [0.16, 0.26],
+      "wavy": false,
+      "rotate_to_velocity": false,
+      "scene": "res://Scenes/Enemies/EnemySquare.tscn",
+      "random_rotation_direction": true,
+      "scale": [0.08, 0.1],
+      "move_speed_px_per_sec": [30, 36],
+      "hitbox_unscaled": {
+        "shape": "rect",
+        "size": [128, 128],
+        "src": "res://Scenes/Enemies/EnemySquare.tscn:8"
+      },
+      "sprite": "res://Sprites/Enemies/SquareEnemy.png",
+      "health_fill_mask": "res://Sprites/Enemies/SquareEnemyMask.png"
+    },
+    {
+      "id": "BigSquare",
+      "src": "res://Scripts/Battle/EnemySpawner.gd:97",
+      "health_mult": 5,
+      "drop_mult": 3,
+      "xp_mult": 4,
+      "damage_mult": 1,
+      "rotate_speed_turns_per_sec": 0,
+      "wavy": false,
+      "rotate_to_velocity": false,
+      "scene": "res://Scenes/Enemies/EnemySquare.tscn",
+      "scale": [0.45, 0.5],
+      "move_speed_px_per_sec": [12, 15],
+      "hitbox_unscaled": {
+        "shape": "rect",
+        "size": [128, 128],
+        "src": "res://Scenes/Enemies/EnemySquare.tscn:8"
+      },
+      "sprite": "res://Sprites/Enemies/SquareEnemy.png",
+      "health_fill_mask": "res://Sprites/Enemies/SquareEnemyMask.png"
+    },
+    {
+      "id": "Exploder",
+      "src": "res://Scripts/Battle/EnemySpawner.gd:104",
+      "health_mult": 1,
+      "drop_mult": 1,
+      "xp_mult": 1,
+      "damage_mult": 1,
+      "rotate_speed_turns_per_sec": [0.12, 0.25],
+      "wavy": false,
+      "rotate_to_velocity": false,
+      "scene": "res://Scenes/Enemies/EnemyCircle.tscn",
+      "random_rotation_direction": true,
+      "scale": [0.14, 0.18],
+      "move_speed_px_per_sec": [18, 22],
+      "hitbox_unscaled": {
+        "shape": "circle",
+        "radius": 64,
+        "src": "res://Scenes/Enemies/EnemyCircle.tscn:8"
+      },
+      "sprite": "res://Sprites/Enemies/CircleEnemy.png",
+      "health_fill_mask": "res://Sprites/Enemies/CircleEnemyMask.png"
+    },
+    {
+      "id": "Pill",
+      "src": "res://Scripts/Battle/EnemySpawner.gd:109",
+      "health_mult": 1,
+      "drop_mult": 1,
+      "xp_mult": 1,
+      "damage_mult": 1,
+      "rotate_speed_turns_per_sec": 0,
+      "wavy": true,
+      "rotate_to_velocity": true,
+      "scene": "res://Scenes/Enemies/EnemyPill.tscn",
+      "scale": [0.16, 0.22],
+      "move_speed_px_per_sec": [20, 24],
+      "hitbox_unscaled": {
+        "shape": "circle",
+        "radius": 60,
+        "src": "res://Scenes/Enemies/EnemyPill.tscn:8"
+      },
+      "sprite": "res://Sprites/Enemies/PillEnemy.png",
+      "health_fill_mask": "res://Sprites/Enemies/PillEnemyMask.png"
+    },
+    {
+      "id": "Pentagon",
+      "src": "res://Scripts/Battle/EnemySpawner.gd:116",
+      "health_mult": 3,
+      "drop_mult": 2,
+      "xp_mult": 2,
+      "damage_mult": 1,
+      "rotate_speed_turns_per_sec": [0.15, 0.2],
+      "wavy": false,
+      "rotate_to_velocity": false,
+      "scene": "res://Scenes/Enemies/EnemyPentagon.tscn",
+      "random_rotation_direction": true,
+      "scale": [0.4, 0.45],
+      "move_speed_px_per_sec": [14, 18],
+      "hitbox_unscaled": {
+        "shape": "circle",
+        "radius": 60,
+        "src": "res://Scenes/Enemies/EnemyPentagon.tscn:8"
+      },
+      "sprite": "res://Sprites/Enemies/PentagonEnemy.png",
+      "health_fill_mask": "res://Sprites/Enemies/PentagonEnemyMask.png"
+    },
+    {
+      "id": "PentagonSmall",
+      "src": "res://Scripts/Battle/EnemySpawner.gd:124",
+      "health_mult": 0.6,
+      "drop_mult": 1,
+      "xp_mult": 1,
+      "damage_mult": 1,
+      "rotate_speed_turns_per_sec": [0.2, 0.26],
+      "wavy": false,
+      "rotate_to_velocity": false,
+      "scene": "res://Scenes/Enemies/EnemyPentagon.tscn",
+      "random_rotation_direction": true,
+      "scale": [0.1, 0.12],
+      "move_speed_px_per_sec": [26, 32],
+      "hitbox_unscaled": {
+        "shape": "circle",
+        "radius": 60,
+        "src": "res://Scenes/Enemies/EnemyPentagon.tscn:8"
+      },
+      "sprite": "res://Sprites/Enemies/PentagonEnemy.png",
+      "health_fill_mask": "res://Sprites/Enemies/PentagonEnemyMask.png"
+    },
+    {
+      "id": "Spiky",
+      "src": "res://Scripts/Battle/EnemySpawner.gd:130",
+      "health_mult": 2,
+      "drop_mult": 4,
+      "xp_mult": 2,
+      "damage_mult": 3,
+      "rotate_speed_turns_per_sec": [0.16, 0.2],
+      "wavy": false,
+      "rotate_to_velocity": false,
+      "scene": "res://Scenes/Enemies/EnemySpikyBall.tscn",
+      "random_rotation_direction": true,
+      "scale": [0.3, 0.34],
+      "move_speed_px_per_sec": [14, 18],
+      "hitbox_unscaled": {
+        "shape": "circle",
+        "radius": 50,
+        "src": "res://Scenes/Enemies/EnemySpikyBall.tscn:8"
+      },
+      "sprite": "res://Sprites/Enemies/SpikyBall.png",
+      "health_fill_mask": "res://Sprites/Enemies/SpikyBallMask.png"
+    }
+  ]
+}
