@@ -1,0 +1,4453 @@
+{
+  "note": "Skill tree. description is the text the original displays; effects are what its code does (they differ for a few nodes, see codeNote). costs are per level (cost.table[level]). requires is evaluated over links (neighbours); level 1 = at least one level, \"max\" = maxed.",
+  "source": "res://Scripts/Autoloads/Stores/UpgradeStore.gd, res://Scripts/Upgrades/UpgradeProcessor.gd, res://GameScenes/ShopScene.tscn",
+  "nodes": [
+    {
+      "id": "Damage1",
+      "name": "power",
+      "description": "+1 damage",
+      "icon": "upgrade/Damage1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          1,
+          2,
+          3,
+          3,
+          4,
+          5,
+          7,
+          9,
+          11,
+          13,
+          15,
+          20,
+          25,
+          30,
+          35
+        ]
+      },
+      "maxLevel": 15,
+      "effects": [
+        {
+          "stat": "damage",
+          "op": "add",
+          "perLevel": 1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [],
+      "pos": [
+        215,
+        133
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "DamagePerEnemy1",
+        "Health1",
+        "SpawnRate1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:5"
+    },
+    {
+      "id": "Health1",
+      "name": "endurance",
+      "description": "+4 max health",
+      "icon": "upgrade/Health1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          10,
+          11,
+          12
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "max_health",
+          "op": "add",
+          "perLevel": 4
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Damage1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        215,
+        101
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Armor1",
+        "Damage1",
+        "HealthRegen1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:12"
+    },
+    {
+      "id": "SpawnRate1",
+      "name": "crowding",
+      "description": "+50% spawn rate",
+      "icon": "upgrade/SpawnRate1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          14,
+          20,
+          30,
+          50,
+          70,
+          100,
+          130,
+          160,
+          200,
+          250
+        ]
+      },
+      "maxLevel": 15,
+      "effects": [
+        {
+          "stat": "spawn_rate_mod",
+          "op": "add",
+          "perLevel": 0.5
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Damage1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        183,
+        133
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "BitBoost1",
+        "Damage1",
+        "Size1",
+        "SpawnRate2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:19"
+    },
+    {
+      "id": "Armor1",
+      "name": "firewall",
+      "description": "+0.2 armor",
+      "icon": "upgrade/Armor1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          8,
+          10,
+          14,
+          18,
+          22,
+          26,
+          30,
+          30,
+          30,
+          30
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "armor",
+          "op": "add",
+          "perLevel": 0.2
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Health1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        183,
+        69
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Armor2",
+        "BossArmor1",
+        "Health1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:26"
+    },
+    {
+      "id": "BitBoost1",
+      "name": "bit boost",
+      "description": "red enemies drop +1 Bits",
+      "icon": "upgrade/BitBoost1",
+      "currency": "sp",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "bit_boost",
+          "op": "add",
+          "perLevel": 1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "SpawnRate1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        151,
+        165
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "BonusDropChance1",
+        "NodeFinder1",
+        "SpawnRate1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:33"
+    },
+    {
+      "id": "Size1",
+      "name": "influence",
+      "description": "+10% attack size",
+      "icon": "upgrade/Size1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          10,
+          20,
+          30,
+          40,
+          50,
+          60,
+          70,
+          80,
+          90,
+          100
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "player_size_mod",
+          "op": "add",
+          "perLevel": 0.1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "SpawnRate1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        151,
+        133
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "PickupRadius1",
+        "SpawnRate1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:40"
+    },
+    {
+      "id": "BossArmor1",
+      "name": "boss guard",
+      "description": "+1 armor against bosses",
+      "icon": "upgrade/BossArmor1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          15,
+          18,
+          21,
+          26,
+          32,
+          38,
+          44,
+          50,
+          56,
+          62
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "boss_armor",
+          "op": "add",
+          "perLevel": 1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Armor1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        183,
+        37
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Armor1",
+        "Health2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:47"
+    },
+    {
+      "id": "HealthRegen1",
+      "name": "repair tool",
+      "description": "regenerate +0.1 health/sec",
+      "icon": "upgrade/HealthRegen1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          25,
+          25,
+          25,
+          30,
+          30
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "health_regen",
+          "op": "add",
+          "perLevel": 0.1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Health1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        247,
+        69
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Health1",
+        "Salvaging1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:54"
+    },
+    {
+      "id": "NodeFinder1",
+      "name": "node finder",
+      "description": "+1% chance for blue enemies to spawn",
+      "icon": "upgrade/NodeFinder1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          400,
+          1500,
+          3000,
+          5000,
+          10000
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "blue_enemy_chance",
+          "op": "add",
+          "perLevel": 0.01
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "BitBoost1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        119,
+        165
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "BitBoost1",
+        "ExplodersChance",
+        "Milestones",
+        "NodeBoost1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:61"
+    },
+    {
+      "id": "Salvaging1",
+      "name": "salvaging",
+      "description": "restore +1 health on enemy kill",
+      "icon": "upgrade/Salvaging1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          100,
+          125,
+          150,
+          175,
+          200
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "health_on_kill",
+          "op": "add",
+          "perLevel": 1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "HealthRegen1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        247,
+        37
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Health2",
+        "HealthRegen1",
+        "Lifesteal1",
+        "Salvaging2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:68"
+    },
+    {
+      "id": "DamagePerEnemy1",
+      "name": "connection buster",
+      "description": "attack deals +5% damage per enemy in area",
+      "icon": "upgrade/DamagePerEnemy1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          50,
+          100,
+          200,
+          500,
+          1000
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "damage_mod_per_enemy",
+          "op": "add",
+          "perLevel": 0.05
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Damage1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        247,
+        133
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "AttackSpeed1",
+        "BossDamage1",
+        "Damage1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:75"
+    },
+    {
+      "id": "BossDamage1",
+      "name": "giant slayer",
+      "description": "+50% damage against bosses",
+      "icon": "upgrade/BossDamage1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          60,
+          80,
+          100,
+          160,
+          300,
+          500,
+          700,
+          1000,
+          1300,
+          1600
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "boss_damage_mod",
+          "op": "add",
+          "perLevel": 0.5
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "DamagePerEnemy1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        279,
+        165
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "BossDamage2",
+        "DamagePerEnemy1"
+      ],
+      "codeNote": "Boss multiplier is applied to the shared damage variable inside the per-enemy loop, so once a boss is hit, later enemies in the same pulse also take the boosted damage (res://Scripts/Player/PlayerCursor.gd:53-54, res://Scripts/Autoloads/Globals.gd:51-52).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:82"
+    },
+    {
+      "id": "AttackSpeed1",
+      "name": "repeating",
+      "description": "+20% attack speed",
+      "icon": "upgrade/AttackSpeed1",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "attack_speed_mod",
+          "op": "add",
+          "perLevel": 0.2
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "DamagePerEnemy1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        279,
+        133
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "AttackSpeed2",
+        "Damage2",
+        "DamagePerEnemy1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:89"
+    },
+    {
+      "id": "BonusDropChance1",
+      "name": "plundering",
+      "description": "+10% chance for double resource drops",
+      "icon": "upgrade/BonusDropChance1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          150,
+          400,
+          1000,
+          4000,
+          10000
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "bonus_drop_chance",
+          "op": "add",
+          "perLevel": 0.1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "BitBoost1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        119,
+        197
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "BitBoost1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:96"
+    },
+    {
+      "id": "ExplodersChance",
+      "name": "spawn exploders",
+      "description": "+5% chance to spawn enemies that explode on death",
+      "icon": "upgrade/ExplodersChance",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          3
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "exploder_spawn_chance",
+          "op": "add",
+          "perLevel": 0.05
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "NodeFinder1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        87,
+        165
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "ExplodersSize",
+        "NodeFinder1"
+      ],
+      "codeNote": "Exploder weight is taken from the Square weight each session (res://Scripts/Battle/BattleScene.gd:356-358).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:103"
+    },
+    {
+      "id": "Health2",
+      "name": "better endurance",
+      "description": "+12 max health",
+      "icon": "upgrade/Health2",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          60,
+          65,
+          70,
+          75,
+          80,
+          85,
+          90,
+          95
+        ]
+      },
+      "maxLevel": 8,
+      "effects": [
+        {
+          "stat": "max_health",
+          "op": "add",
+          "perLevel": 12
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "any",
+      "requires": [
+        {
+          "id": "BossArmor1",
+          "level": 1
+        },
+        {
+          "id": "Salvaging1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        215,
+        5
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "BossArmor1",
+        "Health3",
+        "HealthRegen2",
+        "Salvaging1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:110"
+    },
+    {
+      "id": "Armor2",
+      "name": "antivirus",
+      "description": "+0.6 armor",
+      "icon": "upgrade/Armor2",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          150,
+          170,
+          190,
+          200,
+          210
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "armor",
+          "op": "add",
+          "perLevel": 0.6
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Armor1",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        151,
+        37
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Armor1",
+        "Armor3",
+        "ArmorPerEnemy1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:117"
+    },
+    {
+      "id": "Lifesteal1",
+      "name": "sapper",
+      "description": "restore +0.5 health when hitting an enemy",
+      "icon": "upgrade/Lifesteal1",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "health_on_hit",
+          "op": "add",
+          "perLevel": 0.5
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Salvaging1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        279,
+        5
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "DropHeal1",
+        "Salvaging1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:124"
+    },
+    {
+      "id": "Damage2",
+      "name": "proficiency",
+      "description": "+3 damage",
+      "icon": "upgrade/Damage2",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          200,
+          210,
+          220,
+          230,
+          240,
+          260,
+          280,
+          300,
+          320,
+          340
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "damage",
+          "op": "add",
+          "perLevel": 3
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "AttackSpeed1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        311,
+        133
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "AttackSpeed1",
+        "Damage3"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:131"
+    },
+    {
+      "id": "PickupRadius1",
+      "name": "magnet",
+      "description": "+50% pickup range",
+      "icon": "upgrade/PickupRadius1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          300,
+          1400,
+          4000,
+          15000,
+          70000
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "drop_pickup_radius",
+          "op": "add",
+          "perLevel": 8
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Size1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        119,
+        101
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Size1"
+      ],
+      "codeNote": "+8 px pickup radius per level (base 16 px), i.e. +50% of base, additive.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:138"
+    },
+    {
+      "id": "HealthRegen2",
+      "name": "self-repair",
+      "description": "regenerate +4 health/sec",
+      "icon": "upgrade/HealthRegen2",
+      "currency": "sp",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "health_regen",
+          "op": "add",
+          "perLevel": 4
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Health2",
+          "level": 1
+        }
+      ],
+      "pos": [
+        247,
+        -27
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Health2",
+        "MaxHealthHeal1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:145"
+    },
+    {
+      "id": "Milestones",
+      "name": "milestones",
+      "description": "unlock the milestones tab",
+      "icon": "upgrade/Milestones",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [],
+      "unlocksFeature": "milestones",
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "NodeFinder1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        87,
+        133
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "NodeFinder1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:152"
+    },
+    {
+      "id": "Salvaging2",
+      "name": "skilled salvager",
+      "description": "restore +8 health on enemy kill",
+      "icon": "upgrade/Salvaging2",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          12
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "health_on_kill",
+          "op": "add",
+          "perLevel": 8
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Salvaging1",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        279,
+        37
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Salvaging1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:159"
+    },
+    {
+      "id": "AttackSpeed2",
+      "name": "repeat-repeating",
+      "description": "+20% attack speed",
+      "icon": "upgrade/AttackSpeed2",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "attack_speed_mod",
+          "op": "add",
+          "perLevel": 0.2
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "AttackSpeed1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        311,
+        101
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "AttackSpeed1",
+        "PulseBolts"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:166"
+    },
+    {
+      "id": "SpawnRate2",
+      "name": "swarming",
+      "description": "+200% spawn rate",
+      "icon": "upgrade/SpawnRate2",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "spawn_rate_mod",
+          "op": "add",
+          "perLevel": 2.5
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "SpawnRate1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        151,
+        101
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "SpawnRate1",
+        "SpawnRate3"
+      ],
+      "codeNote": "Description says +200% spawn rate; code adds 2.5 to spawn_rate_mod (+250%).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:173"
+    },
+    {
+      "id": "NodeBoost1",
+      "name": "node boost",
+      "description": "blue enemies drop +1 Nodes",
+      "icon": "upgrade/NodeBoost1",
+      "currency": "sp",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "node_boost",
+          "op": "add",
+          "perLevel": 1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "NodeFinder1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        87,
+        197
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "NodeFinder1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:180"
+    },
+    {
+      "id": "ArmorPerEnemy1",
+      "name": "swarm defense system",
+      "description": "+2% armor per enemy in area",
+      "icon": "upgrade/ArmorPerEnemy1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          300,
+          350,
+          400,
+          450,
+          500,
+          650,
+          800,
+          1000,
+          1200,
+          1600
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "armor_mod_per_enemy",
+          "op": "add",
+          "perLevel": 0.02
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Armor2",
+          "level": 1
+        }
+      ],
+      "pos": [
+        151,
+        5
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Armor2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:187"
+    },
+    {
+      "id": "Armor3",
+      "name": "bolster",
+      "description": "+2 armor",
+      "icon": "upgrade/Armor3",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          450,
+          460,
+          480,
+          500,
+          500,
+          510,
+          520,
+          530,
+          540,
+          550
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "armor",
+          "op": "add",
+          "perLevel": 2
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Armor2",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        119,
+        5
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Armor2",
+        "Armor4"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:194"
+    },
+    {
+      "id": "DropHeal1",
+      "name": "patcher",
+      "description": "restore +0.5 health when picking up resources",
+      "icon": "upgrade/DropHeal1",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "health_on_pickup_drop",
+          "op": "add",
+          "perLevel": 0.5
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Lifesteal1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        311,
+        -27
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Lifesteal1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:201"
+    },
+    {
+      "id": "Health3",
+      "name": "big heart",
+      "description": "+80 max health",
+      "icon": "upgrade/Health3",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          500,
+          500,
+          525,
+          525,
+          550,
+          550,
+          600,
+          600,
+          600,
+          600
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "max_health",
+          "op": "add",
+          "perLevel": 80
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Health2",
+          "level": 1
+        }
+      ],
+      "pos": [
+        215,
+        -27
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Health2",
+        "Health4"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:208"
+    },
+    {
+      "id": "PulseBolts",
+      "name": "pulse bolts",
+      "description": "shoot projectiles outwards on each attack",
+      "icon": "upgrade/PulseBolts",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          12
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "pulse_bolt_count",
+          "op": "add",
+          "perLevel": 3
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "AttackSpeed2",
+          "level": 1
+        }
+      ],
+      "pos": [
+        343,
+        101
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "AttackSpeed2",
+        "PulseBoltCount1",
+        "PulseBoltDamage1"
+      ],
+      "codeNote": "Grants 3 pulse bolts per attack (pulse_bolt_count += 3).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:215"
+    },
+    {
+      "id": "PulseBoltDamage1",
+      "name": "bolt damage",
+      "description": "+25% damage to pulse bolts",
+      "icon": "upgrade/PulseBoltDamage1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          400,
+          500,
+          600,
+          800,
+          1000,
+          1200,
+          1400,
+          1600,
+          1800,
+          2000
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "pulse_bolt_damage_mod",
+          "op": "add",
+          "perLevel": 0.25
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "PulseBolts",
+          "level": 1
+        }
+      ],
+      "pos": [
+        343,
+        69
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "PulseBoltExplode",
+        "PulseBolts"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:222"
+    },
+    {
+      "id": "PulseBoltCount1",
+      "name": "bolt count",
+      "description": "+1 pulse bolts per attack",
+      "icon": "upgrade/PulseBoltCount1",
+      "currency": "sp",
+      "cost": {
+        "type": "table",
+        "table": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "pulse_bolt_count",
+          "op": "add",
+          "perLevel": 1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "PulseBolts",
+          "level": 1
+        }
+      ],
+      "pos": [
+        375,
+        69
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "PulseBoltCount2",
+        "PulseBolts"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:229"
+    },
+    {
+      "id": "ExplodersSize",
+      "name": "exploder area",
+      "description": "+15% exploder explosion size",
+      "icon": "upgrade/ExplodersSize",
+      "currency": "sp",
+      "cost": {
+        "type": "table",
+        "table": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "exploder_size",
+          "op": "add",
+          "perLevel": 0.15
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "ExplodersChance",
+          "level": 1
+        }
+      ],
+      "pos": [
+        55,
+        165
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "ExplodersChance"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:236"
+    },
+    {
+      "id": "MaxHealthHeal1",
+      "name": "scaling regeneration",
+      "description": "restore +1% max health/sec",
+      "icon": "upgrade/MaxHealthHeal1",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          8,
+          10,
+          12,
+          14,
+          18,
+          22,
+          26,
+          30,
+          36,
+          45
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "max_health_regen",
+          "op": "add",
+          "perLevel": 0.01
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "HealthRegen2",
+          "level": 1
+        }
+      ],
+      "pos": [
+        247,
+        -59
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "HealthRegen2",
+        "Lifesteal2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:243"
+    },
+    {
+      "id": "Armor4",
+      "name": "super armor",
+      "description": "+5 armor",
+      "icon": "upgrade/Armor4",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          700,
+          700,
+          725,
+          750,
+          750,
+          775,
+          775,
+          800,
+          800,
+          800
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "armor",
+          "op": "add",
+          "perLevel": 5
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Armor3",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        119,
+        -27
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Armor3",
+        "Armor5",
+        "BossArmor2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:250"
+    },
+    {
+      "id": "BossArmor2",
+      "name": "anti-purple",
+      "description": "+25% armor against bosses",
+      "icon": "upgrade/BossArmor2",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          8,
+          10,
+          12,
+          14,
+          16,
+          20,
+          30,
+          45
+        ]
+      },
+      "maxLevel": 8,
+      "effects": [
+        {
+          "stat": "boss_armor_mod",
+          "op": "add",
+          "perLevel": 0.25
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Armor4",
+          "level": 1
+        }
+      ],
+      "pos": [
+        151,
+        -59
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Armor4"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:257"
+    },
+    {
+      "id": "Damage3",
+      "name": "potency",
+      "description": "+6 damage",
+      "icon": "upgrade/Damage3",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "damage",
+          "op": "add",
+          "perLevel": 6
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Damage2",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        343,
+        133
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "CritChance1",
+        "Damage2",
+        "Damage4",
+        "Undamaged1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:264"
+    },
+    {
+      "id": "Undamaged1",
+      "name": "first strike",
+      "description": "+25% damage to undamaged enemies",
+      "icon": "upgrade/Undamaged1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          1000,
+          1200,
+          1400,
+          1600,
+          1800,
+          2000
+        ]
+      },
+      "maxLevel": 6,
+      "effects": [
+        {
+          "stat": "undamaged_mod",
+          "op": "add",
+          "perLevel": 0.25
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Damage3",
+          "level": 1
+        }
+      ],
+      "pos": [
+        375,
+        165
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Damage3",
+        "Execute1",
+        "Undamaged2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:271"
+    },
+    {
+      "id": "Execute1",
+      "name": "last strike",
+      "description": "+25% damage to enemies below 50% hp",
+      "icon": "upgrade/Execute1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          1000,
+          1200,
+          1400,
+          1600,
+          1800,
+          2000
+        ]
+      },
+      "maxLevel": 6,
+      "effects": [
+        {
+          "stat": "execute_mod",
+          "op": "add",
+          "perLevel": 0.25
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Undamaged1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        407,
+        197
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Execute2",
+        "Undamaged1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:278"
+    },
+    {
+      "id": "CritChance1",
+      "name": "crit chance",
+      "description": "+10% critical hit chance",
+      "icon": "upgrade/CritChance1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          1000,
+          2000,
+          3000,
+          4000,
+          6000,
+          8000,
+          12000,
+          16000,
+          20000,
+          24000
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "crit_chance",
+          "op": "add",
+          "perLevel": 0.1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Damage3",
+          "level": 1
+        }
+      ],
+      "pos": [
+        343,
+        165
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "CritDamage1",
+        "Damage3"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:285"
+    },
+    {
+      "id": "SpawnRate3",
+      "name": "infesting",
+      "description": "+100% spawn rate",
+      "icon": "upgrade/SpawnRate3",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          2000,
+          2200,
+          2400,
+          3000,
+          6000
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "spawn_rate_mod",
+          "op": "add",
+          "perLevel": 1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "SpawnRate2",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        119,
+        69
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Size2",
+        "SpawnRate2",
+        "SpawnRate4"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:292"
+    },
+    {
+      "id": "Armor5",
+      "name": "bit armor",
+      "description": "+2 armor",
+      "icon": "upgrade/Armor5",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          300,
+          300,
+          300,
+          300,
+          300,
+          300,
+          300,
+          300,
+          300,
+          300,
+          300,
+          300,
+          300,
+          300,
+          300,
+          300,
+          300,
+          300,
+          300,
+          300
+        ]
+      },
+      "maxLevel": 20,
+      "effects": [
+        {
+          "stat": "armor",
+          "op": "add",
+          "perLevel": 2
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Armor4",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        87,
+        -27
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Armor4",
+        "Armor6"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:299"
+    },
+    {
+      "id": "Damage4",
+      "name": "nodeblade",
+      "description": "+25 damage",
+      "icon": "upgrade/Damage4",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          50,
+          50,
+          50
+        ]
+      },
+      "maxLevel": 3,
+      "effects": [
+        {
+          "stat": "damage",
+          "op": "add",
+          "perLevel": 25
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Damage3",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        375,
+        133
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Damage3",
+        "Damage5",
+        "MovingPulser1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:307"
+    },
+    {
+      "id": "Size2",
+      "name": "domain expansion",
+      "description": "+50% attack size",
+      "icon": "upgrade/Size2",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "player_size_mod",
+          "op": "add",
+          "perLevel": 0.5
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "SpawnRate3",
+          "level": 1
+        }
+      ],
+      "pos": [
+        87,
+        101
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "CryptoMine",
+        "Size3",
+        "SpawnRate3"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:314"
+    },
+    {
+      "id": "CryptoMine",
+      "name": "crypto mine",
+      "description": "Unlock the Crypto Mine tab",
+      "icon": "upgrade/CryptoMine",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          50
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [],
+      "unlocksFeature": "cryptomine",
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Size2",
+          "level": 1
+        }
+      ],
+      "pos": [
+        55,
+        133
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Size2",
+        "YellowSpawn1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:321"
+    },
+    {
+      "id": "Health4",
+      "name": "transplant",
+      "description": "+300 max health",
+      "icon": "upgrade/Health4",
+      "currency": "netcoin",
+      "cost": {
+        "type": "table",
+        "table": [
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.01,
+          0.012,
+          0.01,
+          0.01,
+          0.01,
+          0.01
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "max_health",
+          "op": "add",
+          "perLevel": 300
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Health3",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        215,
+        -59
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Health3",
+        "Health5"
+      ],
+      "codeNote": "Level-6 cost is 0.012 while every other level is 0.01 (as shipped).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:328"
+    },
+    {
+      "id": "YellowSpawn1",
+      "name": "processor acquisition",
+      "description": "chance for yellow enemies to spawn",
+      "icon": "upgrade/YellowSpawn1",
+      "currency": "netcoin",
+      "cost": {
+        "type": "table",
+        "table": [
+          0.01
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "yellow_enemy_chance",
+          "op": "add",
+          "perLevel": 0.001
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "CryptoMine",
+          "level": 1
+        }
+      ],
+      "pos": [
+        23,
+        165
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "CryptoMine"
+      ],
+      "codeNote": "yellow_enemy_chance += 0.001 (0.1% per spawn).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:335"
+    },
+    {
+      "id": "Armor6",
+      "name": "byte armor",
+      "description": "+5 armor",
+      "icon": "upgrade/Armor6",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700,
+          700
+        ]
+      },
+      "maxLevel": 30,
+      "effects": [
+        {
+          "stat": "armor",
+          "op": "add",
+          "perLevel": 5
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Armor5",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        87,
+        -59
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Armor5",
+        "Armor7",
+        "FocusArmor1",
+        "MaxHealthToArmor1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:342"
+    },
+    {
+      "id": "BossDamage2",
+      "name": "colossus slayer",
+      "description": "+100% damage against bosses",
+      "icon": "upgrade/BossDamage2",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          5000,
+          6000,
+          7000,
+          8000,
+          9000,
+          10000,
+          11000,
+          12000,
+          13000,
+          14000
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "boss_damage_mod",
+          "op": "add",
+          "perLevel": 1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "BossDamage1",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        311,
+        197
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "BossDamage1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:351"
+    },
+    {
+      "id": "Lifesteal2",
+      "name": "drainer",
+      "description": "restore 10 health when hitting an enemy",
+      "icon": "upgrade/Lifesteal2",
+      "currency": "netcoin",
+      "cost": {
+        "type": "table",
+        "table": [
+          0.02,
+          0.02,
+          0.02
+        ]
+      },
+      "maxLevel": 3,
+      "effects": [
+        {
+          "stat": "health_on_hit",
+          "op": "add",
+          "perLevel": 10
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "MaxHealthHeal1",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        279,
+        -59
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Lifesteal3",
+        "MaxHealthHeal1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:358"
+    },
+    {
+      "id": "MovingPulser1",
+      "name": "auto pulser",
+      "description": "get a drone that occasionally attacks nearby enemies",
+      "icon": "upgrade/MovingPulser1",
+      "currency": "netcoin",
+      "cost": {
+        "type": "table",
+        "table": [
+          0.05,
+          0.15,
+          0.4,
+          0.8,
+          2
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "auto_pulser_count",
+          "op": "add",
+          "perLevel": 1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Damage4",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        407,
+        101
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Damage4",
+        "MovingPulserSize1",
+        "MovingPulserSpeed1"
+      ],
+      "codeNote": "Each level adds one drone (auto_pulser_count += 1).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:365"
+    },
+    {
+      "id": "Size3",
+      "name": "b.i.g.",
+      "description": "+100% attack size",
+      "icon": "upgrade/Size3",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1,
+          1,
+          1
+        ]
+      },
+      "maxLevel": 3,
+      "effects": [
+        {
+          "stat": "player_size",
+          "op": "add",
+          "perLevel": 1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Size2",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        55,
+        101
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "AutoCollect",
+        "Size2"
+      ],
+      "codeNote": "Description says +100% attack size; code adds 1.0 to player_size (base 34 px), not to player_size_mod. Each level widens the reticle by 1 px x (1 + player_size_mod). Likely a bug in the original; reproduce as coded.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:372"
+    },
+    {
+      "id": "MovingPulserSize1",
+      "name": "pulse thumper",
+      "description": "+25% auto-pulser attack size",
+      "icon": "upgrade/MovingPulserSize1",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          50,
+          100,
+          150,
+          200,
+          300,
+          400
+        ]
+      },
+      "maxLevel": 6,
+      "effects": [
+        {
+          "stat": "auto_pulser_size_mod",
+          "op": "add",
+          "perLevel": 0.25
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "MovingPulser1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        439,
+        69
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "MovingPulser1",
+        "MovingPulserAttackSpeed1",
+        "MovingPulserSize2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:379"
+    },
+    {
+      "id": "MovingPulserAttackSpeed1",
+      "name": "fast pulsing",
+      "description": "+20% auto-pulser attack speed",
+      "icon": "upgrade/MovingPulserAttackSpeed1",
+      "currency": "sp",
+      "cost": {
+        "type": "table",
+        "table": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "auto_pulser_attack_speed_mod",
+          "op": "add",
+          "perLevel": 0.2
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "MovingPulserSize1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        439,
+        37
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "MovingPulserSize1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:386"
+    },
+    {
+      "id": "Health5",
+      "name": "blood injection",
+      "description": "+4000 max health",
+      "icon": "upgrade/Health5",
+      "currency": "netcoin",
+      "cost": {
+        "type": "table",
+        "table": [
+          0.06,
+          0.07,
+          0.08
+        ]
+      },
+      "maxLevel": 3,
+      "effects": [
+        {
+          "stat": "max_health",
+          "op": "add",
+          "perLevel": 4000
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Health4",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        215,
+        -91
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Health4",
+        "MaxHealthHeal2",
+        "StealMaxHealth1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:393"
+    },
+    {
+      "id": "Lifesteal3",
+      "name": "extraction",
+      "description": "restore +1% max health when hitting an enemy",
+      "icon": "upgrade/Lifesteal3",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          10000,
+          50000
+        ]
+      },
+      "maxLevel": 2,
+      "effects": [
+        {
+          "stat": "max_health_on_hit",
+          "op": "add",
+          "perLevel": 0.01
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Lifesteal2",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        311,
+        -91
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Lifesteal2"
+      ],
+      "codeNote": "Heals 1% of max health per enemy hit (max_health_on_hit).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:400"
+    },
+    {
+      "id": "MaxHealthToArmor1",
+      "name": "blood armor",
+      "description": "get armor equal to +1% max health",
+      "icon": "upgrade/MaxHealthToArmor1",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          100,
+          150,
+          200,
+          250,
+          300
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "max_health_armor",
+          "op": "add",
+          "perLevel": 0.01
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Armor6",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        119,
+        -91
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Armor6",
+        "MaxHealthToArmor2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:407"
+    },
+    {
+      "id": "CritDamage1",
+      "name": "crit damage",
+      "description": "+50% crit damage",
+      "icon": "upgrade/CritDamage1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          6000,
+          8000,
+          10000,
+          12000,
+          14000,
+          16000,
+          18000,
+          20000,
+          22000,
+          24000
+        ]
+      },
+      "maxLevel": 10,
+      "effects": [
+        {
+          "stat": "crit_damage",
+          "op": "add",
+          "perLevel": 0.5
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "CritChance1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        375,
+        197
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "CritChance1",
+        "CritDamage2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:414"
+    },
+    {
+      "id": "Damage5",
+      "name": "netblade",
+      "description": "+100 damage",
+      "icon": "upgrade/Damage5",
+      "currency": "netcoin",
+      "cost": {
+        "type": "table",
+        "table": [
+          0.05,
+          0.06,
+          0.07,
+          0.08,
+          0.09
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "damage",
+          "op": "add",
+          "perLevel": 100
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Damage4",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        407,
+        133
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Damage4",
+        "RampingDamage1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:421"
+    },
+    {
+      "id": "Armor7",
+      "name": "netarmor",
+      "description": "+200 armor",
+      "icon": "upgrade/Armor7",
+      "currency": "netcoin",
+      "cost": {
+        "type": "table",
+        "table": [
+          0.06,
+          0.06,
+          0.06,
+          0.06,
+          0.06
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "armor",
+          "op": "add",
+          "perLevel": 200
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Armor6",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        87,
+        -91
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Armor6"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:428"
+    },
+    {
+      "id": "FocusArmor1",
+      "name": "focus armor",
+      "description": "+50% armor when attacking 8 or less enemies",
+      "icon": "upgrade/FocusArmor1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          8000,
+          9000,
+          10000,
+          11000,
+          12000
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "focus_armor_mod",
+          "op": "add",
+          "perLevel": 0.5
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Armor6",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        55,
+        -59
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Armor6"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:435"
+    },
+    {
+      "id": "StealMaxHealth1",
+      "name": "unending parasite",
+      "description": "gain +1 max health permanently when defeating an enemy",
+      "icon": "upgrade/StealMaxHealth1",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          300
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "perma_max_health_on_kill",
+          "op": "add",
+          "perLevel": 1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Health5",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        247,
+        -123
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Health5",
+        "StealMaxHealth2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:442"
+    },
+    {
+      "id": "PulseBoltExplode",
+      "name": "bolt burst",
+      "description": "pulse bolts explode when they expire",
+      "icon": "upgrade/PulseBoltExplode",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          300
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "pulse_bolt_explode",
+          "op": "set",
+          "perLevel": true
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "PulseBoltDamage1",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        343,
+        37
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "PulseBoltDamage1",
+        "PulseBoltDamage2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:449"
+    },
+    {
+      "id": "MovingPulserSize2",
+      "name": "it's pulsing time",
+      "description": "+50% auto-pulser attack size",
+      "icon": "upgrade/MovingPulserSize2",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "auto_pulser_size_mod",
+          "op": "add",
+          "perLevel": 0.5
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "MovingPulserSize1",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        471,
+        37
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "MovingPulserSize1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:456"
+    },
+    {
+      "id": "PulseBoltCount2",
+      "name": "bolt barrage",
+      "description": "+2 pulse bolts per attack",
+      "icon": "upgrade/PulseBoltCount2",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "pulse_bolt_count",
+          "op": "add",
+          "perLevel": 2
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "PulseBoltCount1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        375,
+        37
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "PulseBoltCount1",
+        "PulseBoltDamage2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:463"
+    },
+    {
+      "id": "PulseBoltDamage2",
+      "name": "bolt lethality",
+      "description": "+100% damage to pulse bolts",
+      "icon": "upgrade/PulseBoltDamage2",
+      "currency": "netcoin",
+      "cost": {
+        "type": "table",
+        "table": [
+          0.2,
+          0.25,
+          0.3
+        ]
+      },
+      "maxLevel": 3,
+      "effects": [
+        {
+          "stat": "pulse_bolt_damage_mod",
+          "op": "add",
+          "perLevel": 1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "any",
+      "requires": [
+        {
+          "id": "PulseBoltCount2",
+          "level": 1
+        },
+        {
+          "id": "PulseBoltExplode",
+          "level": 1
+        }
+      ],
+      "pos": [
+        375,
+        5
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "EnemyDeathPulseBolts",
+        "PulseBoltCount2",
+        "PulseBoltExplode"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:470"
+    },
+    {
+      "id": "MovingPulserSpeed1",
+      "name": "pulser pursuit",
+      "description": "+20% auto-pulser movement speed",
+      "icon": "upgrade/MovingPulserSpeed1",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          100,
+          125,
+          150,
+          175,
+          200
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "auto_pulser_speed_mod",
+          "op": "add",
+          "perLevel": 0.2
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "MovingPulser1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        439,
+        101
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "MovingPulser1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:477"
+    },
+    {
+      "id": "Undamaged2",
+      "name": "ambush",
+      "description": "+100% damage to undamaged enemies",
+      "icon": "upgrade/Undamaged2",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          10000,
+          12000,
+          15000,
+          20000
+        ]
+      },
+      "maxLevel": 4,
+      "effects": [
+        {
+          "stat": "undamaged_mod",
+          "op": "add",
+          "perLevel": 1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Undamaged1",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        407,
+        165
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Undamaged1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:484"
+    },
+    {
+      "id": "Execute2",
+      "name": "finishing blow",
+      "description": "+100% damage to enemies below 50% hp",
+      "icon": "upgrade/Execute2",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          10000,
+          12000,
+          15000,
+          20000
+        ]
+      },
+      "maxLevel": 4,
+      "effects": [
+        {
+          "stat": "execute_mod",
+          "op": "add",
+          "perLevel": 1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Execute1",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        439,
+        197
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Execute1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:491"
+    },
+    {
+      "id": "MaxHealthHeal2",
+      "name": "instant repair",
+      "description": "restore +2% max health/sec",
+      "icon": "upgrade/MaxHealthHeal2",
+      "currency": "netcoin",
+      "cost": {
+        "type": "table",
+        "table": [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "max_health_regen",
+          "op": "add",
+          "perLevel": 0.02
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Health5",
+          "level": 1
+        }
+      ],
+      "pos": [
+        183,
+        -123
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Health5"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:498"
+    },
+    {
+      "id": "RampingDamage1",
+      "name": "learning",
+      "description": "gain +1% damage every second during session",
+      "icon": "upgrade/RampingDamage1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          20000,
+          100000,
+          200000
+        ]
+      },
+      "maxLevel": 3,
+      "effects": [
+        {
+          "stat": "damage_mod_per_sec",
+          "op": "add",
+          "perLevel": 0.01
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Damage5",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        439,
+        165
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Damage5",
+        "LightningChance1",
+        "MaxHealthToDamage1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:505"
+    },
+    {
+      "id": "EnemyDeathPulseBolts",
+      "name": "bit explosion",
+      "description": "all destroyed enemies have +1% chance to explode into pulse bolts",
+      "icon": "upgrade/EnemyDeathPulseBolts",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          10000,
+          11000,
+          12000,
+          13000,
+          14000,
+          15000
+        ]
+      },
+      "maxLevel": 6,
+      "effects": [
+        {
+          "stat": "enemy_death_pulse_bolt_chance",
+          "op": "add",
+          "perLevel": 0.01
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "PulseBoltDamage2",
+          "level": 1
+        }
+      ],
+      "pos": [
+        407,
+        -27
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "PulseBoltDamage2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:512"
+    },
+    {
+      "id": "SpawnRate4",
+      "name": "overloaded",
+      "description": "+400% spawn rate",
+      "icon": "upgrade/SpawnRate4",
+      "currency": "netcoin",
+      "cost": {
+        "type": "table",
+        "table": [
+          0.1,
+          0.1,
+          0.1,
+          0.12,
+          0.12
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "spawn_rate_mod",
+          "op": "add",
+          "perLevel": 4
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "SpawnRate3",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        87,
+        69
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "SpawnRate3"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:519"
+    },
+    {
+      "id": "StealMaxHealth2",
+      "name": "parasite evolution",
+      "description": "increase max health permanently gained to +3 per enemy killed",
+      "icon": "upgrade/StealMaxHealth2",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          600
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "perma_max_health_on_kill",
+          "op": "add",
+          "perLevel": 2
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "StealMaxHealth1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        279,
+        -155
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Health6",
+        "StealMaxHealth1",
+        "StealMaxHealth3"
+      ],
+      "codeNote": "Adds +2 (total with unending parasite = 3), matching the description's \"to +3\".",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:526"
+    },
+    {
+      "id": "MaxHealthToArmor2",
+      "name": "blood visage",
+      "description": "get armor equal to +5% max health",
+      "icon": "upgrade/MaxHealthToArmor2",
+      "currency": "netcoin",
+      "cost": {
+        "type": "table",
+        "table": [
+          0.5
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "max_health_armor",
+          "op": "add",
+          "perLevel": 0.05
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "MaxHealthToArmor1",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        119,
+        -123
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "MaxHealthToArmor1",
+        "RampingArmor1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:533"
+    },
+    {
+      "id": "RampingArmor1",
+      "name": "growing",
+      "description": "gain +1% armor every second during session",
+      "icon": "upgrade/RampingArmor1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          50000,
+          100000,
+          120000,
+          140000,
+          200000
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "armor_mod_per_sec",
+          "op": "add",
+          "perLevel": 0.01
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "MaxHealthToArmor2",
+          "level": 1
+        }
+      ],
+      "pos": [
+        119,
+        -155
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "MaxHealthToArmor2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:540"
+    },
+    {
+      "id": "Health6",
+      "name": "indomitable",
+      "description": "+50000 max health",
+      "icon": "upgrade/Health6",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          600,
+          600,
+          600,
+          600,
+          600
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "max_health",
+          "op": "add",
+          "perLevel": 50000
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "StealMaxHealth2",
+          "level": 1
+        }
+      ],
+      "pos": [
+        279,
+        -187
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Health7",
+        "StealMaxHealth2"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:547"
+    },
+    {
+      "id": "StealMaxHealth3",
+      "name": "insatiable",
+      "description": "increase max health permanently gained to +8 per enemy killed",
+      "icon": "upgrade/StealMaxHealth3",
+      "currency": "netcoin",
+      "cost": {
+        "type": "table",
+        "table": [
+          0.6
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "perma_max_health_on_kill",
+          "op": "add",
+          "perLevel": 5
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "StealMaxHealth2",
+          "level": 1
+        }
+      ],
+      "pos": [
+        311,
+        -187
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "StealMaxHealth2"
+      ],
+      "codeNote": "Adds +5 (total = 8), matching the description's \"to +8\".",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:554"
+    },
+    {
+      "id": "LightningChance1",
+      "name": "lightning rod",
+      "description": "+5% chance to create chaining lightning when hitting an enemy",
+      "icon": "upgrade/LightningChance1",
+      "currency": "netcoin",
+      "cost": {
+        "type": "table",
+        "table": [
+          0.7,
+          1,
+          1.3,
+          2,
+          3
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "lightning_chance",
+          "op": "add",
+          "perLevel": 0.05
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "RampingDamage1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        471,
+        133
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "LightningChainCount1",
+        "LightningDamage1",
+        "RampingDamage1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:561"
+    },
+    {
+      "id": "LightningChainCount1",
+      "name": "chaining",
+      "description": "lightning chains +1 times",
+      "icon": "upgrade/LightningChainCount1",
+      "currency": "sp",
+      "cost": {
+        "type": "table",
+        "table": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "maxLevel": 8,
+      "effects": [
+        {
+          "stat": "lightning_chains",
+          "op": "add",
+          "perLevel": 1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "LightningChance1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        503,
+        101
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "LightningChance1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:568"
+    },
+    {
+      "id": "LightningDamage1",
+      "name": "thundering",
+      "description": "+50% lightning damage",
+      "icon": "upgrade/LightningDamage1",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          500,
+          600,
+          700,
+          800,
+          900,
+          1000,
+          1100,
+          1200
+        ]
+      },
+      "maxLevel": 8,
+      "effects": [
+        {
+          "stat": "lightning_damage_mod",
+          "op": "add",
+          "perLevel": 0.5
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "LightningChance1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        503,
+        133
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "LightningChance1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:575"
+    },
+    {
+      "id": "CritDamage2",
+      "name": "big crit",
+      "description": "+200% crit damage",
+      "icon": "upgrade/CritDamage2",
+      "currency": "netcoin",
+      "cost": {
+        "type": "table",
+        "table": [
+          0.8,
+          1,
+          1.2,
+          1.4,
+          1.6,
+          1.8,
+          2,
+          2
+        ]
+      },
+      "maxLevel": 8,
+      "effects": [
+        {
+          "stat": "crit_damage",
+          "op": "add",
+          "perLevel": 2
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "CritDamage1",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        407,
+        229
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "CritDamage1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:582"
+    },
+    {
+      "id": "MaxHealthToDamage1",
+      "name": "bloodblade",
+      "description": "get damage equal to +0.1% of max health",
+      "icon": "upgrade/MaxHealthToDamage1",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          100000
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "max_health_damage",
+          "op": "add",
+          "perLevel": 0.001
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "RampingDamage1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        471,
+        165
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "RampingDamage1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:589"
+    },
+    {
+      "id": "Health7",
+      "name": "beyond",
+      "description": "+100000 max health",
+      "icon": "upgrade/Health7",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          80000,
+          80000,
+          80000,
+          80000,
+          80000
+        ]
+      },
+      "maxLevel": 5,
+      "effects": [
+        {
+          "stat": "max_health",
+          "op": "add",
+          "perLevel": 100000
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Health6",
+          "level": "max"
+        }
+      ],
+      "pos": [
+        279,
+        -219
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Health6",
+        "Infinity1"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:596"
+    },
+    {
+      "id": "Infinity1",
+      "name": "to infinity",
+      "description": "???",
+      "icon": "upgrade/Infinity1",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "spawn_rate_mod",
+          "op": "add",
+          "perLevel": 10
+        },
+        {
+          "stat": "perma_max_health_on_kill",
+          "op": "add",
+          "perLevel": 12
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Health7",
+          "level": 1
+        }
+      ],
+      "pos": [
+        279,
+        -251
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Health7",
+        "Infinity2"
+      ],
+      "codeNote": "Description \"???\". Code: spawn_rate_mod += 10.0 and perma_max_health_on_kill += 12.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:603"
+    },
+    {
+      "id": "Infinity2",
+      "name": "going nowhere",
+      "description": "???",
+      "icon": "upgrade/Infinity2",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Infinity1",
+          "level": 1
+        }
+      ],
+      "pos": [
+        279,
+        -283
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Infinity1",
+        "Infinity3"
+      ],
+      "codeNote": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:610"
+    },
+    {
+      "id": "Infinity3",
+      "name": "void",
+      "description": "???",
+      "icon": "upgrade/Infinity3",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Infinity2",
+          "level": 1
+        }
+      ],
+      "pos": [
+        279,
+        -315
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Infinity2",
+        "Infinity4"
+      ],
+      "codeNote": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:617"
+    },
+    {
+      "id": "Infinity4",
+      "name": "no return",
+      "description": "???",
+      "icon": "upgrade/Infinity4",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Infinity3",
+          "level": 1
+        }
+      ],
+      "pos": [
+        279,
+        -347
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Infinity3",
+        "Infinity5"
+      ],
+      "codeNote": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:624"
+    },
+    {
+      "id": "Infinity5",
+      "name": "where",
+      "description": "???",
+      "icon": "upgrade/Infinity5",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Infinity4",
+          "level": 1
+        }
+      ],
+      "pos": [
+        311,
+        -379
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Infinity4",
+        "Infinity6"
+      ],
+      "codeNote": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:631"
+    },
+    {
+      "id": "Infinity6",
+      "name": "in the distance",
+      "description": "???",
+      "icon": "upgrade/Infinity6",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Infinity5",
+          "level": 1
+        }
+      ],
+      "pos": [
+        311,
+        -411
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Infinity5",
+        "Infinity7"
+      ],
+      "codeNote": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:638"
+    },
+    {
+      "id": "Infinity7",
+      "name": "something happens",
+      "description": "???",
+      "icon": "upgrade/Infinity7",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Infinity6",
+          "level": 1
+        }
+      ],
+      "pos": [
+        311,
+        -443
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Infinity6",
+        "Infinity8"
+      ],
+      "codeNote": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:645"
+    },
+    {
+      "id": "Infinity8",
+      "name": "event horizon",
+      "description": "???",
+      "icon": "upgrade/Infinity8",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Infinity7",
+          "level": 1
+        }
+      ],
+      "pos": [
+        311,
+        -475
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Infinity7",
+        "Infinity9"
+      ],
+      "codeNote": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:652"
+    },
+    {
+      "id": "Infinity9",
+      "name": "singularity",
+      "description": "???",
+      "icon": "upgrade/Infinity9",
+      "currency": "cores",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Infinity8",
+          "level": 1
+        }
+      ],
+      "pos": [
+        311,
+        -507
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Infinity8",
+        "Laboratory",
+        "YellowSpawn2"
+      ],
+      "codeNote": "Description \"???\". No effect in code (no case in gain_upgrade); acts only as a path to the next node.",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:659"
+    },
+    {
+      "id": "Laboratory",
+      "name": "the lab",
+      "description": "unlock the laboratory tab",
+      "icon": "upgrade/Laboratory",
+      "currency": "bits",
+      "cost": {
+        "type": "table",
+        "table": [
+          1
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [],
+      "unlocksFeature": "lab",
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Infinity9",
+          "level": 1
+        }
+      ],
+      "pos": [
+        303,
+        -579
+      ],
+      "size": [
+        32,
+        32
+      ],
+      "links": [
+        "Infinity9"
+      ],
+      "codeNote": "Costs 1 Bit. Unlocked by buying Infinity9 (singularity).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:666"
+    },
+    {
+      "id": "YellowSpawn2",
+      "name": "endless",
+      "description": "increased yellow enemy spawn rate",
+      "icon": "upgrade/YellowSpawn2",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          1000
+        ]
+      },
+      "maxLevel": 1,
+      "effects": [
+        {
+          "stat": "yellow_enemy_chance",
+          "op": "add",
+          "perLevel": 0.004
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Infinity9",
+          "level": 1
+        }
+      ],
+      "pos": [
+        343,
+        -507
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Infinity9"
+      ],
+      "codeNote": "yellow_enemy_chance += 0.004 (total 0.5% per spawn).",
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:673"
+    },
+    {
+      "id": "AutoCollect",
+      "name": "auto-collect",
+      "description": "+10% chance to automatically collect enemy drops when dropped",
+      "icon": "upgrade/AutoCollect",
+      "currency": "nodes",
+      "cost": {
+        "type": "table",
+        "table": [
+          300,
+          500,
+          1000,
+          2000,
+          4000,
+          6000,
+          8000,
+          10000
+        ]
+      },
+      "maxLevel": 8,
+      "effects": [
+        {
+          "stat": "autocollect_chance",
+          "op": "add",
+          "perLevel": 0.1
+        }
+      ],
+      "unlocksFeature": null,
+      "requiresMode": "all",
+      "requires": [
+        {
+          "id": "Size3",
+          "level": 1
+        }
+      ],
+      "pos": [
+        23,
+        101
+      ],
+      "size": [
+        16,
+        16
+      ],
+      "links": [
+        "Size3"
+      ],
+      "src": "res://Scripts/Autoloads/Stores/UpgradeStore.gd:680"
+    }
+  ]
+}

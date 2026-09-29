@@ -1,0 +1,47 @@
+{
+  "buses": {
+    "sfxDb": -10.5236,
+    "bgmDb": 0,
+    "bgmLowpassHz": 500,
+    "src": "res://default_bus_layout.tres"
+  },
+  "bgmProfiles": {
+    "boot": {
+      "volume": 1,
+      "lowpassHz": 1000,
+      "sec": 0.1,
+      "from": 0
+    },
+    "menu": {
+      "volume": 1,
+      "lowpassHz": 1000,
+      "sec": 0.5
+    },
+    "shop": {
+      "volume": 0.8,
+      "lowpassHz": 800,
+      "sec": 0.5
+    },
+    "battle": {
+      "volume": 1,
+      "lowpassHz": 5000,
+      "sec": 0.5
+    },
+    "transition": {
+      "volume": 0.7,
+      "lowpassHz": 500,
+      "sec": 0.5
+    },
+    "src": "res://Scripts/Autoloads/BGM.gd:28, res://Scripts/MainScene.gd:60,97,117, res://Scripts/Effects/SceneTransition.gd:16"
+  },
+  "sfx": {
+    "voices": 50,
+    "defaultPitchRange": 0.05,
+    "cooldownSteps": 1,
+    "src": "res://Scripts/Autoloads/SFX.gd"
+  },
+  "loops": [
+    "STATIC",
+    "VOICE_LOOP"
+  ]
+}

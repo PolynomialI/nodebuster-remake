@@ -1,0 +1,359 @@
+{
+  "note": "Enemy types. HP = current base HP (prestige, grows with time) * healthMult; damage = current base damage * damageMult. speed is multiplied by the prestige enemySpeedMod. Sprites are 128 px art drawn at \"scale\".",
+  "source": "res://Scripts/Battle/EnemySpawner.gd:73-151, res://Scenes/Enemies/*.tscn, res://Scripts/Enemy/Enemy.gd",
+  "despawn": {
+    "minAgeSec": 5,
+    "marginFactor": 0.7,
+    "src": "res://Scripts/Enemy/Enemy.gd:118-123"
+  },
+  "hitFlashSec": 0.1,
+  "types": [
+    {
+      "id": "Square",
+      "sprite": "enemy/square",
+      "mask": "enemy/square_mask",
+      "maskOffset": [
+        6,
+        6
+      ],
+      "fillMode": "bottom_to_top",
+      "hitbox": {
+        "shape": "rect",
+        "size": [
+          128,
+          128
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "scale": [
+        0.14,
+        0.18
+      ],
+      "speed": [
+        18,
+        22
+      ],
+      "spin": [
+        0.12,
+        0.25
+      ],
+      "randomSpinDirection": true,
+      "healthMult": 1,
+      "dropMult": 1,
+      "xpMult": 1,
+      "damageMult": 1,
+      "wavy": null,
+      "faceVelocity": false,
+      "onDeath": [],
+      "firstPrestige": 0,
+      "src": "res://Scripts/Battle/EnemySpawner.gd:86"
+    },
+    {
+      "id": "SmallSquare",
+      "sprite": "enemy/square",
+      "mask": "enemy/square_mask",
+      "maskOffset": [
+        6,
+        6
+      ],
+      "fillMode": "bottom_to_top",
+      "hitbox": {
+        "shape": "rect",
+        "size": [
+          128,
+          128
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "scale": [
+        0.08,
+        0.1
+      ],
+      "speed": [
+        30,
+        36
+      ],
+      "spin": [
+        0.16,
+        0.26
+      ],
+      "randomSpinDirection": true,
+      "healthMult": 0.6,
+      "dropMult": 1,
+      "xpMult": 1,
+      "damageMult": 1,
+      "wavy": null,
+      "faceVelocity": false,
+      "onDeath": [],
+      "firstPrestige": 1,
+      "src": "res://Scripts/Battle/EnemySpawner.gd:91"
+    },
+    {
+      "id": "BigSquare",
+      "sprite": "enemy/square",
+      "mask": "enemy/square_mask",
+      "maskOffset": [
+        6,
+        6
+      ],
+      "fillMode": "bottom_to_top",
+      "hitbox": {
+        "shape": "rect",
+        "size": [
+          128,
+          128
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "scale": [
+        0.45,
+        0.5
+      ],
+      "speed": [
+        12,
+        15
+      ],
+      "spin": [
+        0,
+        0
+      ],
+      "randomSpinDirection": false,
+      "healthMult": 5,
+      "dropMult": 3,
+      "xpMult": 4,
+      "damageMult": 1,
+      "wavy": null,
+      "faceVelocity": false,
+      "onDeath": [],
+      "firstPrestige": 1,
+      "src": "res://Scripts/Battle/EnemySpawner.gd:97"
+    },
+    {
+      "id": "Exploder",
+      "sprite": "enemy/circle",
+      "mask": "enemy/circle_mask",
+      "maskOffset": [
+        6,
+        6
+      ],
+      "fillMode": "bottom_to_top",
+      "hitbox": {
+        "shape": "circle",
+        "radius": 64,
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "scale": [
+        0.14,
+        0.18
+      ],
+      "speed": [
+        18,
+        22
+      ],
+      "spin": [
+        0.12,
+        0.25
+      ],
+      "randomSpinDirection": true,
+      "healthMult": 1,
+      "dropMult": 1,
+      "xpMult": 1,
+      "damageMult": 1,
+      "wavy": null,
+      "faceVelocity": false,
+      "onDeath": [
+        {
+          "explode": {
+            "size": 110,
+            "sizeStat": "exploder_size"
+          },
+          "src": "res://Scripts/Battle/EnemySpawner.gd:243-245"
+        }
+      ],
+      "src": "res://Scripts/Battle/EnemySpawner.gd:104"
+    },
+    {
+      "id": "Pill",
+      "sprite": "enemy/pill",
+      "mask": "enemy/pill_mask",
+      "maskOffset": [
+        6,
+        6
+      ],
+      "fillMode": "left_to_right",
+      "hitbox": {
+        "shape": "circle",
+        "radius": 60,
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "scale": [
+        0.16,
+        0.22
+      ],
+      "speed": [
+        20,
+        24
+      ],
+      "spin": [
+        0,
+        0
+      ],
+      "randomSpinDirection": false,
+      "healthMult": 1,
+      "dropMult": 1,
+      "xpMult": 1,
+      "damageMult": 1,
+      "wavy": {
+        "amplitude": 34,
+        "period": 1
+      },
+      "faceVelocity": true,
+      "onDeath": [],
+      "firstPrestige": 4,
+      "src": "res://Scripts/Battle/EnemySpawner.gd:109"
+    },
+    {
+      "id": "Pentagon",
+      "sprite": "enemy/pentagon",
+      "mask": "enemy/pentagon_mask",
+      "maskOffset": [
+        6,
+        9
+      ],
+      "fillMode": "bottom_to_top",
+      "hitbox": {
+        "shape": "circle",
+        "radius": 60,
+        "offset": [
+          0,
+          5
+        ]
+      },
+      "scale": [
+        0.4,
+        0.45
+      ],
+      "speed": [
+        14,
+        18
+      ],
+      "spin": [
+        0.15,
+        0.2
+      ],
+      "randomSpinDirection": true,
+      "healthMult": 3,
+      "dropMult": 2,
+      "xpMult": 2,
+      "damageMult": 1,
+      "wavy": null,
+      "faceVelocity": false,
+      "onDeath": [
+        {
+          "split": {
+            "type": "PentagonSmall",
+            "count": 6,
+            "radius": 40
+          },
+          "src": "res://Scripts/Battle/EnemySpawner.gd:246-249,265-269"
+        }
+      ],
+      "firstPrestige": 5,
+      "src": "res://Scripts/Battle/EnemySpawner.gd:116"
+    },
+    {
+      "id": "PentagonSmall",
+      "sprite": "enemy/pentagon",
+      "mask": "enemy/pentagon_mask",
+      "maskOffset": [
+        6,
+        9
+      ],
+      "fillMode": "bottom_to_top",
+      "hitbox": {
+        "shape": "circle",
+        "radius": 60,
+        "offset": [
+          0,
+          5
+        ]
+      },
+      "scale": [
+        0.1,
+        0.12
+      ],
+      "speed": [
+        26,
+        32
+      ],
+      "spin": [
+        0.2,
+        0.26
+      ],
+      "randomSpinDirection": true,
+      "healthMult": 0.6,
+      "dropMult": 1,
+      "xpMult": 1,
+      "damageMult": 1,
+      "wavy": null,
+      "faceVelocity": false,
+      "onDeath": [],
+      "src": "res://Scripts/Battle/EnemySpawner.gd:124"
+    },
+    {
+      "id": "Spiky",
+      "sprite": "enemy/spiky",
+      "mask": "enemy/spiky_mask",
+      "maskOffset": [
+        17,
+        17
+      ],
+      "fillMode": "clockwise_and_counter_clockwise",
+      "hitbox": {
+        "shape": "circle",
+        "radius": 50,
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "scale": [
+        0.3,
+        0.34
+      ],
+      "speed": [
+        14,
+        18
+      ],
+      "spin": [
+        0.16,
+        0.2
+      ],
+      "randomSpinDirection": true,
+      "healthMult": 2,
+      "dropMult": 4,
+      "xpMult": 2,
+      "damageMult": 3,
+      "wavy": null,
+      "faceVelocity": false,
+      "onDeath": [],
+      "firstPrestige": 9,
+      "src": "res://Scripts/Battle/EnemySpawner.gd:130"
+    }
+  ]
+}

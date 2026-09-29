@@ -1,0 +1,75 @@
+{
+  "netcoinPerBit": 0.00001,
+  "deposits": [
+    {
+      "amount": 1000,
+      "label": "1k"
+    },
+    {
+      "amount": 5000,
+      "label": "5k"
+    },
+    {
+      "amount": 10000,
+      "label": "10k"
+    },
+    {
+      "amount": 50000,
+      "label": "50k"
+    },
+    {
+      "amount": 100000,
+      "label": "100k"
+    },
+    {
+      "amount": 1000000,
+      "label": "1m"
+    }
+  ],
+  "upgradeCost": {
+    "currency": "processors",
+    "amount": 1
+  },
+  "bitsPerSecByLevel": [
+    5,
+    10,
+    20,
+    40,
+    80,
+    160,
+    320,
+    640,
+    1280,
+    1800,
+    2600,
+    3400,
+    4200,
+    5200,
+    6400,
+    7600,
+    8800,
+    10000,
+    12000,
+    14000,
+    17000,
+    21000,
+    25000,
+    32000,
+    42000,
+    52000,
+    64000,
+    80000,
+    100000,
+    124000,
+    164000,
+    228000,
+    320000,
+    480000,
+    640000,
+    820000,
+    1280000
+  ],
+  "maxLevel": 36,
+  "runsInEveryScene": true,
+  "src": "res://Scripts/Systems/CryptoMine.gd, res://Scripts/Shop/CryptoMinePage.gd"
+}

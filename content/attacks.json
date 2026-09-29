@@ -1,0 +1,45 @@
+{
+  "note": "Secondary attacks and effect sizes (px, seconds).",
+  "explosion": {
+    "flickerDelaySec": 0.15,
+    "flickerStepSec": 0.04,
+    "flickerSteps": 6,
+    "src": "res://Scripts/Autoloads/Globals.gd:32-56, res://Scripts/Autoloads/Effects.gd:15-22"
+  },
+  "pulseBolt": {
+    "firstAngleDeg": -90,
+    "speed": 300,
+    "lifetime": [
+      0.4,
+      0.6
+    ],
+    "radius": 5.09902,
+    "spriteSize": [
+      14,
+      6
+    ],
+    "explodeSize": 64,
+    "impactSize": 16,
+    "src": "res://Scripts/Player/PulseBolt.gd, res://Scenes/Player/PulseBolt.tscn, res://Scripts/Autoloads/Globals.gd:59-70"
+  },
+  "drone": {
+    "speed": 15,
+    "turnRadPerSec": 1.5707963267948966,
+    "intervalSec": 3,
+    "size": 76,
+    "angleDeg": 45,
+    "spawnMargin": 20,
+    "flashSec": 0.1,
+    "src": "res://Scripts/Battle/MovingPulser.gd, res://Scripts/Battle/BattleScene.gd:48-53"
+  },
+  "lightning": {
+    "range": 80,
+    "hopSec": 0.06,
+    "width": 4,
+    "fadeSec": 0.25,
+    "jitter": 6,
+    "segment": 15,
+    "impactSize": 16,
+    "src": "res://Scripts/Player/Lightning.gd, res://Scripts/Autoloads/Effects.gd:24-29, res://Scripts/Effects/ElectricityEffect.gd"
+  }
+}

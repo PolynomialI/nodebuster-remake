@@ -1,0 +1,131 @@
+{
+  "note": "Names and descriptions as shown on Steam (not in the game files). Conditions follow where the original unlocks each one.",
+  "achievements": [
+    {
+      "id": "FIRST_SESSION",
+      "name": "Awakened",
+      "description": "Initiate your first session",
+      "when": {
+        "event": "sessionStart",
+        "stat": "sessions",
+        "atLeast": 1
+      }
+    },
+    {
+      "id": "TOTAL_SESSIONS_50",
+      "name": "Routine",
+      "description": "Initiate 50 sessions",
+      "when": {
+        "event": "sessionStart",
+        "stat": "sessions",
+        "atLeast": 50
+      }
+    },
+    {
+      "id": "MILESTONES",
+      "name": "Milestones",
+      "description": "Unlock Milestones",
+      "when": {
+        "event": "feature",
+        "feature": "milestones"
+      }
+    },
+    {
+      "id": "CRYPTO_MINE",
+      "name": "Crypto Mine",
+      "description": "Unlock the Crypto Mine",
+      "when": {
+        "event": "feature",
+        "feature": "cryptomine"
+      }
+    },
+    {
+      "id": "THE_LAB",
+      "name": "The Lab",
+      "description": "Unlock the Lab",
+      "when": {
+        "event": "feature",
+        "feature": "lab"
+      }
+    },
+    {
+      "id": "BITS_10K",
+      "name": "Bit Guy",
+      "description": "Earn 10,000 total Bits",
+      "when": {
+        "event": "sessionEnd",
+        "stat": "total_bits",
+        "atLeast": 10000
+      }
+    },
+    {
+      "id": "BITS_100K",
+      "name": "Bit Getter",
+      "description": "Earn 100,000 total Bits",
+      "when": {
+        "event": "sessionEnd",
+        "stat": "total_bits",
+        "atLeast": 100000
+      }
+    },
+    {
+      "id": "BITS_1M",
+      "name": "Bit Collector",
+      "description": "Earn 1,000,000 total Bits",
+      "when": {
+        "event": "sessionEnd",
+        "stat": "total_bits",
+        "atLeast": 1000000
+      }
+    },
+    {
+      "id": "BITS_10M",
+      "name": "Bit Lord",
+      "description": "Earn 10,000,000 total Bits",
+      "when": {
+        "event": "sessionEnd",
+        "stat": "total_bits",
+        "atLeast": 10000000
+      }
+    },
+    {
+      "id": "NODES_1K",
+      "name": "Node Hunter",
+      "description": "Earn 1,000 total Nodes",
+      "when": {
+        "event": "sessionEnd",
+        "stat": "total_nodes",
+        "atLeast": 1000
+      }
+    },
+    {
+      "id": "NODES_10K",
+      "name": "Node Buster",
+      "description": "Earn 10,000 total Nodes",
+      "when": {
+        "event": "sessionEnd",
+        "stat": "total_nodes",
+        "atLeast": 10000
+      }
+    },
+    {
+      "id": "SP_25",
+      "name": "SP Seeker",
+      "description": "Earn 25 total SP",
+      "when": {
+        "event": "levelUp",
+        "stat": "level",
+        "atLeast": 25
+      }
+    },
+    {
+      "id": "DEPLOY_GODVIRUS",
+      "name": "Genesis",
+      "description": "Deploy the godvirus",
+      "when": {
+        "event": "godvirus"
+      }
+    }
+  ],
+  "src": "research/data/achievements.json"
+}

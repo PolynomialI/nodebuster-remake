@@ -1,0 +1,186 @@
+{
+  "note": "Visual effect parameters from the original scenes and scripts.",
+  "cornerBoxPulse": {
+    "flashSec": 0.1,
+    "springScalePx": 16,
+    "springStiffness": 500,
+    "rotateDeg": 8,
+    "src": "res://Scripts/Effects/CornerBox.gd"
+  },
+  "squareImpact": {
+    "startScale": 1.4,
+    "shrinkSec": 0.12,
+    "flashSec": 0.08,
+    "holdSec": 0.05,
+    "grow": 6,
+    "src": "res://Scripts/Effects/SquareImpact.gd, res://Scripts/Enemy/Enemy.gd:79-85"
+  },
+  "enemyHitSpring": {
+    "forcePx": 10,
+    "min": 0.5,
+    "max": 1.5,
+    "src": "res://Scripts/Enemy/Enemy.gd:90-95"
+  },
+  "screenShake": {
+    "magnitude": 3,
+    "durationSec": 0.3,
+    "frequency": 70,
+    "src": "res://Scripts/MyCamera.gd:8-11"
+  },
+  "floatingText": {
+    "rise": 15,
+    "riseSec": 0.3,
+    "revealSec": 0.2,
+    "durationSec": 0.4,
+    "blinkDecrement": 0.8,
+    "src": "res://Scripts/Effects/FloatingText.gd"
+  },
+  "particles": {
+    "hit": {
+      "texture": "particle/line",
+      "amount": 6,
+      "lifetime": 0.4,
+      "velocity": [
+        100,
+        220
+      ],
+      "velocityCurve": [
+        [
+          0,
+          1
+        ],
+        [
+          0.566667,
+          0.241758
+        ]
+      ],
+      "scale": [
+        0.1,
+        0.3
+      ],
+      "scaleCurve": [
+        [
+          0,
+          0
+        ],
+        [
+          0.173333,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "alignToVelocity": true,
+      "src": "res://Scenes/Particles/HitParticles.tscn"
+    },
+    "levelUp": {
+      "texture": "particle/shard",
+      "amount": 12,
+      "lifetime": 0.4,
+      "velocity": [
+        120,
+        300
+      ],
+      "velocityCurve": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0.230769
+        ]
+      ],
+      "scale": [
+        0.2,
+        1
+      ],
+      "scaleCurve": [
+        [
+          0,
+          0
+        ],
+        [
+          0.173333,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "alignToVelocity": true,
+      "color": "YELLOW",
+      "src": "res://Scenes/Particles/LevelUpParticles.tscn"
+    },
+    "background": {
+      "texture": "particle/circle",
+      "amount": 96,
+      "amountBattle": 128,
+      "lifetime": 10,
+      "lifetimeRandomness": 0.4,
+      "box": [
+        480,
+        270
+      ],
+      "scale": [
+        0.1,
+        0.2
+      ],
+      "scaleCurve": [
+        [
+          0,
+          0
+        ],
+        [
+          0.52381,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "grey": 0.17,
+      "parallax": [
+        0.1,
+        0.2
+      ],
+      "src": "res://Scenes/Effects/BgParticles.tscn, res://GameScenes/ShopScene.tscn"
+    }
+  },
+  "springs": {
+    "scale": {
+      "stiffness": 250,
+      "damping": 12
+    },
+    "rotate": {
+      "stiffness": 600,
+      "damping": 14
+    },
+    "property": {
+      "stiffness": 150,
+      "damping": 10
+    },
+    "maxDt": 0.05,
+    "src": "res://Scripts/Autoloads/Springer.gd, res://Scripts/Autoloads/Spring.gd"
+  },
+  "transition": {
+    "frames": 16,
+    "fps": 28,
+    "frameSize": [
+      500,
+      290
+    ],
+    "textDelaySec": 0.2,
+    "textRevealSec": 0.3,
+    "textBlinkSec": 0.04,
+    "textBlinks": 14,
+    "holdSec": 0.4,
+    "darkColor": "#8f8f8f",
+    "src": "res://Scripts/Effects/SceneTransition.gd, res://MainScene.tscn"
+  },
+  "levelUpText": "LEVEL UP"
+}

@@ -1,0 +1,51 @@
+{
+  "colors": {
+    "WHITE": "#dcdcdc",
+    "RED": "#f03a3f",
+    "YELLOW": "#eed345",
+    "GREEN": "#4ff264",
+    "BLUE": "#3fb9eb",
+    "DARK_BLUE": "#457af6",
+    "PURPLE": "#c359fb",
+    "BG": "#1f1f1f",
+    "VIOLET": "#e048f7",
+    "DARK_RED": "#a71818"
+  },
+  "currency": {
+    "bits": "RED",
+    "nodes": "DARK_BLUE",
+    "cores": "PURPLE",
+    "sp": "BLUE",
+    "netcoin": "GREEN",
+    "processors": "YELLOW"
+  },
+  "outline": {
+    "default": {
+      "maxed": "YELLOW",
+      "canBuy": "GREEN",
+      "cannotBuy": "RED"
+    },
+    "alternate": {
+      "maxed": "VIOLET",
+      "canBuy": "GREEN",
+      "cannotBuy": "DARK_RED"
+    }
+  },
+  "ui": {
+    "disabled": "#6c6c6c",
+    "transitionDark": "#8f8f8f",
+    "xpBar": "#d6a129",
+    "progressBar": "#dcdcdc",
+    "bgParticles": "#2b2b2b",
+    "blackPanel": "#0f0f0f",
+    "continueBtn": "#279b3a",
+    "optionsBtn": "#ed4eac",
+    "claimBtn": "#1d8c38",
+    "upgradeMineBtn": "#d33dc9",
+    "labTab": "#c949a9",
+    "creditsBtn": "#2b2b2b",
+    "helpBtn": "#1f1f1f",
+    "creditsText": "#dcdcdc"
+  },
+  "src": "res://Scripts/MyColors.gd, scenes cited in research/visuals-audio.md"
+}

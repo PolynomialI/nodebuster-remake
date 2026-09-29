@@ -1,0 +1,331 @@
+{
+  "note": "Lifetime kill goals. text and rewardText are shown as in the original (BLUE RIVAL says 1,500 but needs 1,600, as in the original).",
+  "source": "res://Scripts/Autoloads/Stores/MilestoneStore.gd, res://Scripts/Upgrades/UpgradeProcessor.gd:402-508",
+  "milestones": [
+    {
+      "id": "Reds500",
+      "name": "RED DEFEATER",
+      "text": "destroy 500 red enemies",
+      "rewardText": "500",
+      "icon": "milestone/Reds500",
+      "counter": "reds_killed",
+      "count": 500,
+      "reward": {
+        "currency": "bits",
+        "amount": 500
+      }
+    },
+    {
+      "id": "Blues10",
+      "name": "BLUE DEFEATER",
+      "text": "destroy 10 blue enemies",
+      "rewardText": "5",
+      "icon": "milestone/Blues10",
+      "counter": "blues_killed",
+      "count": 10,
+      "reward": {
+        "currency": "nodes",
+        "amount": 5
+      }
+    },
+    {
+      "id": "Reds2k",
+      "name": "RED ENEMY",
+      "text": "destroy 2,000 red enemies",
+      "rewardText": "3,000",
+      "icon": "milestone/Reds2k",
+      "counter": "reds_killed",
+      "count": 2000,
+      "reward": {
+        "currency": "bits",
+        "amount": 3000
+      }
+    },
+    {
+      "id": "Blues100",
+      "name": "BLUE ENEMY",
+      "text": "destroy 100 blue enemies",
+      "rewardText": "100",
+      "icon": "milestone/Blues100",
+      "counter": "blues_killed",
+      "count": 100,
+      "reward": {
+        "currency": "nodes",
+        "amount": 100
+      }
+    },
+    {
+      "id": "Reds4k",
+      "name": "RED SLAYER",
+      "text": "destroy 4,000 red enemies",
+      "rewardText": "5,000",
+      "icon": "milestone/Reds4k",
+      "counter": "reds_killed",
+      "count": 4000,
+      "reward": {
+        "currency": "bits",
+        "amount": 5000
+      }
+    },
+    {
+      "id": "Blues200",
+      "name": "BLUE SLAYER",
+      "text": "destroy 200 blue enemies",
+      "rewardText": "200",
+      "icon": "milestone/Blues200",
+      "counter": "blues_killed",
+      "count": 200,
+      "reward": {
+        "currency": "nodes",
+        "amount": 200
+      }
+    },
+    {
+      "id": "Reds6k",
+      "name": "RED BUSTER",
+      "text": "destroy 6,000 red enemies",
+      "rewardText": "8,000",
+      "icon": "milestone/Reds6k",
+      "counter": "reds_killed",
+      "count": 6000,
+      "reward": {
+        "currency": "bits",
+        "amount": 8000
+      }
+    },
+    {
+      "id": "Blues300",
+      "name": "BLUE BUSTER",
+      "text": "destroy 300 blue enemies",
+      "rewardText": "300",
+      "icon": "milestone/Blues300",
+      "counter": "blues_killed",
+      "count": 300,
+      "reward": {
+        "currency": "nodes",
+        "amount": 300
+      }
+    },
+    {
+      "id": "Reds8k",
+      "name": "RED HACKER",
+      "text": "destroy 8,000 red enemies",
+      "rewardText": "12,000",
+      "icon": "milestone/Reds8k",
+      "counter": "reds_killed",
+      "count": 8000,
+      "reward": {
+        "currency": "bits",
+        "amount": 12000
+      }
+    },
+    {
+      "id": "Blues500",
+      "name": "BLUE HACKER",
+      "text": "destroy 500 blue enemies",
+      "rewardText": "500",
+      "icon": "milestone/Blues500",
+      "counter": "blues_killed",
+      "count": 500,
+      "reward": {
+        "currency": "nodes",
+        "amount": 500
+      }
+    },
+    {
+      "id": "Reds10k",
+      "name": "RED DESTROYER",
+      "text": "destroy 10,000 red enemies",
+      "rewardText": "16,000",
+      "icon": "milestone/Reds10k",
+      "counter": "reds_killed",
+      "count": 10000,
+      "reward": {
+        "currency": "bits",
+        "amount": 16000
+      }
+    },
+    {
+      "id": "Blues800",
+      "name": "BLUE DESTROYER",
+      "text": "destroy 800 blue enemies",
+      "rewardText": "800",
+      "icon": "milestone/Blues800",
+      "counter": "blues_killed",
+      "count": 800,
+      "reward": {
+        "currency": "nodes",
+        "amount": 800
+      }
+    },
+    {
+      "id": "Yellows5",
+      "name": "YELLOW DEFEATER",
+      "text": "destroy 5 yellow enemies",
+      "rewardText": "1",
+      "icon": "milestone/Yellows5",
+      "counter": "yellows_killed",
+      "count": 5,
+      "reward": {
+        "currency": "processors",
+        "amount": 1
+      }
+    },
+    {
+      "id": "Reds15k",
+      "name": "RED ENDER",
+      "text": "destroy 15,000 red enemies",
+      "rewardText": "20,000",
+      "icon": "milestone/Reds15k",
+      "counter": "reds_killed",
+      "count": 15000,
+      "reward": {
+        "currency": "bits",
+        "amount": 20000
+      }
+    },
+    {
+      "id": "Blues1.2k",
+      "name": "BLUE ENDER",
+      "text": "destroy 1,200 blue enemies",
+      "rewardText": "1200",
+      "icon": "milestone/Blues1.2k",
+      "counter": "blues_killed",
+      "count": 1200,
+      "reward": {
+        "currency": "nodes",
+        "amount": 1200
+      }
+    },
+    {
+      "id": "Yellows10",
+      "name": "YELLOW ENEMY",
+      "text": "destroy 10 yellow enemies",
+      "rewardText": "1",
+      "icon": "milestone/Yellows10",
+      "counter": "yellows_killed",
+      "count": 10,
+      "reward": {
+        "currency": "processors",
+        "amount": 1
+      }
+    },
+    {
+      "id": "Reds20k",
+      "name": "RED RIVAL",
+      "text": "destroy 20,000 red enemies",
+      "rewardText": "30,000",
+      "icon": "milestone/Reds20k",
+      "counter": "reds_killed",
+      "count": 20000,
+      "reward": {
+        "currency": "bits",
+        "amount": 30000
+      }
+    },
+    {
+      "id": "Blues1.6k",
+      "name": "BLUE RIVAL",
+      "text": "destroy 1,500 blue enemies",
+      "rewardText": "1600",
+      "icon": "milestone/Blues1.6k",
+      "counter": "blues_killed",
+      "count": 1600,
+      "reward": {
+        "currency": "nodes",
+        "amount": 1600
+      }
+    },
+    {
+      "id": "Yellows15",
+      "name": "YELLOW SLAYER",
+      "text": "destroy 15 yellow enemies",
+      "rewardText": "1",
+      "icon": "milestone/Yellows15",
+      "counter": "yellows_killed",
+      "count": 15,
+      "reward": {
+        "currency": "processors",
+        "amount": 1
+      }
+    },
+    {
+      "id": "Reds30k",
+      "name": "RED BREAKER",
+      "text": "destroy 30,000 red enemies",
+      "rewardText": "50,000",
+      "icon": "milestone/Reds30k",
+      "counter": "reds_killed",
+      "count": 30000,
+      "reward": {
+        "currency": "bits",
+        "amount": 50000
+      }
+    },
+    {
+      "id": "Blues2k",
+      "name": "BLUE BREAKER",
+      "text": "destroy 2,000 blue enemies",
+      "rewardText": "2,000",
+      "icon": "milestone/Blues2k",
+      "counter": "blues_killed",
+      "count": 2000,
+      "reward": {
+        "currency": "nodes",
+        "amount": 2000
+      }
+    },
+    {
+      "id": "Reds50k",
+      "name": "RED CHALLENGER",
+      "text": "destroy 50,000 red enemies",
+      "rewardText": "100,000",
+      "icon": "milestone/Reds50k",
+      "counter": "reds_killed",
+      "count": 50000,
+      "reward": {
+        "currency": "bits",
+        "amount": 100000
+      }
+    },
+    {
+      "id": "Blues4k",
+      "name": "BLUE CHALLENGER",
+      "text": "destroy 4,000 blue enemies",
+      "rewardText": "4,000",
+      "icon": "milestone/Blues4k",
+      "counter": "blues_killed",
+      "count": 4000,
+      "reward": {
+        "currency": "nodes",
+        "amount": 4000
+      }
+    },
+    {
+      "id": "Reds100k",
+      "name": "RED NEMESIS",
+      "text": "destroy 100,000 red enemies",
+      "rewardText": "1,000,000",
+      "icon": "milestone/Reds100k",
+      "counter": "reds_killed",
+      "count": 100000,
+      "reward": {
+        "currency": "bits",
+        "amount": 1000000
+      }
+    },
+    {
+      "id": "Blues8k",
+      "name": "BLUE NEMESIS",
+      "text": "destroy 8,000 blue enemies",
+      "rewardText": "8,000",
+      "icon": "milestone/Blues8k",
+      "counter": "blues_killed",
+      "count": 8000,
+      "reward": {
+        "currency": "nodes",
+        "amount": 8000
+      }
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "note": "Options menu in on-screen order. Values are the original option values (0 = first choice).",
+  "options": [
+    {
+      "id": "window_size",
+      "label": "window_size",
+      "kind": "choice",
+      "choices": "screenScales",
+      "default": 0
+    },
+    {
+      "id": "vsync",
+      "label": "v-sync",
+      "kind": "choice",
+      "choices": [
+        "on",
+        "off"
+      ],
+      "default": 0
+    },
+    {
+      "id": "screenshake",
+      "label": "screen_shake",
+      "kind": "slider",
+      "range": [
+        0,
+        100
+      ],
+      "default": 90
+    },
+    {
+      "id": "crt_effect",
+      "label": "crt_effect",
+      "kind": "choice",
+      "choices": [
+        "on",
+        "off"
+      ],
+      "default": 0
+    },
+    {
+      "id": "transition_color",
+      "label": "transition_color",
+      "kind": "choice",
+      "choices": [
+        "white",
+        "dark"
+      ],
+      "default": 0
+    },
+    {
+      "id": "flashing_fx",
+      "label": "flashing_fx",
+      "kind": "choice",
+      "choices": [
+        "on",
+        "off"
+      ],
+      "default": 0
+    },
+    {
+      "id": "color_palette",
+      "label": "color_palette",
+      "kind": "choice",
+      "choices": [
+        "default",
+        "alternate"
+      ],
+      "default": 0
+    },
+    {
+      "id": "master_volume",
+      "label": "master_vol",
+      "kind": "slider",
+      "range": [
+        0,
+        100
+      ],
+      "default": 50
+    },
+    {
+      "id": "bgm_volume",
+      "label": "bgm_vol",
+      "kind": "slider",
+      "range": [
+        0,
+        100
+      ],
+      "default": 60
+    },
+    {
+      "id": "sfx_volume",
+      "label": "sfx_vol",
+      "kind": "slider",
+      "range": [
+        0,
+        100
+      ],
+      "default": 100
+    }
+  ],
+  "spacerAfter": "color_palette",
+  "extra": [
+    {
+      "id": "save",
+      "label": "save",
+      "kind": "save"
+    },
+    {
+      "id": "achievements",
+      "label": "achievements",
+      "kind": "achievements"
+    }
+  ],
+  "src": "res://Scripts/Autoloads/OptionData.gd, res://Scenes/Popups/Options/OptionsPopup.tscn"
+}

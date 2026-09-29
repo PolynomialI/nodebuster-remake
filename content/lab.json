@@ -1,0 +1,71 @@
+{
+  "goalNetcoin": 1000,
+  "depositTweenSec": 0.4,
+  "godvirus": {
+    "sprite": "ui/godvirus",
+    "frames": 5,
+    "frameSize": [
+      32,
+      32
+    ],
+    "fps": 10
+  },
+  "ending": {
+    "deployingSec": 4,
+    "deployedSec": 2,
+    "fadeDelaySec": 2,
+    "bgmFade": {
+      "volume": 0,
+      "lowpassHz": 500,
+      "sec": 10
+    },
+    "staticRampSec": 10,
+    "glitchShakeTo": 0.8,
+    "freezeSec": 5,
+    "blackSec": 2,
+    "noiseLeadSec": 1,
+    "credits": [
+      {
+        "textKey": "ending.title",
+        "from": 0,
+        "to": 3.5,
+        "pos": [
+          113,
+          67
+        ]
+      },
+      {
+        "textKey": "ending.dev",
+        "from": 4,
+        "to": 7.5,
+        "pos": [
+          169,
+          105
+        ]
+      },
+      {
+        "textKey": "ending.music",
+        "from": 8,
+        "to": 11.5,
+        "pos": [
+          140,
+          126
+        ]
+      },
+      {
+        "textKey": "ending.thanks",
+        "from": 13,
+        "to": 16.5,
+        "pos": [
+          140,
+          115
+        ]
+      }
+    ],
+    "creditsSec": 16.5,
+    "afterCreditsSec": 5,
+    "loadingSpinDegPerSec": -180,
+    "backdropAlpha": 0.419608
+  },
+  "src": "res://Scripts/Shop/LabPage.gd, res://Scripts/Ending.gd, res://Scenes/Ending.tscn"
+}

@@ -1,0 +1,30 @@
+{
+  "note": "Spawner rules. Rate = stats.spawn_rate * stats.spawn_rate_mod enemies/s. Each spawn picks a currency (first rule whose chance fires, else the default), then a type by the prestige weights.",
+  "initialAccumulator": 2,
+  "currencyRules": [
+    {
+      "currency": "processors",
+      "chanceStat": "yellow_enemy_chance",
+      "excludeTypes": [
+        "BigSquare",
+        "Pentagon"
+      ]
+    },
+    {
+      "currency": "nodes",
+      "chanceStat": "blue_enemy_chance",
+      "excludeTypes": []
+    }
+  ],
+  "defaultCurrency": "bits",
+  "exploder": {
+    "type": "Exploder",
+    "chanceStat": "exploder_spawn_chance",
+    "takeWeightFrom": "Square"
+  },
+  "placement": {
+    "offsetFactor": 0.7,
+    "aimRadius": 84
+  },
+  "src": "res://Scripts/Battle/EnemySpawner.gd:44-71,177-205, res://Scripts/Battle/BattleScene.gd:356-358"
+}

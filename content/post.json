@@ -1,0 +1,51 @@
+{
+  "crt": {
+    "wobble_speed": 0.1,
+    "wobble_frequency": 0.3,
+    "wobble_strength": 0.5,
+    "fisheye": 0.25,
+    "brighten": 0.65,
+    "scanline_count": 240,
+    "scanline_movespeed": 0.5,
+    "horizontal_scanline_strength": 0.4,
+    "vertical_scanline_strength": 0.02,
+    "chromatic": 2,
+    "ghosting": 0.05,
+    "vignette": 0.05,
+    "edge_color": [
+      0.03,
+      0.03,
+      0.03,
+      1
+    ],
+    "bloomRadius": 1,
+    "bloomThreshold": 1,
+    "bloomIntensity": 1
+  },
+  "glitch": {
+    "shake_power": 0.03,
+    "shake_rate": 1,
+    "shake_speed": 5,
+    "shake_block_size": 240,
+    "shake_color_rate": 0.01
+  },
+  "glow": {
+    "intensity": 1.8,
+    "intensityCrtOff": 0.9,
+    "strength": 0.75,
+    "hdrThreshold": 0.1,
+    "hdrLuminanceCap": 0.2,
+    "blendMode": "additive",
+    "levels": [
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    "normalized": true
+  },
+  "src": "res://MainScene.tscn:19-55, res://Shaders/CRTShader.gdshader, res://Shaders/GlitchScreenShader.gdshader"
+}
