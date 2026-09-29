@@ -44,7 +44,7 @@ export class BattleScene implements Scene {
       }
     }
     this.view.update(dt);
-    this.pointer.update(this.game.input);
+    this.pointer.update(this.game.input, this.game.popups.hasPopup());
   }
 
   destroy(): void {

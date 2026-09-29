@@ -159,7 +159,27 @@ export class Control {
   }
 }
 
-/** Places children one after another; min size sums along the axis. */
+/** Container::fit_child_in_rect: FILL takes the rect, otherwise the minimum size placed by the shrink flag. */
+export function fitChildInRect(c: Control, r: Rect): void {
+  c.inContainer = true;
+  const m = c.minSize();
+  let { x, y, w, h } = r;
+  if (!(c.flagsH & FILL)) {
+    w = m.w;
+    if (c.flagsH & SHRINK_END) x += r.w - m.w;
+    else if (c.flagsH & SHRINK_CENTER) x += Math.floor((r.w - m.w) / 2);
+  }
+  if (!(c.flagsV & FILL)) {
+    h = m.h;
+    if (c.flagsV & SHRINK_END) y += r.h - m.h;
+    else if (c.flagsV & SHRINK_CENTER) y += Math.floor((r.h - m.h) / 2);
+  }
+  c.setRect({ x, y, w, h });
+}
+
+const f32 = Math.fround;
+
+/** BoxContainer (Godot 4.2 box_container.cpp): integer sizes, expanding children share the stretch space evenly. */
 export class BoxContainer extends Control {
   separation = 4;
   alignment: 'begin' | 'center' | 'end' = 'begin';
@@ -176,46 +196,75 @@ export class BoxContainer extends Control {
     const kids = this.shown();
     let main = 0;
     let cross = 0;
-    for (const c of kids) {
+    kids.forEach((c, i) => {
       const m = c.minSize();
-      main += this.vertical ? m.h : m.w;
-      cross = Math.max(cross, this.vertical ? m.w : m.h);
-    }
-    main += Math.max(0, kids.length - 1) * this.separation;
+      main += Math.trunc(this.vertical ? m.h : m.w) + (i ? this.separation : 0);
+      cross = Math.max(cross, Math.trunc(this.vertical ? m.w : m.h));
+    });
     return this.vertical ? { w: cross, h: main } : { w: main, h: cross };
   }
 
+  /** BoxContainer::_resort */
   layoutChildren(): void {
     const kids = this.shown();
-    for (const c of kids) c.inContainer = true;
-    const total = this.vertical ? this.rect.h : this.rect.w;
-    const crossSize = this.vertical ? this.rect.w : this.rect.h;
-    const mins = kids.map((c) => (this.vertical ? c.minSize().h : c.minSize().w));
-    const expand = kids.map((c) => ((this.vertical ? c.flagsV : c.flagsH) & EXPAND) !== 0);
-    const used = mins.reduce((a, b) => a + b, 0) + Math.max(0, kids.length - 1) * this.separation;
-    let extra = Math.max(0, total - used);
-    const nExpand = expand.filter(Boolean).length;
-    let pos = 0;
-    if (nExpand === 0) {
-      if (this.alignment === 'center') pos = extra / 2;
-      else if (this.alignment === 'end') pos = extra;
-      extra = 0;
+    if (!kids.length) return;
+    const W = Math.trunc(this.rect.w);
+    const H = Math.trunc(this.rect.h);
+    let stretchMin = 0;
+    let stretchAvail = 0;
+    let ratioTotal = 0;
+    const msc = kids.map((c) => {
+      const m = c.minSize();
+      const min = Math.trunc(this.vertical ? m.h : m.w);
+      const stretch = ((this.vertical ? c.flagsV : c.flagsH) & EXPAND) !== 0;
+      stretchMin += min;
+      if (stretch) {
+        stretchAvail += min;
+        ratioTotal += 1;
+      }
+      return { min, stretch, final: min };
+    });
+    const stretchMax = (this.vertical ? H : W) - (kids.length - 1) * this.separation;
+    const stretchDiff = Math.max(0, stretchMax - stretchMin);
+    stretchAvail += stretchDiff;
+    let hasStretched = false;
+    while (ratioTotal > 0) {
+      hasStretched = true;
+      let refit = true;
+      let error = 0;
+      for (const m of msc) {
+        if (!m.stretch) continue;
+        const px = f32(f32(stretchAvail) / ratioTotal);
+        error = f32(error + f32(px - Math.trunc(px)));
+        if (px < m.min) {
+          m.stretch = false;
+          ratioTotal -= 1;
+          refit = false;
+          stretchAvail -= m.min;
+          m.final = m.min;
+          break;
+        }
+        m.final = Math.trunc(px);
+        if (error >= 1) {
+          m.final += 1;
+          error = f32(error - 1);
+        }
+      }
+      if (refit) break;
+    }
+    let ofs = 0;
+    if (!hasStretched) {
+      if (this.alignment === 'center') ofs = Math.trunc(stretchDiff / 2);
+      else if (this.alignment === 'end') ofs = stretchDiff;
     }
     kids.forEach((c, i) => {
-      let size = mins[i];
-      if (expand[i] && nExpand) size += extra / nExpand;
-      const m = c.minSize();
-      const flags = this.vertical ? c.flagsH : c.flagsV;
-      const cm = this.vertical ? m.w : m.h;
-      let cs = crossSize;
-      let co = 0;
-      if (!(flags & FILL)) {
-        cs = cm;
-        if (flags & SHRINK_CENTER) co = Math.floor((crossSize - cm) / 2);
-        else if (flags & SHRINK_END) co = crossSize - cm;
-      }
-      c.setRect(this.vertical ? { x: co, y: pos, w: cs, h: size } : { x: pos, y: co, w: size, h: cs });
-      pos += size + this.separation;
+      if (i) ofs += this.separation;
+      const from = ofs;
+      let to = ofs + msc[i].final;
+      if (msc[i].stretch && i === kids.length - 1) to = this.vertical ? H : W;
+      const size = to - from;
+      fitChildInRect(c, this.vertical ? { x: 0, y: from, w: W, h: size } : { x: from, y: 0, w: size, h: H });
+      ofs = to;
     });
   }
 }
@@ -234,9 +283,13 @@ export class HBox extends BoxContainer {
   }
 }
 
-/** Children fill the rect minus margins (MarginContainer, and PanelContainer's content margins). */
+/**
+ * Children fill the rect minus margins: MarginContainer (integer inner size) and,
+ * with truncate off, PanelContainer's style content margins.
+ */
 export class MarginBox extends Control {
   margins = { l: 0, t: 0, r: 0, b: 0 };
+  protected truncate = true;
 
   constructor(l = 0, t = 0, r = 0, b = 0) {
     super();
@@ -257,32 +310,17 @@ export class MarginBox extends Control {
 
   layoutChildren(): void {
     const { l, t, r, b } = this.margins;
-    for (const c of this.children) {
-      if (!c.visible) continue;
-      c.inContainer = true;
-      const w = this.rect.w - l - r;
-      const h = this.rect.h - t - b;
-      const m = c.minSize();
-      let x = l;
-      let y = t;
-      let cw = w;
-      let ch = h;
-      if (!(c.flagsH & FILL)) {
-        cw = m.w;
-        if (c.flagsH & SHRINK_CENTER) x += Math.floor((w - m.w) / 2);
-        else if (c.flagsH & SHRINK_END) x += w - m.w;
-      }
-      if (!(c.flagsV & FILL)) {
-        ch = m.h;
-        if (c.flagsV & SHRINK_CENTER) y += Math.floor((h - m.h) / 2);
-        else if (c.flagsV & SHRINK_END) y += h - m.h;
-      }
-      c.setRect({ x, y, w: cw, h: ch });
+    let w = this.rect.w - l - r;
+    let h = this.rect.h - t - b;
+    if (this.truncate) {
+      w = Math.trunc(w);
+      h = Math.trunc(h);
     }
+    for (const c of this.children) if (c.visible) fitChildInRect(c, { x: l, y: t, w, h });
   }
 }
 
-/** GridContainer: fixed number of columns, each as wide as its widest cell. */
+/** GridContainer (Godot 4.2 grid_container.cpp): expanded columns share the space in whole pixels. */
 export class Grid extends Control {
   hSep = 4;
   vSep = 4;
@@ -291,43 +329,101 @@ export class Grid extends Control {
     super();
   }
 
-  private cells(): { cols: number[]; rows: number[]; kids: Control[] } {
+  private cells(): { colMin: number[]; rowMin: number[]; kids: Control[] } {
     const kids = this.children.filter((c) => c.visible);
-    const cols: number[] = [];
-    const rows: number[] = [];
+    const colMin: number[] = [];
+    const rowMin: number[] = [];
     kids.forEach((c, i) => {
       const m = c.minSize();
       const col = i % this.columns;
       const row = Math.floor(i / this.columns);
-      cols[col] = Math.max(cols[col] ?? 0, m.w);
-      rows[row] = Math.max(rows[row] ?? 0, m.h);
+      colMin[col] = Math.max(colMin[col] ?? 0, Math.trunc(m.w));
+      rowMin[row] = Math.max(rowMin[row] ?? 0, Math.trunc(m.h));
     });
-    return { cols, rows, kids };
+    return { colMin, rowMin, kids };
   }
 
   intrinsicMin(): { w: number; h: number } {
-    const { cols, rows } = this.cells();
+    const { colMin, rowMin } = this.cells();
     const sum = (a: number[]) => a.reduce((x, y) => x + y, 0);
-    return { w: sum(cols) + Math.max(0, cols.length - 1) * this.hSep, h: sum(rows) + Math.max(0, rows.length - 1) * this.vSep };
+    return { w: sum(colMin) + Math.max(0, colMin.length - 1) * this.hSep, h: sum(rowMin) + Math.max(0, rowMin.length - 1) * this.vSep };
   }
 
   layoutChildren(): void {
-    const { cols, rows, kids } = this.cells();
-    // Columns with EXPAND share the extra width (the Crypto Mine deposit buttons).
-    const expandCols = new Set<number>();
-    kids.forEach((c, i) => c.flagsH & EXPAND && expandCols.add(i % this.columns));
-    const min = this.intrinsicMin();
-    const extra = Math.max(0, this.rect.w - min.w);
-    const widths = cols.map((w, i) => (expandCols.has(i) ? w + extra / expandCols.size : w));
+    const { colMin, rowMin, kids } = this.cells();
+    const n = kids.length;
+    const colExp = new Set<number>();
+    const rowExp = new Set<number>();
     kids.forEach((c, i) => {
-      c.inContainer = true;
-      const col = i % this.columns;
+      if (c.flagsH & EXPAND) colExp.add(i % this.columns);
+      if (c.flagsV & EXPAND) rowExp.add(Math.floor(i / this.columns));
+    });
+    const maxCol = Math.min(n, this.columns);
+    const maxRow = Math.ceil(n / this.columns);
+    for (let i = n; i < this.columns; i++) colExp.add(i);
+    let remW = this.rect.w;
+    let remH = this.rect.h;
+    colMin.forEach((w, i) => {
+      if (!colExp.has(i)) remW -= w;
+    });
+    rowMin.forEach((h, i) => {
+      if (!rowExp.has(i)) remH -= h;
+    });
+    remH -= this.vSep * Math.max(maxRow - 1, 0);
+    remW -= this.hSep * Math.max(maxCol - 1, 0);
+    const shrink = (exp: Set<number>, mins: number[], rem: number): number => {
+      let fit = false;
+      while (!fit && exp.size > 0) {
+        fit = true;
+        const keys = [...exp].sort((a, b) => a - b);
+        let maxIndex = keys[0];
+        for (const e of keys) {
+          if ((mins[e] ?? 0) > (mins[maxIndex] ?? 0)) maxIndex = e;
+          if (fit && rem / exp.size < (mins[e] ?? 0)) fit = false;
+        }
+        if (!fit) {
+          exp.delete(maxIndex);
+          rem -= mins[maxIndex] ?? 0;
+        }
+      }
+      return rem;
+    };
+    remW = shrink(colExp, colMin, remW);
+    remH = shrink(rowExp, rowMin, remH);
+    const colExpand = colExp.size ? Math.trunc(remW / colExp.size) : 0;
+    let colPixels = colExp.size ? Math.trunc(remW - colExp.size * colExpand) : 0;
+    const rowExpand = rowExp.size ? Math.trunc(remH / rowExp.size) : 0;
+    let rowPixels = rowExp.size ? Math.trunc(remH - rowExp.size * rowExpand) : 0;
+    let colPixelIndex = 0;
+    for (let i = 0; i < maxCol && colPixels > 0; i++)
+      if (colExp.has(i)) {
+        colPixelIndex = i + 1;
+        colPixels--;
+      }
+    let rowPixelIndex = 0;
+    for (let i = 0; i < maxRow && rowPixels > 0; i++)
+      if (rowExp.has(i)) {
+        rowPixelIndex = i + 1;
+        rowPixels--;
+      }
+    let colOfs = 0;
+    let rowOfs = 0;
+    kids.forEach((c, i) => {
       const row = Math.floor(i / this.columns);
-      let x = 0;
-      for (let k = 0; k < col; k++) x += widths[k] + this.hSep;
-      let y = 0;
-      for (let k = 0; k < row; k++) y += rows[k] + this.vSep;
-      c.setRect({ x, y, w: widths[col], h: rows[row] });
+      const col = i % this.columns;
+      if (col === 0) {
+        colOfs = 0;
+        if (row > 0) {
+          rowOfs += (rowExp.has(row - 1) ? rowExpand : rowMin[row - 1]) + this.vSep;
+          if (rowExp.has(row - 1) && row - 1 < rowPixelIndex) rowOfs++;
+        }
+      }
+      let w = colExp.has(col) ? colExpand : colMin[col];
+      let h = rowExp.has(row) ? rowExpand : rowMin[row];
+      if (colExp.has(col) && col < colPixelIndex) w++;
+      if (rowExp.has(row) && row < rowPixelIndex) h++;
+      fitChildInRect(c, { x: colOfs, y: rowOfs, w, h });
+      colOfs += w + this.hSep;
     });
   }
 }

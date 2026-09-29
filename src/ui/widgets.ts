@@ -67,6 +67,7 @@ export class Label extends Control {
     const total = all.length * lh;
     let y = Math.floor(this.vAlign === 'top' ? 0 : this.vAlign === 'center' ? (this.rect.h - total) / 2 : this.rect.h - total);
     for (const line of this.lines()) {
+      // Alignment uses the full line (Godot lays out all text, then hides characters).
       const full = all.shift() ?? line;
       const w = ui.font.measure(full, this.size);
       // Label: int(size.width - line_width) / 2 (integer division).
@@ -90,6 +91,8 @@ export class RichLabel extends Control {
   shadow: Shadow | null = null;
   visibleRatio = 1;
   private rainbow: ReturnType<typeof drawLines> = [];
+  /** ItemFX.elapsed_time: advances only while the label is visible in the tree. */
+  private fxTime = 0;
 
   constructor(
     public markup = '',
@@ -141,10 +144,14 @@ export class RichLabel extends Control {
     }
     const lines = layout(runs, this.wrapWidth(), ui.font);
     this.rainbow = drawLines(this.gfx, lines, this.rect.w, this.color, this.shadow);
+    if (this.rainbow.length) updateRainbow(this.rainbow, this.fxTime);
   }
 
-  tick(): void {
-    if (this.rainbow.length) updateRainbow(this.rainbow, ui.time);
+  /** NOTIFICATION_INTERNAL_PROCESS: text effects advance while visible in the tree. */
+  tick(dt: number): void {
+    if (!this.rainbow.length || !this.isVisibleInTree()) return;
+    this.fxTime += dt;
+    updateRainbow(this.rainbow, this.fxTime);
   }
 }
 
@@ -201,6 +208,7 @@ export class Panel extends MarginBox {
   constructor(readonly style: PanelStyle) {
     const c = PANEL[style].content;
     super(c, c, c, c);
+    this.truncate = false;
   }
 
   redraw(): void {
@@ -289,6 +297,8 @@ export class TextButton extends Control implements Interactive {
   onUnhover: (() => void) | null = null;
   outlineColor = WHITE;
   inlineColor = BG;
+  /** The main_color setter writes self_modulate directly: re-set every frame, it hides hover/disabled tints. */
+  fixedMain = false;
 
   constructor(
     text: string,
@@ -312,6 +322,7 @@ export class TextButton extends Control implements Interactive {
 
   mainNow(): number {
     const PURE = 0xffffff;
+    if (this.fixedMain) return this.mainColor;
     if (this.disabled) return this.hovered ? lerpColor(0x6c6c6c, PURE, 0.2) : 0x6c6c6c;
     if (this.down) return lerpColor(this.mainColor, PURE, this.hovered ? 0.3 : 0.2);
     return this.hovered ? lerpColor(this.mainColor, PURE, 0.2) : this.mainColor;

@@ -11,6 +11,12 @@ test('a session runs, follows the mouse, and TERMINATE ends it', async ({ page }
   await page.goto('/');
   await page.waitForFunction(() => (window as unknown as { __nb?: NB }).__nb?.scene() === 'boot');
   await page.mouse.click(720, 405);
+  await page.waitForFunction(() => (window as unknown as { __nb: NB }).__nb.scene() === 'menu');
+  // No save yet: "new game" (108..186, 178..208) goes straight to the shop.
+  await page.mouse.move(147 * 3, 193 * 3);
+  await page.waitForTimeout(100);
+  await page.mouse.down();
+  await page.mouse.up();
   await page.waitForFunction(() => (window as unknown as { __nb: NB }).__nb.scene() === 'shop');
   // Breach button at (376..448, 235..255) in game pixels.
   await page.mouse.move(412 * 3, 245 * 3);

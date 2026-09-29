@@ -33,7 +33,7 @@ export class GameAudio {
   private voices = 0;
   private music: { order: number[]; current: number; source: AudioBufferSourceNode | null; next: Promise<AudioBuffer> | null } = { order: [], current: -1, source: null, next: null };
   private musicCache = new Map<number, Promise<AudioBuffer>>();
-  private loops = new Map<string, AudioBufferSourceNode>();
+  private loops = new Map<string, { src: AudioBufferSourceNode; gain: GainNode }>();
   private rng = Math.random;
 
   constructor(readonly ctx: AudioContext) {
@@ -108,12 +108,18 @@ export class GameAudio {
     g.gain.value = volume;
     src.connect(g).connect(this.sfxBus);
     src.start();
-    this.loops.set(name, src);
+    this.loops.set(name, { src, gain: g });
     return g;
   }
 
+  /** AudioStreamPlayer.volume_db = linear_to_db(v): a linear gain. */
+  setLoopVolume(name: string, volume: number): void {
+    const l = this.loops.get(name);
+    if (l) l.gain.gain.value = volume;
+  }
+
   stopLoop(name: string): void {
-    const s = this.loops.get(name);
+    const s = this.loops.get(name)?.src;
     if (s) {
       try {
         s.stop();

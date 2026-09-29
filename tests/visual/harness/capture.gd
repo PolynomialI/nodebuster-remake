@@ -79,7 +79,12 @@ func hide_particles(node: Node) -> void:
 # ---------------------------------------------------------------- scenes
 
 func run_scenario(s: Dictionary) -> void:
+	Refs.popups.clear_popups()
+	Globals.mouse_locks.clear()
+	Globals.mouse_blocker.hide()
 	apply_profile(s.get("profile", {}))
+	# Freeze the Crypto Mine so both engines show the same numbers.
+	State.crypto_mine.processing = false
 	var opts: Dictionary = s.get("options", {})
 	for k in ["color_palette", "flashing_fx", "transition_color"]:
 		OptionData.apply_option(k, opts.get(k, 0))
@@ -96,6 +101,17 @@ func run_scenario(s: Dictionary) -> void:
 			hide_particles(m)
 	elif scene == "shop":
 		await build_shop(s)
+	if s.has("ending"):
+		var sh = Refs.curr_scn
+		sh.get_node("%LabPage")._on_deploy_virus_pressed()
+		var done := 0
+		for f in s.ending.frames:
+			await frames(int(f) - done)
+			done = int(f)
+			var s2 := s.duplicate()
+			s2.name = s.name + "_f" + str(int(f))
+			await capture(s2, false)
+		return
 	await capture(s)
 
 func build_battle(s: Dictionary) -> void:
@@ -158,6 +174,11 @@ func build_shop(s: Dictionary) -> void:
 		sh.set_page(int(sp.page))
 	if not s.get("bgParticles", false):
 		hide_particles(sh)
+	if sp.has("popup") and sp.popup == "prestige":
+		var pp = load("res://Scenes/Popups/PrestigePicker.tscn").instantiate()
+		Refs.popups.add_popup(pp)
+		pp.setup()
+		Refs.popups.focus_curr()
 	if sp.has("hover"):
 		for c in tree.get_children():
 			if c is UpgradeNode and c.upgrade.id == sp.hover:
@@ -169,10 +190,11 @@ func build_shop(s: Dictionary) -> void:
 func set_crt_time(t: float) -> void:
 	Refs.crt.material.set_shader_parameter("capture_time", t)
 
-func capture(s: Dictionary) -> void:
+func capture(s: Dictionary, settle: bool = true) -> void:
 	var name: String = s.name
 	set_crt_time(float(s.get("time", 1.0)))
-	await frames(2)
+	if settle:
+		await frames(2)
 	await RenderingServer.frame_post_draw
 	Refs.viewport.get_texture().get_image().save_png(out_dir + "/" + name + ".raw.png")
 	get_viewport().get_texture().get_image().save_png(out_dir + "/" + name + ".crt.png")

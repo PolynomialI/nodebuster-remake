@@ -30,6 +30,6 @@ test('boots to the click-to-start screen, then starts audio on click', async ({ 
   await page.screenshot({ path: 'test-results/boot.png' });
   await page.mouse.click(720, 405);
   await expect.poll(() => page.evaluate(() => (window as unknown as { __nb: NB }).__nb.audioState())).toBe('running');
-  await expect.poll(() => page.evaluate(() => (window as unknown as { __nb: NB }).__nb.scene())).toBe('shop');
+  await expect.poll(() => page.evaluate(() => (window as unknown as { __nb: NB }).__nb.scene())).toBe('menu');
   expect(errors).toEqual([]);
 });

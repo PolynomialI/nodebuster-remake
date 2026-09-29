@@ -4,7 +4,7 @@ import 'pixi.js/unsafe-eval';
 // which is shown integer-scaled and centred on the canvas, like the original's
 // SubViewport in a window with stretch mode canvas_items / scale mode integer.
 // Post-processing (glow, CRT) runs on the full canvas afterwards.
-import { Application, Container, Filter, RenderTexture, Sprite, TextureSource } from 'pixi.js';
+import { Application, Container, Filter, RenderTexture, Sprite, TextureSource, type Texture } from 'pixi.js';
 
 export const W = 480;
 export const H = 270;
@@ -85,6 +85,13 @@ export class Screen {
     const r = this.app.renderer;
     r.render({ container: this.gameRoot, target: this.rt, clear: true, clearColor: [0, 0, 0, 1] });
     r.render({ container: this.app.stage, clear: true, clearColor: [0, 0, 0, 1] });
+  }
+
+  /** The window image at window resolution (the original's root viewport texture). */
+  snapshot(): Texture {
+    const rt = RenderTexture.create({ width: this.width, height: this.height, scaleMode: 'nearest', resolution: 1, antialias: false });
+    this.app.renderer.render({ container: this.app.stage, target: rt, clear: true, clearColor: [0, 0, 0, 1] });
+    return rt;
   }
 
   /** The 480x270 game image as RGBA bytes (tests compare it with the original's viewport). */

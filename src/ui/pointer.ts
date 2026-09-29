@@ -1,15 +1,33 @@
 // Mouse dispatch for widgets: hover goes to the topmost registered target under
 // the pointer; a click fires on release over the target that was pressed
-// (Godot Button, action mode "release"). A lock count stands in for the
-// original's MouseBlocker (transitions, popups sliding in).
+// (Godot Button, action mode "release"). Mouse locks are global, like the
+// original's Globals.mouse_locks + MouseBlocker (transitions, popups sliding in,
+// right-drag panning, the ending): while any is held nothing can be hovered.
 import { LMB, type Input } from '../core/input';
 import type { Interactive } from './widgets';
+
+const mouseLocks = new Set<unknown>();
+
+export function lockMouse(holder: unknown): void {
+  mouseLocks.add(holder);
+}
+
+export function unlockMouse(holder: unknown): void {
+  mouseLocks.delete(holder);
+}
+
+export function isMouseLocked(): boolean {
+  return mouseLocks.size > 0;
+}
+
+export function clearMouseLocks(): void {
+  mouseLocks.clear();
+}
 
 export class Pointer {
   private targets: Interactive[] = [];
   hovered: Interactive | null = null;
   private pressed: Interactive | null = null;
-  private locks = 0;
 
   register<T extends Interactive>(t: T): T {
     this.targets.push(t);
@@ -33,22 +51,14 @@ export class Pointer {
     this.pressed = null;
   }
 
-  lock(): void {
-    this.locks++;
-  }
-
-  unlock(): void {
-    this.locks = Math.max(0, this.locks - 1);
-  }
-
   get locked(): boolean {
-    return this.locks > 0;
+    return isMouseLocked();
   }
 
-  update(input: Input): void {
+  update(input: Input, blocked = false): void {
     const { x, y } = input.mouse;
     let top: Interactive | null = null;
-    if (!this.locked && input.hasPointer) {
+    if (!this.locked && !blocked && input.hasPointer) {
       for (let i = this.targets.length - 1; i >= 0; i--) {
         if (this.targets[i].contains(x, y)) {
           top = this.targets[i];
@@ -61,7 +71,7 @@ export class Pointer {
       this.hovered = top;
       top?.onEnter();
     }
-    if (input.pressed.has(LMB) && this.hovered && !this.locked) {
+    if (input.pressed.has(LMB) && this.hovered && !this.locked && !blocked) {
       this.pressed = this.hovered;
       this.hovered.onDown();
     }

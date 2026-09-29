@@ -457,5 +457,230 @@
       ],
       "waitFrames": 40
     }
+  },
+  {
+    "name": "shop_milestones",
+    "scene": "shop",
+    "time": 1,
+    "profile": {
+      "bits": 61000,
+      "nodes": 900,
+      "cores": 6,
+      "sp": 7,
+      "netcoin": 1.2345,
+      "processors": 2,
+      "curr_prestige": 5,
+      "max_prestige": 6,
+      "level": 8,
+      "upgrades": {
+        "Damage1": 15,
+        "SpawnRate1": 15,
+        "SpawnRate2": 1,
+        "SpawnRate3": 5,
+        "Size1": 10,
+        "Size2": 1,
+        "CryptoMine": 1,
+        "BitBoost1": 1,
+        "NodeFinder1": 5,
+        "Milestones": 1
+      },
+      "nums": {
+        "enemies_killed": 2600,
+        "reds_killed": 2400,
+        "blues_killed": 150,
+        "yellows_killed": 3
+      },
+      "milestones": {
+        "Reds500": true,
+        "Blues10": true
+      }
+    },
+    "shop": {
+      "page": 1,
+      "waitFrames": 40
+    }
+  },
+  {
+    "name": "shop_crypto",
+    "scene": "shop",
+    "time": 1,
+    "profile": {
+      "bits": 61000,
+      "nodes": 900,
+      "cores": 6,
+      "sp": 7,
+      "netcoin": 1.2345,
+      "processors": 2,
+      "curr_prestige": 5,
+      "max_prestige": 6,
+      "level": 8,
+      "upgrades": {
+        "Damage1": 15,
+        "SpawnRate1": 15,
+        "SpawnRate2": 1,
+        "SpawnRate3": 5,
+        "Size1": 10,
+        "Size2": 1,
+        "CryptoMine": 1,
+        "BitBoost1": 1,
+        "NodeFinder1": 5,
+        "Milestones": 1
+      },
+      "crypto_mine": {
+        "mine_level": 3,
+        "curr_bits": 23456
+      }
+    },
+    "shop": {
+      "page": 2,
+      "waitFrames": 40
+    }
+  },
+  {
+    "name": "shop_lab",
+    "scene": "shop",
+    "time": 1,
+    "profile": {
+      "bits": 61000,
+      "nodes": 900,
+      "cores": 6,
+      "sp": 7,
+      "netcoin": 12.3,
+      "processors": 2,
+      "curr_prestige": 5,
+      "max_prestige": 6,
+      "level": 8,
+      "lab_research_progress": 420.5,
+      "upgrades": {
+        "Damage1": 15,
+        "SpawnRate1": 15,
+        "SpawnRate2": 1,
+        "SpawnRate3": 5,
+        "Size1": 10,
+        "Size2": 1,
+        "CryptoMine": 1,
+        "BitBoost1": 1,
+        "NodeFinder1": 5,
+        "Milestones": 1,
+        "Health1": 10,
+        "Laboratory": 1
+      }
+    },
+    "shop": {
+      "page": 3,
+      "waitFrames": 40
+    }
+  },
+  {
+    "name": "shop_lab_ready",
+    "scene": "shop",
+    "time": 1,
+    "profile": {
+      "bits": 61000,
+      "nodes": 900,
+      "cores": 6,
+      "sp": 7,
+      "netcoin": 0,
+      "processors": 2,
+      "curr_prestige": 5,
+      "max_prestige": 6,
+      "level": 8,
+      "lab_research_progress": 1000,
+      "upgrades": {
+        "Damage1": 15,
+        "SpawnRate1": 15,
+        "SpawnRate2": 1,
+        "SpawnRate3": 5,
+        "Size1": 10,
+        "Size2": 1,
+        "CryptoMine": 1,
+        "BitBoost1": 1,
+        "NodeFinder1": 5,
+        "Milestones": 1,
+        "Health1": 10,
+        "Laboratory": 1
+      }
+    },
+    "shop": {
+      "page": 3,
+      "waitFrames": 40
+    }
+  },
+  {
+    "name": "shop_prestige",
+    "scene": "shop",
+    "time": 1,
+    "profile": {
+      "bits": 61000,
+      "nodes": 900,
+      "cores": 6,
+      "sp": 7,
+      "netcoin": 1.2345,
+      "processors": 2,
+      "curr_prestige": 5,
+      "max_prestige": 6,
+      "level": 8,
+      "upgrades": {
+        "Damage1": 15,
+        "SpawnRate1": 15,
+        "SpawnRate2": 1,
+        "SpawnRate3": 5,
+        "Size1": 10,
+        "Size2": 1,
+        "CryptoMine": 1,
+        "BitBoost1": 1,
+        "NodeFinder1": 5,
+        "Milestones": 1
+      }
+    },
+    "shop": {
+      "popup": "prestige",
+      "waitFrames": 60
+    }
+  },
+  {
+    "name": "ending",
+    "scene": "shop",
+    "time": 1,
+    "profile": {
+      "bits": 61000,
+      "nodes": 900,
+      "cores": 6,
+      "sp": 7,
+      "netcoin": 0,
+      "processors": 2,
+      "curr_prestige": 5,
+      "max_prestige": 6,
+      "level": 8,
+      "lab_research_progress": 1000,
+      "upgrades": {
+        "Damage1": 15,
+        "SpawnRate1": 15,
+        "SpawnRate2": 1,
+        "SpawnRate3": 5,
+        "Size1": 10,
+        "Size2": 1,
+        "CryptoMine": 1,
+        "BitBoost1": 1,
+        "NodeFinder1": 5,
+        "Milestones": 1,
+        "Health1": 10,
+        "Laboratory": 1
+      }
+    },
+    "shop": {
+      "page": 3,
+      "waitFrames": 10
+    },
+    "ending": {
+      "frames": [
+        60,
+        300,
+        1620,
+        1860,
+        2100,
+        2400
+      ]
+    }
   }
 ]

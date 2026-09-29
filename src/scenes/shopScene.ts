@@ -1,18 +1,21 @@
 // The home screen (res://GameScenes/ShopScene.tscn, Scripts/Shop/ShopScene.gd):
-// tab bar, resource panels, the skill tree page (other pages in meta phases),
-// the upgrade tooltip and the Breach button.
+// tab bar, resource panels, the skill tree, Milestones / Crypto Mine / Lab pages,
+// the upgrade tooltip, the Breach button and (once deployed) the godvirus ending.
 import { Container } from 'pixi.js';
 import { RMB } from '../core/input';
 import { color, content, CURRENCIES, t, type Currency } from '../data/content';
 import type { Game } from '../game';
+import { Ending } from '../render/ending';
 import { TreeView, type NodeView } from '../render/treeView';
 import { buy } from '../sim/shop';
 import { features, type Feature } from '../sim/stats';
 import { HBox, Root, VBox } from '../ui/control';
-import { Pointer } from '../ui/pointer';
+import { tex } from '../ui/ctx';
+import { isMouseLocked, lockMouse, Pointer, unlockMouse } from '../ui/pointer';
 import { ResourcePanel } from '../ui/resourcePanel';
-import { Tooltip, UpgradeDescription } from '../ui/tooltip';
-import { BG, solid, TextButton } from '../ui/widgets';
+import { UpgradeDescription } from '../ui/tooltip';
+import { BG, solid, TextButton, TextureRect } from '../ui/widgets';
+import { CryptoMinePage, LabPage, MilestonesPage, type PageCtx } from './pages';
 import type { Scene } from './scene';
 
 const PAGES = ['upgrades', 'milestones', 'cryptomine', 'lab', 'stats'] as const;
@@ -27,10 +30,14 @@ export class ShopScene implements Scene {
   private tabs: Record<Page, TextButton>;
   private panels: ResourcePanel[] = [];
   private description: UpgradeDescription;
-  private tooltip = new Tooltip();
   private breach: TextButton;
   page: Page = 'upgrades';
   private pages: Record<Page, Container>;
+  readonly milestones: MilestonesPage;
+  readonly mine: CryptoMinePage;
+  readonly lab: LabPage;
+  private dot: TextureRect;
+  ending: Ending | null = null;
   private rmbDown = false;
   private labHue = 0;
   private readonly labBase = 0xc949a9;
@@ -46,6 +53,22 @@ export class ShopScene implements Scene {
     this.tree.sfx = (n) => g.sfx(n);
     this.pages = { upgrades: new Container(), milestones: new Container(), cryptomine: new Container(), lab: new Container(), stats: new Container() };
     this.pages.upgrades.addChild(this.tree.view);
+    const ctx: PageCtx = {
+      profile: () => g.profile,
+      pointer: this.pointer,
+      sfx: (n, o) => g.sfx(n, o),
+      squash: (c) => this.squash(c),
+      tooltip: (markup, target) => g.showTooltip(markup, target),
+      hideTooltip: () => g.hideTooltip(),
+      onChanged: () => this.updateDot(),
+    };
+    this.milestones = new MilestonesPage(ctx);
+    this.mine = new CryptoMinePage(ctx);
+    this.lab = new LabPage(ctx);
+    this.lab.onDeploy = () => this.deployVirus();
+    this.pages.milestones.addChild(this.milestones.view);
+    this.pages.cryptomine.addChild(this.mine.view);
+    this.pages.lab.addChild(this.lab.view);
     for (const p of PAGES) this.root.addChild(this.pages[p]);
     this.tree.setPos(0, 0);
     // Tabs (TabButtons HBox at 6,6 - 86,25)
@@ -54,19 +77,24 @@ export class ShopScene implements Scene {
     const names: Record<Page, string> = { upgrades: t('shop.tab.upgrades'), milestones: t('shop.tab.milestones'), cryptomine: t('shop.tab.cryptomine'), lab: t('shop.tab.lab'), stats: t('shop.tab.stats') };
     this.tabs = {} as Record<Page, TextButton>;
     for (const p of PAGES) {
-      const b = tabBox.add(new TextButton(names[p], p === 'lab' ? 0xc949a9 : undefined));
+      const b = tabBox.add(new TextButton(names[p], p === 'lab' ? this.labBase : undefined));
       b.customMin = { w: 80, h: 0 };
       b.onPressed = () => this.setPage(p);
+      // ShopScene._process assigns lab_btn.main_color every frame.
+      b.fixedMain = p === 'lab';
       this.tabs[p] = b;
       this.pointer.register(b);
     }
+    // NotificationDot: child of the Milestones tab at (72,-5)-(84,7).
+    this.dot = this.tabs.milestones.add(new TextureRect(tex('ui/notification_dot')));
+    this.dot.place(72, -5, 84, 7);
     // Resource panels (VBox at 17,36 - 90,36, separation 1)
     const res = this.ui.add(new VBox(1));
     res.place(17, 36, 90, 36);
     for (const c of CURRENCIES) {
       const panel = res.add(new ResourcePanel(c));
       panel.onHover = () => this.showResourceTooltip(panel);
-      panel.onUnhover = () => this.tooltip.hide();
+      panel.onUnhover = () => g.hideTooltip();
       this.panels.push(panel);
       this.pointer.register(panel);
     }
@@ -81,13 +109,13 @@ export class ShopScene implements Scene {
     this.pointer.register(this.breach);
     bRoot.layout();
     this.root.addChild(bRoot.view);
-    this.root.addChild(this.tooltip.root.view);
     // Tree nodes are hover/click targets (registered after the UI so panels win when overlapping).
     for (const v of this.tree.nodes) this.hookNode(v);
     this.pointer.registerFirst(...this.tree.nodes);
     this.refreshTabs();
     this.setPage('upgrades');
     this.syncPanels();
+    this.updateDot();
     this.ui.layout();
     this.ui.layout();
   }
@@ -105,7 +133,7 @@ export class ShopScene implements Scene {
     const g = this.game;
     const before = features(g.profile.upgrades);
     if (!buy(g.profile, v.node)) return;
-    this.panels.find((p) => p.currency === v.node.currency)?.squash();
+    this.squash(v.node.currency);
     this.description.refresh();
     this.description.springLevelUp();
     v.spring();
@@ -114,7 +142,11 @@ export class ShopScene implements Scene {
     for (const f of after) if (!before.has(f)) this.onFeature(f);
   }
 
-  private onFeature(f: Feature): void {
+  squash(c: Currency): void {
+    this.panels.find((p) => p.currency === c)?.squash();
+  }
+
+  private onFeature(_f: Feature): void {
     this.refreshTabs();
     this.game.checkAchievements('feature');
   }
@@ -124,6 +156,15 @@ export class ShopScene implements Scene {
     const shown: Record<Page, boolean> = { upgrades: true, milestones: f.has('milestones'), cryptomine: f.has('cryptomine'), lab: f.has('lab'), stats: false };
     for (const p of PAGES) this.tabs[p].setVisible(shown[p]);
     this.ui.layout();
+  }
+
+  get notificationDot(): boolean {
+    return this.dot.visible;
+  }
+
+  /** MilestonesPage.update_notification_dot: shown while any entry can be claimed. */
+  private updateDot(): void {
+    this.dot.setVisible(this.milestones.anyClaimable());
   }
 
   setPage(p: Page): void {
@@ -138,8 +179,7 @@ export class ShopScene implements Scene {
   private showResourceTooltip(panel: ResourcePanel): void {
     const c = panel.currency;
     const name = `[icon:${c}] [color=${content.palette.colors[content.palette.currency[c]]}]${t(`resource.${c}`)}[/color]`;
-    this.tooltip.setText(t(`tooltip.${c}`, name));
-    this.tooltip.centerAboveOrBelow(panelScreenRect(panel));
+    this.game.showTooltip(t(`tooltip.${c}`, name), panel);
     this.game.sfx('BUTTON_HOVER');
   }
 
@@ -166,26 +206,43 @@ export class ShopScene implements Scene {
     if (changed) this.ui.layout();
   }
 
+  /** LabPage._on_deploy_virus_pressed: the ending plays on top of the shop. */
+  private deployVirus(): void {
+    const g = this.game;
+    const ending = new Ending(g.endingHooks());
+    this.ending = ending;
+    this.root.addChild(ending.view);
+    lockMouse(ending);
+    ending.start();
+    g.profile.virus_deployed = true;
+    g.save();
+  }
+
   update(dt: number): void {
     const input = this.game.input;
-    // Right-drag pans the tree (and blocks other hovers while held).
-    if (input.pressed.has(RMB) && this.page === 'upgrades') {
-      this.rmbDown = true;
-      this.pointer.lock();
-      this.game.sfx('MOUSE_DOWN');
-    }
-    if (input.released.has(RMB) && this.rmbDown) {
-      this.rmbDown = false;
-      this.pointer.unlock();
-      this.game.sfx('MOUSE_UP');
-    }
+    const blocked = this.game.popups.hasPopup();
+    // UpgradesPage._input: right-drag pans, the wheel zooms (even under popups).
     if (this.page === 'upgrades') {
+      if (input.pressed.has(RMB)) {
+        this.rmbDown = true;
+        lockMouse(this);
+        this.game.sfx('MOUSE_DOWN');
+      } else if (input.released.has(RMB)) {
+        this.rmbDown = false;
+        unlockMouse(this);
+        this.game.sfx('MOUSE_UP');
+      }
       if (this.rmbDown) this.tree.move(input.motion.x, input.motion.y);
-      if (input.wheel && !this.pointer.locked) this.tree.zoomBy(input.wheel > 0 ? 1 : -1, input.mouse);
+      if (input.wheel) this.tree.zoomBy(input.wheel > 0 ? 1 : -1, input.mouse);
       const k = input.keys;
       this.tree.update(dt, { left: k.has('KeyA') || k.has('ArrowLeft'), right: k.has('KeyD') || k.has('ArrowRight'), up: k.has('KeyW') || k.has('ArrowUp'), down: k.has('KeyS') || k.has('ArrowDown') });
     }
-    this.pointer.update(input);
+    // ShopScene._input: Escape opens the game menu.
+    if (input.keysPressed.has('Escape') && !blocked && !isMouseLocked()) {
+      this.game.sfx('BUTTON_CLICK');
+      this.game.openGameMenu();
+    }
+    this.pointer.update(input, blocked);
     this.syncPanels();
     for (const p of PAGES) this.tabs[p].update(dt);
     // lab_btn.main_color.h += delta * 0.2 (kept as a float hue, like Godot's Color).
@@ -195,18 +252,20 @@ export class ShopScene implements Scene {
     for (const panel of this.panels) panel.update(dt);
     this.breach.update(dt);
     this.description.update(dt);
-    this.tooltip.update(dt);
+    this.milestones.update(dt, input, this.page === 'milestones' && !blocked);
+    this.mine.update(dt, this.page === 'cryptomine');
+    this.lab.update(dt, this.page === 'lab');
+    this.ending?.update(dt);
     for (const v of this.tree.nodes) v.refresh(this.game.profile, this.game.options.color_palette);
+  }
+
+  destroy(): void {
+    unlockMouse(this);
+    if (this.ending) unlockMouse(this.ending);
   }
 }
 
-function panelScreenRect(c: { view: Container; rect: { w: number; h: number } }): { x: number; y: number; w: number; h: number } {
-  const p = c.view.getGlobalPosition();
-  const piv = c.view.pivot;
-  return { x: p.x - piv.x, y: p.y - piv.y, w: c.rect.w, h: c.rect.h };
-}
-
-function hueStep(rgb: number, turns: number): number {
+export function hueStep(rgb: number, turns: number): number {
   const r = ((rgb >> 16) & 255) / 255;
   const g = ((rgb >> 8) & 255) / 255;
   const b = (rgb & 255) / 255;
