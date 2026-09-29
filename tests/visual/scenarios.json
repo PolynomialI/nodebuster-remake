@@ -1,0 +1,54 @@
+[
+  {
+    "name": "battle_field",
+    "scene": "battle",
+    "time": 1.0,
+    "profile": { "curr_prestige": 3, "max_prestige": 3, "level": 4, "upgrades": { "Health1": 3, "Damage1": 4 } },
+    "battle": {
+      "cursor": [252, 139],
+      "hp": 17.5,
+      "xp": 1234,
+      "progress": 17.25,
+      "enemies": [
+        { "type": "Square", "currency": "bits", "x": 70, "y": 80, "rot": 0, "scale": 0.16, "hp": 1.0 },
+        { "type": "Square", "currency": "bits", "x": 110, "y": 90, "rot": 30, "scale": 0.18, "hp": 0.5 },
+        { "type": "SmallSquare", "currency": "nodes", "x": 150, "y": 70, "rot": 12, "scale": 0.09, "hp": 0.75 },
+        { "type": "BigSquare", "currency": "bits", "x": 380, "y": 90, "rot": 45, "scale": 0.47, "hp": 0.3 },
+        { "type": "Pill", "currency": "bits", "x": 90, "y": 190, "rot": -20, "scale": 0.2, "hp": 0.6 },
+        { "type": "Pentagon", "currency": "nodes", "x": 180, "y": 200, "rot": 10, "scale": 0.42, "hp": 0.9 },
+        { "type": "Spiky", "currency": "bits", "x": 300, "y": 205, "rot": 0, "scale": 0.32, "hp": 0.5 },
+        { "type": "Exploder", "currency": "processors", "x": 400, "y": 200, "rot": 0, "scale": 0.16, "hp": 0.4 },
+        { "type": "Boss", "currency": "cores", "x": 330, "y": 130, "rot": 8, "scale": 1.0, "hp": 0.8 }
+      ],
+      "drops": [
+        { "currency": "bits", "x": 200, "y": 120 },
+        { "currency": "nodes", "x": 212, "y": 126 },
+        { "currency": "processors", "x": 224, "y": 118 }
+      ]
+    }
+  },
+  {
+    "name": "battle_end_boss",
+    "scene": "battle",
+    "time": 2.5,
+    "profile": { "curr_prestige": 0, "max_prestige": 0 },
+    "battle": {
+      "cursor": [240, 135],
+      "hp": 3.2,
+      "enemies": [],
+      "end": { "status": 1, "collected": { "bits": 132, "sp": 2, "cores": 1 }, "waitFrames": 90 }
+    }
+  },
+  {
+    "name": "battle_end_health",
+    "scene": "battle",
+    "time": 0.5,
+    "profile": { "curr_prestige": 1, "max_prestige": 2 },
+    "battle": {
+      "cursor": [240, 135],
+      "hp": 0,
+      "enemies": [{ "type": "Square", "currency": "bits", "x": 100, "y": 60, "rot": 20, "scale": 0.16, "hp": 1.0 }],
+      "end": { "status": 0, "collected": {}, "waitFrames": 90 }
+    }
+  }
+]

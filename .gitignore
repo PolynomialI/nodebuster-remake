@@ -1,9 +1,8 @@
-reference/game/
-reference/extracted/
-reference/tools/
+reference/
 .tools/
 node_modules/
 dist/
 test-results/
 playwright-report/
 assets-gen/
+scripts/*.tmp.mjs
