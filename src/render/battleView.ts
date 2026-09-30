@@ -1,6 +1,7 @@
 // Draws a Battle: scene background, enemies, drops, bolts, drones, reticle,
 // effects and the HUD (res://GameScenes/BattleScene.tscn), plus the end screen
 // (res://Scenes/UI/BattleEndScreen.tscn).
+import { BgParticles } from './bgParticles';
 import { Container, Graphics, Rectangle, Sprite, Texture } from 'pixi.js';
 import { color, content, t } from '../data/content';
 import type { Battle, Drone, Enemy, SimEvent } from '../sim/battle';
@@ -204,6 +205,8 @@ export class BattleView {
   terminate!: TextButton;
   private end: EndScreen | null = null;
   flashing = true;
+  /** BattleScene.tscn BGParticles. */
+  readonly particles = new BgParticles();
   onHome: () => void = () => {};
   onRestart: () => void = () => {};
 
@@ -213,6 +216,7 @@ export class BattleView {
   ) {
     // ColorRect background bigger than the screen so shake never shows an edge.
     this.world.addChild(solid(-95, -84, 776, 476, BG));
+    this.world.addChild(this.particles.view);
     this.world.addChild(this.enemyLayer, this.dropLayer, this.boltLayer, this.cursorLayer, this.droneLayer, this.fx.view);
     this.reticle = new CornerBox(battle.reticle, color('BLUE'), 0, false);
     this.dot = new Sprite(tex('fx/square32'));

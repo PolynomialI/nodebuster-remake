@@ -3,6 +3,7 @@
 //
 //   node scripts/make-harness.mjs            # build harness + capture all scenarios
 //   node scripts/make-harness.mjs --no-run   # only build the harness
+//   node scripts/make-harness.mjs --list tests/visual/probes.json --out reference/probes
 //
 // Patches (harness copy only):
 // - MySteam.gd: no Steam init/ownership check (the original quits without Steam).
@@ -17,7 +18,11 @@ import { fileURLToPath } from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const src = join(root, 'reference', 'extracted');
 const dst = join(root, 'reference', 'harness');
-const out = join(root, 'reference', 'captures');
+const arg = (k) => {
+  const i = process.argv.indexOf(k);
+  return i >= 0 ? process.argv[i + 1] : undefined;
+};
+const out = resolve(root, arg('--out') ?? join('reference', 'captures'));
 const godot = join(root, '.tools', 'godot', 'Godot_v4.2.2-stable_win64_console.exe');
 
 if (!existsSync(dst)) {
@@ -56,10 +61,10 @@ rmSync(join(userDir, 'save.dat'), { force: true });
 if (process.argv.includes('--no-run')) process.exit(0);
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
-const scen = join(root, 'tests', 'visual', 'scenarios.json');
+const scen = resolve(root, arg('--list') ?? join('tests', 'visual', 'scenarios.json'));
 const r = spawnSync(godot, ['--path', dst, '--fixed-fps', '60', '--', `--scenarios=${scen}`, `--out=${out}`], { stdio: 'inherit', timeout: 600_000 });
 if (r.status !== 0) {
   console.error(`Godot exited with ${r.status}`);
   process.exit(1);
 }
-console.log('captures in reference/captures/');
+console.log(`captures in ${out}`);

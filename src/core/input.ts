@@ -66,6 +66,8 @@ export class Input {
       { passive: false },
     );
     window.addEventListener('keydown', (e) => {
+      // Typing in the save dialog is not game input.
+      if (e.target instanceof HTMLTextAreaElement || e.target instanceof HTMLInputElement) return;
       if (!this.keys.has(e.code)) this.keysPressed.add(e.code);
       this.keys.add(e.code);
       if (e.code.startsWith('Arrow') || e.code === 'Space') e.preventDefault();

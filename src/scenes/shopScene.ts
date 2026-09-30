@@ -17,6 +17,7 @@ import { UpgradeDescription } from '../ui/tooltip';
 import { BG, solid, TextButton, TextureRect } from '../ui/widgets';
 import { CryptoMinePage, LabPage, MilestonesPage, type PageCtx } from './pages';
 import type { Scene } from './scene';
+import { BgParticles } from '../render/bgParticles';
 
 const PAGES = ['upgrades', 'milestones', 'cryptomine', 'lab', 'stats'] as const;
 type Page = (typeof PAGES)[number];
@@ -38,6 +39,8 @@ export class ShopScene implements Scene {
   readonly lab: LabPage;
   private dot: TextureRect;
   ending: Ending | null = null;
+  /** ShopScene.tscn BGParticles and BGParticles2. */
+  readonly particles = [new BgParticles(), new BgParticles()];
   private rmbDown = false;
   private labHue = 0;
   private readonly labBase = 0xc949a9;
@@ -45,12 +48,17 @@ export class ShopScene implements Scene {
   constructor(private game: Game) {
     const g = game;
     this.root.addChild(solid(-135, -85, 776, 476, BG));
+    this.root.addChild(this.particles[0].view, this.particles[1].view);
     // Pages
     this.tree = new TreeView(
       () => g.profile,
       () => g.options.color_palette,
     );
     this.tree.sfx = (n) => g.sfx(n);
+    this.tree.onMoved = (p) => {
+      this.particles[0].setPosition(240 + p.x * 0.1, 135 + p.y * 0.1);
+      this.particles[1].setPosition(240 + p.x * 0.2, 135 + p.y * 0.2);
+    };
     this.pages = { upgrades: new Container(), milestones: new Container(), cryptomine: new Container(), lab: new Container(), stats: new Container() };
     this.pages.upgrades.addChild(this.tree.view);
     const ctx: PageCtx = {
@@ -219,6 +227,7 @@ export class ShopScene implements Scene {
   }
 
   update(dt: number): void {
+    for (const p of this.particles) p.update(dt);
     const input = this.game.input;
     const blocked = this.game.popups.hasPopup();
     // UpgradesPage._input: right-drag pans, the wheel zooms (even under popups).

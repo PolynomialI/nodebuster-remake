@@ -1,0 +1,567 @@
+[
+ {
+  "name": "probe_text_l0",
+  "scene": "probe",
+  "probe": {
+   "labels": [
+    [
+     20,
+     20,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     32,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     44,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     20,
+     56,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     68,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     80,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     20,
+     92,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     104,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     116,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     20,
+     128,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     140,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     152,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     300,
+     40,
+     "claim",
+     "#dcdcdc"
+    ],
+    [
+     300,
+     80,
+     "claim",
+     "#dcdcdc"
+    ],
+    [
+     300,
+     120,
+     "claim",
+     "#dcdcdc"
+    ],
+    [
+     300,
+     160,
+     "claim",
+     "#dcdcdc"
+    ]
+   ],
+   "levels": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "normalized": false,
+   "intensity": 4
+  }
+ },
+ {
+  "name": "probe_text_l1",
+  "scene": "probe",
+  "probe": {
+   "labels": [
+    [
+     20,
+     20,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     32,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     44,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     20,
+     56,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     68,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     80,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     20,
+     92,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     104,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     116,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     20,
+     128,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     140,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     152,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     300,
+     40,
+     "claim",
+     "#dcdcdc"
+    ],
+    [
+     300,
+     80,
+     "claim",
+     "#dcdcdc"
+    ],
+    [
+     300,
+     120,
+     "claim",
+     "#dcdcdc"
+    ],
+    [
+     300,
+     160,
+     "claim",
+     "#dcdcdc"
+    ]
+   ],
+   "levels": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "normalized": false,
+   "intensity": 4
+  }
+ },
+ {
+  "name": "probe_text_l2",
+  "scene": "probe",
+  "probe": {
+   "labels": [
+    [
+     20,
+     20,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     32,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     44,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     20,
+     56,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     68,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     80,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     20,
+     92,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     104,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     116,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     20,
+     128,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     140,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     152,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     300,
+     40,
+     "claim",
+     "#dcdcdc"
+    ],
+    [
+     300,
+     80,
+     "claim",
+     "#dcdcdc"
+    ],
+    [
+     300,
+     120,
+     "claim",
+     "#dcdcdc"
+    ],
+    [
+     300,
+     160,
+     "claim",
+     "#dcdcdc"
+    ]
+   ],
+   "levels": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "normalized": false,
+   "intensity": 4
+  }
+ },
+ {
+  "name": "probe_text_l4",
+  "scene": "probe",
+  "probe": {
+   "labels": [
+    [
+     20,
+     20,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     32,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     44,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     20,
+     56,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     68,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     80,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     20,
+     92,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     104,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     116,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     20,
+     128,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     140,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     152,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     300,
+     40,
+     "claim",
+     "#dcdcdc"
+    ],
+    [
+     300,
+     80,
+     "claim",
+     "#dcdcdc"
+    ],
+    [
+     300,
+     120,
+     "claim",
+     "#dcdcdc"
+    ],
+    [
+     300,
+     160,
+     "claim",
+     "#dcdcdc"
+    ]
+   ],
+   "levels": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "normalized": false,
+   "intensity": 4
+  }
+ },
+ {
+  "name": "probe_text",
+  "scene": "probe",
+  "probe": {
+   "bg": "#1f1f1f",
+   "labels": [
+    [
+     20,
+     20,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     32,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     44,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     20,
+     56,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     68,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     80,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     20,
+     92,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     104,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     116,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     20,
+     128,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     140,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#dcdcdc"
+    ],
+    [
+     20,
+     152,
+     "destroy 2,000 red enemies (100.0%) REWARD: 3,000",
+     "#eed345"
+    ],
+    [
+     300,
+     40,
+     "claim",
+     "#dcdcdc"
+    ],
+    [
+     300,
+     80,
+     "claim",
+     "#dcdcdc"
+    ],
+    [
+     300,
+     120,
+     "claim",
+     "#dcdcdc"
+    ],
+    [
+     300,
+     160,
+     "claim",
+     "#dcdcdc"
+    ]
+   ]
+  }
+ }
+]

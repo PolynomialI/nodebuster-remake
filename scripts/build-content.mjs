@@ -413,6 +413,9 @@ out('strings.en.json', {
   'credits.developerName': 'Goblobin',
   'credits.music': 'music',
   'credits.musicName': 'Holizna',
+  // CreditEntry URLButtons (res://Scenes/Popups/CreditsPopup.tscn).
+  'credits.developerUrl': 'https://store.steampowered.com/curator/44783508',
+  'credits.musicUrl': 'https://freemusicarchive.org/music/holiznacc0/',
   'transition.session': 'INITIALIZING SESSION...',
   'transition.home': 'ENTERING HOME...',
   'transition.menu': 'RETURNING TO MENU...',
@@ -503,6 +506,7 @@ out('strings.en.json', {
   'options.exportHint': 'copy this string to keep your save',
   'options.importHint': 'paste a save string, then press import',
   'options.importDone': 'save imported',
+  'options.copy': 'copy',
   'options.achievements': 'achievements',
   'boot.start': 'click to start',
   'boot.loading': 'loading...',

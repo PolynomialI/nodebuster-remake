@@ -21,6 +21,36 @@ and durations: [assets.md](assets.md). Parameters: [data/post.json](data/post.js
 5. **Glitch overlay** (`res://Shaders/GlitchScreenShader.gdshader`, MIT, by Yui Kinomoto)
    above the CRT; hidden except during the ending.
 
+### Renderer details (measured against the original)
+
+Found by reading the shaders embedded in the Godot 4.2.2 executable (they ship as
+GLSL text) and by capturing test images from the original through the harness
+(`tests/visual/probes*.json`, `node scripts/make-harness.mjs --list … --out …`):
+
+- **Colour depth.** With the Mobile renderer the canvas is copied into an
+  RGB10A2 buffer as `srgb_to_linear(c) / 2` (luminance multiplier 2) and tonemapped
+  back with `linear_to_srgb(v × 2)`. This 10-bit linear round trip is why some
+  colours shift by a level (63→62, 69→68, 41→40, 15→13, 31→31).
+- **Glow runs twice.** The game SubViewport shares the World3D, so its 480x270 image
+  already has glow; the window then glows again at window resolution, after the CRT
+  and glitch overlays. Both use intensity 1.8 (0.9 with `crt_effect` off).
+- **Glow passes** (`blur_raster.glsl`): per level a horizontal pass (7 taps, ×0.75
+  strength; the first level also applies the HDR threshold 0.1, scale 2.0 and cap 0.2)
+  and a vertical pass (5 taps), all stored at 10 bits. Level 0's horizontal pass runs
+  at half width and full height; later levels at their own size (internal ÷ 2^(i+1)).
+  Levels 3 and 5 (indices 2 and 4) are used, normalised to 0.5 each.
+- **Tonemap** (`tonemap.glsl`): linear tonemapper; additive glow is converted to sRGB
+  on its own and added after the base colour's conversion. On desktop the glow is
+  upsampled bicubically (`glow/upscale_mode` defaults to bicubic; the `.mobile`
+  override only applies on mobile platforms).
+- The remake's model reproduces the captures to within about 1–2 levels, except
+  that it glows about 3 levels more around dense text and thin lines.
+- **Popup slide.** `PopupManager.focus_curr` tweens `position:y`; each step makes
+  Control recompute `size = (y + size) − y` in float32, so a popup can end up
+  fractionally short (121 → 120.99998). A MarginContainer inside then truncates to a
+  whole pixel, so the credits popup's back button sits 1 px higher than the scene
+  file suggests. The options popup (172) happens to stay exact.
+
 ### CRT shader (`res://Shaders/CRTShader.gdshader`) — the look to reproduce
 
 Values used by the game (material in `res://MainScene.tscn:30-47`; shader defaults differ):

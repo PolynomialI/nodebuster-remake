@@ -49,7 +49,13 @@ sources). `res://` means `reference/extracted/`.
    The scripts were shipped as plain GDScript source, so nothing had to be decompiled and
    the recovered code is exactly what runs. All 274 imported resources converted; all 175
    textures were imported uncompressed (`compress/mode=0`), so the PNGs are exact. GDRE
-   reports one "lossy" conversion without naming it.
+   reports one "lossy" conversion without naming it: it is `res://icon.svg`. The pack only
+   holds its imported raster (a lossless WebP inside
+   `.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex`, offset 56), so GDRE
+   traced it back into a vector with VTracer. It is the stock Godot project icon
+   (`application/config/icon`, the window icon; the game never draws it). Rendered at
+   128x128, the traced SVG matches the cached raster exactly (largest channel difference
+   below 1/255, no pixel off by more than 16), so nothing was lost that matters.
 2. `scripts/extract.ps1` (PowerShell 5.1, the only runtime on this machine) parses the
    scripts and scenes into `data/*.json`, `skill-tree.md`, `assets.md` and
    `cross-check.generated.md`. Rerun it after re-extracting:

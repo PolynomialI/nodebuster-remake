@@ -17,10 +17,38 @@ export interface Popup {
   onBack?: () => void;
   update?(dt: number): void;
   onFocus?(): void;
+  /** Called when the popup is removed (close anything it opened). */
+  onClose?(): void;
 }
 
 const SW = 480;
 const SH = 270;
+const f32 = Math.fround;
+
+/**
+ * The popup's height after PopupManager.focus_curr's slide. Every tween step sets
+ * position.y, and Control recomputes size = (y + size) - y in float32, so the
+ * height drifts just below the integer (121 -> 120.99998); containers inside then
+ * truncate it (MarginContainer: int(size - margins)), losing a pixel.
+ */
+export function slideHeight(h: number): number {
+  const top = f32(f32(SH * 0.5) - f32(h / 2));
+  let s = f32(f32(f32(SH * 0.5) + f32(h / 2)) - top);
+  const end = Math.sign(top) * Math.round(Math.abs(top));
+  s = f32(f32(end + s) - end);
+  const va = f32(end + SH);
+  s = f32(f32(va + s) - va);
+  const d = f32(0.15);
+  let elapsed = 0;
+  for (;;) {
+    elapsed += 1 / 60;
+    const time = Math.min(elapsed, 0.15);
+    // Tween.interpolate_variant: the TRANS_QUAD/EASE_OUT weight in real_t, then a double lerp.
+    const y = time < 0.15 ? f32(va + (end - va) * f32(f32(-f32(f32(time) / d)) * f32(f32(f32(time) / d) - 2))) : f32(end);
+    s = f32(f32(y + s) - y);
+    if (time >= 0.15) return s;
+  }
+}
 
 export class PopupManager {
   readonly view = new Container();
@@ -67,7 +95,7 @@ export class PopupManager {
     const h = m.h;
     const x = Math.round(SW / 2 - w / 2);
     const y = Math.round(SH / 2 - h / 2);
-    p.panel.setRect({ x, y: y + SH, w, h });
+    p.panel.setRect({ x, y: y + SH, w, h: slideHeight(h) });
     this.slide = { p, t: 0, y };
     this.pointer.clear();
     for (const b of p.buttons) this.pointer.register(b);
@@ -79,6 +107,7 @@ export class PopupManager {
   pop(): void {
     const p = this.stack.pop();
     if (!p) return;
+    p.onClose?.();
     this.root.remove(p.panel);
     p.panel.view.destroy({ children: true });
     if (this.slide?.p === p) {
@@ -199,6 +228,32 @@ export function confirmation(message: string, onChoice: (yes: boolean) => void, 
   no.onPressed = () => onChoice(false);
   yes.onPressed = () => onChoice(true);
   return { panel, buttons: [no, yes] };
+}
+
+/** res://Scenes/Popups/CreditsPopup.tscn: two CreditEntry blocks (label + URL button), back. */
+export function creditsPopup(openUrl: (url: string) => void, onBack: () => void): Popup {
+  const panel = new Panel('filled');
+  panel.customMin = { w: 166, h: 121 };
+  const m = panel.add(new MarginBox(2, 2, 2, 2));
+  const v = m.add(new VBox(3));
+  const buttons: TextButton[] = [];
+  for (const [title, name, url] of [
+    ['credits.developer', 'credits.developerName', 'credits.developerUrl'],
+    ['credits.music', 'credits.musicName', 'credits.musicUrl'],
+  ]) {
+    const entry = v.add(new VBox(1));
+    entry.add(new Label(t(title)));
+    const grid = entry.add(new VBox(4));
+    const b = grid.add(button(t(name), undefined, 60, 18));
+    b.flagsH = 0;
+    b.onPressed = () => openUrl(t(url));
+    buttons.push(b);
+  }
+  const back = v.add(button(t('common.back'), color('RED')));
+  back.flagsV = EXPAND | SHRINK_END;
+  back.onPressed = onBack;
+  buttons.push(back);
+  return { panel, buttons, onBack };
 }
 
 /** The remake's achievements list (names and descriptions from Steam). */

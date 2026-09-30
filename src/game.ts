@@ -14,10 +14,14 @@ import { BootScene } from './scenes/boot';
 import { ShopScene } from './scenes/shopScene';
 import { MainMenuScene } from './scenes/mainMenu';
 import { processMine } from './sim/meta';
-import { achievementsList, confirmation, gameMenu, PopupManager, prestigePicker } from './ui/popups';
+import { achievementsList, confirmation, creditsPopup, gameMenu, PopupManager, prestigePicker } from './ui/popups';
+import { optionsPopup } from './ui/options';
+import { openSaveDialog } from './ui/saveDialog';
 import { t } from './data/content';
 import type { Control } from './ui/control';
 import { Tooltip } from './ui/tooltip';
+import { Transition } from './render/transition';
+import { lockMouse, unlockMouse } from './ui/pointer';
 import type { EndingHooks } from './render/ending';
 import type { Scene } from './scenes/scene';
 import { newProfile, profileFromJson, profileToJson, type Profile } from './sim/profile';
@@ -37,12 +41,17 @@ export class Game {
   readonly popups = new PopupManager();
   /** MainScene Tooltip: one for the whole game, above popups. */
   readonly tooltip = new Tooltip();
+  /** MainScene's Transition layer (above popups and the tooltip). */
+  readonly transition: Transition;
   /** Tests: stop stepping the simulation (the image stays as built). */
   frozen = false;
   /** Tests: CryptoMine.processing = false (the harness freezes the mine too). */
   mineFrozen = false;
   /** Refs.glitch: shown during the ending, with its shake_power (drawn by the post pass). */
   glitch = { visible: false, shake: 0 };
+  /** Shader TIME for the CRT and glitch (tests pin it, like the harness's capture_time). */
+  fixedTime: number | null = null;
+  private readonly startMs = performance.now();
   profile: Profile = newProfile();
   hasSave = false;
   options: Options = {};
@@ -56,11 +65,22 @@ export class Game {
     ui.font = font;
     ui.textures = textures;
     ui.playSfx = (name, opts) => this.sfx(name, opts);
+    this.transition = new Transition({
+      sfx: (n, o) => this.sfx(n, o),
+      lockMouse: (on) => (on ? lockMouse(this.transition) : unlockMouse(this.transition)),
+      bgmDuck: () => this.audio?.bgm(content.audio.bgmProfiles.transition as never),
+    });
     for (const o of content.settings.options) this.options[o.id] = o.default;
     this.loop = new FixedLoop(
       (dt) => this.tick(dt),
       () => {
         this.scene.draw?.();
+        const f = this.screen.frame;
+        const glow = content.post.glow as unknown as { intensity: number; intensityCrtOff: number };
+        f.crt = this.options.crt_effect === 0;
+        f.glowIntensity = f.crt ? glow.intensity : glow.intensityCrtOff;
+        f.time = this.fixedTime ?? ((performance.now() - this.startMs) / 1000) % 3600;
+        f.glitch = this.glitch;
         this.screen.render();
       },
     );
@@ -82,6 +102,7 @@ export class Game {
     this.scene.update(dt);
     this.popups.update(dt, this.input);
     this.tooltip.update(dt);
+    this.transition.update(dt);
   }
 
   showTooltip(markup: string, target: Control): void {
@@ -102,6 +123,7 @@ export class Game {
     new ResizeObserver(() => screen.resize()).observe(canvas);
     window.addEventListener('resize', () => screen.resize());
     await game.loadSave();
+    game.applyAllOptions();
     return game;
   }
 
@@ -144,6 +166,7 @@ export class Game {
   importSave(text: string): void {
     this.profile = profileFromJson(importSaveString(text));
     this.save();
+    this.importedPending = true;
   }
 
   // ---- achievements -----------------------------------------------------------------
@@ -203,31 +226,48 @@ export class Game {
     const old = this.scene;
     this.scene = scene;
     this.screen.gameRoot.removeChildren();
-    this.screen.gameRoot.addChild(scene.root, this.popups.view, this.tooltip.root.view);
+    this.screen.gameRoot.addChild(scene.root, this.popups.view, this.tooltip.root.view, this.transition.view);
     old?.destroy?.();
     old?.root.destroy({ children: true });
   }
 
-  startBattle(): void {
-    this.save();
-    this.setScene(new BattleScene(this));
-    this.profile.sessions += 1;
-    this.checkAchievements('sessionStart');
-    this.audio?.bgm(content.audio.bgmProfiles.battle as never);
+  /**
+   * MainScene's scene changes: wipe in with the text, swap scenes behind it (the
+   * old scene is freed and the new one added a frame later), set the BGM, wipe
+   * out, then setup().
+   */
+  private go(text: string, make: () => Scene, bgm: keyof typeof content.audio.bgmProfiles, after?: (s: Scene) => void): void {
+    this.transition.in(text, () => {
+      const scene = make();
+      this.setScene(scene);
+      this.audio?.bgm(content.audio.bgmProfiles[bgm] as never);
+      this.transition.out(() => {
+        scene.setup?.();
+        after?.(scene);
+      });
+    });
   }
 
-  /** "go to home": save and enter the shop (the transition comes in the look phase). */
-  goHome(): void {
+  /** enter_battle: sessions count (and the session achievements) once the wipe has opened. */
+  enterBattle(): void {
     this.save();
-    this.setScene(new ShopScene(this));
-    this.audio?.bgm(content.audio.bgmProfiles.shop as never);
+    this.go(t('transition.session'), () => new BattleScene(this), 'battle', () => {
+      this.profile.sessions += 1;
+      this.checkAchievements('sessionStart');
+    });
+  }
+
+  /** enter_shop */
+  enterShop(): void {
+    this.save();
+    this.go(t('transition.home'), () => new ShopScene(this), 'shop');
   }
 
   /** Breach: with a prestige unlocked, choose the level first (PrestigePicker). */
   breach(): void {
     const p = this.profile;
     if (p.max_prestige <= 0) {
-      this.startBattle();
+      this.enterBattle();
       return;
     }
     // PrestigePicker.setup: its own value starts at clampi(curr_prestige, 0, 25).
@@ -241,7 +281,7 @@ export class Game {
         },
         onStart: () => {
           this.popups.pop();
-          this.startBattle();
+          this.enterBattle();
         },
         onBack: () => this.popups.pop(),
         showInfo: (b) => this.showTooltip(t('prestige.info'), b),
@@ -255,10 +295,11 @@ export class Game {
     this.popups.add(
       gameMenu({
         onOptions: () => this.openOptions(),
+        // GameMenu: enter_main_menu() starts its transition, then save, then pop the menu.
         onMainMenu: () => {
-          this.popups.clear();
+          this.enterMainMenu(true);
           this.save();
-          this.enterMainMenu();
+          this.popups.pop();
         },
         onBack: () => this.popups.pop(),
       }),
@@ -269,12 +310,107 @@ export class Game {
     this.popups.add(achievementsList(this.profile.achievements, () => this.popups.pop()));
   }
 
-  /** The options popup arrives with the settings phase; achievements are reachable meanwhile. */
-  openOptions(): void {
-    this.openAchievements();
+  /** OptionsPopup: every change is applied and saved at once. */
+  openOptions(extras = true): void {
+    const ach = content.achievements.achievements;
+    this.popups.add(
+      optionsPopup({
+        get: (id) => this.options[id],
+        set: (id, v) => {
+          this.options[id] = v;
+          this.saveOptions();
+          this.applyOption(id);
+        },
+        screenScales: () => this.screenScaleLabels(),
+        input: () => this.input,
+        pointer: () => this.popups.pointer,
+        achievements: () => `${ach.filter((a) => this.profile.achievements[a.id]).length}/${ach.length}`,
+        openAchievements: () => this.openAchievements(),
+        exportSave: () => {
+          lockMouse(openSaveDialog);
+          openSaveDialog('export', { text: this.exportSave(), onClose: () => unlockMouse(openSaveDialog) });
+        },
+        importSave: () => {
+          lockMouse(openSaveDialog);
+          openSaveDialog('import', {
+            onImport: (text) => {
+              try {
+                this.importSave(text);
+                return null;
+              } catch (e) {
+                return e instanceof Error ? e.message : String(e);
+              }
+            },
+            onClose: () => {
+              unlockMouse(openSaveDialog);
+              if (this.importedPending) {
+                this.importedPending = false;
+                this.popups.clear();
+                this.enterMainMenu(!(this.scene instanceof MainMenuScene));
+              }
+            },
+          });
+        },
+        onBack: () => this.popups.pop(),
+        extras,
+      }),
+    );
   }
 
-  openCredits(): void {}
+  private importedPending = false;
+
+  /** OptionsPopup._ready: "fullscreen", then 480x270 multiples while smaller than the screen. */
+  private screenScaleLabels(): string[] {
+    const out = ['fullscreen'];
+    const W = this.screen.width;
+    const H = this.screen.height;
+    let k = 1;
+    // Vector2i < compares x first, then y.
+    const less = (a: number, b: number) => a * 480 < W || (a * 480 === W && b * 270 < H);
+    while (less(k, k)) k++;
+    for (let i = 1; i <= k; i++) out.push(`${480 * i}x${270 * i}`);
+    return out;
+  }
+
+  /** OptionData.apply_option */
+  applyOption(id: string): void {
+    const v = this.options[id];
+    switch (id) {
+      case 'window_size':
+        // The browser sets the window: 0 fits it, n caps the scale at n.
+        this.screen.maxScale = v;
+        this.screen.resize();
+        break;
+      case 'transition_color':
+        this.transition.setColor(v);
+        break;
+      case 'master_volume':
+      case 'sfx_volume':
+      case 'bgm_volume':
+        this.applyAudioOptions();
+        break;
+      default:
+        // crt_effect is read every frame; screenshake, flashing_fx and color_palette by the scenes.
+        (this.scene as Partial<BattleScene> | undefined)?.applyOptions?.();
+    }
+  }
+
+  applyAllOptions(): void {
+    for (const o of content.settings.options) this.applyOption(o.id);
+  }
+
+  /** URLButton: OS.shell_open(url); in a browser, a new tab. */
+  openUrl(url: string): void {
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.click();
+  }
+
+  openCredits(): void {
+    this.popups.add(creditsPopup((u) => this.openUrl(u), () => this.popups.pop()));
+  }
 
   /** What the godvirus ending asks of the rest of the game. */
   endingHooks(): EndingHooks {
@@ -295,18 +431,22 @@ export class Game {
     };
   }
 
-  enterMainMenu(): void {
+  /** enter_main_menu(transition): without a transition (startup, after the ending) the menu starts typing at once. */
+  enterMainMenu(transition = false): void {
+    if (transition) {
+      this.go(t('transition.menu'), () => new MainMenuScene(this), 'menu');
+      return;
+    }
     const menu = new MainMenuScene(this);
     this.setScene(menu);
-    menu.setup();
     this.audio?.bgm(content.audio.bgmProfiles.menu as never);
+    menu.setup();
   }
 
   newGame(): void {
     const start = () => {
       this.profile = newProfile();
-      this.save();
-      this.goHome();
+      this.enterShop();
     };
     if (!this.hasSave) {
       start();
@@ -321,7 +461,7 @@ export class Game {
   }
 
   continueGame(): void {
-    if (this.hasSave) this.goHome();
+    if (this.hasSave) this.enterShop();
   }
 
   /** The browser can't close the tab: "quit" returns to the click-to-start screen. */
@@ -360,9 +500,20 @@ export class Game {
   debugApi() {
     return {
       scene: () => this.scene.name,
+      /** A scene transition is running (the mouse is locked meanwhile). */
+      busy: () => this.transition.active,
       saveBackend: () => this.store.primary,
       audioState: () => this.audio?.ctx.state ?? 'none',
       raw: () => Array.from(this.screen.readRaw()),
+      /** The game image after glow (the original's .raw.png). */
+      rawGlow: () => Array.from(this.screen.post.readGame()),
+      /** The window content after CRT and glow (.crt.png / .nocrt.png). */
+      window: () => {
+        const w = this.screen.post.readWindow();
+        return { w: w.w, h: w.h, data: Array.from(w.data) };
+      },
+      setTime: (t: number | null) => (this.fixedTime = t),
+      setOption: (k: string, v: number) => (this.options[k] = v),
       size: () => ({ w: this.screen.width, h: this.screen.height, scale: this.screen.scale }),
       tableau: (s: Scenario, frame?: number) => applyTableau(this, s, frame),
       /** Let a tableau run live again (interactive tests). */

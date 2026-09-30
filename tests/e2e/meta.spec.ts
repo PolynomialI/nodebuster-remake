@@ -16,6 +16,7 @@ type Profile = {
 };
 type NB = {
   scene(): string;
+  busy(): boolean;
   tableau(s: unknown): void;
   resume(): void;
   advance(n: number): void;
@@ -129,7 +130,7 @@ test('Breach opens the prestige picker; Escape opens the game menu', async ({ pa
   await click(page, 249, 136); // +
   expect((await nb(page, (n) => n.profile())).curr_prestige).toBe(2);
   await click(page, 240, 175); // start session
-  await page.waitForFunction(() => (window as unknown as { __nb: NB }).__nb.scene() === 'battle');
+  await page.waitForFunction(() => (window as unknown as { __nb: NB }).__nb.scene() === 'battle' && !(window as unknown as { __nb: NB }).__nb.busy());
   expect(await nb(page, (n) => n.popups())).toBe(0);
   expect((await nb(page, (n) => n.profile())).curr_prestige).toBe(2);
   expect(errors).toEqual([]);

@@ -8,6 +8,7 @@ import { ui } from '../ui/ctx';
 import { Pointer } from '../ui/pointer';
 import { BG, Label, solid, TextButton } from '../ui/widgets';
 import type { Scene } from './scene';
+import { BgParticles } from '../render/bgParticles';
 
 const TITLE_SIZE = 22;
 
@@ -23,9 +24,12 @@ export class MainMenuScene implements Scene {
   /** MyTimer.create_repeating(0.5, 1, -1): seconds left, or -1 before typing ends. */
   private blink = -1;
   private buttons: TextButton[] = [];
+  /** MainMenu.tscn BGParticles (amount 128). */
+  readonly particles = new BgParticles(128);
 
   constructor(private game: Game) {
     this.root.addChild(solid(-95, -84, 776, 476, BG));
+    this.root.addChild(this.particles.view);
     // GameTitle: centred, offsets (-58,-51)-(58,-24), grow both; characters hidden after shaping.
     this.title = new Label(t('menu.title'), 0xdcdcdc, TITLE_SIZE);
     this.title.setAnchorsPreset('center').place(-58, -51, 58, -24);
@@ -85,6 +89,7 @@ export class MainMenuScene implements Scene {
   }
 
   update(dt: number): void {
+    this.particles.update(dt);
     // MyTimer._process runs first: the blink timer resets to 0.5 s each time it fires.
     if (this.blink >= 0) {
       this.blink -= dt;

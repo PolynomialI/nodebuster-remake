@@ -8,10 +8,13 @@ import pixelmatch from 'pixelmatch';
 import { PNG } from 'pngjs';
 
 type NB = { scene(): string; raw(): number[]; tableau(s: unknown, frame?: number): void };
-type Scenario = { name: string; scene: string; maxDiff?: number; ending?: { frames: number[] } };
+type Scenario = { name: string; scene: string; maxDiff?: number; ending?: { frames: number[] }; transition?: { frames: number[] } };
 const scenarios = JSON.parse(readFileSync('tests/visual/scenarios.json', 'utf8')) as Scenario[];
 // A scenario with ending.frames is captured once per frame (<name>_f<frame>).
-const cases = scenarios.flatMap((s) => (s.ending ? s.ending.frames.map((f) => ({ s, name: `${s.name}_f${f}`, frame: f as number | undefined })) : [{ s, name: s.name, frame: undefined }]));
+const cases = scenarios.flatMap((s) => {
+  const frames = s.ending?.frames ?? s.transition?.frames;
+  return frames ? frames.map((f) => ({ s, name: `${s.name}_f${f}`, frame: f as number | undefined })) : [{ s, name: s.name, frame: undefined }];
+});
 const OUT = 'test-results/visual';
 mkdirSync(OUT, { recursive: true });
 const report: Record<string, unknown> = {};

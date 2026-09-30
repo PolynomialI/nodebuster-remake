@@ -7,6 +7,7 @@ import type { Currency } from './data/content';
 import type { Game } from './game';
 import { BattleScene } from './scenes/battleScene';
 import { ShopScene } from './scenes/shopScene';
+import { MainMenuScene } from './scenes/mainMenu';
 import { newProfile, setCurrency, type Profile } from './sim/profile';
 import { clearMouseLocks } from './ui/pointer';
 
@@ -28,7 +29,17 @@ export interface Scenario {
   /** Deploy the godvirus after the shop is built; `frames` are capture points after the press. */
   ending?: { frames: number[] };
   options?: Record<string, number>;
+  bgParticles?: boolean;
+  /** Main menu: whether a save exists ("continue" shows), a popup to open, frames to run. */
+  hasSave?: boolean;
+  popup?: 'options' | 'credits';
+  waitFrames?: number;
+  /** Start a scene transition after the shop is built; capture at `frames` (after `outAfter`, transition_out). */
+  transition?: { text: string; outAfter?: number; frames: number[] };
 }
+
+/** tests/visual/harness writes these to the harness's options.dat. */
+const HARNESS_OPTIONS: Record<string, number> = { window_size: 3, vsync: 0, screenshake: 90, crt_effect: 0, transition_color: 0, flashing_fx: 0, color_palette: 0, master_volume: 0, bgm_volume: 0, sfx_volume: 0 };
 
 const PAGE_IDS = ['upgrades', 'milestones', 'cryptomine', 'lab', 'stats'] as const;
 
@@ -52,16 +63,31 @@ export function applyTableau(game: Game, s: Scenario, frame?: number): void {
     setCurrency(p, c, v);
   }
   game.profile = p;
+  Object.assign(game.options, HARNESS_OPTIONS);
   for (const o of ['color_palette', 'flashing_fx', 'transition_color']) game.options[o] = s.options?.[o] ?? 0;
+  game.applyAllOptions();
   const step = (n: number) => {
     for (let i = 0; i < n; i++) {
       game.step(STEP);
       game.input.endStep();
     }
   };
+  if (s.scene === 'menu') {
+    // The harness: enter(MainMenu), setup(), open the popup, frames(wait), capture (+5 frames).
+    game.hasSave = !!s.hasSave;
+    const menu = new MainMenuScene(game);
+    menu.particles.view.visible = !!s.bgParticles;
+    game.swapScene(menu);
+    menu.setup();
+    if (s.popup === 'options') game.openOptions(false);
+    else if (s.popup === 'credits') game.openCredits();
+    step((s.waitFrames ?? 150) + 5);
+    return;
+  }
   if (s.scene === 'shop') {
     // build_shop: enter() (first frame), frames(2), then set up the page/popup/hover.
     const shop = new ShopScene(game);
+    for (const p of shop.particles) p.view.visible = !!s.bgParticles;
     game.swapScene(shop);
     step(2);
     const sp = s.shop ?? {};
@@ -70,6 +96,18 @@ export function applyTableau(game: Game, s: Scenario, frame?: number): void {
     if (sp.popup === 'prestige') game.breach();
     if (sp.hover) shop.tree.get(sp.hover)?.onEnter();
     const wait = sp.waitFrames ?? 60;
+    if (s.transition) {
+      step(wait);
+      const tr = s.transition;
+      game.transition.in(tr.text, () => {});
+      if (tr.outAfter !== undefined) {
+        step(tr.outAfter);
+        game.transition.out(() => {});
+      }
+      const k = Math.max(0, tr.frames.indexOf(frame ?? tr.frames[0]));
+      step(tr.frames[k] + 6 * k + 3);
+      return;
+    }
     if (s.ending) {
       // frames(wait), deploy; capture k (glow off) lands f_k + 6k + 2 frames later.
       step(wait);
@@ -87,6 +125,7 @@ export function applyTableau(game: Game, s: Scenario, frame?: number): void {
   const b = s.battle;
   const scene = new BattleScene(game, 1);
   scene.frozen = true;
+  scene.view.particles.view.visible = !!s.bgParticles;
   const sim = scene.sim;
   sim.enemies = [];
   sim.cursor = { x: b.cursor[0], y: b.cursor[1] };

@@ -1,0 +1,13 @@
+[
+  { "name": "probe_rect", "scene": "probe", "probe": { "bg": "#1f1f1f", "rects": [[190, 105, 100, 60, "#dcdcdc"]] } },
+  { "name": "probe_rect_l0", "scene": "probe", "probe": { "rects": [[190, 105, 100, 60]], "levels": [1, 0, 0, 0, 0, 0, 0], "normalized": false, "intensity": 4 } },
+  { "name": "probe_rect_l1", "scene": "probe", "probe": { "rects": [[190, 105, 100, 60]], "levels": [0, 1, 0, 0, 0, 0, 0], "normalized": false, "intensity": 4 } },
+  { "name": "probe_rect_l2", "scene": "probe", "probe": { "rects": [[190, 105, 100, 60]], "levels": [0, 0, 1, 0, 0, 0, 0], "normalized": false, "intensity": 4 } },
+  { "name": "probe_rect_l3", "scene": "probe", "probe": { "rects": [[190, 105, 100, 60]], "levels": [0, 0, 0, 1, 0, 0, 0], "normalized": false, "intensity": 4 } },
+  { "name": "probe_rect_l4", "scene": "probe", "probe": { "rects": [[190, 105, 100, 60]], "levels": [0, 0, 0, 0, 1, 0, 0], "normalized": false, "intensity": 4 } },
+  { "name": "probe_edge_l4", "scene": "probe", "probe": { "rects": [[430, 20, 50, 60], [0, 200, 40, 70]], "levels": [0, 0, 0, 0, 1, 0, 0], "normalized": false, "intensity": 4 } },
+  { "name": "probe_edge_l2", "scene": "probe", "probe": { "rects": [[430, 20, 50, 60], [0, 200, 40, 70]], "levels": [0, 0, 1, 0, 0, 0, 0], "normalized": false, "intensity": 4 } },
+  { "name": "probe_lines_l0", "scene": "probe", "probe": { "rects": [[100, 40, 1, 180], [200, 200, 200, 1], [300, 60, 3, 3], [360, 60, 9, 9]], "levels": [1, 0, 0, 0, 0, 0, 0], "normalized": false, "intensity": 4 } },
+  { "name": "probe_grey_l0", "scene": "probe", "probe": { "rects": [[40, 40, 60, 60, "#404040"], [140, 40, 60, 60, "#808080"], [240, 40, 60, 60, "#b0b0b0"], [340, 40, 60, 60, "#ff0000"], [40, 160, 60, 60, "#606060"], [140, 160, 60, 60, "#a0a0a0"], [240, 160, 60, 60, "#dcdcdc"]], "levels": [1, 0, 0, 0, 0, 0, 0], "normalized": false, "intensity": 4 } },
+  { "name": "probe_odd_l4", "scene": "probe", "probe": { "rects": [[7, 7, 33, 21], [201, 131, 5, 7], [461, 251, 19, 19]], "levels": [0, 0, 0, 0, 1, 0, 0], "normalized": false, "intensity": 4 } }
+]

@@ -22,12 +22,17 @@ export class BattleScene implements Scene {
     const profile = game.profile;
     this.sim = new Battle({ profile, stats: computeStats(profile.upgrades), seed, cursor: game.input.mouse });
     this.view = new BattleView(this.sim, this.pointer);
-    this.view.flashing = game.options.flashing_fx === 0;
-    this.view.shake.intensity = game.options.screenshake / 100;
-    this.view.onHome = () => game.goHome();
-    this.view.onRestart = () => game.startBattle();
+    this.applyOptions();
+    this.view.onHome = () => game.enterShop();
+    this.view.onRestart = () => game.enterBattle();
     this.root.addChild(this.view.root);
     game.setCursorHidden(true);
+  }
+
+  /** Globals.flashing and Globals.screenshake_intensity. */
+  applyOptions(): void {
+    this.view.flashing = this.game.options.flashing_fx === 0;
+    this.view.shake.intensity = this.game.options.screenshake / 100;
   }
 
   update(dt: number): void {
@@ -44,6 +49,7 @@ export class BattleScene implements Scene {
       }
     }
     this.view.update(dt);
+    this.view.particles.update(dt);
     this.pointer.update(this.game.input, this.game.popups.hasPopup());
   }
 

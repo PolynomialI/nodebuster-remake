@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 type BattleInfo = { enemies: number; hp: number; elapsed: number; status: number | null; cursor: { x: number; y: number }; kills: number };
-type NB = { scene(): string; battle(): BattleInfo | null; profile(): { sessions: number; achievements: Record<string, boolean> } };
+type NB = { scene(): string; busy(): boolean; battle(): BattleInfo | null; profile(): { sessions: number; achievements: Record<string, boolean> } };
 const nb = (page: import('@playwright/test').Page) => page.evaluate(() => (window as unknown as { __nb: NB }).__nb.battle());
 
 test('a session runs, follows the mouse, and TERMINATE ends it', async ({ page }) => {
@@ -17,13 +17,13 @@ test('a session runs, follows the mouse, and TERMINATE ends it', async ({ page }
   await page.waitForTimeout(100);
   await page.mouse.down();
   await page.mouse.up();
-  await page.waitForFunction(() => (window as unknown as { __nb: NB }).__nb.scene() === 'shop');
+  await page.waitForFunction(() => (window as unknown as { __nb: NB }).__nb.scene() === 'shop' && !(window as unknown as { __nb: NB }).__nb.busy());
   // Breach button at (376..448, 235..255) in game pixels.
   await page.mouse.move(412 * 3, 245 * 3);
   await page.waitForTimeout(100);
   await page.mouse.down();
   await page.mouse.up();
-  await page.waitForFunction(() => (window as unknown as { __nb: NB }).__nb.scene() === 'battle');
+  await page.waitForFunction(() => (window as unknown as { __nb: NB }).__nb.scene() === 'battle' && !(window as unknown as { __nb: NB }).__nb.busy());
   // The reticle follows the mouse (game pixels = screen pixels / 3).
   for (let i = 0; i < 40; i++) {
     await page.mouse.move(720 + 300 * Math.sin(i / 6), 405 + 200 * Math.cos(i / 9));

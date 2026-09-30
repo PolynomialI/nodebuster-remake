@@ -1,10 +1,11 @@
 // Pixi compiles shaders without eval (the artifact page's CSP may forbid it).
 import 'pixi.js/unsafe-eval';
-// The display: the game draws into a 480x270 render texture (nearest filtering),
-// which is shown integer-scaled and centred on the canvas, like the original's
-// SubViewport in a window with stretch mode canvas_items / scale mode integer.
-// Post-processing (glow, CRT) runs on the full canvas afterwards.
-import { Application, Container, Filter, RenderTexture, Sprite, TextureSource, type Texture } from 'pixi.js';
+// The display: Pixi draws the game into a 480x270 render texture (nearest
+// filtering) on an offscreen canvas, like the original's SubViewport. The visible
+// canvas belongs to Post, which shows it integer-scaled and centred with the
+// original's glow, CRT and glitch passes.
+import { Application, BufferImageSource, Container, RenderTexture, Sprite, Texture, TextureSource } from 'pixi.js';
+import { Post, type PostFrame } from './post';
 
 export const W = 480;
 export const H = 270;
@@ -13,30 +14,34 @@ TextureSource.defaultOptions.scaleMode = 'nearest';
 
 export class Screen {
   readonly gameRoot = new Container();
-  /** Drawn over the scaled game at window resolution (CRT and friends attach here). */
-  readonly post = new Container();
   readonly rt: RenderTexture;
-  readonly view: Sprite;
+  private readonly blit: Sprite;
   scale = 1;
   offsetX = 0;
   offsetY = 0;
   width = 0;
   height = 0;
+  /** Largest integer scale allowed (the window_size option), 0 = fit the window. */
+  maxScale = 0;
+  readonly frame: PostFrame = { crt: true, glowIntensity: 1.8, time: 0, glitch: { visible: false, shake: 0 } };
 
   private constructor(
     readonly app: Application,
     readonly canvas: HTMLCanvasElement,
+    readonly post: Post,
   ) {
     this.rt = RenderTexture.create({ width: W, height: H, scaleMode: 'nearest', resolution: 1, antialias: false });
-    this.view = new Sprite(this.rt);
-    this.post.addChild(this.view);
-    app.stage.addChild(this.post);
+    this.blit = new Sprite(this.rt);
   }
 
   static async create(canvas: HTMLCanvasElement): Promise<Screen> {
+    const post = new Post(canvas);
+    const offscreen = document.createElement('canvas');
+    offscreen.width = W;
+    offscreen.height = H;
     const app = new Application();
     await app.init({
-      canvas,
+      canvas: offscreen,
       preference: 'webgl',
       antialias: false,
       background: '#000000',
@@ -44,12 +49,12 @@ export class Screen {
       autoDensity: false,
       autoStart: false,
       sharedTicker: false,
-      powerPreference: 'high-performance',
-      width: Math.max(1, canvas.clientWidth),
-      height: Math.max(1, canvas.clientHeight),
+      preserveDrawingBuffer: true,
+      width: W,
+      height: H,
     });
     app.ticker.stop();
-    const s = new Screen(app, canvas);
+    const s = new Screen(app, canvas, post);
     s.resize();
     return s;
   }
@@ -58,17 +63,16 @@ export class Screen {
     const dpr = window.devicePixelRatio || 1;
     const cw = Math.max(1, Math.round(this.canvas.clientWidth * dpr));
     const ch = Math.max(1, Math.round(this.canvas.clientHeight * dpr));
-    if (cw !== this.width || ch !== this.height) this.app.renderer.resize(cw, ch);
     this.width = cw;
     this.height = ch;
     const fit = Math.min(cw / W, ch / H);
     // Integer scale like the original; a screen smaller than 480x270 falls back to a fractional fit.
-    this.scale = fit >= 1 ? Math.floor(fit) : fit;
-    this.offsetX = Math.floor((cw - W * this.scale) / 2);
-    this.offsetY = Math.floor((ch - H * this.scale) / 2);
-    this.view.scale.set(this.scale);
-    this.view.position.set(this.offsetX, this.offsetY);
-    for (const f of (this.post.filters ?? []) as Filter[]) (f as Filter & { onResize?: (s: Screen) => void }).onResize?.(this);
+    let scale = fit >= 1 ? Math.floor(fit) : fit;
+    if (this.maxScale > 0 && scale > this.maxScale) scale = this.maxScale;
+    this.scale = scale;
+    this.post.resize(cw, ch, scale);
+    this.offsetX = this.post.offsetX;
+    this.offsetY = this.post.offsetY;
   }
 
   /** Client (CSS pixel) coordinates to game coordinates. */
@@ -84,18 +88,18 @@ export class Screen {
   render(): void {
     const r = this.app.renderer;
     r.render({ container: this.gameRoot, target: this.rt, clear: true, clearColor: [0, 0, 0, 1] });
-    r.render({ container: this.app.stage, clear: true, clearColor: [0, 0, 0, 1] });
+    r.render({ container: this.blit, clear: true, clearColor: [0, 0, 0, 1] });
+    this.post.render(this.app.canvas as HTMLCanvasElement, this.frame);
   }
 
-  /** The window image at window resolution (the original's root viewport texture). */
-  snapshot(): Texture {
-    const rt = RenderTexture.create({ width: this.width, height: this.height, scaleMode: 'nearest', resolution: 1, antialias: false });
-    this.app.renderer.render({ container: this.app.stage, target: rt, clear: true, clearColor: [0, 0, 0, 1] });
-    return rt;
-  }
-
-  /** The 480x270 game image as RGBA bytes (tests compare it with the original's viewport). */
+  /** The 480x270 game image before glow, as RGBA bytes (compared with the original's .rawng.png). */
   readRaw(): Uint8ClampedArray {
     return this.app.renderer.extract.pixels({ target: this.rt }).pixels as Uint8ClampedArray;
+  }
+
+  /** The window image as last drawn (Refs.main_scn.get_viewport().get_texture()), as a Pixi texture. */
+  snapshot(): Texture {
+    const { w, h, data } = this.post.readWindow();
+    return new Texture({ source: new BufferImageSource({ resource: data, width: w, height: h, scaleMode: 'nearest' }) });
   }
 }

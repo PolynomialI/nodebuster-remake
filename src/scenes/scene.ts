@@ -8,4 +8,6 @@ export interface Scene {
   /** Called once per rendered frame before drawing (optional visual sync). */
   draw?(): void;
   destroy?(): void;
+  /** BaseScene.setup(): called once the transition into the scene has finished. */
+  setup?(): void;
 }

@@ -682,5 +682,100 @@
         2400
       ]
     }
+  },
+  {
+    "name": "menu_typing",
+    "scene": "menu",
+    "time": 1,
+    "waitFrames": 30
+  },
+  {
+    "name": "menu_title",
+    "scene": "menu",
+    "time": 1,
+    "waitFrames": 150,
+    "hasSave": true,
+    "profile": {
+      "bits": 61000,
+      "nodes": 900,
+      "level": 8,
+      "upgrades": {
+        "Damage1": 15,
+        "SpawnRate1": 15,
+        "Size1": 10
+      }
+    }
+  },
+  {
+    "name": "menu_options",
+    "scene": "menu",
+    "time": 1,
+    "waitFrames": 60,
+    "popup": "options"
+  },
+  {
+    "name": "menu_credits",
+    "scene": "menu",
+    "time": 1,
+    "waitFrames": 60,
+    "popup": "credits"
+  },
+  {
+    "name": "transition_in",
+    "scene": "shop",
+    "time": 1,
+    "profile": {
+      "bits": 61000,
+      "nodes": 900,
+      "level": 8,
+      "upgrades": {
+        "Damage1": 15,
+        "SpawnRate1": 15,
+        "Size1": 10
+      }
+    },
+    "shop": {
+      "waitFrames": 10
+    },
+    "transition": {
+      "text": "ENTERING HOME...",
+      "frames": [
+        4,
+        13,
+        16,
+        22,
+        34,
+        45
+      ]
+    }
+  },
+  {
+    "name": "transition_out",
+    "scene": "shop",
+    "time": 1,
+    "profile": {
+      "bits": 61000,
+      "nodes": 900,
+      "level": 8,
+      "upgrades": {
+        "Damage1": 15,
+        "SpawnRate1": 15,
+        "Size1": 10
+      }
+    },
+    "shop": {
+      "waitFrames": 10
+    },
+    "transition": {
+      "text": "INITIALIZING SESSION...",
+      "outAfter": 80,
+      "frames": [
+        2,
+        8,
+        14,
+        20,
+        28
+      ]
+    }
   }
 ]

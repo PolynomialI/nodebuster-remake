@@ -92,15 +92,48 @@ func run_scenario(s: Dictionary) -> void:
 	if scene == "battle":
 		await build_battle(s)
 	elif scene == "menu":
+		# "continue" shows only when a save exists.
+		if s.get("hasSave", false):
+			Saver.save_game()
+		else:
+			DirAccess.remove_absolute(Saver.path)
 		var m = await enter(load("res://GameScenes/MainMenu.tscn"))
 		m.new_game.connect(func(): pass)
 		m.continue_game.connect(func(): pass)
 		m.setup()
-		await frames(int(s.get("waitFrames", 150)))
 		if not s.get("bgParticles", false):
 			hide_particles(m)
+		var popup: String = s.get("popup", "")
+		if popup == "options":
+			Refs.popups.add_popup(Refs._options.instantiate())
+			Refs.popups.focus_curr()
+		elif popup == "credits":
+			Refs.popups.add_popup(load("res://Scenes/Popups/CreditsPopup.tscn").instantiate())
+			Refs.popups.focus_curr()
+		await frames(int(s.get("waitFrames", 150)))
 	elif scene == "shop":
 		await build_shop(s)
+	elif scene == "probe":
+		await build_probe(s)
+	if s.has("transition"):
+		var tr = Refs.scene_transition
+		var spec: Dictionary = s.transition
+		tr.transition_in(spec.text)
+		if spec.has("outAfter"):
+			await frames(int(spec.outAfter))
+			tr.transition_out()
+		var tdone := 0
+		for f in spec.frames:
+			await frames(int(f) - tdone)
+			tdone = int(f)
+			var s3 := s.duplicate()
+			s3.name = s.name + "_f" + str(int(f))
+			await capture(s3, false)
+		if not spec.has("outAfter"):
+			await frames(90)
+			tr.transition_out()
+		await frames(60)
+		return
 	if s.has("ending"):
 		var sh = Refs.curr_scn
 		sh.get_node("%LabPage")._on_deploy_virus_pressed()
@@ -113,6 +146,8 @@ func run_scenario(s: Dictionary) -> void:
 			await capture(s2, false)
 		return
 	await capture(s)
+	if scene == "probe":
+		restore_glow()
 
 func build_battle(s: Dictionary) -> void:
 	var b: Dictionary = s.battle
@@ -186,6 +221,50 @@ func build_shop(s: Dictionary) -> void:
 	await frames(int(sp.get("waitFrames", 60)))
 
 # ---------------------------------------------------------------- output
+
+# A blank canvas with test rectangles and glow overrides, to measure the
+# renderer's glow (levels, kernels, quantization) independently of the game.
+func build_probe(s: Dictionary) -> void:
+	var main = Refs.main_scn
+	if main.curr_scn:
+		main.curr_scn.queue_free()
+	await get_tree().process_frame
+	var scn := Node2D.new()
+	main.root.add_child(scn)
+	main.curr_scn = null
+	Refs.curr_scn = scn
+	var p: Dictionary = s.probe
+	var bg := ColorRect.new()
+	bg.size = Vector2(480, 270)
+	bg.color = Color.html(p.get("bg", "#000000"))
+	scn.add_child(bg)
+	for l in p.get("labels", []):
+		var lb := Label.new()
+		lb.position = Vector2(l[0], l[1])
+		lb.text = l[2]
+		lb.add_theme_color_override("font_color", Color.html(l[3] if l.size() > 3 else "#dcdcdc"))
+		scn.add_child(lb)
+	for r in p.get("rects", []):
+		var c := ColorRect.new()
+		c.position = Vector2(r[0], r[1])
+		c.size = Vector2(r[2], r[3])
+		c.color = Color.html(r[4] if r.size() > 4 else "#ffffff")
+		scn.add_child(c)
+	var env: Environment = Refs.world_env.environment
+	var levels: Array = p.get("levels", [0, 0, 1, 0, 1, 0, 0])
+	for i in 7:
+		env.set_glow_level(i, float(levels[i]))
+	env.glow_normalized = bool(p.get("normalized", true))
+	env.glow_intensity = float(p.get("intensity", 1.8))
+	await frames(4)
+
+func restore_glow() -> void:
+	var env: Environment = Refs.world_env.environment
+	var d := [0, 0, 1, 0, 1, 0, 0]
+	for i in 7:
+		env.set_glow_level(i, float(d[i]))
+	env.glow_normalized = true
+	env.glow_intensity = 1.8
 
 func set_crt_time(t: float) -> void:
 	Refs.crt.material.set_shader_parameter("capture_time", t)
