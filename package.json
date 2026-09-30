@@ -8,7 +8,8 @@
     "typecheck": "tsc --noEmit",
     "build": "npm run assets && vite build && node scripts/package-artifact.mjs",
     "test": "vitest run",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "standalone": "npm run build && node scripts/package-standalone.mjs"
   },
   "repository": {
     "type": "git",

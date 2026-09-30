@@ -23,7 +23,8 @@
       }
       #app {
         position: fixed;
-        inset: 0;
+        /* Clear of phone system bars; zero everywhere else. */
+        inset: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
         background: var(--screen);
         touch-action: none;
         user-select: none;
@@ -37,6 +38,10 @@
       }
       #screen.hide-cursor {
         cursor: none;
+      }
+      /* Not every host resets [hidden]; the display below would override it. */
+      #fallback[hidden] {
+        display: none;
       }
       #fallback {
         position: absolute;
