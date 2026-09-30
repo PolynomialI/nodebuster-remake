@@ -1,0 +1,173 @@
+{
+  "source": "Measured in the original (Godot harness, --fixed-fps 60, tests/visual/timings.json). Fresh save at prestige 0 unless a profile is given. Steps are 1-based 60 Hz frames.",
+  "drain": {
+    "cursor": [
+      20,
+      20
+    ],
+    "pulseSteps": [
+      121,
+      241,
+      361,
+      481,
+      601,
+      721,
+      841,
+      961,
+      1081,
+      1201
+    ],
+    "hpAtStep": {
+      "60": 9.8,
+      "600": 8,
+      "1800": 4,
+      "2940": 0.2,
+      "3000": 0
+    },
+    "deadStep": 3001
+  },
+  "kill": {
+    "cursor": [
+      240,
+      135
+    ],
+    "enemyHpSteps": [
+      {
+        "step": 121,
+        "enemyHp": 2,
+        "playerHp": 9.196667
+      },
+      {
+        "step": 241,
+        "enemyHp": 1,
+        "playerHp": 8.396667
+      },
+      {
+        "step": 361,
+        "enemyHp": -1,
+        "playerHp": 7.596667
+      }
+    ]
+  },
+  "builds": [
+    {
+      "profile": {
+        "curr_prestige": 1,
+        "max_prestige": 1,
+        "upgrades": {
+          "Damage1": 2,
+          "Health1": 3,
+          "Armor1": 2,
+          "AttackSpeed1": 1,
+          "Lifesteal1": 2
+        }
+      },
+      "cursor": [
+        240,
+        135
+      ],
+      "pulseSteps": [
+        100,
+        200,
+        300,
+        400,
+        500,
+        600
+      ],
+      "enemyHpSteps": [
+        {
+          "step": 100,
+          "enemyHp": 7,
+          "playerHp": 21.4
+        },
+        {
+          "step": 200,
+          "enemyHp": 4,
+          "playerHp": 20.8
+        },
+        {
+          "step": 300,
+          "enemyHp": 1,
+          "playerHp": 20.2
+        },
+        {
+          "step": 400,
+          "enemyHp": -1,
+          "playerHp": 19.6
+        }
+      ],
+      "hpAtStep": {
+        "1": 21.99,
+        "60": 21.4,
+        "450": 19.1,
+        "900": 14.6
+      }
+    },
+    {
+      "profile": {
+        "curr_prestige": 3,
+        "max_prestige": 3,
+        "upgrades": {
+          "Damage1": 15,
+          "Damage2": 5,
+          "Health1": 10,
+          "Health2": 8,
+          "Armor1": 10,
+          "HealthRegen1": 3
+        }
+      },
+      "cursor": [
+        240,
+        135
+      ],
+      "pulseSteps": [
+        121,
+        241,
+        361,
+        481,
+        601,
+        721
+      ],
+      "enemyHpSteps": [
+        {
+          "step": 121,
+          "enemyHp": 69,
+          "playerHp": 133.345
+        },
+        {
+          "step": 241,
+          "enemyHp": 38,
+          "playerHp": 120.745
+        },
+        {
+          "step": 361,
+          "enemyHp": 7,
+          "playerHp": 108.145
+        },
+        {
+          "step": 481,
+          "enemyHp": -1,
+          "playerHp": 95.545
+        }
+      ],
+      "hpAtStep": {
+        "1": 145.945,
+        "60": 142.7,
+        "450": 103.25,
+        "900": 72.5
+      }
+    }
+  ],
+  "boss": {
+    "cursor": [
+      2,
+      2
+    ],
+    "bossStep": 2701,
+    "progressAtStep": {
+      "60": 1,
+      "1350": 22.5,
+      "2699": 44.983333
+    }
+  }
+}

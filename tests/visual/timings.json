@@ -1,0 +1,87 @@
+[
+ {
+  "name": "timing_drain",
+  "scene": "timing",
+  "timing": {
+   "cursor": [
+    20,
+    20
+   ],
+   "noSpawn": true,
+   "frames": 3060
+  }
+ },
+ {
+  "name": "timing_kill",
+  "scene": "timing",
+  "timing": {
+   "cursor": [
+    240,
+    135
+   ],
+   "noSpawn": true,
+   "enemy": true,
+   "frames": 420
+  }
+ },
+ {
+  "name": "timing_boss",
+  "scene": "timing",
+  "timing": {
+   "cursor": [
+    2,
+    2
+   ],
+   "frames": 2760
+  }
+ },
+ {
+  "name": "timing_p1_build",
+  "scene": "timing",
+  "profile": {
+   "curr_prestige": 1,
+   "max_prestige": 1,
+   "upgrades": {
+    "Damage1": 2,
+    "Health1": 3,
+    "Armor1": 2,
+    "AttackSpeed1": 1,
+    "Lifesteal1": 2
+   }
+  },
+  "timing": {
+   "cursor": [
+    240,
+    135
+   ],
+   "noSpawn": true,
+   "enemy": true,
+   "frames": 900
+  }
+ },
+ {
+  "name": "timing_p3_build",
+  "scene": "timing",
+  "profile": {
+   "curr_prestige": 3,
+   "max_prestige": 3,
+   "upgrades": {
+    "Damage1": 15,
+    "Damage2": 5,
+    "Health1": 10,
+    "Health2": 8,
+    "Armor1": 10,
+    "HealthRegen1": 3
+   }
+  },
+  "timing": {
+   "cursor": [
+    240,
+    135
+   ],
+   "noSpawn": true,
+   "enemy": true,
+   "frames": 900
+  }
+ }
+]

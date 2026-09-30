@@ -1,6 +1,6 @@
 # Nodebuster Remake — Plan
 
-Status: **building** (phases 1-7). Values come from [research/](research/README.md).
+Status: **phases 1-7 built**; the Chromebook playtest (phase 7) is yours. Values come from [research/](research/README.md).
 
 ## 1. Goal and definition of done
 

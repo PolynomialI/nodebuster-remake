@@ -115,6 +115,9 @@ func run_scenario(s: Dictionary) -> void:
 		await build_shop(s)
 	elif scene == "probe":
 		await build_probe(s)
+	elif scene == "timing":
+		await run_timing(s)
+		return
 	if s.has("transition"):
 		var tr = Refs.scene_transition
 		var spec: Dictionary = s.transition
@@ -221,6 +224,38 @@ func build_shop(s: Dictionary) -> void:
 	await frames(int(sp.get("waitFrames", 60)))
 
 # ---------------------------------------------------------------- output
+
+# A real session for N frames with the mouse parked, writing per-frame values to
+# <out>/<name>.json: player health, the cursor's pulse accumulator, elapsed time,
+# the progress bar, whether the boss is out, and a placed enemy's health.
+func run_timing(s: Dictionary) -> void:
+	var spec: Dictionary = s.timing
+	var c: Array = spec.get("cursor", [240, 135])
+	Input.warp_mouse(Vector2(c[0] * 3, c[1] * 3))
+	await frames(2)
+	var bs = await enter(load("res://GameScenes/BattleScene.tscn"))
+	var spawner = Refs.enemy_spawner
+	if spec.get("noSpawn", false):
+		spawner.set_process(false)
+	var tracked = null
+	if spec.get("enemy", false):
+		tracked = spawner._create_enemy(spawner._square, ResourceType.BITS, spawner.enemy_base_health, spawner.enemy_base_damage, 0.0, 0.0, 0.16)
+		tracked.global_position = Vector2(c[0], c[1])
+	var rec := []
+	for i in int(spec.frames):
+		await frames(1)
+		var boss := false
+		for e in spawner.get_children():
+			if e is Enemy and e.boss:
+				boss = true
+		var ehp := -1.0
+		if tracked != null and is_instance_valid(tracked) and not tracked.is_queued_for_deletion():
+			ehp = tracked.curr_health
+		rec.append([Refs.health.value, bs.player_cursor.pulse_time, bs.elapsed_time, bs.progress_bar.value, boss, ehp, bs.player_cursor.dead])
+	var fa := FileAccess.open(out_dir + "/" + s.name + ".json", FileAccess.WRITE)
+	fa.store_string(JSON.stringify({"fields": ["hp", "pulse", "elapsed", "progress", "boss", "enemyHp", "dead"], "frames": rec}))
+	fa.close()
+	print("timed ", s.name)
 
 # A blank canvas with test rectangles and glow overrides, to measure the
 # renderer's glow (levels, kernels, quantization) independently of the game.
